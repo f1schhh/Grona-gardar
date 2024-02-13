@@ -4,3 +4,5 @@
   <p>STARTSIDA
   </p>
 </template>
+<style scoped>
+</style>
