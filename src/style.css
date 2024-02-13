@@ -5,4 +5,11 @@
   --dark-green: #475133;
   --dusty-pink: #DAB29E;
   --bread-size: 16px;
+  --mobile-size: 375px;
+  --desktop-size: 980px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--middle-beige);
 }
