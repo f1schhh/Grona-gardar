@@ -1,17 +1,31 @@
 <template>
   <header>
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
+    <div class="header-wrapper">
+      <div><i class="bi bi-list"></i></div>
+      <div style="margin:0 !important;">Gröna gårdar</div>
+      <div><i class="bi bi-cart"></i></div>
+    </div>
   </header>
 </template>
-<style>
+<style scoped>
 header {
   width: 100%;
   height: 75px;
   display: flex;
+  justify-content: center;
+  background-color: var(--dark-beige);
+}
+
+.header-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  color: var(--dark-green);
   justify-content: space-between;
   align-items: center;
-  background-color: var(--dark-beige);
+}
+
+header div {
+  margin: 0rem 1rem 0rem 1rem;
 }
 </style>
