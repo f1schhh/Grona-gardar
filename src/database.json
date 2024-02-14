@@ -7,7 +7,7 @@
       "description": "Kulturarvssort som introducerades redan år 1885.Morötterna är cylindriska, orange-färgade och nästan märgfria.",
       "product_type": "Early Nantes",
       "category": "vegetables",
-      "product_image": "../assets/media/product_images/Carrot_Early_Nantes.jpg",
+      "product_image": "/src/assets/media/product_images/Carrots_Early_Nantes.jpg",
       "price": 35,
       "season": "summer"
     },
@@ -75,7 +75,10 @@
       "category": "vegetables",
       "product_image": "https://www.pexels.com/photo/person-holding-red-tomato-fruit-3943195/",
       "price": 53,
-      "season": ["summer", "autumn"]
+      "season": [
+        "summer",
+        "autumn"
+      ]
     },
     {
       "id": 8,
@@ -86,7 +89,10 @@
       "category": "vegetables",
       "product_image": "https://pixabay.com/photos/tomatoes-vegetables-food-fresh-4238247/",
       "price": 55,
-      "season": ["summer", "autumn"]
+      "season": [
+        "summer",
+        "autumn"
+      ]
     },
     {
       "id": 9,
@@ -119,7 +125,10 @@
       "category": "vegetables",
       "product_image": "https://pixabay.com/photos/leek-vegetables-allium-porrum-2653127/",
       "price": 63,
-      "season": ["autumn", "winter"]
+      "season": [
+        "autumn",
+        "winter"
+      ]
     },
     {
       "id": 12,
