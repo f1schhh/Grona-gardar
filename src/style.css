@@ -62,12 +62,13 @@ h6 {
 
 /* Colors
    ==========================================================
+   light beige = FFF8EE    dark green  = 475133
    mid beige   = EFE9DE    dusty pink  = DAB29E
-   dark beig   = DFD3C3    ----------  = XxxXxX
-   dark green  = 475133    ----------  = XxxXxX
+   dark beige  = DFD3C3    ----------  = XxxXxX
    ========================================================== */
 /* Variablar för olika färger, font storleker  */
 :root {
+  --light-beige: #FFF8EE;
   --mid-beige: #EFE9DE;
   --dark-beige: #DFD3C3;
   --dark-green: #475133;
