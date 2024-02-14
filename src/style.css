@@ -1,6 +1,63 @@
+/*====================================*/
+/*============= RESET CSS ============*/
+/*====================================*/
+
+body {
+  color: var(--dark-green);
+}
+
+body,
+h1,
+h2,
+p,
+ul,
+ol {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  padding-left: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  outline: none;
+  padding: 0;
+  text-transform: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+
+
+/* Colors
+   ==========================================================
+   mid beige   = EFE9DE    dusty pink  = DAB29E
+   dark beig   = DFD3C3    ----------  = XxxXxX
+   dark green  = 475133    ----------  = XxxXxX
+   ========================================================== */
 /* Variablar för olika färger, font storleker  */
 :root {
-  --middle-beige: #EFE9DE;
+  --mid-beige: #EFE9DE;
   --dark-beige: #DFD3C3;
   --dark-green: #475133;
   --dusty-pink: #DAB29E;
@@ -9,6 +66,10 @@
   --desktop-size: 980px;
 }
 
+
+/*====================================*/
+/*=============== FONTS ==============*/
+/*====================================*/
 @font-face {
   font-family: 'Avenir Next Cyr Regular';
   src: url('./assets/font/avenir-next/AvenirNextCyr-Regular.eot');
@@ -21,10 +82,13 @@
   font-style: normal;
 }
 
+
+
+
 body {
   margin: 0;
   font-family: 'Avenir Next Cyr Regular';
-  background-color: var(--middle-beige);
+  background-color: var(--mid-beige);
 }
 
 #app {
@@ -43,3 +107,13 @@ main {
 .title-bold {
   font-weight: bolder;
 }
+
+
+
+/* RESPONSIVE STUFF
+   ==========================================================
+   Small:   320 - 767   ( centered at 320  )
+   Medium:  768 - 959   ( columns at 768  )
+   Large:   960 - 1279  ( columns at 960  )
+   X-Large: 1280+       ( columns at 1280 )
+   ========================================================== */
