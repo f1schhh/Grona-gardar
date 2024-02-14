@@ -1,4 +1,16 @@
-<script setup>
+<script>
+export default {
+  created() {
+    this.getProducts(1);
+  },
+  methods: {
+    async getProducts(id) {
+      const results = await fetch('database.json');
+      const response = await results.json();
+      console.log(results)
+    }
+  }
+}
 </script>
 <template>
   <article id="specific_product">
