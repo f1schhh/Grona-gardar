@@ -1,0 +1,14 @@
+{
+  "products": [
+    {
+      "id": 82,
+      "product_name": "Morot",
+      "description": "Kulturarvssort som introducerades redan år 1885.Morötterna är cylindriska, orange-färgade och nästan märgfria.",
+      "product_type": "Early Nantes",
+      "category": "vegetables",
+      "product_image": "https://cdn.pixabay.com/photo/2019/12/12/06/23/carrots-4689897_1280.jpg",
+      "price": 35,
+      "season": "summer"
+    }
+  ]
+}
