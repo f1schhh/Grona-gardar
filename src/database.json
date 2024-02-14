@@ -56,7 +56,7 @@
       "season": "summer"
     },
     {
-      "id": 5,
+      "id": 6,
       "product_name": "Pumpa",
       "description_title": "Passar lika bra till mat som dekoration",
       "description": "Stora, symmetriska, orange frukter, med ett tjockt, gott kött perfekt till pumpapaj.",
@@ -67,7 +67,7 @@
       "season": "autumn"
     },
     {
-      "id": 6,
+      "id": 7,
       "product_name": "Tomat",
       "description_title": "Stora, rejäla tomater med underbar smak",
       "description": "Ljuvligt saftiga tomater med en smak som fyller hela munnen. Det röda köttet har en mycket rik, nästan kryddig tomatsmak.",
@@ -78,7 +78,7 @@
       "season": ["summer", "autumn"]
     },
     {
-      "id": 6,
+      "id": 8,
       "product_name": "Tomat",
       "description_title": "Otroligt smakrik och söt",
       "description": "En av de absolut sötaste tomater vi smakat. Den är rena godiset.",
@@ -89,7 +89,7 @@
       "season": ["summer", "autumn"]
     },
     {
-      "id": 7,
+      "id": 9,
       "product_name": "Savoykål",
       "description_title": "Riktigt vacker och delikat",
       "description": "De djupt blågröna, buckliga ytterbladen döljer ett milt och sött inre.",
@@ -100,7 +100,7 @@
       "season": "autumn"
     },
     {
-      "id": 8,
+      "id": 10,
       "product_name": "Spenat",
       "description_title": "En trevlig spenatsort",
       "description": "Fin smak och textur. Passar bra både rå och tillagad.",
@@ -111,7 +111,7 @@
       "season": "autumn"
     },
     {
-      "id": 9,
+      "id": 11,
       "product_name": "Purjolök",
       "description_title": "Bra till både sallad och gryta",
       "description": "Lång, vit, tät stjälk.",
@@ -122,7 +122,7 @@
       "season": ["autumn", "winter"]
     },
     {
-      "id": 10,
+      "id": 12,
       "product_name": "Sparris",
       "description_title": "En härlig vårprimör",
       "description": "Medeltjocka söta och fina sparrisskott. Skotten är fulla med antioxidanter, vitaminer och mineraler. En riktig hälsoboost för kroppen.",
@@ -133,7 +133,7 @@
       "season": "spring"
     },
     {
-      "id": 11,
+      "id": 13,
       "product_name": "Melon",
       "description_title": "Smaken av sommar",
       "description": "Det kraftigt orange, saftiga köttet har en delikat sötma och en aromatisk fyllighet. Vissa påstår att det påminner om brunt socker! ",
@@ -144,7 +144,7 @@
       "season": "summer"
     },
     {
-      "id": 12,
+      "id": 14,
       "product_name": "Hallon",
       "description_title": "Perfekta att dekorera sommartårtan med",
       "description": "Stora röda bär med söt och mild smak, utmärkt till desserter. ",
@@ -155,7 +155,7 @@
       "season": "summer"
     },
     {
-      "id": 13,
+      "id": 15,
       "product_name": "Blåbär",
       "description_title": "Smak snarlik våra svenska vilda bär",
       "description": "Svensk sort med medelstora bär, påminner om våra svenska vilda bär i smaken.",
@@ -166,7 +166,7 @@
       "season": "summer"
     },
     {
-      "id": 14,
+      "id": 16,
       "product_name": "Äpple",
       "description_title": "Mångsidigt äpple",
       "description": "Fruktköttet är gulvitt, saftigt och fast. Smakegenskaperna är fantastiska, med en frisk och syrlig grund. Elise äter man gärna som det är men det är även ett utmärkt äpple i matlagningen, till exempel i grytor och sallader men även i efterrättspajer och kakor.",
@@ -177,7 +177,7 @@
       "season": "summer"
     },
     {
-      "id": 15,
+      "id": 17,
       "product_name": "Äpple",
       "description_title": "Klassisk och god sort",
       "description": "Köttet är sprött och gulvitt med en söt, mild, aromrik, syrlig smak.",
@@ -188,7 +188,7 @@
       "season": "autumn"
     },
     {
-      "id": 16,
+      "id": 18,
       "product_name": "Jordgubbar",
       "description_title": "Passar till både dessert och saft",
       "description": "Mörkt röda och ganska fasta, medelstora till stora bär. Mycket fin och söt smak.",
@@ -199,7 +199,7 @@
       "season": "summer"
     },
     {
-      "id": 17,
+      "id": 19,
       "product_name": "Plommon",
       "description_title": "Perfekt till plommonpajen",
       "desccription": "Rödvioletta frukter. Fast kött, saftiga med sötsyrlig smak.",
@@ -210,7 +210,7 @@
       "season": "summer"
     },
     {
-      "id": 18,
+      "id": 20,
       "product_name": "Päron",
       "description_title": "Söt och fast sort",
       "description": "En gammal dansk sort med sött och saftigt fruktkött, som ändå är fast.",
