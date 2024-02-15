@@ -1,14 +1,16 @@
 <template>
     <header>
+        <div @click="exitMenu" class="overlay"></div>
+
         <div class="menu-container">
             <ul>
-                <li><router-link to="/">Hem</router-link></li>
-                <li><router-link to="/account">Min Profil</router-link></li>
-                <li><router-link to="/products">Produkter</router-link></li>
-                <li><a href="#about">Om oss</a></li>
+                <li @click="onMenuClick"><router-link to="/">Hem</router-link></li>
+                <li @click="onMenuClick"><router-link to="/account">Min Profil</router-link></li>
+                <li @click="onMenuClick"><router-link to="/products">Produkter</router-link></li>
+                <li @click="onMenuClick"><a href="#about">Om oss</a></li>
             </ul>
         </div>
-        <nav>
+        <nav id="navBar">
             <div class="hamburger-container">
                 <div class="hamburger-wrapper" @click="onMenuClick()">
                     <!-- <i class="bi bi-list kajsa"></i> -->
@@ -24,44 +26,56 @@
 
             <div class="login-and-cart-container">
 
-                <div class="login-wrapper">
-                    <i class="bi bi-person"></i>
+                <div class="login-and-cart-wrapper">
+                    <div class="login-wrapper">
+                        <i class="bi bi-person"></i>
+                    </div>
+
+                    <div class="cart-wrapper">
+                        <i class="bi bi-cart"></i>
+                    </div>
+
                 </div>
 
-                <div class="cart-wrapper">
-                    <i class="bi bi-cart"></i>
-                </div>
 
             </div>
         </nav>
+
+        <div class="cart-container">
+
+        </div>
     </header>
-    <main>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium rem repudiandae temporibus et fugiat impedit ipsum, qui corporis vero architecto unde nulla tempora, laboriosam dolores accusamus praesentium sunt libero cupiditate. Incidunt, harum. Quos veniam nemo autem voluptatem saepe iste. Totam et voluptatibus doloribus. Possimus quae, non nam magnam ipsam iste eaque quasi veritatis incidunt eveniet blanditiis ducimus obcaecati explicabo tempora, in neque quod repellendus porro, assumenda debitis facere hic itaque ut. Consectetur similique tenetur ea. Cupiditate unde laborum voluptates nam fugiat saepe ducimus aliquid consequuntur culpa. Rem reiciendis modi minima dolore nisi consequatur tempora voluptatibus totam ratione et optio sed cum ipsum illum, quas mollitia aliquid esse, nulla excepturi sunt? Labore nam voluptate distinctio minima dolorem culpa ea consequuntur. Culpa hic, exercitationem, error dolores quos quibusdam pariatur explicabo expedita dolorum fugit numquam nesciunt cumque rem consequuntur eos ut. In, culpa, alias non blanditiis, obcaecati odit est vitae hic iste ratione sed placeat? Veniam, cumque. Molestiae, animi! Minus, quibusdam odio. Ducimus animi voluptate, ipsam quaerat voluptatem aut illo corporis adipisci eius accusamus est tempora illum. Aut incidunt ullam cum reprehenderit officiis voluptatum voluptas explicabo officia aliquam iste facilis sed voluptate repellendus tempore, ratione assumenda autem deleniti ea eveniet numquam optio. Dicta eveniet laborum illum distinctio repudiandae nam eligendi quia sint aliquid minus. Sit provident reprehenderit magnam error reiciendis laborum quibusdam voluptatem voluptatibus quia, inventore dolorum explicabo doloribus quos ipsa. Nulla repudiandae vitae optio odio illum voluptatibus accusamus debitis, dolor, similique repellendus fugit voluptates quae. Quod ipsa quas perspiciatis natus in vitae dignissimos consequatur eligendi eveniet iste hic, ex eos officia impedit repellat! Accusantium iusto est quod magni, earum expedita sequi aliquam eius quis atque nisi amet quas omnis nulla laudantium corporis! Earum impedit nesciunt, nostrum non quae corporis ducimus tenetur, quam expedita cum aspernatur animi minus commodi numquam asperiores, dignissimos doloremque delectus quas hic? Et ullam beatae deserunt aliquid quasi quae omnis ad eum. Ad non corporis ducimus, nobis nostrum eveniet aspernatur unde perferendis quidem inventore dignissimos, in aut hic atque dolor at aperiam architecto ipsam minus eaque. Dicta minima in ad libero nam facilis illo adipisci amet tenetur illum, eveniet corporis totam eum voluptatem saepe? Voluptatum, voluptates assumenda incidunt neque optio alias commodi ea corporis. Blanditiis tempora aut aliquam sit incidunt quod suscipit ut illum quas omnis eaque, eos provident hic laboriosam, cum animi impedit mollitia officia assumenda quis iure quaerat explicabo. Deserunt cum ducimus, ad velit at dolor esse dolorem accusamus tempore ab reiciendis aliquam possimus laborum necessitatibus perferendis tenetur dolores! Ratione, totam est. Illo doloremque nam ea incidunt sit. Quibusdam consequuntur nisi dolores? Provident quod, nulla numquam, impedit, necessitatibus id eveniet tempora maxime iusto at iure saepe nesciunt! Eos nemo inventore reprehenderit voluptatum natus omnis, doloribus illum dolorum enim nostrum. Nisi iusto hic alias quam quisquam totam saepe tempore repudiandae qui, quibusdam ratione odio neque quasi, dolor debitis pariatur doloremque eum! Voluptate quos ducimus laudantium laboriosam eveniet, accusantium asperiores cum aliquid, adipisci dolore similique tempora id ipsam fugit enim non a sed eligendi culpa modi doloribus? Nobis, voluptatibus.
-        <div id="about">om oss</div>
-    </main>
 </template>
 
 <script>
 import { RouterLink } from 'vue-router';
 
-export default{
-    data(){
+export default {
+    data() {
 
     },
-    methods:{
-        onMenuClick(){
+    methods: {
+        onMenuClick() {
 
+            const navBar = document.getElementById("navBar");
+            const overlay = document.querySelector(".overlay");
             const rectA = document.querySelector(".rectA")
             const rectB = document.querySelector('.rectB')
             const rectC = document.querySelector('.rectC')
 
             const menuContainer = document.querySelector('.menu-container')
 
-            if(rectA.classList.contains('move-rectA-down')){
+            if (rectA.classList.contains('move-rectA-down')) {
 
-                rectA.style.transition='top 0.5s 0.5s, transform 0.5s ease-in-out';
-                rectB.style.transition='top 0.5s 0.5s, transform 0.5s ease-in-out';
-                rectC.style.transition='top 0.5s 0.5s, transform 0.5s ease-in-out';
+                overlay.classList.remove("increase-blur")
+                //Remove overlay styles once transition has finished
+                setTimeout(function () {
+                    overlay.style.display = "none";
+                }, 500)
+
+                rectA.style.transition = 'top 0.5s 0.5s, transform 0.5s ease-in-out';
+                rectB.style.transition = 'top 0.5s 0.5s, transform 0.5s ease-in-out';
+                rectC.style.transition = 'top 0.5s 0.5s, transform 0.5s ease-in-out';
 
                 rectA.classList.remove('rotate-rectA-rectB')
                 rectB.classList.remove('rotate-rectA-rectB')
@@ -71,12 +85,22 @@ export default{
                 rectC.classList.remove('move-rectC-up')
 
                 menuContainer.classList.remove('move-menu-right')
-            }
-            else{
-                rectA.style.transition='top 0.5s, transform 0.5s 0.5s ease-in-out';
-                rectB.style.transition='top 0.5s, transform 0.5s 0.5s ease-in-out';
-                rectC.style.transition='top 0.5s, transform 0.5s 0.5s ease-in-out';
 
+
+            }
+            else {
+
+                overlay.style.display = "block";
+
+                //Add blur to overlay div
+                overlay.classList.add("increase-blur")
+
+                //Set transition values
+                rectA.style.transition = 'top 0.5s, transform 0.5s 0.5s ease-in-out';
+                rectB.style.transition = 'top 0.5s, transform 0.5s 0.5s ease-in-out';
+                rectC.style.transition = 'top 0.5s, transform 0.5s 0.5s ease-in-out';
+
+                //Add classes to animate rectA,B and C
                 rectA.classList.add("move-rectA-down")
                 rectC.classList.add('move-rectC-up')
                 rectA.classList.add('rotate-rectA-rectB')
@@ -84,20 +108,54 @@ export default{
                 rectC.classList.add('rotate-rectC')
 
                 menuContainer.classList.add('move-menu-right')
-
-
             }
 
+        },
+
+        exitMenu() {
+            document.querySelector(".menu-container").classList.remove("move-menu-right");
+            document.querySelector(".overlay").classList.remove("increase-blur");
+
+            this.onMenuClick();
         }
+
+
     }
 
 }
 
 </script>
 
+
+
 <style scoped>
-nav {
+header {
+    width: 100%;
+    position: fixed;
     background-color: var(--dark-beige);
+}
+
+.overlay {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+    transition: background-color 0.75s, backdrop-filter 0.75s;
+}
+
+.increase-blur {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(1px);
+}
+
+nav {
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -105,16 +163,20 @@ nav {
 }
 
 .hamburger-container {
-    width: 80px;
+    width: 25px;
 }
-.hamburger-wrapper{
+
+.hamburger-wrapper {
     width: 25px;
     cursor: pointer;
     height: 14px;
     position: relative;
     z-index: 2;
 }
-.rectA, .rectB, .rectC{
+
+.rectA,
+.rectB,
+.rectC {
     background-color: var(--dark-green);
     width: 25px;
     height: 1.5px;
@@ -122,34 +184,34 @@ nav {
     transition: top 0.5s, transform 0.5s 0.5s ease-in-out;
 }
 
-.rectA{
+.rectA {
     top: 0;
     position: absolute;
 }
 
-.rectB{
+.rectB {
     top: 7px;
     position: absolute;
 }
 
-.rectC{
-    top:14px;
+.rectC {
+    top: 14px;
     position: absolute;
 }
 
-.move-rectA-down{
-   top: 7px;
+.move-rectA-down {
+    top: 7px;
 }
 
-.move-rectC-up{
-   top: 7px;
+.move-rectC-up {
+    top: 7px;
 }
 
-.rotate-rectA-rectB{
+.rotate-rectA-rectB {
     transform: rotate(45deg);
 }
 
-.rotate-rectC{
+.rotate-rectC {
     transform: rotate(-45deg);
 }
 
@@ -160,9 +222,13 @@ nav {
 }
 
 .login-and-cart-container {
-    width: 80px;
+    width: 25px;
+}
+
+.login-and-cart-wrapper {
     display: flex;
-    justify-content: space-between;
+    gap: 1rem;
+    justify-content: flex-end;
 }
 
 .bi {
@@ -170,27 +236,29 @@ nav {
     cursor: pointer;
 }
 
-main{
+main {
     /* background-color: antiquewhite; */
     display: flex;
     flex-direction: column;
 }
 
-.menu-container{
+.menu-container {
     background-color: var(--mid-beige);
-    width: 300px;
+    width: 280px;
     height: 100vh;
     z-index: 1;
     position: fixed;
-    left: -300px;
+    left: -280px;
     transition: left 0.75s ease-in-out;
+    box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.4);
 }
 
-.move-menu-right{
+.move-menu-right {
     left: 0;
 }
 
-ul{
+ul {
+    margin-top: 60px;
     padding-top: 30px;
     width: 100%;
     height: 100%;
@@ -198,10 +266,9 @@ ul{
     flex-direction: column;
 }
 
-li{
+li {
     padding-top: 20px;
     margin-left: 25px;
     font-size: 30px;
 }
-
 </style>
