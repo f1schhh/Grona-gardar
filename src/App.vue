@@ -1,9 +1,25 @@
-<script setup>
+<script>
+import Header from './components/Header.vue';
+
+
+export default {
+  data() {
+
+  },
+  methods: {
+
+  },
+  components: {
+    Header,
+  },
+}
+
 
 </script>
 
 
 <template>
+  <Header></Header>
   <main>
     <RouterView />
   </main>

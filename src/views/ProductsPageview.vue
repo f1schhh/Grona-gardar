@@ -8,7 +8,7 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Alice_Apple.jpg" alt="">
+              <img src="../assets/media/product_images/Apple_Aroma.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -23,7 +23,7 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Alice_Apple.jpg" alt="">
+              <img src="../assets/media/product_images/Apple_Aroma.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -34,30 +34,12 @@
 
             <button class="button_cart">Lägg i varukorg</button>
 
-
           </div>
         </li>
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Alice_Apple.jpg" alt="">
-            </div>
-            <div class="h3_and_heart">
-              <h3>Äpple Alice</h3>
-              <div class="button_like">
-                <i class="bi bi-heart"></i>
-              </div>
-            </div>
-
-            <button class="button_cart">Lägg i varukorg</button>
-
-
-          </div>
-        </li>
-        <li>
-          <div class="specific_product">
-            <div class="img-wrapper">
-              <img src="../assets/media/Alice_Apple.jpg" alt="">
+              <img src="../assets/media/product_images/Apple_Aroma.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -74,7 +56,7 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Alice_Apple.jpg" alt="">
+              <img src="../assets/media/product_images/Apple_Aroma.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -91,7 +73,24 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Alice_Apple.jpg" alt="">
+              <img src="../assets/media/product_images/Apple_Aroma.jpg" alt="">
+            </div>
+            <div class="h3_and_heart">
+              <h3>Äpple Alice</h3>
+              <div class="button_like">
+                <i class="bi bi-heart"></i>
+              </div>
+            </div>
+
+            <button class="button_cart">Lägg i varukorg</button>
+
+
+          </div>
+        </li>
+        <li>
+          <div class="specific_product">
+            <div class="img-wrapper">
+              <img src="../assets/media/product_images/Apple_Aroma.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -115,7 +114,7 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Carrot.jpg" alt="">
+              <img src="../assets/media/product_images/Cucumber_Sonja.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -132,7 +131,7 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Carrot.jpg" alt="">
+              <img src="../assets/media/product_images/Cucumber_Sonja.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -149,7 +148,7 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Carrot.jpg" alt="">
+              <img src="../assets/media/product_images/Cucumber_Sonja.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -166,7 +165,7 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Carrot.jpg" alt="">
+              <img src="../assets/media/product_images/Cucumber_Sonja.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -190,7 +189,7 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Artichoke.jpg" alt="">
+              <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -207,7 +206,7 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Artichoke.jpg" alt="">
+              <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -224,7 +223,7 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Artichoke.jpg" alt="">
+              <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -241,7 +240,7 @@
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/Artichoke.jpg" alt="">
+              <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
             </div>
             <div class="h3_and_heart">
               <h3>Äpple Alice</h3>
@@ -309,7 +308,7 @@ li {
 
 h3 {
   color: black;
-  font-weight: lighter;
+  font-weight: 700;
   /* justify-content: left;
     align-items: left; */
 }
@@ -358,12 +357,13 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 1rem;
   font-size: 20px;
   border: 0;
   text-align: center;
   border-radius: 50px;
-  padding: 0.6rem;
+  padding: 0.3rem 0.8rem;
+  padding-left: 1rem;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   background-color: var(--dusty-pink);
 }
