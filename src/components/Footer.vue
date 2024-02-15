@@ -32,7 +32,6 @@ footer{
 .svg-container{
     width: 100%;
     background-color: var(--mid-beige);
-
 }
 .svg-container svg{
     width: 100%;
@@ -47,6 +46,5 @@ footer{
     /* object-fit: cover; */
     bottom: 0;
     }
-
 
 </style>
