@@ -1,33 +1,50 @@
 <script>
 export default {
-  created() {
-    this.getProducts(1);
+  data() {
+    return {
+      productData: null
+    }
+  },
+  async created() {
+    await this.getProducts(parseInt(this.$route.params.id));
+  },
+  watch: {
+    async "this.$route.params.id"(newId) {
+      await this.getProducts(parseInt(this.$route.params.id), newId);
+    }
   },
   methods: {
     async getProducts(id) {
-      const results = await fetch('database.json');
-      const response = await results.json();
-      console.log(results)
+      try {
+        const response = await fetch('/src/database.json');
+        const data = await response.json();
+
+        const product = data.products.find(item => item.id === id);
+
+        if (product) {
+          this.productData = product
+        }
+      } catch {
+
+      }
     }
   }
 }
 </script>
 <template>
   <article id="specific_product">
-    <div class="product_information">
+    <div class="product_information" v-if="productData">
       <div class="img-wrapper">
-        <img src="../assets/media/Alice_Apple.jpg" alt="">
+        <img :src="productData.product_image" alt="">
       </div>
       <div class="product-text">
-        <span class="title-bold">Äpple Alice Klass 1</span>
-        <span>43kr/kg</span>
+        <span class="title-bold">{{ productData.product_name }}</span>
+        <span>{{ productData.price }}kr/kg</span>
       </div>
       <div class="product-text">
-        <span class="title-bold">Säsongens Hållbara Skörd </span>
+        <span class="title-bold">{{ productData.description_title }}</span>
         <p>
-          Äpplet Alice är en del av vårt säsongssortiment, vilket inte bara garanterar överlägsen
-          smak utan också minimerar behovet av konstgjorda bevaringsmetoder. Vi uppmuntrar våra kunder att njuta av frukt
-          och grönsaker när de är i säsong för att stödja hållbara konsumtionsvanor.
+          {{ productData.description }}
         </p>
       </div>
 
