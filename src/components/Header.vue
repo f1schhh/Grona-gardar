@@ -85,9 +85,7 @@ export default{
 
                 menuContainer.classList.add('move-menu-right')
 
-
             }
-
         }
     }
 
@@ -171,7 +169,6 @@ nav {
 }
 
 main{
-    /* background-color: antiquewhite; */
     display: flex;
     flex-direction: column;
 }
