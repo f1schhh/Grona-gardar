@@ -248,7 +248,6 @@
                 <i class="bi bi-heart"></i>
               </div>
             </div>
-
             <button class="button_cart">Lägg i varukorg</button>
           </div>
         </li>
@@ -300,7 +299,6 @@ h3,
 .button_cart {
   margin: 7px;
 }
-
 
 
 /* CSS for buttons in general */

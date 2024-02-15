@@ -130,7 +130,20 @@ main {
 
 .product_list li {
   max-width: 10.4375rem;
+  border-radius: 19px;
+  animation: slide-products .5s ease-out;
 }
+
+.product_list li:hover {
+  box-shadow: 1px 0px 15px 0px rgba(0, 0, 0, 0.85);
+  transition: 0.6s;
+}
+
+.product_list li:focus {
+  box-shadow: 1px 0px 15px 0px rgba(0, 0, 0, 0.85);
+  transition: 0.6s;
+}
+
 
 .specific_product {
   display: flex;
@@ -140,8 +153,68 @@ main {
   background-color: #DFD3C3;
 }
 
+.specific_product .price {
+  display: flex;
+  padding-left: 0.45rem;
+  padding-bottom: 1rem;
+}
 
+.button_container {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 0.4rem;
+}
 
+.button_cart {
+  clear: both;
+  margin-right: 0.2rem;
+  background-color: #FFF8EE;
+  border: 0;
+  text-align: center;
+  border-radius: 19px;
+  padding: 0.6rem;
+  /* box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25); */
+  padding: 5px 10px;
+
+}
+
+.button_more_products {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 20px;
+  border: 0;
+  text-align: center;
+  border-radius: 50px;
+  padding: 0.3rem 0.8rem;
+  padding-left: 1rem;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: var(--dusty-pink);
+}
+
+.button_more_products i {
+  font-size: 30px;
+  padding-left: 15px;
+}
+
+.h3_and_heart {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem;
+}
+
+@keyframes slide-products {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
 
 /* RESPONSIVE STUFF
    ==========================================================
