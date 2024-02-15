@@ -120,6 +120,27 @@ main {
   font-weight: bolder;
 }
 
+.product_list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.product_list li {
+  max-width: 10.4375rem;
+}
+
+.specific_product {
+  display: flex;
+  flex-direction: column;
+  border-radius: 19px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: #DFD3C3;
+}
+
+
 
 
 /* RESPONSIVE STUFF

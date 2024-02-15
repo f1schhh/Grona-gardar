@@ -4,7 +4,7 @@
   <article>
     <section>
       <h2>Frukt</h2>
-      <ul>
+      <ul class="product_list">
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
@@ -110,7 +110,7 @@
 
     <section>
       <h2>Grönsaker</h2>
-      <ul>
+      <ul class="product_list">
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
@@ -185,7 +185,7 @@
 
     <section>
       <h2>I säsong</h2>
-      <ul>
+      <ul class="product_list">
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
@@ -263,26 +263,6 @@
 <style scoped>
 section {
   margin: 30px 0px;
-}
-
-ul {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-li {
-  max-width: 10.4375rem;
-}
-
-.specific_product {
-  display: flex;
-  flex-direction: column;
-  border-radius: 19px;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  background-color: #DFD3C3;
 }
 
 .img-wrapper {
