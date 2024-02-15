@@ -275,6 +275,155 @@ export default {
                 <button class="button_more_products">Mer i Säsong <i class="bi bi-arrow-right"></i></button>
             </div>
         </section>
+
+        <section>
+            <h2>Grönsaker</h2>
+            <ul class="product_list">
+                <li>
+                    <div class="specific_product">
+                        <div class="img-wrapper">
+                            <img src="../assets/media/product_images/Cucumber_Sonja.jpg" alt="">
+                        </div>
+                        <div class="h3_and_heart">
+                            <h3>Äpple Alice</h3>
+                            <div class="button_like">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                        </div>
+
+                        <button class="button_cart">Lägg i varukorg</button>
+
+
+                    </div>
+                </li>
+                <li>
+                    <div class="specific_product">
+                        <div class="img-wrapper">
+                            <img src="../assets/media/product_images/Cucumber_Sonja.jpg" alt="">
+                        </div>
+                        <div class="h3_and_heart">
+                            <h3>Äpple Alice</h3>
+                            <div class="button_like">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                        </div>
+
+                        <button class="button_cart">Lägg i varukorg</button>
+
+
+                    </div>
+                </li>
+                <li>
+                    <div class="specific_product">
+                        <div class="img-wrapper">
+                            <img src="../assets/media/product_images/Cucumber_Sonja.jpg" alt="">
+                        </div>
+                        <div class="h3_and_heart">
+                            <h3>Äpple Alice</h3>
+                            <div class="button_like">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                        </div>
+
+                        <button class="button_cart">Lägg i varukorg</button>
+
+
+                    </div>
+                </li>
+                <li>
+                    <div class="specific_product">
+                        <div class="img-wrapper">
+                            <img src="../assets/media/product_images/Cucumber_Sonja.jpg" alt="">
+                        </div>
+                        <div class="h3_and_heart">
+                            <h3>Äpple Alice</h3>
+                            <div class="button_like">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                        </div>
+
+                        <button class="button_cart">Lägg i varukorg</button>
+                    </div>
+                </li>
+            </ul>
+            <div class="div_button_more_products">
+                <button class="button_more_products">Mer Grönsaker <i class="bi bi-arrow-right"></i></button>
+            </div>
+        </section>
+
+        <section>
+            <h2>I säsong</h2>
+            <ul class="product_list">
+                <li>
+                    <div class="specific_product">
+                        <div class="img-wrapper">
+                            <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
+                        </div>
+                        <div class="h3_and_heart">
+                            <h3>Äpple Alice</h3>
+                            <div class="button_like">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                        </div>
+
+                        <button class="button_cart">Lägg i varukorg</button>
+
+
+                    </div>
+                </li>
+                <li>
+                    <div class="specific_product">
+                        <div class="img-wrapper">
+                            <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
+                        </div>
+                        <div class="h3_and_heart">
+                            <h3>Äpple Alice</h3>
+                            <div class="button_like">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                        </div>
+
+                        <button class="button_cart">Lägg i varukorg</button>
+
+
+                    </div>
+                </li>
+                <li>
+                    <div class="specific_product">
+                        <div class="img-wrapper">
+                            <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
+                        </div>
+                        <div class="h3_and_heart">
+                            <h3>Äpple Alice</h3>
+                            <div class="button_like">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                        </div>
+
+                        <button class="button_cart">Lägg i varukorg</button>
+
+
+                    </div>
+                </li>
+                <li>
+                    <div class="specific_product">
+                        <div class="img-wrapper">
+                            <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
+                        </div>
+                        <div class="h3_and_heart">
+                            <h3>Äpple Alice</h3>
+                            <div class="button_like">
+                                <i class="bi bi-heart"></i>
+                            </div>
+                        </div>
+                        <button class="button_cart">Lägg i varukorg</button>
+                    </div>
+                </li>
+            </ul>
+            <div class="div_button_more_products">
+                <button class="button_more_products">Mer i Säsong <i class="bi bi-arrow-right"></i></button>
+            </div>
+        </section>
     </article>
 </template>
 
@@ -318,7 +467,6 @@ h3,
 .button_cart {
     margin: 7px;
 }
-
 
 
 /* CSS for buttons in general */

@@ -3,6 +3,7 @@ import HomeView from './views/HomeView.vue'
 import AboutProductsview from './views/AboutProductsview.vue'
 import ProductsPageview from './views/ProductsPageview.vue'
 import AccountView from './views/AccountView.vue'
+import SearchView from './views/SearchView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -22,6 +23,10 @@ const router = createRouter({
     {
       path: '/account',
       component: AccountView
+    },
+    {
+      path: '/search/:query',
+      component: SearchView
     }
   ]
 });
