@@ -1,25 +1,8 @@
 <script>
-import SearchBar from '../components/SearchBar.vue';
-
-
-export default {
-    data() {
-
-    },
-    methods: {
-
-    },
-    components: {
-        SearchBar,
-    },
-}
 </script>
 
 <template>
     <article>
-        <section>
-            <SearchBar></SearchBar>
-        </section>
         <section>
             <h2>Frukt</h2>
             <ul class="product_list">

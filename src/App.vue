@@ -1,5 +1,7 @@
 <script>
 import Header from './components/Header.vue';
+import SearchBar from './components/SearchBar.vue';
+
 
 
 export default {
@@ -11,6 +13,7 @@ export default {
   },
   components: {
     Header,
+    SearchBar
   },
 }
 
@@ -20,6 +23,7 @@ export default {
 
 <template>
   <Header></Header>
+  <SearchBar></SearchBar>
   <main>
     <RouterView />
   </main>

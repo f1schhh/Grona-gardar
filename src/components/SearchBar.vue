@@ -4,9 +4,8 @@
 <style scoped>
 #searchDiv {
     width: 100%;
-    margin-bottom: 10px;
     max-width: 18rem;
-    margin: auto;
+    margin: 1rem auto;
 }
 
 
@@ -36,10 +35,8 @@
 </style>
 
 <template>
-    <form>
-        <div id="searchDiv">
+    <div id="searchDiv">
 
-            <input type="text" id="searchInput" value="Sök i vårt sortiment..."><i id="searchIcon" class="bi bi-search"></i>
-        </div>
-    </form>
+        <input type="text" id="searchInput" value="Sök i vårt sortiment..."><i id="searchIcon" class="bi bi-search"></i>
+    </div>
 </template>
