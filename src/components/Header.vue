@@ -236,12 +236,7 @@ nav {
     cursor: pointer;
 }
 
-<<<<<<< HEAD
-main {
-    /* background-color: antiquewhite; */
-=======
 main{
->>>>>>> Header
     display: flex;
     flex-direction: column;
 }
