@@ -1,3 +1,8 @@
+<script></script>
+
+<style setup></style>
+
+
 <template>
-<div>This is your personal account...</div>
+    <div>This is your personal account...</div>
 </template>
