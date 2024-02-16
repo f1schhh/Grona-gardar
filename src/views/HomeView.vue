@@ -1,15 +1,24 @@
 <script setup>
+import SearchBar from '../components/SearchBar.vue';
+</script>
+
+<script>
+export default {
+  components: {
+    SearchBar,
+  },
+}
 </script>
 
 <template>
   <article>
   <section class="main_top">
-
-      <div class="main_info">
+    <SearchBar></SearchBar>
+      <div class="block_info">
         <h2>
           Färsk Frukt, Närodlad och Hållbar
         </h2>
-        <p>
+        <p class="main_info_text">
           Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt. Varje produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
         </p>
         <div class="div_button_more_products">
@@ -18,25 +27,26 @@
       </div>
 </section>
 
-<section>
-  <!-- Komponenten "I säsong" som visar två produkter + knapp "Mer i säsong" -->
-
-  <h3>I säsong</h3>
-  <!-- <IN_SEASON_COMPONENT></IN_SEASON_COMPONENT> -->
+<section class="section_season">
+  <div>
+    <h3>I säsong</h3>
+    <!-- <IN_SEASON_COMPONENT></IN_SEASON_COMPONENT> -->
+  </div>
 </section>
 
-<section class="section_about_us">
-  <h3 class="bright_text">
+<section class="section_about">
+  <div class="block_about">
+  <h3>
     Om oss
   </h3>
-  <div class="bright_text">
+  <div>
     Vi tror på hållbarhet och miljövänliga metoder. Genom att köpa från oss stödjer du lokal odling och minskar din klimatpåverkan. Vi strävar efter att främja en naturlig och ekologisk produktion.
+  </div>
   </div>
 </section>
 
 <section>
-  <!-- "Kategorier" som visar två produktbilder (en/component) -> "Grönsaker" och "Frukter" + knapp "Vårt sortiment" (som leder till ProductsPageview) -->
-
+<div class="block_category">
   <h3>Kategorier</h3>
     <ul class="product_list">
       <li>
@@ -45,28 +55,29 @@
               <img src="../assets/media/Artichoke.jpg" alt="">
             </div>
             <div class="h3_and_heart">
-              <h3>Grönsaker</h3>
+              <h4>Grönsaker</h4>
             </div>
-            <div>
-                Vi erbjuder ett stort utbud av ekologiska grödor direkt från vår gård till din tallrik. Varje grönsak är omsorgsfullt odlad med hållbara metoder för att säkerställa både smakrikedom och näringsrik kvalitet.
-              </div>
+            <p class="p_category">
+              Varje grönsak är omsorgsfullt odlad med hållbara metoder för att säkerställa både smakrikedom och näringsrik kvalitet.
+            </p>
           </div>
         </li>
 
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
+              <img src="../assets/media/Flowers.jpg" alt="">
             </div>
-            <div>
-              <h3>Frukt</h3>
-              <div>
-                En härlig samling ekologiska frukter, handplockade från våra trädgårdar där varje frukt är odlad med kärlek och omsorg.
-              </div>
+            <div class="h3_and_heart">
+              <h4>Frukt</h4>
             </div>
-          </div>
+              <p>
+                Handplockade från våra trädgårdar där varje frukt är odlad med kärlek och omsorg.
+              </p>
+            </div>
         </li>
       </ul>
+    </div>
 </section>
 
 
@@ -89,35 +100,64 @@
 </template>
 
 <style scoped>
+article {
+  background-color: var(--dark-beige);
+}
 section {
   padding: 1rem 0;
 }
 .main_top {
   background-image: url("../assets/media/GreenHouse.jpg");
   background-size: cover;
-  background-color: var(--dark-beige);
 }
-.main_info {
+.block_info {
   background-color: var(--light-beige-opacity);
   padding: 1rem;
   border-radius: 19px;
-  width: 70%;
+  width: 80%;
   margin: auto;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+}
+.main_info_text {
+  color: black;
 }
 .div_button_more_products {
-padding-left: 46px;
+padding-left: 5rem;
 }
-.section_about_us {
+
+.button_more_products {
+  background-color: transparent;
+  border: 1px solid var(--dark-green);
+}
+.section_season {
+  background-color: var(--dark-beige);
+  padding: 1rem;
+  padding-top: 2rem;
+}
+.section_about {
   background-color: var(--dark-green);
 }
-
-.specific_product {
-  background-color: var(--light-beige);
+.block_about{
+  padding: 1rem;
 }
-.bright_text {
+
+.block_about {
   color: var(--light-beige);
 }
+.block_about h3 {
+padding-bottom: 1rem;}
 
+.block_category {
+  padding: 1rem;
+}
+.block_category h3 {
+  padding-bottom: 1rem;
+}
+.specific_product {
+  background-color: var(--light-beige);
+  height: 24rem;
+}
 .img-wrapper {
     width: 10.4375rem;
     height: 10.4375rem;
@@ -131,6 +171,10 @@ padding-left: 46px;
   border-bottom-right-radius: 0px;
   object-fit: cover;
   object-position: center;
+}
+
+.p_category {
+  padding: 1rem;
 }
 @media screen and (max-width: 385px) {
   li {
