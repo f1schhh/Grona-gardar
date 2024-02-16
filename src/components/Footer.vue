@@ -3,8 +3,7 @@
     <footer>
         <div class="svg-container">
             <svg id="Lager_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 519.54 50.15"><defs></defs><path class="cls-1" d="M519.54,50.15H0v-30.13s72.54,26.65,149.74,26.75c48.5.06,87-7.98,111.49-15.03,21.91-6.31,81.6-29.73,135.69-29.73,62.44,0,122.62,26.33,122.62,26.33v21.81Z"/></svg>
-            <!-- <svg id="Lager_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 519.54 52.31"><defs></defs><path class="cls-1" d="M519.54,30.37s-45.3-26.23-92.84-26.23c-28.06,0-65.2,8.45-89.07,16.95-25.17,8.97-78.5,28.81-113.65,27.02-33.23-1.69-79.94-23.55-112.13-31.95C44.82-1.32,0,16.17,0,16.17v36.15s519.54,0,519.54,0v-21.94Z"/></svg> -->
-            </div>
+        </div>
 
         <h2>Om oss</h2>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi, necessitatibus adipisci sunt sapiente magnam saepe provident odio nulla hic, aspernatur, qui recusandae? Autem nemo quidem fugit aliquid quae iste officiis!</p>
@@ -23,10 +22,8 @@
 footer{
     background-color: var(--dark-green);
     color: var(--light-beige);
-    /* position: absolute; */
     width: 100vw;
     height: 400px;
-    /* bottom: 0; */
 }
 
 .svg-container{
@@ -43,7 +40,6 @@ footer{
 .cls-1{
     fill:#475133;
     stroke-width:0px;
-    /* object-fit: cover; */
     bottom: 0;
     }
 
