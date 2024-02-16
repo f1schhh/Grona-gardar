@@ -16,7 +16,7 @@ export default {
     await this.getSearchItems(this.$route.params.query, this.filterType);
   },
   watch: {
-    async filterType(newFilter, old) {
+    async filterType(newFilter) {
       this.filterType = newFilter;
       await this.getSearchItems(this.$route.params.query, this.filterType);
     }
@@ -27,20 +27,21 @@ export default {
         const response = await fetch('/src/database.json');
         const data = await response.json();
         let matchingProducts;
+        let lowercaseQuery = query.toLowerCase();
         switch (filtertype) {
           case null:
-            matchingProducts = data.products.filter(item => item.product_name.includes(query));
+            matchingProducts = data.products.filter(item => item.product_name.toLowerCase().includes(lowercaseQuery));
             break;
           case 'name':
-            matchingProducts = data.products.filter(item => item.product_name.includes(query))
+            matchingProducts = data.products.filter(item => item.product_name.toLowerCase().includes(lowercaseQuery))
               .sort((a, b) => a.product_name.localeCompare(b.product_name, 'sv'));
             break;
           case 'low_to_high':
-            matchingProducts = data.products.filter(item => item.product_name.includes(query))
+            matchingProducts = data.products.filter(item => item.product_name.toLowerCase().includes(lowercaseQuery))
               .sort((a, b) => a.price - b.price);
             break;
           case 'high_to_low':
-            matchingProducts = data.products.filter(item => item.product_name.includes(query))
+            matchingProducts = data.products.filter(item => item.product_name.toLowerCase().includes(lowercaseQuery))
               .sort((a, b) => b.price - a.price);
             break;
         }
@@ -48,10 +49,13 @@ export default {
         if (matchingProducts.length > 0) {
 
           this.productData = matchingProducts;
+
+        } else {
+          this.productData = 0;
         }
 
-      } catch (error) {
-        console.log(error)
+      } catch {
+        this.productData = 0;
       }
     }
   }
@@ -59,9 +63,9 @@ export default {
 </script>
 <template>
   <section>
-    <div class="top_of_search">
+    <div class="top_of_search" v-if="productData !== 0">
       <h2>Sökresultat för "{{ this.$route.params.query }}"</h2>
-      <select v-model="filterType">
+      <select v-model="filterType" class="filter_type">
         <option v-for="category in filterCategories" :value="category.value" :key="category.value">
           {{ category.text }}
         </option>
@@ -72,7 +76,7 @@ export default {
         <li>
           <div class="specific_product">
             <div class="img-wrapper">
-              <img :src="items.product_image" alt="">
+              <img :src="items.product_image" :alt="'Bild på ' + items.product_name">
             </div>
             <div class="h3_and_heart">
               <h3>{{ items.product_name }}</h3>
@@ -90,6 +94,16 @@ export default {
         </li>
       </router-link>
     </ul>
+    <div class="loading-items" v-else>
+      <div v-if="productData === 0">
+        <h2>Vi kunde inte hitta några resultat, vänligen försök igen</h2>
+      </div>
+      <div class="loading-spinner-container" v-else>
+        <div class="loading-spinner">
+          <div></div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 <style scoped>
@@ -97,9 +111,29 @@ section {
   padding: 1rem;
 }
 
+.loading-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 h2 {
   padding: 1rem 0rem 1rem 0rem;
 }
+
+.filter_type {
+  outline: none;
+  border: 0;
+  height: 45px;
+  border: 2px solid #9A876F;
+  background-color: transparent;
+}
+
+.filter_type:hover {
+  cursor: pointer;
+}
+
 
 .img-wrapper {
   width: 10.4375rem;
@@ -120,6 +154,7 @@ h2 {
 .top_of_search {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   gap: 0.2rem;
   padding-bottom: 1rem;
