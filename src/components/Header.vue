@@ -243,6 +243,21 @@ nav {
   z-index: 2;
 }
 
+.links-wrapper {
+  background-color: orange;
+  width: 300px;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+}
+
+.links-wrapper p {
+  background-color: pink;
+
+}
+
 .rectA,
 .rectB,
 .rectC {
@@ -289,6 +304,10 @@ nav {
   flex-grow: 1;
   text-align: center;
   padding: 5px 0;
+}
+
+.logo-container img {
+  width: 110px;
 }
 
 .login-and-cart-container {

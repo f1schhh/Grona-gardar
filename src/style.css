@@ -4,7 +4,6 @@
    3) Fonts
    ================================== */
 
-
 /*====================================*/
 /*============= RESET CSS ============*/
 /*====================================*/
@@ -62,8 +61,6 @@ h6 {
   margin: 0;
 }
 
-
-
 /* Colors
    ==========================================================
    light beige = FFF8EE    dark green  = 475133
@@ -72,38 +69,35 @@ h6 {
    ========================================================== */
 /* Variablar för olika färger, font storleker  */
 :root {
-  --light-beige: #FFF8EE;
-  --mid-beige: #EFE9DE;
-  --dark-beige: #DFD3C3;
+  --light-beige: #fff8ee;
+  --light-beige-opacity: rgba(255, 228, 196, 0.75);
+  --mid-beige: #efe9de;
+  --dark-beige: #dfd3c3;
   --dark-green: #475133;
-  --dusty-pink: #DAB29E;
+  --dusty-pink: #dab29e;
   --bread-size: 16px;
   --mobile-size: 375px;
   --desktop-size: 980px;
 }
 
-
 /*====================================*/
 /*=============== FONTS ==============*/
 /*====================================*/
 @font-face {
-  font-family: 'Avenir Next Cyr Regular';
-  src: url('./assets/font/avenir-next/AvenirNextCyr-Regular.eot');
-  src: local('Avenir Next Cyr Regular'), local('AvenirNextCyr-Regular'),
-    url('./assets/font/avenir-next/AvenirNextCyr-Regular.eot?#iefix') format('embedded-opentype'),
-    url('./assets/font/avenir-next/AvenirNextCyr-Regular.woff2') format('woff2'),
-    url('./assets/font/avenir-next/AvenirNextCyr-Regular.woff') format('woff'),
-    url('./assets/font/avenir-next/AvenirNextCyr-Regular.ttf') format('truetype');
+  font-family: "Avenir Next Cyr Regular";
+  src: url("./assets/font/avenir-next/AvenirNextCyr-Regular.eot");
+  src: local("Avenir Next Cyr Regular"), local("AvenirNextCyr-Regular"),
+    url("./assets/font/avenir-next/AvenirNextCyr-Regular.eot?#iefix") format("embedded-opentype"),
+    url("./assets/font/avenir-next/AvenirNextCyr-Regular.woff2") format("woff2"),
+    url("./assets/font/avenir-next/AvenirNextCyr-Regular.woff") format("woff"),
+    url("./assets/font/avenir-next/AvenirNextCyr-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
-
-
-
 body {
   margin: 0;
-  font-family: 'Avenir Next Cyr Regular';
+  font-family: "Avenir Next Cyr Regular";
   background-color: var(--mid-beige);
 }
 
@@ -146,13 +140,12 @@ main {
   transition: 0.6s;
 }
 
-
 .specific_product {
   display: flex;
   flex-direction: column;
   border-radius: 19px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  background-color: #DFD3C3;
+  background-color: #dfd3c3;
 }
 
 .specific_product .price {
@@ -170,13 +163,12 @@ main {
 .button_cart {
   clear: both;
   margin-right: 0.2rem;
-  background-color: #FFF8EE;
+  background-color: #fff8ee;
   border: 0;
   text-align: center;
   border-radius: 19px;
   padding: 0.6rem;
   padding: 5px 10px;
-
 }
 
 .button_more_products {

@@ -3,12 +3,9 @@
 
 <template>
   <article>
-  <section>
-        <!-- Bild med växthus och länk till "våra produkter" -->
+  <section class="main_top">
 
-  <div>
-    <!-- <SEARCHBAR_COMPONENT></SEARCHBAR> -->
-      <div class="homepage_info">
+      <div class="main_info">
         <h2>
           Färsk Frukt, Närodlad och Hållbar
         </h2>
@@ -16,10 +13,9 @@
           Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt. Varje produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
         </p>
         <div class="div_button_more_products">
-        <button class="button_more_products">Våra produkter<i class="bi bi-arrow-right"></i></button>
+          <button class="button_more_products">Våra produkter<i class="bi bi-arrow-right"></i></button>
+        </div>
       </div>
-      </div>
-  </div>
 </section>
 
 <section>
@@ -93,13 +89,23 @@
 </template>
 
 <style scoped>
-article {
-  padding: 0;
-  width: 100vw;
-}
-
 section {
-  padding: 2rem 0;
+  padding: 1rem 0;
+}
+.main_top {
+  background-image: url("../assets/media/GreenHouse.jpg");
+  background-size: cover;
+  background-color: var(--dark-beige);
+}
+.main_info {
+  background-color: var(--light-beige-opacity);
+  padding: 1rem;
+  border-radius: 19px;
+  width: 70%;
+  margin: auto;
+}
+.div_button_more_products {
+padding-left: 46px;
 }
 .section_about_us {
   background-color: var(--dark-green);
