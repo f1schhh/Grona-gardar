@@ -106,6 +106,7 @@ export default {
                 rectC.classList.add('rotate-rectC')
 
                 menuContainer.classList.add('move-menu-right')
+
             }
 
         },
@@ -115,12 +116,13 @@ export default {
             document.querySelector(".overlay").classList.remove("increase-blur");
 
             this.onMenuClick();
+
+
+            }
         }
 
+ }
 
-    }
-
-}
 
 </script>
 
@@ -234,8 +236,12 @@ nav {
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 main {
     /* background-color: antiquewhite; */
+=======
+main{
+>>>>>>> Header
     display: flex;
     flex-direction: column;
 }
