@@ -115,7 +115,6 @@ body {
 
 main {
   display: flex;
-  padding: 1rem;
   justify-content: center;
   flex-grow: 1;
 }
