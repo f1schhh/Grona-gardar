@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header id="header">
         <div @click="exitMenu" class="overlay"></div>
 
         <div class="menu-container">
@@ -54,7 +54,7 @@ export default {
     methods: {
         onMenuClick() {
 
-            const navBar = document.getElementById("navBar");
+            const header = document.getElementById("header");
             const overlay = document.querySelector(".overlay");
             const rectA = document.querySelector(".rectA")
             const rectB = document.querySelector('.rectB')
@@ -87,6 +87,7 @@ export default {
             }
             else {
 
+                //Show overlay
                 overlay.style.display = "block";
 
                 //Add blur to overlay div
@@ -128,7 +129,6 @@ export default {
 <style scoped>
 header {
     width: 100%;
-    position: fixed;
     background-color: var(--dark-beige);
 }
 

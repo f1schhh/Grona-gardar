@@ -49,6 +49,10 @@ button {
   text-transform: inherit;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 h1,
 h2,
 h3,
@@ -111,7 +115,6 @@ body {
 
 main {
   display: flex;
-  padding: 1rem;
   justify-content: center;
   flex-grow: 1;
 }

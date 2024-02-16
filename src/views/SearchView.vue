@@ -93,6 +93,10 @@ export default {
   </section>
 </template>
 <style scoped>
+section {
+  padding: 1rem;
+}
+
 h2 {
   padding: 1rem 0rem 1rem 0rem;
 }

@@ -32,30 +32,35 @@ export default {
 }
 </script>
 <template>
-  <article id="specific_product">
-    <div class="product_information" v-if="productData">
-      <div class="img-wrapper">
-        <img :src="productData.product_image" alt="">
-      </div>
-      <div class="product-text">
-        <span class="title-bold">{{ productData.product_name }}</span>
-        <span>{{ productData.price }}kr/kg</span>
-      </div>
-      <div class="product-text">
-        <span class="title-bold">{{ productData.description_title }}</span>
-        <p>
-          {{ productData.description }}
-        </p>
-      </div>
-
-      <div class="product_navigation">
-        <div class="go_back"><i class="bi bi-arrow-left"></i> Tillbaka</div>
-        <button class="add_to_cart">Lägg i varukorg</button>
+  <article>
+    <div class="specific_product">
+      <div class="product_information" v-if="productData">
+        <div class="img-wrapper">
+          <img :src="productData.product_image" alt="">
+        </div>
+        <div class="product-text">
+          <span class="title-bold">{{ productData.product_name }}</span>
+          <span>{{ productData.price }}kr/kg</span>
+        </div>
+        <div class="product-text">
+          <span class="title-bold">{{ productData.description_title }}</span>
+          <p>
+            {{ productData.description }}
+          </p>
+        </div>
+        <div class="product_navigation">
+          <div class="go_back"><i class="bi bi-arrow-left"></i> Tillbaka</div>
+          <button class="add_to_cart">Lägg i varukorg</button>
+        </div>
       </div>
     </div>
   </article>
 </template>
 <style scoped>
+article {
+  padding: 1rem;
+}
+
 #specific_product {
   display: flex;
   justify-content: center;
