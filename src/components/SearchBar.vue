@@ -25,7 +25,6 @@
 
 
 #searchIcon {
-    position: absolute;
     margin-left: -2.5rem;
     margin-top: -0.25rem;
     font-size: 1.3rem;
@@ -37,6 +36,7 @@
 <template>
     <div id="searchDiv">
 
-        <input type="text" id="searchInput" value="Sök i vårt sortiment..."><i id="searchIcon" class="bi bi-search"></i>
+        <input type="text" id="searchInput" placeholder="Sök i vårt sortiment..."><i id="searchIcon"
+            class="bi bi-search"></i>
     </div>
 </template>
