@@ -27,7 +27,7 @@
             </div>
 
             <div class="logo-container">
-                <img src="../assets/logo/logo.svg" alt="">
+                <img src="../assets/logo/logo.svg" alt="Logo">
             </div>
 
             <div class="login-and-cart-container">
@@ -166,9 +166,8 @@ nav {
 .hamburger-and-links-container {
     width: fit-content;
     height: fit-content;
-    background-color: red;
+    /* background-color: red; */
     display: flex;
-
 }
 
 .hamburger-wrapper {
@@ -180,12 +179,13 @@ nav {
 }
 
 .links-wrapper {
-    background-color: orange;
+    /* background-color: orange; */
     width: 300px;
     height: fit-content;
     display: flex;
     flex-direction: row;
     gap: 10px;
+    display: none;
 
 }
 
@@ -236,8 +236,6 @@ nav {
 }
 
 .logo-container {
-    justify-content: center;
-    flex-grow: 1;
     text-align: center;
     padding: 5px 0;
 }
@@ -298,5 +296,35 @@ li {
     padding-top: 20px;
     margin-left: 25px;
     font-size: 30px;
+}
+
+@media screen and (min-width: 700px){
+  .logo-container {
+    order: 1;
+    justify-content: start;
+}
+
+.hamburger-and-links-container {
+    order: 2;
+    flex-grow: 1;
+}
+.login-and-cart-container {
+    width: 25px;
+    order: 2;
+}
+.hamburger-wrapper{
+  visibility: hidden;
+}
+
+.links-wrapper{
+  display: flex;
+}
+
+.login-wrapper{
+  visibility: visible;
+}
+
+
+
 }
 </style>
