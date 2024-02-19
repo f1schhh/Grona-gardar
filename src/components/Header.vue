@@ -1,6 +1,7 @@
 <template>
     <header id="header">
         <div @click="exitMenu" class="overlay"></div>
+        <div @click="exitCart" class="overlay-for-cart"></div>
 
         <div class="menu-container">
             <ul>
@@ -10,6 +11,36 @@
                 <li @click="onMenuClick"><a href="#about">Om oss</a></li>
             </ul>
         </div>
+
+        <div class="cart-content-container">
+
+            <div class="exit-cart-content-container">
+
+                <div @click="exitCart" class="exit-cart-icon-wrapper">
+                    <i class="bi bi-x-lg"></i>
+                </div>
+            </div>
+
+            <h1>Din Varukorg</h1>
+
+            <div class="products-overview-container">
+
+                <div class="single-product-wrapper">
+                    <div class="product-image-wrapper">
+
+                    </div>
+
+                    <div class="single-product-info-wrapper">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
         <nav id="navBar">
             <div class="hamburger-container">
                 <div class="hamburger-wrapper" @click="onMenuClick()">
@@ -26,24 +57,19 @@
 
             <div class="login-and-cart-container">
 
-                <div class="login-and-cart-wrapper">
+                <div class="login-and-cart-icons-wrapper">
                     <div class="login-wrapper">
                         <i class="bi bi-person"></i>
                     </div>
 
-                    <div class="cart-wrapper">
+                    <div @click="onCartClick" class="cart-icon-wrapper">
                         <i class="bi bi-cart"></i>
                     </div>
-
                 </div>
-
-
             </div>
         </nav>
 
-        <div class="cart-container">
 
-        </div>
     </header>
 </template>
 
@@ -55,8 +81,9 @@ export default {
 
     },
     methods: {
-        onMenuClick() {
 
+        //Method that expands menu and manipulates the hamburger
+        onMenuClick() {
             const header = document.getElementById("header");
             const overlay = document.querySelector(".overlay");
             const rectA = document.querySelector(".rectA")
@@ -68,6 +95,7 @@ export default {
             if (rectA.classList.contains('move-rectA-down')) {
 
                 overlay.classList.remove("increase-blur")
+
                 //Remove overlay styles once transition has finished
                 setTimeout(function () {
                     overlay.style.display = "none";
@@ -94,7 +122,9 @@ export default {
                 overlay.style.display = "block";
 
                 //Add blur to overlay div
-                overlay.classList.add("increase-blur")
+                setTimeout(function () {
+                    overlay.classList.add("increase-blur")
+                }, 100)
 
                 //Set transition values
                 rectA.style.transition = 'top 0.5s, transform 0.5s 0.5s ease-in-out';
@@ -113,13 +143,51 @@ export default {
 
         },
 
+        //Method that exist menu when user closes menu
         exitMenu() {
             document.querySelector(".menu-container").classList.remove("move-menu-right");
             document.querySelector(".overlay").classList.remove("increase-blur");
-
             this.onMenuClick();
-        }
+        },
 
+        //Method regulating what happens when cart icon is clicked
+        onCartClick() {
+            //Select elements from DOM
+            const cartContentContainer = document.querySelector(".cart-content-container")
+            const overlay = document.querySelector(".overlay-for-cart")
+
+            //make cart content wrapper visible for user
+            cartContentContainer.classList.add("move-cart-content-container")
+
+            //Show overlay
+            overlay.style.display = "block";
+
+            //Transition overlay opacity
+            setTimeout(function () {
+                overlay.classList.add("increase-blur-when-using-cart")
+            }, 100)
+
+
+        },
+
+        //method for exiting cart
+        exitCart() {
+            //Select elements from DOM
+            const cartContentContainer = document.querySelector(".cart-content-container");
+            const overlay = document.querySelector(".overlay-for-cart");
+
+            //Make cart content dissapear to the right
+            cartContentContainer.classList.remove("move-cart-content-container")
+
+            //Transition opacity to make div transparent
+            overlay.classList.remove("increase-blur-when-using-cart")
+
+            //Remove overlay styles once transition has finished
+            setTimeout(function () {
+                overlay.style.display = "none";
+            }, 500)
+
+        }
 
     }
 
@@ -149,6 +217,22 @@ header {
 }
 
 .increase-blur {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(1px);
+}
+
+.overlay-for-cart {
+    display: none;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+    transition: background-color 0.75s, backdrop-filter 0.75s;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 3;
+}
+
+.increase-blur-when-using-cart {
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(1px);
 }
@@ -225,10 +309,67 @@ nav {
     width: 25px;
 }
 
-.login-and-cart-wrapper {
+.login-and-cart-icons-wrapper {
     display: flex;
     gap: 1rem;
     justify-content: flex-end;
+}
+
+.cart-content-container {
+    width: 230px;
+    height: 100vh;
+    right: -280px;
+    top: 0;
+    background-color: var(--mid-beige);
+    position: absolute;
+    z-index: 3;
+    transition: right 0.75s;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.4);
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.move-cart-content-container {
+    right: 0;
+}
+
+.exit-cart-content-container {
+    height: 51.35px;
+    margin-top: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.exit-cart-icon-wrapper {
+    width: fit-content;
+    height: fit-content;
+    line-height: 10px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.cart-content-container h1 {
+    font-size: 6vw;
+    text-align: center;
+
+}
+
+.products-overview-container {
+    background-color: coral;
+    width: 100%;
+}
+
+.single-product-wrapper {
+    background-color: lightblue;
+    width: 100%;
+    height: 100px;
+    border-radius: 19px;
 }
 
 .bi {
@@ -270,5 +411,14 @@ li {
     padding-top: 20px;
     margin-left: 25px;
     font-size: 30px;
+}
+
+@media screen AND (min-width: 400px) {
+
+    .cart-content-container h1 {
+        font-size: 1.5rem;
+        background-color: yellow;
+    }
+
 }
 </style>
