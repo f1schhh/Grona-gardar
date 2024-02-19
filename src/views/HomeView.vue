@@ -3,10 +3,33 @@ import SearchBar from '../components/SearchBar.vue';
 </script>
 
 <script>
+import database from '../database.json'
+
 export default {
   components: {
     SearchBar,
   },
+
+  data() {
+    return {
+    product:[],
+  };
+  },
+
+  methods: {
+    getProducts(){
+      this.product = database.products
+    },
+
+    goToProducts(){
+      this.$router.push('../views/ProductsPageview.vue')
+    }
+  },
+
+  created() {
+    this.getProducts();
+  },
+
 }
 </script>
 
@@ -22,7 +45,7 @@ export default {
           Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt. Varje produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
         </p>
         <div class="div_button_more_products">
-          <button class="button_more_products">Våra produkter<i class="bi bi-arrow-right"></i></button>
+          <button class="button_more_products" @click="goToProducts">Våra produkter<i class="bi bi-arrow-right"></i></button>
         </div>
       </div>
 </section>
@@ -30,7 +53,11 @@ export default {
 <section class="section_season">
   <div>
     <h3>I säsong</h3>
-    <!-- <IN_SEASON_COMPONENT></IN_SEASON_COMPONENT> -->
+    <div>
+    <div class="season_list" v-for="product in products">
+      <p>{{ product.name }}</p>
+    </div>
+  </div>
   </div>
 </section>
 
@@ -58,7 +85,8 @@ export default {
               <h4>Grönsaker</h4>
             </div>
             <p class="p_category">
-              Varje grönsak är omsorgsfullt odlad med hållbara metoder för att säkerställa både smakrikedom och näringsrik kvalitet.
+              Varje grönsak är omsorgsfullt odlad med hållbara metoder för att
+              säkerställa hög kvalitet inom både smak och näring.
             </p>
           </div>
         </li>
@@ -71,8 +99,9 @@ export default {
             <div class="h3_and_heart">
               <h4>Frukt</h4>
             </div>
-              <p>
-                Handplockade från våra trädgårdar där varje frukt är odlad med kärlek och omsorg.
+            <p class="p_category">
+                Handplockade frukter från våra trädgårdar där varje frukt är
+                odlad med kärlek och omsorg.
               </p>
             </div>
         </li>
@@ -80,22 +109,62 @@ export default {
     </div>
 </section>
 
-
-<ul>
-
-<li>
-  <div>
-    Bild och text om företaget.
+<section class="section_environment">
+  <div class="block_environment">
+    <div >
+      <img src="../assets/media/pexels-anna-shvets-5231085.jpg" alt="" class="img_environment">
+    </div>
+    <div class="text_environment">
+    <h3>
+      Vårt hållbarhets- och miljöarbete
+    </h3>
+    <p class="p_environment">
+      Välkommen till vår ekologiska gård, där natur och hållbarhet står i fokus.
+      Genom ekologisk odling och avståndstagande från kemiska ämnen skapar vi en
+      miljö där jorden flödar av liv.
+    </p>
+    <p class="p_environment">
+      <span class="new_p">Kretsloppsanpassning</span> är kärnan i vårt arbete
+      -genom kompostering till återvinning minimerar vi vårt avfall och bidrar
+      till ett hållbart användande av våra resurser. Energiförbrukningen optimeras
+      genom investeringar i effektiva system och vi prioriterar vattenbevarande
+      metoder för att minska påverkan på miljön.
+    </p>
+    <p class="p_environment">
+      <span class="new_p">Lokala</span> samarbeten är centralt för oss för att
+      minska vårt koldioxidavtryck. Vi är inte bara odlare; vi är förkämpar för
+      medvetenhet och utbildning. Genom att dela med oss av vår kunskap om
+      ekologisk odling hoppas vi kunna inspirera andra till att välja en mer
+      hållbar livsstil. Vår gård är en plats där varje gröda är en handling av
+      kärlek till planeten och varje skörd är ett framsteg mot en grönare framtid.
+    </p>
   </div>
-</li>
+</div>
+</section>
 
-<li>
-  <div>
-    Kundrecensioner som visar en recension.
-  </div>
-</li>
+<section class="main_review">
+  <h3>
+    Kundrecensioner
+  </h3>
+      <div class="block_review">
+      <div>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+      </div>
+        <p class="main_review_text">
+          Sortimentet är imponerande och jag har upptäckt nya favoriter sedan jag
+          började handla här. Äpplena är krispiga, morötterna är saftiga och smakar
+          precis som de borde. Det är som att få leverans direkt från trädgården!
+        </p>
+        <p class="review_signature">
+          Anna-Karin
+        </p>
+      </div>
+</section>
 
-</ul>
 </article>
 </template>
 
@@ -115,34 +184,33 @@ section {
   padding: 1rem;
   border-radius: 19px;
   width: 80%;
-  margin: auto;
-  margin-top: 4rem;
-  margin-bottom: 3rem;
+  margin: 4rem auto 3rem auto;
+  overflow: auto;
 }
 .main_info_text {
   color: black;
 }
 .div_button_more_products {
-padding-left: 5rem;
+float: right;
 }
 
 .button_more_products {
   background-color: transparent;
   border: 1px solid var(--dark-green);
+  font-size: 15px;
 }
 .section_season {
   background-color: var(--dark-beige);
-  padding: 1rem;
-  padding-top: 2rem;
+  padding: 2rem 1rem 1rem 1rem;
+}
+.season_list{
+  display: flex;
 }
 .section_about {
   background-color: var(--dark-green);
 }
 .block_about{
   padding: 1rem;
-}
-
-.block_about {
   color: var(--light-beige);
 }
 .block_about h3 {
@@ -156,7 +224,7 @@ padding-bottom: 1rem;}
 }
 .specific_product {
   background-color: var(--light-beige);
-  height: 24rem;
+  height: 22rem;
 }
 .img-wrapper {
     width: 10.4375rem;
@@ -165,17 +233,62 @@ padding-bottom: 1rem;}
   .img-wrapper img {
   width: 100%;
   height: 100%;
-  border-top-right-radius: 19px;
-  border-top-left-radius: 19px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
+  border-radius: 19px 19px 0 0;
   object-fit: cover;
   object-position: center;
 }
 
 .p_category {
+  padding: 0 1rem 0.3rem 0.3rem;
+}
+.section_environment {
+  background-color: var(--dark-green);
+  padding-top: 0;
+}
+
+.block_environment{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--light-beige);
+}
+.img_environment{
+  width: 100%;
+  height: auto;
+  padding-bottom: 1rem;
+}
+
+.text_environment{
   padding: 1rem;
 }
+.p_environment {
+  padding: 1rem 0;
+}
+.new_p{
+font-weight: bold;
+}
+.main_review {
+  background: var(--light-beige);
+  padding: 2rem 1rem;
+}
+.block_review {
+  background-color: var(--dark-beige);
+  padding: 1rem;
+  border-radius: 19px;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+.main_review_text {
+  padding-top: 1rem;
+  color: black;
+}
+.review_signature{
+  padding-top: 1rem;
+  font-size: large;
+  color: black;
+}
+
 @media screen and (max-width: 385px) {
   li {
     max-width: 9.5rem;
@@ -186,5 +299,6 @@ padding-bottom: 1rem;}
     height: 9.5rem;
   }
 }
+
 
 </style>
