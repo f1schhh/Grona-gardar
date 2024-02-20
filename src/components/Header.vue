@@ -1,7 +1,22 @@
 <template>
     <header id="header">
         <div @click="exitMenu" class="overlay"></div>
-
+        <div class="login-overlay">
+            <div v-bind:class="{ 'login-menu-container': true, 'move-login-menu-left': loginIsClicked }">
+                <div class="login-menu-wrapper">
+                    <div class="login-register-link-wrapper">
+                        <h2>Logga in</h2>
+                        <h2>Registrera</h2>
+                    </div>
+                    <form action="" method="post">
+                        <label for="username">E-postadress: </label>
+                        <input type="text" required placeholder="E-postadress:">
+                        <label for="password">Lösenord: </label>
+                        <input type="text" required>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="menu-container">
             <ul>
                 <li @click="onMenuClick"><router-link to="/">Hem</router-link></li>
@@ -33,7 +48,7 @@
             <div class="login-and-cart-container">
 
                 <div class="login-and-cart-wrapper">
-                    <div class="login-wrapper">
+                    <div @click="onLoginMenuClick()" class="login-wrapper" >
                         <i class="bi bi-person"></i>
                     </div>
 
@@ -42,6 +57,7 @@
                     </div>
                 </div>
             </div>
+
         </nav>
     </header>
 </template>
@@ -51,7 +67,10 @@ import { RouterLink } from 'vue-router';
 
 export default {
     data() {
-
+        // isNotLoggedIn: true
+        return{
+            loginIsClicked: false
+        }
     },
     methods: {
         onMenuClick() {
@@ -118,6 +137,15 @@ export default {
             document.querySelector(".overlay").classList.remove("increase-blur");
 
             this.onMenuClick();
+
+        },
+        onLoginMenuClick(){
+            if (loginIsClicked === true){
+
+            }
+            this.loginIsClicked = !this.loginIsClicked;
+
+
 
         }
     }
@@ -278,6 +306,58 @@ main {
     transition: left 0.75s ease-in-out;
     box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.4);
 }
+
+/* Log in page */
+.login-menu-container{
+    background-color: var(--mid-beige);
+    width: 280px;
+    max-width: 500px;
+    height: 68%;
+    border-radius: 16px;
+    z-index: 3;
+    box-shadow: -8px 0px 12px 0px rgba(0, 0, 0, 0.4);
+    align-self: center;
+    display: flex;
+    justify-content: center;
+}
+
+.login-overlay{
+    /* filter: grayscale(20); */
+    background-color: rgba(182, 18, 81, 0.35);
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+/* .move-login-menu-left {
+    /* right: -300px; */
+    /* display: block; */
+/* } */
+.login-menu-wrapper{
+    background-color: var(--dark-green);
+    border-radius: 16px;
+    width: 90%;
+    height: 200px;
+    display: flex;
+    /* align-items: center; */
+    /* justify-content:right; */
+}
+.login-menu-wrapper input{
+    background-color: var(--light-beige);
+    width: 90%;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.535);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    border: 1px solid #FFF;
+    border-radius: 24px;
+
+}
+
+
 
 .move-menu-right {
     left: 0;
