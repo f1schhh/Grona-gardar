@@ -357,8 +357,6 @@ main {
 
 }
 
-
-
 .move-menu-right {
     left: 0;
 }
