@@ -108,6 +108,7 @@ export default {
 </template>
 <style scoped>
 section {
+  width: 100%;
   padding: 1rem;
 }
 
