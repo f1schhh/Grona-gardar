@@ -184,47 +184,47 @@ export default {
     onLoginMenuClick() {
       this.loginIsClicked = !this.loginIsClicked;
 
-        document.querySelector('.login-overlay').style.display="flex"
+      document.querySelector('.login-overlay').style.display = "flex"
 
     },
 
     //Method regulating what happens when cart icon is clicked
     onCartClick() {
-            //Select elements from DOM
-            const cartContentContainer = document.querySelector(".cart-content-container")
-            const overlay = document.querySelector(".overlay-for-cart")
+      //Select elements from DOM
+      const cartContentContainer = document.querySelector(".cart-content-container")
+      const overlay = document.querySelector(".overlay-for-cart")
 
-            //make cart content wrapper visible for user
-            cartContentContainer.classList.add("move-cart-content-container")
+      //make cart content wrapper visible for user
+      cartContentContainer.classList.add("move-cart-content-container")
 
-            //Show overlay
-            overlay.style.display = "block";
+      //Show overlay
+      overlay.style.display = "block";
 
-            //Transition overlay opacity
-            setTimeout(function () {
-                overlay.classList.add("increase-blur-when-using-cart")
-            }, 100)
+      //Transition overlay opacity
+      setTimeout(function () {
+        overlay.classList.add("increase-blur-when-using-cart")
+      }, 100)
 
 
-        },
+    },
 
-        //method for exiting cart
-        exitCart() {
-            //Select elements from DOM
-            const cartContentContainer = document.querySelector(".cart-content-container");
-            const overlay = document.querySelector(".overlay-for-cart");
+    //method for exiting cart
+    exitCart() {
+      //Select elements from DOM
+      const cartContentContainer = document.querySelector(".cart-content-container");
+      const overlay = document.querySelector(".overlay-for-cart");
 
-            //Make cart content dissapear to the right
-            cartContentContainer.classList.remove("move-cart-content-container")
+      //Make cart content dissapear to the right
+      cartContentContainer.classList.remove("move-cart-content-container")
 
-            //Transition opacity to make div transparent
-            overlay.classList.remove("increase-blur-when-using-cart")
+      //Transition opacity to make div transparent
+      overlay.classList.remove("increase-blur-when-using-cart")
 
-            //Remove overlay styles once transition has finished
-            setTimeout(function () {
-                overlay.style.display = "none";
-            }, 500)
-        }
+      //Remove overlay styles once transition has finished
+      setTimeout(function () {
+        overlay.style.display = "none";
+      }, 500)
+    }
   }
 
 }
@@ -395,7 +395,6 @@ nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: green;
 }
 
 .exit-cart-icon-wrapper {
@@ -406,11 +405,10 @@ nav {
   display: flex;
   justify-content: center;
   align-content: center;
-  background-color: orange;
 }
 
 .cart-content-container h1 {
-  font-size:  4.45vw;
+  font-size: 4.45vw;
   text-align: center;
 
 }
@@ -520,13 +518,13 @@ li {
 
 
 /*===================*/
- @media screen and (min-width: 451px) {
+@media screen and (min-width: 451px) {
   .cart-content-container h1 {
-  font-size: 20px;
-  background-color: orange;
-}
+    font-size: 20px;
+    background-color: orange;
+  }
 
- }
+}
 
 @media screen and (min-width: 700px) {
   .logo-container {
