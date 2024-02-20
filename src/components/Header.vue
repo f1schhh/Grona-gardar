@@ -1,7 +1,6 @@
 <template>
     <header id="header">
         <div @click="exitMenu" class="overlay"></div>
-<<<<<<< HEAD
         <div class="login-overlay">
             <div v-bind:class="{ 'login-menu-container': true, 'move-login-menu-left': loginIsClicked }">
                 <div class="login-menu-wrapper">
@@ -18,10 +17,8 @@
                 </div>
             </div>
         </div>
-=======
         <div @click="exitCart" class="overlay-for-cart"></div>
 
->>>>>>> cart
         <div class="menu-container">
             <ul>
                 <li @click="onMenuClick"><router-link to="/">Hem</router-link></li>
@@ -82,13 +79,8 @@
 
             <div class="login-and-cart-container">
 
-<<<<<<< HEAD
                 <div class="login-and-cart-wrapper">
                     <div @click="onLoginMenuClick()" class="login-wrapper" >
-=======
-                <div class="login-and-cart-icons-wrapper">
-                    <div class="login-wrapper">
->>>>>>> cart
                         <i class="bi bi-person"></i>
                     </div>
 
@@ -99,11 +91,8 @@
             </div>
 
         </nav>
-<<<<<<< HEAD
-=======
 
 
->>>>>>> cart
     </header>
 </template>
 
@@ -186,7 +175,6 @@ export default {
             document.querySelector(".menu-container").classList.remove("move-menu-right");
             document.querySelector(".overlay").classList.remove("increase-blur");
             this.onMenuClick();
-<<<<<<< HEAD
 
         },
         onLoginMenuClick(){
@@ -198,7 +186,6 @@ export default {
 
 
         }
-=======
         },
 
         //Method regulating what happens when cart icon is clicked
@@ -240,10 +227,8 @@ export default {
 
         }
 
->>>>>>> cart
     }
 
-}
 
 
 </script>
@@ -391,10 +376,8 @@ nav {
     justify-content: flex-end;
 }
 
-<<<<<<< HEAD
 .login-wrapper {
     visibility: hidden;
-=======
 .cart-content-container {
     width: 230px;
     height: 100vh;
@@ -450,7 +433,6 @@ nav {
     width: 100%;
     height: 100px;
     border-radius: 19px;
->>>>>>> cart
 }
 
 .bi {
@@ -543,7 +525,6 @@ li {
     font-size: 30px;
 }
 
-<<<<<<< HEAD
 @media screen and (min-width: 700px){
   .logo-container {
     order: 1;
@@ -571,14 +552,13 @@ li {
 }
 
 
-=======
 @media screen AND (min-width: 400px) {
 
     .cart-content-container h1 {
         font-size: 1.5rem;
         background-color: yellow;
     }
->>>>>>> cart
 
 }
+
 </style>
