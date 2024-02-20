@@ -1,7 +1,10 @@
 <template>
   <header id="header">
     <div @click="exitMenu" class="overlay"></div>
-    <div class="login-overlay">
+    <div @click="exitCart" class="overlay-for-cart"></div>
+
+    <!--Login div-->
+    <div class="login-overlay" @click="onLogicOverlay()">
       <div v-bind:class="{ 'login-menu-container': true, 'move-login-menu-left': loginIsClicked }">
         <div class="login-menu-wrapper">
           <div class="login-register-link-wrapper">
@@ -17,6 +20,8 @@
         </div>
       </div>
     </div>
+
+    <!--Hamburger Menu Div-->
     <div class="menu-container">
       <ul>
         <li @click="onMenuClick"><router-link to="/">Hem</router-link></li>
@@ -27,6 +32,7 @@
       </ul>
     </div>
 
+    <!--==== Cart conent Container ====-->
     <div class="cart-content-container">
 
       <div class="exit-cart-content-container">
@@ -49,12 +55,10 @@
 
           </div>
         </div>
-
       </div>
 
-
-
     </div>
+    <!--End of Cart Content COntainer-->
 
     <nav id="navBar">
       <div class="hamburger-and-links-container">
@@ -65,19 +69,21 @@
           <div class="rectC"></div>
         </div>
         <div class="links-wrapper">
-          <p @click="onMenuClick"><router-link to="/products">Produkter</router-link></p>
-          <p @click="onMenuClick"><a href="#about">Om oss</a></p>
-          <p @click="onMenuClick"><router-link to="/">Kontakt</router-link></p>
+          <p><router-link to="/products">Produkter</router-link></p>
+          <p><a href="#about">Om oss</a></p>
+          <p><router-link to="/">Kontakt</router-link></p>
         </div>
       </div>
 
       <div class="logo-container">
-        <img src="../assets/logo/logo.svg" alt="Logo">
+        <router-link to="/">
+          <img src="../assets/logo/logo.svg" alt="Logo">
+        </router-link>
       </div>
 
       <div class="login-and-cart-container">
 
-        <div class="login-and-cart-wrapper">
+        <div class="login-and-cart-icons-wrapper">
           <div @click="onLoginMenuClick()" class="login-wrapper">
             <i class="bi bi-person"></i>
           </div>
@@ -99,7 +105,7 @@ import { RouterLink } from 'vue-router';
 
 export default {
   data() {
-    // isNotLoggedIn: true
+
     return {
       loginIsClicked: false
     }
@@ -176,14 +182,49 @@ export default {
 
     },
     onLoginMenuClick() {
-      if (loginIsClicked === true) {
-
-      }
       this.loginIsClicked = !this.loginIsClicked;
 
+        document.querySelector('.login-overlay').style.display="flex"
+
+    },
+
+    //Method regulating what happens when cart icon is clicked
+    onCartClick() {
+            //Select elements from DOM
+            const cartContentContainer = document.querySelector(".cart-content-container")
+            const overlay = document.querySelector(".overlay-for-cart")
+
+            //make cart content wrapper visible for user
+            cartContentContainer.classList.add("move-cart-content-container")
+
+            //Show overlay
+            overlay.style.display = "block";
+
+            //Transition overlay opacity
+            setTimeout(function () {
+                overlay.classList.add("increase-blur-when-using-cart")
+            }, 100)
 
 
-    }
+        },
+
+        //method for exiting cart
+        exitCart() {
+            //Select elements from DOM
+            const cartContentContainer = document.querySelector(".cart-content-container");
+            const overlay = document.querySelector(".overlay-for-cart");
+
+            //Make cart content dissapear to the right
+            cartContentContainer.classList.remove("move-cart-content-container")
+
+            //Transition opacity to make div transparent
+            overlay.classList.remove("increase-blur-when-using-cart")
+
+            //Remove overlay styles once transition has finished
+            setTimeout(function () {
+                overlay.style.display = "none";
+            }, 500)
+        }
   }
 
 }
@@ -245,7 +286,6 @@ nav {
 .hamburger-and-links-container {
   width: fit-content;
   height: fit-content;
-  /* background-color: red; */
   display: flex;
 }
 
@@ -258,18 +298,12 @@ nav {
 }
 
 .links-wrapper {
-  /* background-color: orange; */
-  width: 300px;
   height: fit-content;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  margin-left: 5px;
+  gap: 25px;
   display: none;
-
-}
-
-.links-wrapper p {
-  background-color: pink;
 
 }
 
@@ -315,6 +349,7 @@ nav {
 }
 
 .logo-container {
+  cursor: pointer;
   text-align: center;
   padding: 5px 0;
 }
@@ -355,11 +390,12 @@ nav {
 }
 
 .exit-cart-content-container {
-  height: 51.35px;
+  height: 68px;
   margin-top: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  background-color: green;
 }
 
 .exit-cart-icon-wrapper {
@@ -370,10 +406,11 @@ nav {
   display: flex;
   justify-content: center;
   align-content: center;
+  background-color: orange;
 }
 
 .cart-content-container h1 {
-  font-size: 6vw;
+  font-size:  4.45vw;
   text-align: center;
 
 }
@@ -480,6 +517,16 @@ li {
   margin-left: 25px;
   font-size: 30px;
 }
+
+
+/*===================*/
+ @media screen and (min-width: 451px) {
+  .cart-content-container h1 {
+  font-size: 20px;
+  background-color: orange;
+}
+
+ }
 
 @media screen and (min-width: 700px) {
   .logo-container {
