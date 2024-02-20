@@ -17,6 +17,7 @@
                 </div>
             </div>
         </div>
+
         <div class="menu-container">
             <ul>
                 <li @click="onMenuClick"><router-link to="/">Hem</router-link></li>
@@ -48,7 +49,7 @@
             <div class="login-and-cart-container">
 
                 <div class="login-and-cart-wrapper">
-                    <div @click="onLoginMenuClick()" class="login-wrapper" >
+                    <div @click="onLoginMenuClick()" class="login-wrapper">
                         <i class="bi bi-person"></i>
                     </div>
 
@@ -68,7 +69,7 @@ import { RouterLink } from 'vue-router';
 export default {
     data() {
         // isNotLoggedIn: true
-        return{
+        return {
             loginIsClicked: false
         }
     },
@@ -139,8 +140,8 @@ export default {
             this.onMenuClick();
 
         },
-        onLoginMenuClick(){
-            if (loginIsClicked === true){
+        onLoginMenuClick() {
+            if (loginIsClicked === true) {
 
             }
             this.loginIsClicked = !this.loginIsClicked;
@@ -308,7 +309,7 @@ main {
 }
 
 /* Log in page */
-.login-menu-container{
+.login-menu-container {
     background-color: var(--mid-beige);
     width: 280px;
     max-width: 500px;
@@ -321,7 +322,7 @@ main {
     justify-content: center;
 }
 
-.login-overlay{
+.login-overlay {
     /* filter: grayscale(20); */
     background-color: rgba(182, 18, 81, 0.35);
     z-index: 2;
@@ -335,9 +336,9 @@ main {
 
 /* .move-login-menu-left {
     /* right: -300px; */
-    /* display: block; */
+/* display: block; */
 /* } */
-.login-menu-wrapper{
+.login-menu-wrapper {
     background-color: var(--dark-green);
     border-radius: 16px;
     width: 90%;
@@ -346,7 +347,8 @@ main {
     /* align-items: center; */
     /* justify-content:right; */
 }
-.login-menu-wrapper input{
+
+.login-menu-wrapper input {
     background-color: var(--light-beige);
     width: 90%;
     height: 30px;
@@ -376,31 +378,33 @@ li {
     font-size: 30px;
 }
 
-@media screen and (min-width: 700px){
-  .logo-container {
-    order: 1;
-    justify-content: start;
-}
+@media screen and (min-width: 700px) {
+    .logo-container {
+        order: 1;
+        justify-content: start;
+    }
 
-.hamburger-and-links-container {
-    order: 2;
-    flex-grow: 1;
-}
-.login-and-cart-container {
-    width: 25px;
-    order: 2;
-}
-.hamburger-wrapper{
-  visibility: hidden;
-}
+    .hamburger-and-links-container {
+        order: 2;
+        flex-grow: 1;
+    }
 
-.links-wrapper{
-  display: flex;
-}
+    .login-and-cart-container {
+        width: 25px;
+        order: 2;
+    }
 
-.login-wrapper{
-  visibility: visible;
-}
+    .hamburger-wrapper {
+        visibility: hidden;
+    }
+
+    .links-wrapper {
+        display: flex;
+    }
+
+    .login-wrapper {
+        visibility: visible;
+    }
 
 }
 </style>
