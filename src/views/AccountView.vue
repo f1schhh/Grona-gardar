@@ -1,17 +1,17 @@
 <script></script>
 
-<style setup>
+<style scoped>
 main {
     display: flex;
     flex-direction: column;
     /* flex-wrap: wrap; */
     row-gap: 0.7rem;
     background-color: var(--dark-beige);
-    text-align: center;
 }
 
 #profileInfo {
     background-color: var(--mid-beige);
+    text-align: center;
 }
 
 #orderHistory {
@@ -92,11 +92,11 @@ button:hover {
 
 /* Knapp för varukorg */
 
-button_seeOrder_div {
+/* button_seeOrder_div {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-}
+} */
 
 .button_seeOrder {
 
@@ -107,10 +107,11 @@ button_seeOrder_div {
     border: 0;
     text-align: center;
     border-radius: 19px;
-    padding: 0.6rem;
+    padding: 0.3rem 0.6rem;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    padding: 5px 10px;
-
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }
 
 .orderHistory_list {
@@ -135,6 +136,7 @@ button_seeOrder_div {
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     padding: 0rem 2.7rem;
+    position: relative;
 }
 
 @media screen and (max-width: 385px) {
