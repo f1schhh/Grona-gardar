@@ -56,6 +56,7 @@ main {
     position: relative;
     font-size: 0.8rem;
     font-weight: lighter;
+    width: 17.5rem;
 }
 
 .img-wrapper {
@@ -81,6 +82,22 @@ main {
 
 .order_summary {
     padding: 1rem;
+}
+
+.order_summary h3 {
+    font-size: 0.8rem;
+    padding: 0rem;
+    padding-bottom: 0.2rem;
+}
+
+.h3_and_heart {
+    padding: 0rem;
+}
+
+.button_like {
+    display: flex;
+    position: absolute;
+    right: 13px;
 }
 
 .button_seeOrder {
@@ -125,12 +142,17 @@ main {
                     </div>
                     <div class="summar_and_button">
                         <div class="order_summary">
-                            <p><span>Ordernummer:</span> 43210</p>
-                            <p>Datum: 2023-12-16</p>
-                            <p>Total belopp: 1500kr</p>
+                            <div class="h3_and_heart">
+                                <h3>Pumpa</h3>
+                                <div class="button_like">
+                                    <i class="bi bi-heart-fill"></i>
+                                </div>
+                            </div>
+                            <p>Pumpa Biff</p>
+                            <p>69,90kr/kg</p>
                         </div>
                         <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Se order</button>
+                            <button class="button_seeOrder">Lägg i varukorg</button>
                         </div>
                     </div>
                 </li>
@@ -141,12 +163,17 @@ main {
                     </div>
                     <div class="summar_and_button">
                         <div class="order_summary">
-                            <p><span>Ordernummer:</span> 43210</p>
-                            <p>Datum: 2023-12-16</p>
-                            <p>Total belopp: 1500kr</p>
+                            <div class="h3_and_heart">
+                                <h3>Pumpa</h3>
+                                <div class="button_like">
+                                    <i class="bi bi-heart-fill"></i>
+                                </div>
+                            </div>
+                            <p>Pumpa Biff</p>
+                            <p>69,90kr/kg</p>
                         </div>
                         <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Se order</button>
+                            <button class="button_seeOrder">Lägg i varukorg</button>
                         </div>
                     </div>
                 </li>
@@ -156,12 +183,17 @@ main {
                     </div>
                     <div class="summar_and_button">
                         <div class="order_summary">
-                            <p><span>Ordernummer:</span> 43210</p>
-                            <p>Datum: 2023-12-16</p>
-                            <p>Total belopp: 1500kr</p>
+                            <div class="h3_and_heart">
+                                <h3>Pumpa</h3>
+                                <div class="button_like">
+                                    <i class="bi bi-heart-fill"></i>
+                                </div>
+                            </div>
+                            <p>Pumpa Biff</p>
+                            <p>69,90kr/kg</p>
                         </div>
                         <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Se order</button>
+                            <button class="button_seeOrder">Lägg i varukorg</button>
                         </div>
                     </div>
                 </li>
@@ -171,12 +203,17 @@ main {
                     </div>
                     <div class="summar_and_button">
                         <div class="order_summary">
-                            <p><span>Ordernummer:</span> 43210</p>
-                            <p>Datum: 2023-12-16</p>
-                            <p>Total belopp: 1500kr</p>
+                            <div class="h3_and_heart">
+                                <h3>Pumpa</h3>
+                                <div class="button_like">
+                                    <i class="bi bi-heart-fill"></i>
+                                </div>
+                            </div>
+                            <p>Pumpa Biff</p>
+                            <p>69,90kr/kg</p>
                         </div>
                         <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Se order</button>
+                            <button class="button_seeOrder">Lägg i varukorg</button>
                         </div>
                     </div>
                 </li>
