@@ -21,7 +21,7 @@ export default {
       try {
         const response = await fetch('/src/database.json');
         const data = await response.json()
-        const product = data.products.filter(item => item.season === 'summer');
+        const product = data.products.filter(item => item.season === 'autumn');
         console.log(product)
 
         if (product) {
@@ -38,7 +38,12 @@ export default {
 
     goToProducts() {
       this.$router.push('/products')
+    },
+
+    goToSeason() {
+      this.$router.push('/products/season')
     }
+
   },
 
 }
@@ -67,17 +72,17 @@ export default {
       <div>
         <h3>I säsong</h3>
         <div>
-          <ul class="product_list list_season">
+          <ul class="product_list">
             <li v-for="product in productData">
               <router-link :to="{ path: `/product/${product.id}` }">
-                <div class="specific_product" >
+                <div class="specific_product">
                   <div class="img-wrapper">
-                      <img :src="product.product_image" alt="">
-                    </div>
+                    <img :src="product.product_image" alt="">
+                  </div>
                   <div class="product_information">
                     <div class="product-text">
                       <span class="title-bold">{{ product.product_name }}</span>
-                      <span>{{ product.description_title }}</span>
+                      <span class="text_type">{{ product.product_type }}</span>
                       <span>{{ product.price }}kr/kg</span>
                     </div>
                   </div>
@@ -87,9 +92,9 @@ export default {
 
           </ul>
           <div class="div_button_more_products">
-          <button class="button_more_products" @click="goToProducts">Våra produkter<i
-              class="bi bi-arrow-right"></i></button>
-        </div>
+            <button class="button_more_products button_color" @click="goToSeason">Mer i säsong<i
+                class="bi bi-arrow-right"></i></button>
+          </div>
 
         </div>
       </div>
@@ -105,12 +110,15 @@ export default {
           klimatpåverkan. Vi strävar efter att främja en naturlig och ekologisk produktion.
         </div>
       </div>
+      <div class="about_img_div">
+        <img src="../assets/media/Couple_In_Field.jpg" alt="" class="about_img">
+      </div>
     </section>
 
     <section>
       <div class="block_category">
         <h3>Kategorier</h3>
-        <ul class="product_list">
+        <ul class="product_list category_flex">
           <li>
             <div class="specific_product category_box">
               <div class="img-wrapper">
@@ -141,6 +149,10 @@ export default {
             </div>
           </li>
         </ul>
+        <div class="div_button_more_products">
+          <button class="button_more_products button_color" @click="goToProducts">Våra produkter<i
+              class="bi bi-arrow-right"></i></button>
+        </div>
       </div>
     </section>
 
@@ -215,6 +227,9 @@ section {
 .main_top {
   background-image: url("../assets/media/GreenHouse.jpg");
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .block_info {
@@ -222,8 +237,8 @@ section {
   padding: 1rem;
   border-radius: 19px;
   width: 80%;
-  margin: 4rem auto 3rem auto;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .main_info_text {
@@ -231,7 +246,8 @@ section {
 }
 
 .div_button_more_products {
-  float: right;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .button_more_products {
@@ -243,13 +259,9 @@ section {
 .section_season {
   background-color: var(--dark-beige);
   padding: 2rem 1rem 1rem 1rem;
-  max-height: 25rem;
+  display: flex;
 }
 
-.list_season{
-/* flex-wrap: nowrap; */
-flex-direction: row;
-}
 .specific_product {
   background-color: var(--light-beige);
 }
@@ -261,7 +273,7 @@ flex-direction: row;
   color: var(--dark-green);
   padding: 2rem;
   max-width: 9.5rem;
-
+  height: 4rem;
 }
 
 .product-text {
@@ -275,21 +287,56 @@ flex-direction: row;
   margin: 0;
 }
 
+.text_type {
+  font-size: small;
+}
+
+.button_color {
+  background-color: var(--light-beige);
+}
+
 .section_about {
   background-color: var(--dark-green);
+  display: flex;
+  flex-direction: row;
+  padding: 0;
 }
 
 .block_about {
   padding: 1rem;
   color: var(--light-beige);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5rem;
 }
 
 .block_about h3 {
   padding-bottom: 1rem;
 }
 
+.about_img_div {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+  margin: 0;
+}
+
+.about_img {
+  object-fit: cover;
+  max-height: 500px;
+}
+
 .block_category {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.category_flex {
+  display: flex;
+  justify-content: center;
 }
 
 .block_category h3 {
@@ -300,6 +347,8 @@ flex-direction: row;
   background-color: var(--light-beige);
   height: 22rem;
 }
+
+
 
 .img-wrapper {
   width: 10.4375rem;
@@ -351,6 +400,9 @@ flex-direction: row;
 .main_review {
   background: var(--light-beige);
   padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .block_review {
@@ -374,6 +426,7 @@ flex-direction: row;
 }
 
 @media screen and (max-width: 385px) {
+
   li {
     max-width: 9.5rem;
   }
@@ -381,6 +434,16 @@ flex-direction: row;
   .img-wrapper {
     width: 9.5rem;
     height: 9.5rem;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .about_img_div {
+    display: none;
+  }
+
+  .about_img {
+    display: none;
   }
 }
 </style>
