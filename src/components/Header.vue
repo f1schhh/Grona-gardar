@@ -521,7 +521,6 @@ li {
 @media screen and (min-width: 451px) {
   .cart-content-container h1 {
     font-size: 20px;
-    background-color: orange;
   }
 
 }
