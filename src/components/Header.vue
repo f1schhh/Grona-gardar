@@ -402,7 +402,5 @@ li {
   visibility: visible;
 }
 
-
-
 }
 </style>
