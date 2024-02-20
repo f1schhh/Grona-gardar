@@ -229,5 +229,6 @@
       "price": 52,
       "season": "autumn"
     }
-  ]
+  ],
+  "active_season": "summer"
 }

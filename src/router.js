@@ -6,6 +6,7 @@ import AccountView from './views/AccountView.vue'
 import SearchView from './views/SearchView.vue'
 import PageNotFoundView from './views/PageNotFoundView.vue'
 
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -19,7 +20,11 @@ const router = createRouter({
     },
     {
       path: '/products',
-      component: ProductsPageview
+      component: ProductsPageview,
+    },
+    {
+      path: '/products/:category',
+      component: ProductsPageview,
     },
     {
       path: '/account',

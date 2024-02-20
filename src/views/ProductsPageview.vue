@@ -4,11 +4,71 @@ import SearchBar from '../components/SearchBar.vue';
 export default {
   data() {
     return {
-      categoriData: null,
+      categoryData: { fruits: [], vegetables: [], season: [] },
+    }
+  },
+  async created() {
+    await this.getCategory(this.$route.params.category)
+  },
+  watch: {
+    async "$route.params.category"(newId) {
+      await this.getCategory(newId);
     }
   },
   methods: {
+    async getCategory(currentroute) {
+      try {
+        const response = await fetch('/src/database.json');
+        const data = await response.json();
+        let findCategory;
+        if (currentroute) {
+          switch (currentroute) {
+            case 'fruits':
+              this.categoryData.vegetables = [];
+              this.categoryData.season = [];
+              findCategory = data.products.filter(item => item.category === "Frukt");
+              this.categoryData.fruits = findCategory;
+              break;
+            case 'vegetables':
+              this.categoryData.fruits = [];
+              this.categoryData.season = [];
+              findCategory = data.products.filter(item => item.category === "Grönsaker");
+              this.categoryData.vegetables = findCategory;
+              break;
+            case 'season':
+              this.categoryData.fruits = [];
+              this.categoryData.vegetables = [];
+              findCategory = data.products.filter(item => item.season === data.active_season);
+              this.categoryData.season = findCategory
+              break;
+          }
 
+        } else {
+          this.categoryData.vegetables = [];
+          this.categoryData.fruits = [];
+          this.categoryData.season = [];
+
+          data.products.forEach(items => {
+            switch (items.category) {
+              case 'Frukt':
+                this.categoryData.fruits.push(items);
+                break;
+              case 'Grönsaker':
+                this.categoryData.vegetables.push(items);
+                break;
+              case data.active_season:
+                this.categoryData.season.push(items);
+                break;
+            }
+            if (items.season === data.active_season) {
+              this.categoryData.season.push(items);
+            }
+          });
+        }
+      } catch {
+
+      }
+    }
   },
   components: {
     SearchBar
@@ -20,42 +80,90 @@ export default {
   <section class="container">
     <!-- <SearchBar></SearchBar> -->
     <ul class="filter_categories">
-      <li class="active"><router-link to="/">Alla</router-link></li>
-      <li><router-link to="/">Frukter</router-link></li>
-      <li><router-link to="/products">Grönsaker</router-link></li>
-      <li><router-link to="/">I säsong</router-link>
+      <li :class="{ active: $route.path === '/products' || $route.path === '/products/' }">
+        <router-link to="/products">Alla</router-link>
+      </li>
+      <li :class="{ active: $route.path === '/products/fruits' }">
+        <router-link to="/products/fruits">Frukter</router-link>
+      </li>
+      <li :class="{ active: $route.path === '/products/vegetables' }">
+        <router-link to="/products/vegetables">Grönsaker</router-link>
+      </li>
+      <li :class="{ active: $route.path === '/products/season' }">
+        <router-link to="/products/season">I säsong</router-link>
       </li>
     </ul>
-    <section>
-      <h2 style="padding: 0.3rem;">Frukt</h2>
-      <ul class="product_list">
-        <li>
-          <div class="specific_product">
-            <div class="img-wrapper">
-              <img src="../assets/media/product_images/Apple_Aroma.jpg" alt="">
-            </div>
-            <div class="h3_and_heart">
-              <h3>Äpple Alice</h3>
-              <div class="button_like">
-                <i class="bi bi-heart"></i>
+    <div class="category_container">
+      <section v-if="categoryData.fruits.length !== 0">
+        <h2 style="padding: 0.3rem;">Frukt</h2>
+        <ul class="product_list">
+          <li v-for="items in categoryData.fruits">
+            <div class="specific_product">
+              <div class="img-wrapper">
+                <img :src="items.product_image" :alt="items.product_name">
               </div>
+              <div class="h3_and_heart">
+                <h3>{{ items.product_name }}</h3>
+                <div class="button_like">
+                  <i class="bi bi-heart"></i>
+                </div>
+              </div>
+              <button class="button_cart">Lägg i varukorg</button>
             </div>
+          </li>
+        </ul>
+      </section>
 
-            <button class="button_cart">Lägg i varukorg</button>
-          </div>
-        </li>
-      </ul>
-      <div class="div_button_more_products">
-        <button class="button_more_products">Mer Frukter <i class="bi bi-arrow-right"></i></button>
-      </div>
-    </section>
-
+      <section v-if="categoryData.vegetables.length !== 0">
+        <h2 style="padding: 0.3rem;">Grönsaker</h2>
+        <ul class="product_list">
+          <li v-for="items in categoryData.vegetables">
+            <div class="specific_product">
+              <div class="img-wrapper">
+                <img :src="items.product_image" :alt="items.product_name">
+              </div>
+              <div class="h3_and_heart">
+                <h3>{{ items.product_name }}</h3>
+                <div class="button_like">
+                  <i class="bi bi-heart"></i>
+                </div>
+              </div>
+              <button class="button_cart">Lägg i varukorg</button>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section v-if="categoryData.season.length !== 0">
+        <h2 style="padding: 0.3rem;">I säsong</h2>
+        <ul class="product_list">
+          <li v-for="items in categoryData.season">
+            <div class="specific_product">
+              <div class="img-wrapper">
+                <img :src="items.product_image" :alt="items.product_name">
+              </div>
+              <div class="h3_and_heart">
+                <h3>{{ items.product_name }}</h3>
+                <div class="button_like">
+                  <i class="bi bi-heart"></i>
+                </div>
+              </div>
+              <button class="button_cart">Lägg i varukorg</button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
   </section>
 </template>
 
 <style scoped>
 .container {
+  width: 100%;
   margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.2rem;
 }
 
 .filter_categories {
@@ -75,9 +183,10 @@ export default {
   background-color: var(--dusty-pink);
 }
 
-div {
+.category_container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .img-wrapper {
