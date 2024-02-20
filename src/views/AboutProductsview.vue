@@ -65,7 +65,7 @@ export default {
     <div class="specific_product">
       <div class="product_information">
         <div class="img-wrapper">
-          <img :src="productData.product_image" alt="">
+          <img :src="productData.product_image" :alt="productData.product_name">
         </div>
         <div class="product-container">
           <div class="product_info">
@@ -91,10 +91,11 @@ export default {
           <li class="specific_product">
             <div class="product_information" style="flex-direction: column; padding: 1rem;">
               <div class="img-list">
-                <img :src="items.product_image" alt="XD">
+                <img :src="items.product_image" :alt="items.product_name">
               </div>
               <div class="product_info" style="flex-direction: column;">
                 <span class="title-bold">{{ items.product_name }}</span>
+                <span>{{ items.product_type }} </span>
                 <span>{{ items.price }}kr/kg</span>
               </div>
             </div>

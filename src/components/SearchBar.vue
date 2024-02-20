@@ -42,6 +42,10 @@ export default {
     position: absolute;
     right: 10px;
 }
+
+#searchIcon:hover {
+  cursor: pointer;
+}
 </style>
 
 <template>
