@@ -2,15 +2,18 @@
 export default {
   data() {
     return {
-      productData: null
+      productData: null,
+      similiarData: null,
     }
   },
   async created() {
     await this.getProducts(parseInt(this.$route.params.id));
+    await this.getSimilarProducts();
   },
   watch: {
-    async "this.$route.params.id"(newId) {
+    async "$route.params.id"(newId) {
       await this.getProducts(parseInt(this.$route.params.id), newId);
+      await this.getSimilarProducts();
     }
   },
   methods: {
@@ -30,48 +33,108 @@ export default {
       } catch {
         this.$router.push('/error');
       }
+    },
+    async getSimilarProducts() {
+      try {
+        const response = await fetch('/src/database.json');
+        const data = await response.json();
+
+        const products = data.products.filter(item => item.category === this.productData.category);
+        if (products) {
+          this.similiarData = products;
+        }
+      } catch {
+
+      }
     }
   }
 }
 </script>
 <template>
-  <article>
+  <section>
+    <nav>
+      <ul class="bread-crumb-meny">
+        <li><router-link to="/">Hem</router-link> <i class="bi bi-chevron-right"></i></li>
+        <li><router-link to="/products">Produkter</router-link> <i class="bi bi-chevron-right"></i></li>
+        <li><router-link to="/">{{ productData.category }}</router-link> <i class="bi bi-chevron-right"></i>
+        </li>
+        <li><router-link to="/" class="active">{{ productData.product_name }}</router-link>
+        </li>
+      </ul>
+    </nav>
     <div class="specific_product">
       <div class="product_information" v-if="productData">
         <div class="img-wrapper">
           <img :src="productData.product_image" alt="">
         </div>
-        <div class="product-text">
-          <span class="title-bold">{{ productData.product_name }}</span>
-          <span>{{ productData.price }}kr/kg</span>
-        </div>
-        <div class="product-text">
-          <span class="title-bold">{{ productData.description_title }}</span>
-          <p>
-            {{ productData.description }}
-          </p>
-        </div>
-        <div class="product_navigation">
-          <div class="go_back"><i class="bi bi-arrow-left"></i> Tillbaka</div>
-          <button class="add_to_cart">Lägg i varukorg</button>
+        <div class="product-container">
+          <div class="product_info">
+            <span class="title-bold">{{ productData.product_name }}</span>
+            <span>{{ productData.price }}kr/kg</span>
+            <span class="title-bold">{{ productData.description_title }}</span>
+            <p>
+              {{ productData.description }}
+            </p>
+          </div>
+          <div class="product_navigation">
+            <button class="add_to_cart">Lägg i varukorg</button>
+          </div>
         </div>
       </div>
     </div>
-  </article>
+
+    <div class="similiar_products">
+      <h3>Liknande varor </h3>
+
+      <ul class="similiar_list" v-if="similiarData">
+        <router-link :to="'/product/' + items.id" v-for="items in similiarData" :key="items.id">
+          <li class="specific_product">
+            <div class="product_information" style="flex-direction: column; padding: 1rem;">
+              <div class="img-list">
+                <img :src="items.product_image" alt="XD">
+              </div>
+              <div class="product_info" style="flex-direction: column;">
+                <span class="title-bold">{{ items.product_name }}</span>
+                <span>{{ items.price }}kr/kg</span>
+              </div>
+            </div>
+          </li>
+        </router-link>
+      </ul>
+      <div class="loading-items" v-else>
+        <div v-if="productData === 0">
+          <h2>Vi kunde inte hitta några resultat, vänligen försök igen</h2>
+        </div>
+        <div class="loading-spinner-container" v-else>
+          <div class="loading-spinner">
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 <style scoped>
-article {
-  padding: 1rem;
+.bread-crumb-meny {
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+  gap: 0.2rem
 }
 
-#specific_product {
+.bread-crumb-meny li .active {
+  font-weight: bolder;
+}
+
+.bread-crumb-meny li a:hover {
+  text-decoration: underline;
+}
+
+section {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  border-radius: 19px;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  background-color: var(--dark-beige);
+  gap: 2rem;
+  padding: 1rem;
 }
 
 .product_information {
@@ -82,9 +145,10 @@ article {
   padding: 2rem;
 }
 
-.img-wrapper {
-  width: 290px;
-  height: 221px;
+.product_info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
 .img-wrapper img {
@@ -98,14 +162,27 @@ article {
   object-position: center;
 }
 
-.product-text {
+.img-list {
+  width: 10rem;
+  height: 10rem;
+}
+
+.img-list img {
+  width: 100%;
+  height: 100%;
+  border-radius: 19px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-container {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.5rem;
   justify-content: flex-start;
 }
 
-.product-text p {
+.product-container p {
   margin: 0;
 }
 
@@ -129,5 +206,37 @@ article {
   padding: 0.6rem;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   background-color: var(--dusty-pink);
+}
+
+.similiar_products {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.similiar_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 680px) {
+  .product_information {
+    flex-direction: row;
+  }
+
+  .product-container {
+    justify-content: space-between;
+  }
+
+  .img-wrapper {
+    width: 30rem;
+  }
+
+  .title-bold {
+    font-size: 1.3rem;
+  }
+
 }
 </style>
