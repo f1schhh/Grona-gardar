@@ -51,7 +51,7 @@ export default {
 }
 </script>
 <template>
-  <section>
+  <section v-if="productData">
     <nav>
       <ul class="bread-crumb-meny">
         <li><router-link to="/">Hem</router-link> <i class="bi bi-chevron-right"></i></li>
@@ -63,7 +63,7 @@ export default {
       </ul>
     </nav>
     <div class="specific_product">
-      <div class="product_information" v-if="productData">
+      <div class="product_information">
         <div class="img-wrapper">
           <img :src="productData.product_image" alt="">
         </div>

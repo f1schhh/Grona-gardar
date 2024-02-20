@@ -7,7 +7,9 @@ export default {
   },
   methods: {
     searchClick() {
-      this.$router.push('/search/' + this.searchQuery);
+      if (this.searchQuery) {
+        this.$router.push('/search/' + this.searchQuery);
+      }
     }
   }
 }
@@ -45,7 +47,7 @@ export default {
 <template>
   <div id="searchDiv">
     <input type="text" id="searchInput" v-model="searchQuery" @keyup.enter="searchClick"
-      placeholder="Sök i vårt sortiment...">
+      placeholder="Sök i vårt sortiment..." required>
     <i id="searchIcon" class="bi bi-search" @click="searchClick"></i>
   </div>
 </template>
