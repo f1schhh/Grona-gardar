@@ -23,9 +23,12 @@ export default {
 
         if (product) {
           this.productData = product
+        } else {
+          this.$router.push('/error');
         }
-      } catch {
 
+      } catch {
+        this.$router.push('/error');
       }
     }
   }

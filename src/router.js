@@ -4,6 +4,7 @@ import AboutProductsview from './views/AboutProductsview.vue'
 import ProductsPageview from './views/ProductsPageview.vue'
 import AccountView from './views/AccountView.vue'
 import SearchView from './views/SearchView.vue'
+import PageNotFoundView from './views/PageNotFoundView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,6 +28,10 @@ const router = createRouter({
     {
       path: '/search/:query',
       component: SearchView
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      component: PageNotFoundView
     }
   ]
 });
