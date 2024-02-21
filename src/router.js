@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from './views/HomeView.vue'
 import AboutProductsview from './views/AboutProductsview.vue'
+import SpecificProductView from "./views/SpecificProductView.vue"
 import ProductsPageview from './views/ProductsPageview.vue'
 import AccountView from './views/AccountView.vue'
 import OrderHistoryView from './views/OrderHistoryView.vue'
@@ -18,8 +19,10 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/product/:id',
-      component: AboutProductsview
+      path: '/product/:productId',
+      component: SpecificProductView,
+      name: "SpecificProduct",
+      props: true,
     },
     {
       path: '/products',
@@ -32,18 +35,19 @@ const router = createRouter({
     {
       path: '/account',
       component: AccountView
-      
-      // children: [ 
+
+      // children: [
       //   { path: '/orderhistory', component: OrderHistoryView,}
       // ]
     },
-    { path: '/orderhistory', 
-    component: OrderHistoryView
-  },
-  {
-path: '/favorites',
-component: FavoritesView
-  },
+    {
+      path: '/orderhistory',
+      component: OrderHistoryView
+    },
+    {
+      path: '/favorites',
+      component: FavoritesView
+    },
     {
       path: '/search/:query',
       component: SearchView
