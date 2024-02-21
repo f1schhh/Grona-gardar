@@ -3,11 +3,59 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <style scoped>
+@media screen and (min-width: 386px) {
+    article {
+
+        display: flex;
+        flex-direction: row;
+        /* justify-content: flex-start;
+        align-items: flex-start;
+        justify-self: flex-start;
+        align-self: flex-start; */
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    #profileInfo {
+        display: flex;
+        flex-direction: row;
+        /* justify-content: flex-start;
+        align-items: flex-start;
+        justify-self: flex-start;
+        align-self: flex-start; */
+        flex-wrap: nowrap;
+        margin: 0;
+        padding: 0;
+    }
+
+    #hrDividePage {
+        display: none;
+    }
+
+    #test {
+        flex-wrap: nowrap;
+        /* float: left; */
+        /* position: relative; */
+        height: 5rem;
+        margin: 0;
+        padding: 0;
+        width: 0rem;
+        border: solid 3px var(--dark-beige);
+    }
+}
+
 article {
     display: flex;
     flex-direction: column;
-    gap: 0.7rem;
-    background-color: var(--dark-beige);
+}
+
+#test {
+    display: none;
+}
+
+#hrDividePage {
+    width: 100%;
+    border: solid 5px var(--dark-beige);
 }
 
 #profileInfo {
@@ -49,7 +97,7 @@ i {
     font-size: 1.2rem;
 }
 
-.hrAside {
+.hrDivideLi {
     height: 2.5rem;
 }
 
@@ -79,7 +127,7 @@ i {
                 </li>
 
                 <li class="profileInfo_li">
-                    <hr class="hrAside">
+                    <hr class="hrDivideLi">
                 </li>
                 <li class="profileInfo_li">
                     <router-link to="/account/editaccount">
@@ -88,7 +136,7 @@ i {
                     </router-link>
                 </li>
                 <li class="profileInfo_li">
-                    <hr class="hrAside">
+                    <hr class="hrDivideLi">
                 </li>
                 <li class="profileInfo_li">
                     <router-link to="/account/favorites">
@@ -99,7 +147,7 @@ i {
                     </router-link>
                 </li>
                 <li class="profileInfo_li">
-                    <hr class="hrAside">
+                    <hr class="hrDivideLi">
                 </li>
                 <li class="profileInfo_li">
                     <router-link to="/account/logout">
@@ -109,7 +157,10 @@ i {
                 </li>
             </ul>
             <!-- <hr id="endAside"> -->
+
         </aside>
+        <hr id="hrDividePage">
+        <hr id="test">
         <RouterView />
 
     </article>

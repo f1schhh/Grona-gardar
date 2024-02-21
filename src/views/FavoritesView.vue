@@ -4,32 +4,31 @@
 
 <style scoped>
 article {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    background-color: var(--dark-beige);
+    padding-bottom: 3rem;
 }
 
-#orderHistory h2 {
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-#orderHistory_hr {
-    border: 1px solid #475133;
-}
-
-#orderHistory {
+#favorites {
     background-color: var(--mid-beige);
 }
 
-#orderHistory h2 {
+#favorites h2 {
+    font-weight: bold;
+    font-size: 1rem;
     text-align: center;
     padding-top: 0.8rem;
     padding-bottom: 0.5rem;
 }
 
-.orderHistory_list {
+#hrDiv {
+    padding-bottom: 1rem;
+    width: 100%;
+}
+
+#favorites_hr {
+    border: 1px solid #475133;
+}
+
+.favorites_list {
     display: flex;
     flex-direction: column;
     /* flex-wrap: wrap; */
@@ -37,17 +36,17 @@ article {
     /* justify-content: center; */
     align-items: center;
     color: black;
-    padding-top: 0.5rem;
     padding-bottom: 1.5rem;
 }
 
-.orderHistory_list_li {
+.favorites_list_li {
     display: flex;
     text-align: left;
     background-color: var(--dark-beige);
     /* flex-wrap: wrap; */
     flex-direction: row;
     /* padding: 0rem 5rem; */
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -57,6 +56,10 @@ article {
     font-size: 0.8rem;
     font-weight: lighter;
     width: 17.5rem;
+}
+
+.favorites_list_li span {
+    font-weight: bold;
 }
 
 .img-wrapper {
@@ -76,15 +79,13 @@ article {
 }
 
 
-.orderHistory_list_li span {
-    font-weight: bold;
-}
 
-.order_summary {
+
+.infoProduct {
     padding: 1rem;
 }
 
-.order_summary h3 {
+.infoProduct h3 {
     font-size: 0.8rem;
     padding: 0rem;
     padding-bottom: 0.2rem;
@@ -100,7 +101,7 @@ article {
     right: 13px;
 }
 
-.button_seeOrder {
+.button_addToShoppingCart {
     background-color: #FFF8EE;
     border: 0;
     text-align: center;
@@ -132,88 +133,90 @@ article {
 
 <template>
     <article>
-        <section id="orderHistory">
+        <section id="favorites">
             <h2>Favoriter</h2>
-            <hr id="orderHistory_hr">
-            <ul class="orderHistory_list">
-                <li class="orderHistory_list_li">
+            <div id="hrDiv">
+                <hr id="favorites_hr">
+            </div>
+            <ul class="favorites_list">
+                <li class="favorites_list_li">
                     <div class="img-wrapper">
                         <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
                     </div>
-                    <div class="summar_and_button">
-                        <div class="order_summary">
+                    <div>
+                        <div class="infoProduct">
                             <div class="h3_and_heart">
                                 <h3>Pumpa</h3>
                                 <div class="button_like">
                                     <i class="bi bi-heart-fill"></i>
                                 </div>
                             </div>
-                            <p>Pumpa Biff</p>
-                            <p>69,90kr/kg</p>
+                            <p>Pumpa Howden</p>
+                            <p>53kr/kg</p>
                         </div>
-                        <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Lägg i varukorg</button>
+                        <div>
+                            <button class="button_addToShoppingCart">Lägg i varukorg</button>
                         </div>
                     </div>
                 </li>
 
-                <li class="orderHistory_list_li">
+                <li class="favorites_list_li">
                     <div class="img-wrapper">
-                        <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
+                        <img src="../assets/media/product_images/Apple_Elise.jpg" alt="">
                     </div>
-                    <div class="summar_and_button">
-                        <div class="order_summary">
+                    <div>
+                        <div class="infoProduct">
                             <div class="h3_and_heart">
-                                <h3>Pumpa</h3>
+                                <h3>Äpple</h3>
                                 <div class="button_like">
                                     <i class="bi bi-heart-fill"></i>
                                 </div>
                             </div>
-                            <p>Pumpa Biff</p>
-                            <p>69,90kr/kg</p>
+                            <p>Äpple Elise</p>
+                            <p>52kr/kg</p>
                         </div>
-                        <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Lägg i varukorg</button>
+                        <div>
+                            <button class="button_addToShoppingCart">Lägg i varukorg</button>
                         </div>
                     </div>
                 </li>
-                <li class="orderHistory_list_li">
+                <li class="favorites_list_li">
                     <div class="img-wrapper">
-                        <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
+                        <img src="../assets/media/product_images/Cucumber_Sonja.jpg" alt="">
                     </div>
-                    <div class="summar_and_button">
-                        <div class="order_summary">
+                    <div>
+                        <div class="infoProduct">
                             <div class="h3_and_heart">
-                                <h3>Pumpa</h3>
+                                <h3>Gurka</h3>
                                 <div class="button_like">
                                     <i class="bi bi-heart-fill"></i>
                                 </div>
                             </div>
-                            <p>Pumpa Biff</p>
-                            <p>69,90kr/kg</p>
+                            <p>Gurka Sonja</p>
+                            <p>35kr/kg</p>
                         </div>
-                        <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Lägg i varukorg</button>
+                        <div>
+                            <button class="button_addToShoppingCart">Lägg i varukorg</button>
                         </div>
                     </div>
                 </li>
-                <li class="orderHistory_list_li">
+                <li class="favorites_list_li">
                     <div class="img-wrapper">
-                        <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
+                        <img src="../assets/media/product_images/Plum_Jubileum.jpg" alt="">
                     </div>
-                    <div class="summar_and_button">
-                        <div class="order_summary">
+                    <div>
+                        <div class="infoProduct">
                             <div class="h3_and_heart">
-                                <h3>Pumpa</h3>
+                                <h3>Plommon</h3>
                                 <div class="button_like">
                                     <i class="bi bi-heart-fill"></i>
                                 </div>
                             </div>
-                            <p>Pumpa Biff</p>
-                            <p>69,90kr/kg</p>
+                            <p>Plommon Jubileum</p>
+                            <p>58kr/kg</p>
                         </div>
-                        <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Lägg i varukorg</button>
+                        <div>
+                            <button class="button_addToShoppingCart">Lägg i varukorg</button>
                         </div>
                     </div>
                 </li>
