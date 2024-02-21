@@ -4,10 +4,7 @@
 
 <style scoped>
 article {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    background-color: var(--dark-beige);
+    padding-bottom: 3rem;
 }
 
 #orderHistory h2 {
@@ -16,6 +13,11 @@ article {
     text-align: center;
     padding-top: 0.8rem;
     padding-bottom: 0.5rem;
+}
+
+#hrDiv {
+    padding-bottom: 1rem;
+    width: 100%;
 }
 
 #orderHistory_hr {
@@ -34,7 +36,6 @@ article {
     /* justify-content: center; */
     align-items: center;
     color: black;
-    padding-top: 0.5rem;
     padding-bottom: 1.5rem;
 }
 
@@ -42,6 +43,7 @@ article {
     display: flex;
     text-align: left;
     background-color: var(--dark-beige);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     /* flex-wrap: wrap; */
     flex-direction: row;
     /* padding: 0rem 5rem; */
@@ -114,7 +116,9 @@ article {
     <article>
         <section id="orderHistory">
             <h2>Orderhistorik</h2>
-            <hr id="orderHistory_hr">
+            <div id="hrDiv">
+                <hr id="orderHistory_hr">
+            </div>
             <ul class="orderHistory_list">
                 <li class="orderHistory_list_li">
                     <div class="img-wrapper">
@@ -134,13 +138,13 @@ article {
 
                 <li class="orderHistory_list_li">
                     <div class="img-wrapper">
-                        <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
+                        <img src="../assets/media/product_images/Cucumber_Sonja.jpg" alt="">
                     </div>
                     <div class="summar_and_button">
                         <div class="order_summary">
                             <p><span>Ordernummer:</span> 43210</p>
                             <p>Datum: 2023-12-16</p>
-                            <p>Total belopp: 1500kr</p>
+                            <p>Total belopp: 600kr</p>
                         </div>
                         <div class="button_seeOrder_div">
                             <button class="button_seeOrder">Se order</button>
@@ -164,13 +168,13 @@ article {
                 </li>
                 <li class="orderHistory_list_li">
                     <div class="img-wrapper">
-                        <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
+                        <img src="../assets/media/product_images/Apple_Elise.jpg" alt="">
                     </div>
                     <div class="summar_and_button">
                         <div class="order_summary">
                             <p><span>Ordernummer:</span> 43210</p>
                             <p>Datum: 2023-12-16</p>
-                            <p>Total belopp: 1500kr</p>
+                            <p>Total belopp: 365kr</p>
                         </div>
                         <div class="button_seeOrder_div">
                             <button class="button_seeOrder">Se order</button>
