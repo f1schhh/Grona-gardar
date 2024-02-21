@@ -134,7 +134,7 @@ span::after {
 
 .last-paragraph {
     height: fit-content;
-    margin-top: 20px;
+    margin-top: 0px;
     padding-bottom: 20px;
     font-size: 12px;
 }
