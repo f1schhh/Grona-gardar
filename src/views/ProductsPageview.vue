@@ -128,11 +128,12 @@ export default {
         <ul class="product_list">
           <li v-for="items in categoryData.vegetables">
             <div class="specific_product">
-              <div class="img-wrapper">
+              <div class="img-wrapper" @click="onProductClick(items.id)">
                 <img :src="items.product_image" :alt="items.product_name">
               </div>
               <div class="h3_and_heart">
-                <h3>{{ items.product_name }}</h3>
+                <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
+                }}</router-link></h3>
                 <div class="button_like">
                   <i class="bi bi-heart"></i>
                 </div>
@@ -147,11 +148,12 @@ export default {
         <ul class="product_list">
           <li v-for="items in categoryData.season">
             <div class="specific_product">
-              <div class="img-wrapper">
+              <div class="img-wrapper" @click="onProductClick(items.id)">
                 <img :src="items.product_image" :alt="items.product_name">
               </div>
               <div class="h3_and_heart">
-                <h3>{{ items.product_name }}</h3>
+                <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
+                }}</router-link></h3>
                 <div class="button_like">
                   <i class="bi bi-heart"></i>
                 </div>
