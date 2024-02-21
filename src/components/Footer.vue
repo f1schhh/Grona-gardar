@@ -73,7 +73,7 @@ footer {
     width: 100%;
     height: 100%;
     margin-bottom: 0;
-    margin-bottom: -7px;
+    margin-bottom: -5px;
 }
 
 .cls-1 {
