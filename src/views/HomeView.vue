@@ -49,8 +49,13 @@ export default {
 }
 </script>
 
+
 <template>
   <article>
+
+    <!-- ======================================================
+     ===========================TOP============================
+     ==========================================================  -->
     <section class="main_top">
       <SearchBar></SearchBar>
       <div class="block_info">
@@ -68,6 +73,9 @@ export default {
       </div>
     </section>
 
+    <!-- ======================================================
+     ==========================SEASON==========================
+     ==========================================================  -->
     <section class="section_season">
       <div>
         <h3>I säsong</h3>
@@ -100,6 +108,9 @@ export default {
       </div>
     </section>
 
+    <!-- ======================================================
+     ==========================ABOUT===========================
+     ==========================================================  -->
     <section class="section_about">
       <div class="block_about">
         <h3>
@@ -115,40 +126,48 @@ export default {
       </div>
     </section>
 
+    <!-- ======================================================
+     ==========================CATEGORY========================
+     ==========================================================  -->
     <section>
       <div class="block_category">
         <h3>Kategorier</h3>
         <ul class="product_list category_flex">
           <li>
-            <div class="specific_product category_box">
-              <div class="img-wrapper">
-                <img src="../assets/media/Artichoke.jpg" alt="">
+            <router-link :to="{ path: `/product/vegetables` }">
+              <div class="specific_product category_box">
+                <div class="img-wrapper">
+                  <img src="../assets/media/Artichoke.jpg" alt="">
+                </div>
+                <div class="h3_and_heart">
+                  <h4>Grönsaker</h4>
+                </div>
+                <p class="p_category">
+                  Varje grönsak är omsorgsfullt odlad med hållbara metoder för att
+                  säkerställa hög kvalitet inom både smak och näring.
+                </p>
               </div>
-              <div class="h3_and_heart">
-                <h4>Grönsaker</h4>
-              </div>
-              <p class="p_category">
-                Varje grönsak är omsorgsfullt odlad med hållbara metoder för att
-                säkerställa hög kvalitet inom både smak och näring.
-              </p>
-            </div>
+            </router-link>
           </li>
 
           <li>
-            <div class="specific_product category_box">
-              <div class="img-wrapper">
-                <img src="../assets/media/Flowers.jpg" alt="">
+            <router-link :to="{ path: `/product/fruit` }">
+              <div class="specific_product category_box">
+                <div class="img-wrapper">
+                  <img src="../assets/media/Flowers.jpg" alt="">
+                </div>
+                <div class="h3_and_heart">
+                  <h4>Frukt</h4>
+                </div>
+                <p class="p_category">
+                  Handplockade frukter från våra trädgårdar där varje frukt är
+                  odlad med kärlek och omsorg.
+                </p>
               </div>
-              <div class="h3_and_heart">
-                <h4>Frukt</h4>
-              </div>
-              <p class="p_category">
-                Handplockade frukter från våra trädgårdar där varje frukt är
-                odlad med kärlek och omsorg.
-              </p>
-            </div>
+            </router-link>
           </li>
         </ul>
+
         <div class="div_button_more_products">
           <button class="button_more_products button_color" @click="goToProducts">Våra produkter<i
               class="bi bi-arrow-right"></i></button>
@@ -156,9 +175,12 @@ export default {
       </div>
     </section>
 
+    <!-- ======================================================
+     =======================ENVIRONMENT========================
+     ==========================================================  -->
     <section class="section_environment">
       <div class="block_environment">
-        <div>
+        <div class="environment_img_div">
           <img src="../assets/media/pexels-anna-shvets-5231085.jpg" alt="" class="img_environment">
         </div>
         <div class="text_environment">
@@ -189,27 +211,69 @@ export default {
       </div>
     </section>
 
+    <!-- ======================================================
+     ==========================REVIEWS=========================
+     ==========================================================  -->
     <section class="main_review">
       <h3>
         Kundrecensioner
       </h3>
-      <div class="block_review">
-        <div>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
+      <div class="review_flex">
+        <div class="block_review">
+          <div>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="main_review_text">
+            Sortimentet är imponerande och jag har upptäckt nya favoriter sedan jag
+            började handla här. Äpplena är krispiga, morötterna är saftiga och smakar
+            precis som de borde. Det är som att få leverans direkt från trädgården!
+          </p>
+          <p class="review_signature">
+            Anna-Karin
+          </p>
         </div>
-        <p class="main_review_text">
-          Sortimentet är imponerande och jag har upptäckt nya favoriter sedan jag
-          började handla här. Äpplena är krispiga, morötterna är saftiga och smakar
-          precis som de borde. Det är som att få leverans direkt från trädgården!
-        </p>
-        <p class="review_signature">
-          Anna-Karin
-        </p>
+
+        <div class="block_review block_review_desktop">
+          <div>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="main_review_text">
+            Sortimentet är imponerande och jag har upptäckt nya favoriter sedan jag
+            började handla här. Äpplena är krispiga, morötterna är saftiga och smakar
+            precis som de borde. Det är som att få leverans direkt från trädgården!
+          </p>
+          <p class="review_signature">
+            Anna-Karin
+          </p>
+        </div>
+
+        <div class="block_review block_review_desktop">
+          <div>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="main_review_text">
+            Sortimentet är imponerande och jag har upptäckt nya favoriter sedan jag
+            började handla här. Äpplena är krispiga, morötterna är saftiga och smakar
+            precis som de borde. Det är som att få leverans direkt från trädgården!
+          </p>
+          <p class="review_signature">
+            Anna-Karin
+          </p>
+        </div>
       </div>
+
     </section>
 
   </article>
@@ -230,6 +294,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 5rem;
 }
 
 .block_info {
@@ -237,8 +302,10 @@ section {
   padding: 1rem;
   border-radius: 19px;
   width: 80%;
+  max-width: 70rem;
   display: flex;
   flex-direction: column;
+  margin-top: 4rem;
 }
 
 .main_info_text {
@@ -258,7 +325,7 @@ section {
 
 .section_season {
   background-color: var(--dark-beige);
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 2rem;
   display: flex;
 }
 
@@ -266,14 +333,19 @@ section {
   background-color: var(--light-beige);
 }
 
+.product_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .product_information {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   color: var(--dark-green);
-  padding: 2rem;
+  padding: 1rem;
   max-width: 9.5rem;
-  height: 4rem;
 }
 
 .product-text {
@@ -325,7 +397,7 @@ section {
 
 .about_img {
   object-fit: cover;
-  max-height: 500px;
+  max-height: 400px;
 }
 
 .block_category {
@@ -370,19 +442,22 @@ section {
 .section_environment {
   background-color: var(--dark-green);
   padding-top: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .block_environment {
+  padding: 1rem;
+  padding-top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   color: var(--light-beige);
 }
 
 .img_environment {
-  width: 100%;
-  height: auto;
-  padding-bottom: 1rem;
+  max-height: 240px;
 }
 
 .text_environment {
@@ -412,6 +487,15 @@ section {
   margin: auto;
   margin-top: 1rem;
   margin-bottom: 3rem;
+}
+
+.review_flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.block_review_desktop {
+  display: none;
 }
 
 .main_review_text {
@@ -444,6 +528,61 @@ section {
 
   .about_img {
     display: none;
+  }
+}
+
+@media screen and (min-width: 370px) {
+  .product_list {
+    justify-content: flex-start;
+  }
+
+}
+
+@media screen and (min-width: 700px) {
+  .section_environment {
+    padding-top: 0;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .block_environment {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: var(--light-beige);
+  }
+
+  .environment_img_div {
+    display: flex;
+    align-items: center;
+  }
+
+  .text_environment {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .block_review_desktop {
+    display: contents;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 993px) {
+  .img_environment {
+    object-fit: scale-down;
+    max-height: 250px;
+    border-radius: 19px;
+    padding-left: 1rem;
+  }
+}
+
+@media screen and (min-width: 994px) {
+  .img_environment {
+    object-fit: scale-down;
+    max-height: 400px;
+    border-radius: 19px;
+    padding-left: 1rem;
   }
 }
 </style>

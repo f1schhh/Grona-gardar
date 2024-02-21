@@ -5,7 +5,9 @@ import SpecificProductView from "./views/SpecificProductView.vue"
 import ProductsPageview from './views/ProductsPageview.vue'
 import AccountView from './views/AccountView.vue'
 import OrderHistoryView from './views/OrderHistoryView.vue'
+import EditAccountView from './views/EditAccountView.vue'
 import FavoritesView from './views/FavoritesView.vue'
+import LogOutView from './views/LogOutView.vue'
 
 import SearchView from './views/SearchView.vue'
 import PageNotFoundView from './views/PageNotFoundView.vue'
@@ -34,20 +36,26 @@ const router = createRouter({
     },
     {
       path: '/account',
-      component: AccountView
+      component: AccountView,
 
-      // children: [
-      //   { path: '/orderhistory', component: OrderHistoryView,}
-      // ]
+      children: [
+        { path: 'orderhistory', component: OrderHistoryView}, 
+        {
+          path: 'editaccount',
+          component: EditAccountView
+        },
+        {
+          path: 'favorites',
+          component: FavoritesView
+        },
+        {
+          path: 'logout',
+          component: LogOutView
+        },
+      ],
     },
-    {
-      path: '/orderhistory',
-      component: OrderHistoryView
-    },
-    {
-      path: '/favorites',
-      component: FavoritesView
-    },
+  
+
     {
       path: '/search/:query',
       component: SearchView
