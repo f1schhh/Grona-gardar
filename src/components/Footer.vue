@@ -49,15 +49,6 @@ footer {
     background-color: var(--light-beige);
 }
 
-.footer-text-wrapper {
-    padding-left: 25px;
-    padding-right: 25px;
-    background-color: var(--dark-green);
-    color: var(--light-beige);
-    width: 100vw;
-    height: 100%;
-}
-
 .svg-container {
     width: 100%;
     background-color: transparent;
@@ -74,5 +65,51 @@ footer {
     fill: var(--dark-green);
     stroke-width: 0px;
     bottom: 0;
+}
+
+.footer-text-wrapper {
+    background-color: var(--dark-green);
+    color: var(--light-beige);
+    width: 100vw;
+    height: 100%;
+}
+
+
+.footer-text-wrapper h2 {
+    background-color: red;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+
+.about-us-container {
+    background-color: orange;
+    padding-top: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.about-us-container p {
+    background-color: lightgray;
+    padding-bottom: 20px;
+}
+
+
+.visit-us-container {
+    background-color: blue;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.visit-us-container p {
+
+    padding-bottom: 20px;
+}
+
+.contact-us-container {
+    background-color: green;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 </style>
