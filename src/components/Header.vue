@@ -483,9 +483,10 @@ main {
 .login-menu-container {
   display: none;
   background-color: var(--mid-beige);
-  width: 280px;
+ 
   width: 60vw;
-  height: 100vh;
+  padding: 10px;
+  height: fit-content;
   border-radius: 16px;
   z-index: 5;
   box-shadow: -8px 0px 12px 0px rgba(0, 0, 0, 0.4);

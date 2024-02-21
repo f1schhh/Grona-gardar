@@ -1,6 +1,7 @@
 <template>
           <div class="login-register-link-wrapper">
-            <h1>Logga in</h1>
+            <h1 >Logga in</h1>
+            <input type="button" value="Logga in">
             <h1>Registrera</h1>
           </div>
         <div class="login-menu-wrapper">
@@ -13,6 +14,21 @@
           </form>
         </div>
 </template>
+
+<script>
+export default{
+
+    data(){
+        return{
+
+        }
+    },
+    methods:{
+
+    }
+
+}
+</script>
 
 <style scoped>
 .login-menu-wrapper {
