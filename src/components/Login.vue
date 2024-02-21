@@ -1,8 +1,17 @@
 <template>
           <div class="login-register-link-wrapper">
-            <h1>Logga in</h1>
+            <h1 @click="onLoginClick">Logga in</h1>
             <h1>Registrera</h1>
-          </div>
+        </div>
+        <div>
+            <div v-if="loginBtn===true" class="line-one"></div>
+            <div v-else="loginBtn===false" class="line-two"></div>
+        </div>
+
+
+
+
+
         <div class="login-menu-wrapper">
 
           <form action="" method="post">
@@ -14,6 +23,21 @@
         </div>
 </template>
 
+<script>
+export default{
+    data(){
+        return{
+            loginBtn: true
+        }
+    },
+    methods:{
+        onLoginClick(){
+            this.loginBtn = true
+        }
+    }
+}
+</script>
+
 <style scoped>
 .login-menu-wrapper {
   background-color: var(--dark-green);
@@ -23,7 +47,6 @@
   display: flex;
   align-self: center;
   align-content: center;
-
 }
 
 .login-register-link-wrapper{
@@ -48,6 +71,18 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
   border: 1px solid #FFF;
   border-radius: 24px;
+}
+
+.line-one{
+    height: 1px;
+    width: 100%;
+    background-color: red;
+}
+
+.line-two{
+    height: 1px;
+    width: 100%;
+    background-color: red;
 }
 
 /*===================*/
