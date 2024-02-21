@@ -225,7 +225,7 @@ section {
   gap: 1rem;
 }
 
-@media screen and (min-width: 680px) {
+@media screen and (min-width: 700px) {
   .product_information {
     flex-direction: row;
   }

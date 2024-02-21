@@ -2,24 +2,8 @@
   <header id="header">
     <div @click="exitMenu" class="overlay"></div>
     <div @click="exitCart" class="overlay-for-cart"></div>
-
     <!--Login div-->
-    <div class="login-overlay" @click="onLogicOverlay()">
-      <div v-bind:class="{ 'login-menu-container': true, 'move-login-menu-left': loginIsClicked }">
-        <div class="login-menu-wrapper">
-          <div class="login-register-link-wrapper">
-            <h2>Logga in</h2>
-            <h2>Registrera</h2>
-          </div>
-          <form action="" method="post">
-            <label for="username">E-postadress: </label>
-            <input type="text" required placeholder="E-postadress:">
-            <label for="password">Lösenord: </label>
-            <input type="text" required>
-          </form>
-        </div>
-      </div>
-    </div>
+    <div @click="exitLogin" class="overlay-for-login"></div>
 
     <!--Hamburger Menu Div-->
     <div class="menu-container">
@@ -31,7 +15,11 @@
         <li @click="onMenuClick"><router-link to="/">Kontakt</router-link></li>
       </ul>
     </div>
-
+    <div class="login-field-to-center-container">
+    <div class="login-menu-container">
+      <Login></Login>
+      </div>
+    </div>
     <!--==== Cart conent Container ====-->
     <div class="cart-content-container">
 
@@ -48,11 +36,8 @@
 
         <div class="single-product-wrapper">
           <div class="product-image-wrapper">
-
           </div>
-
           <div class="single-product-info-wrapper">
-
           </div>
         </div>
       </div>
@@ -84,7 +69,7 @@
       <div class="login-and-cart-container">
 
         <div class="login-and-cart-icons-wrapper">
-          <div @click="onLoginMenuClick()" class="login-wrapper">
+          <div @click="onLoginClick" class="login-wrapper">
             <i class="bi bi-person"></i>
           </div>
 
@@ -93,21 +78,21 @@
           </div>
         </div>
       </div>
-
     </nav>
-
-
   </header>
 </template>
 
 <script>
 import { RouterLink } from 'vue-router';
+import Login from './Login.vue';
 
 export default {
+  components:{
+    Login
+  },
   data() {
-
     return {
-      loginIsClicked: false
+
     }
   },
   methods: {
@@ -143,9 +128,8 @@ export default {
         rectC.classList.remove('move-rectC-up')
 
         menuContainer.classList.remove('move-menu-right')
-
-
       }
+
       else {
 
         //Show overlay
@@ -173,7 +157,6 @@ export default {
       }
 
     },
-
     //Method that exist menu when user closes menu
     exitMenu() {
       document.querySelector(".menu-container").classList.remove("move-menu-right");
@@ -181,13 +164,40 @@ export default {
       this.onMenuClick();
 
     },
-    onLoginMenuClick() {
-      this.loginIsClicked = !this.loginIsClicked;
+    // Method that opens the login and blurres background
+    onLoginClick() {
+      const overlay = document.querySelector(".overlay-for-login")
+      const loginContainer = document.querySelector(".login-menu-container ")
+      const login = document.querySelector("Login")
+      loginContainer.classList.remove('fade-out')
 
-      document.querySelector('.login-overlay').style.display = "flex"
+      loginContainer.style.display ="flex"
+      overlay.style.display = "flex"
+
+      setTimeout(function (){
+        overlay.classList.add("increase-blur-when-using-login")
+        loginContainer.classList.add('fade-in');
+      },100)
 
     },
+    //Method for exiting login page
+    exitLogin(){
 
+      const overlay = document.querySelector(".overlay-for-login")
+      const loginContainer = document.querySelector(".login-menu-container ")
+
+      //Transition opacity to make div transparent
+      overlay.classList.remove("increase-blur-when-using-login")
+      loginContainer.classList.add('fade-out')
+
+      setTimeout(function () {
+
+        overlay.style.display = "none";
+        popupLogin.style.display = "none";
+
+      }, 500)
+
+    },
     //Method regulating what happens when cart icon is clicked
     onCartClick() {
       //Select elements from DOM
@@ -233,11 +243,12 @@ export default {
 </script>
 
 
-
 <style scoped>
+
 header {
-  width: 100%;
+  width: 100vw;
   background-color: var(--dark-beige);
+  overflow: hidden;
 }
 
 .overlay {
@@ -270,6 +281,24 @@ header {
 }
 
 .increase-blur-when-using-cart {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(1px);
+}
+
+.overlay-for-login {
+  display: none;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(0px);
+  transition: background-color 0.75s, backdrop-filter 0.75s;
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 3;
+  justify-content: center;
+  align-content: center;
+}
+.increase-blur-when-using-login {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
 }
@@ -446,57 +475,45 @@ main {
   box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.4);
 }
 
-/* Log in page */
+/* =========================== */
+/* ======= Log in page ======= */
+/* =========================== */
 .login-menu-container {
+  display: none;
   background-color: var(--mid-beige);
-  width: 280px;
-  max-width: 500px;
-  height: 68%;
+
+  width: 60vw;
+  padding: 10px;
+  height: fit-content;
   border-radius: 16px;
-  z-index: 3;
+  z-index: 5;
   box-shadow: -8px 0px 12px 0px rgba(0, 0, 0, 0.4);
   align-self: center;
-  display: flex;
   justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
 }
 
-.login-overlay {
-  /* filter: grayscale(20); */
-  background-color: rgba(182, 18, 81, 0.35);
-  z-index: 2;
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  display: none;
-  justify-content: center;
-  align-content: center;
+.fade-in{
+  opacity: 1;
 }
 
-/* .move-login-menu-left {
-    /* right: -300px; */
-/* display: block; */
-/* } */
-.login-menu-wrapper {
-  background-color: var(--dark-green);
-  border-radius: 16px;
-  width: 90%;
-  height: 200px;
-  display: flex;
-  /* align-items: center; */
-  /* justify-content:right; */
+.fade-out{
+  animation: fade-out 0.5s ease-in-out forwards;
 }
 
-.login-menu-wrapper input {
-  background-color: var(--light-beige);
-  width: 90%;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.535);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-  border: 1px solid #FFF;
-  border-radius: 24px;
+@keyframes fade-out {
+  from {opacity: 1;}
+  to {opacity: 0;}
 
 }
 
+/* Hamburger */
 .move-menu-right {
   left: 0;
 }
@@ -522,6 +539,11 @@ li {
   .cart-content-container h1 {
     font-size: 20px;
   }
+
+  .login-register-link-wrapper h1{
+
+    font-size: 20px;
+}
 
 }
 
@@ -552,8 +574,6 @@ li {
   .login-wrapper {
     visibility: visible;
   }
-
-
 
 }
 </style>

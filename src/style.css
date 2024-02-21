@@ -10,6 +10,7 @@
 
 body {
   color: var(--dark-green);
+  overflow-x: hidden;
 }
 
 body,
@@ -59,6 +60,7 @@ h4,
 h5,
 h6 {
   margin: 0;
+  font-family: "Anevir Next DemiBold";
 }
 
 /* Colors
@@ -95,6 +97,23 @@ h6 {
   font-style: normal;
 }
 
+
+@font-face {
+  font-family: "Anevir Next Cyr Medium";
+  src: url("./assets/font/avenir-next/AvenirNextCyr-Medium.ttf") format("opentype");
+  font-weight: medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Anevir Next DemiBold";
+  src: url("./assets/font/avenir-next/AvenirNextCyr-Demi.ttf") format("opentype");
+  font-weight: medium;
+  font-style: normal;
+}
+
+
+
 body {
   margin: 0;
   font-family: "Avenir Next Cyr Regular";
@@ -114,6 +133,21 @@ main {
   flex-grow: 1;
   max-width: var(--desktop-size);
   width: 100%;
+}
+
+.bread-crumb-meny {
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+  gap: 0.2rem
+}
+
+.bread-crumb-meny li .active {
+  font-weight: bolder;
+}
+
+.bread-crumb-meny li a:hover {
+  text-decoration: underline;
 }
 
 .title-bold {

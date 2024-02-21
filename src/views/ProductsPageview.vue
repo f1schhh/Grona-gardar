@@ -1,6 +1,5 @@
 <script>
 import SearchBar from '../components/SearchBar.vue';
-import router from '../router';
 
 export default {
   data() {
@@ -74,7 +73,7 @@ export default {
     //Method that forwards user to a specific product page
     onProductClick(id) {
       // Use router.push to navigate to page Search
-      router.push(`/product/${id}`)
+      this.$router.push(`/product/${id}`)
     },
 
   },
@@ -86,6 +85,12 @@ export default {
 
 <template>
   <section class="container">
+    <nav>
+      <ul class="bread-crumb-meny">
+        <li><router-link to="/">Hem</router-link> <i class="bi bi-chevron-right"></i></li>
+        <li><router-link to="/products" class="active">Produkter</router-link></li>
+      </ul>
+    </nav>
     <!-- <SearchBar></SearchBar> -->
     <ul class="filter_categories">
       <li :class="{ active: $route.path === '/products' || $route.path === '/products/' }">
@@ -181,6 +186,7 @@ export default {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  flex-wrap: wrap;
   margin-bottom: 1rem;
 }
 
@@ -225,8 +231,6 @@ export default {
 h3 {
   color: black;
   font-weight: 700;
-  /* justify-content: left;
-    align-items: left; */
 }
 
 

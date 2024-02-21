@@ -1,5 +1,7 @@
 <template>
-    THIS IS A SPECIFIC PRODUCT
+    <div class="specific-product-container">
+
+    </div>
 </template>
 
 
@@ -8,6 +10,7 @@
 export default {
     data() {
         return {
+            specificProductData: null,
 
 
         }
@@ -17,17 +20,31 @@ export default {
     },
     created() {
 
-        //Send incoming prop to fetch product data
-        this.getProduct(this.productId);
+
 
     },
     methods: {
 
-        //Method that fetches product data based on incoming ID
-        getProduct(pId) {
+        async getProduct(pId) {
 
-            console.log(pId);
-        }
+
+            try {
+                console.log("heee", pId)
+                //Fetch all products from the json file
+                const response = await fetch('/src/database.json');
+                const data = await response.json();
+
+                console.log(data);
+                const identifiedProduct = data.find(item => item.id === pId);
+
+                console.log(identifiedProduct); // Do something with the fetched data
+
+
+            } catch (error) {
+                // this.$router.push('/error')
+                console.log("failed")
+            }
+        },
 
     },
     props: {
@@ -39,11 +56,22 @@ export default {
     },
 
     watch: {
-
-
+        productId: {
+            immediate: true,
+            handler(newProductId) {
+                this.getProduct(newProductId);
+            }
+        }
     },
 }
 </script>
 
 <style scoped>
+.specific-product-container {
+    margin-top: 8vw;
+    background-color: var(--dark-beige);
+    border-radius: 16px;
+    width: 90%;
+    height: 800px;
+}
 </style>
