@@ -164,13 +164,12 @@ export default {
       this.onMenuClick();
 
     },
+    // Method that opens the login and blurres background
     onLoginClick() {
-      // this.loginIsClicked = !this.loginIsClicked;
-
       const overlay = document.querySelector(".overlay-for-login")
       const loginContainer = document.querySelector(".login-menu-container ")
+      const login = document.querySelector("Login")
       loginContainer.classList.remove('fade-out')
-      // loginContainer.classList.add('fade-in');
 
       loginContainer.style.display ="flex"
       overlay.style.display = "flex"
@@ -244,10 +243,9 @@ export default {
 </script>
 
 
-
 <style scoped>
+
 header {
-  /* width: 100%; */
   width: 100vw;
   background-color: var(--dark-beige);
   overflow: hidden;
@@ -483,7 +481,7 @@ main {
 .login-menu-container {
   display: none;
   background-color: var(--mid-beige);
- 
+
   width: 60vw;
   padding: 10px;
   height: fit-content;
