@@ -1,7 +1,9 @@
-<script></script>
+<script>
+import { RouterLink } from 'vue-router';
+</script>
 
 <style scoped>
-main {
+article {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
@@ -53,7 +55,7 @@ i {
 
 
 @media screen and (max-width: 385px) {
-    main {
+    article {
         width: 100%;
     }
 }
@@ -61,43 +63,54 @@ i {
 
 
 <template>
-    <main>
+    <article>
 
         <aside id="profileInfo">
             <h1>Min profil</h1><img id="profilePic" src="../assets/media/profile_pictures/profilePic1.jpg" alt="">
             <h2>Namn</h2>
             <ul>
+
                 <li class="profileInfo_li">
-                    <i class="bi bi-basket3"></i>
-                    <p>Orderhistorik</p>
+                    <router-link to="/account/orderhistory">
+
+                        <i class="bi bi-basket3"></i>
+                        <p>Orderhistorik</p>
+                    </router-link>
                 </li>
 
                 <li class="profileInfo_li">
                     <hr class="hrAside">
                 </li>
-                <li class="profileInfo_li"><i class="bi bi-person"></i>
-                    <p>Mitt konto</p>
+                <li class="profileInfo_li">
+                    <router-link to="/account/editaccount">
+                        <i class="bi bi-person"></i>
+                        <p>Mitt konto</p>
+                    </router-link>
                 </li>
                 <li class="profileInfo_li">
                     <hr class="hrAside">
                 </li>
                 <li class="profileInfo_li">
-                    <i class="bi bi-heart"></i>
-                    <p>
-                        Favoriter
-                    </p>
+                    <router-link to="/account/favorites">
+                        <i class="bi bi-heart"></i>
+                        <p>
+                            Favoriter
+                        </p>
+                    </router-link>
                 </li>
                 <li class="profileInfo_li">
                     <hr class="hrAside">
                 </li>
                 <li class="profileInfo_li">
-                    <i class="bi bi-box-arrow-left"></i>
-                    <p>Logga ut</p>
+                    <router-link to="/account/logout">
+                        <i class="bi bi-box-arrow-left"></i>
+                        <p>Logga ut</p>
+                    </router-link>
                 </li>
             </ul>
             <!-- <hr id="endAside"> -->
         </aside>
-        <router-view></router-view>
+        <RouterView />
 
-    </main>
+    </article>
 </template>

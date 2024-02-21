@@ -3,7 +3,7 @@
 </script>
 
 <style scoped>
-main {
+article {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
@@ -115,7 +115,7 @@ main {
 }
 
 @media screen and (max-width: 385px) {
-    main {
+    article {
         width: 100%;
     }
 
@@ -131,7 +131,7 @@ main {
 </style>
 
 <template>
-    <main>
+    <article>
         <section id="orderHistory">
             <h2>Favoriter</h2>
             <hr id="orderHistory_hr">
@@ -219,5 +219,5 @@ main {
                 </li>
             </ul>
         </section>
-    </main>
+    </article>
 </template>

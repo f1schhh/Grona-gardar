@@ -3,7 +3,7 @@
 </script>
 
 <style scoped>
-main {
+article {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
@@ -13,6 +13,9 @@ main {
 #orderHistory h2 {
     font-weight: bold;
     font-size: 1rem;
+    text-align: center;
+    padding-top: 0.8rem;
+    padding-bottom: 0.5rem;
 }
 
 #orderHistory_hr {
@@ -21,12 +24,6 @@ main {
 
 #orderHistory {
     background-color: var(--mid-beige);
-}
-
-#orderHistory h2 {
-    text-align: center;
-    padding-top: 0.8rem;
-    padding-bottom: 0.5rem;
 }
 
 .orderHistory_list {
@@ -98,7 +95,7 @@ main {
 }
 
 @media screen and (max-width: 385px) {
-    main {
+    article {
         width: 100%;
     }
 
@@ -114,7 +111,7 @@ main {
 </style>
 
 <template>
-    <main>
+    <article>
         <section id="orderHistory">
             <h2>Orderhistorik</h2>
             <hr id="orderHistory_hr">
@@ -182,5 +179,5 @@ main {
                 </li>
             </ul>
         </section>
-    </main>
+    </article>
 </template>
