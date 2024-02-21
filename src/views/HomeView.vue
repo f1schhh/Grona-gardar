@@ -134,35 +134,39 @@ export default {
         <h3>Kategorier</h3>
         <ul class="product_list category_flex">
           <li>
-            <router-link :to="{ path: `/product/vegetables` }">
-              <div class="specific_product category_box">
+            <router-link :to="{ path: `/products/vegetables` }">
+              <div class="specific_product category_box specific_product_big">
                 <div class="img-wrapper">
                   <img src="../assets/media/Artichoke.jpg" alt="">
                 </div>
-                <div class="h3_and_heart">
-                  <h4>Grönsaker</h4>
+                <div class="category_text">
+                  <div class="h3_and_heart">
+                    <h4>Grönsaker</h4>
+                  </div>
+                  <p class="p_category">
+                    Varje grönsak är omsorgsfullt odlad med hållbara metoder för att
+                    säkerställa hög kvalitet inom både smak och näring.
+                  </p>
                 </div>
-                <p class="p_category">
-                  Varje grönsak är omsorgsfullt odlad med hållbara metoder för att
-                  säkerställa hög kvalitet inom både smak och näring.
-                </p>
               </div>
             </router-link>
           </li>
 
           <li>
-            <router-link :to="{ path: `/product/fruit` }">
-              <div class="specific_product category_box">
+            <router-link :to="{ path: `/products/fruits` }">
+              <div class="specific_product category_box specific_product_big">
                 <div class="img-wrapper">
                   <img src="../assets/media/Flowers.jpg" alt="">
                 </div>
-                <div class="h3_and_heart">
-                  <h4>Frukt</h4>
+                <div class="category_text">
+                  <div class="h3_and_heart">
+                    <h4>Frukt</h4>
+                  </div>
+                  <p class="p_category">
+                    Handplockade frukter från våra trädgårdar där varje frukt är
+                    odlad med kärlek och omsorg.
+                  </p>
                 </div>
-                <p class="p_category">
-                  Handplockade frukter från våra trädgårdar där varje frukt är
-                  odlad med kärlek och omsorg.
-                </p>
               </div>
             </router-link>
           </li>
@@ -233,11 +237,11 @@ export default {
             precis som de borde. Det är som att få leverans direkt från trädgården!
           </p>
           <p class="review_signature">
-            Anna-Karin
+            Nour
           </p>
         </div>
 
-        <div class="block_review block_review_desktop">
+        <div class="block_review show_hide_one">
           <div>
             <i class="bi bi-star-fill"></i>
             <i class="bi bi-star-fill"></i>
@@ -246,16 +250,16 @@ export default {
             <i class="bi bi-star-fill"></i>
           </div>
           <p class="main_review_text">
-            Sortimentet är imponerande och jag har upptäckt nya favoriter sedan jag
-            började handla här. Äpplena är krispiga, morötterna är saftiga och smakar
-            precis som de borde. Det är som att få leverans direkt från trädgården!
+            Gröna Gårdar har verkligen revolutionerat min matupplevelse. Jag älskar att varje
+            tugga jag tar är full av naturlig, lokal kärlek och omsorg. Det finns inget bättre än att stödja hållbara
+            metoder och njuta av fantastisk smak samtidigt!
           </p>
           <p class="review_signature">
-            Anna-Karin
+            Johan
           </p>
         </div>
 
-        <div class="block_review block_review_desktop">
+        <div class="block_review show_hide_two">
           <div>
             <i class="bi bi-star-fill"></i>
             <i class="bi bi-star-fill"></i>
@@ -264,14 +268,33 @@ export default {
             <i class="bi bi-star-fill"></i>
           </div>
           <p class="main_review_text">
-            Sortimentet är imponerande och jag har upptäckt nya favoriter sedan jag
-            började handla här. Äpplena är krispiga, morötterna är saftiga och smakar
-            precis som de borde. Det är som att få leverans direkt från trädgården!
+            Gröna Gårdar har gjort mig till en trogen kund med sin otroliga kvalitet och smakupplevelse. Varje produkt är
+            som en smakresa genom naturens underverk och jag kan inte få nog av deras fantastiska utbud som varierar med
+            säsongerna!
           </p>
           <p class="review_signature">
-            Anna-Karin
+            Rebecka
           </p>
         </div>
+
+        <div class="block_review show_hide_three">
+          <div>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="main_review_text">
+            Gröna Gårdar har verkligen förändrat mitt sätt att se på ekologiskt odlade produkter. Deras grönsaker och
+            frukter är inte bara hälsosamma utan också otroligt goda. Varje produkt är fylld med sådan smakrikedom. Jag är
+            hooked för livet!
+          </p>
+          <p class="review_signature">
+            Amir
+          </p>
+        </div>
+
       </div>
 
     </section>
@@ -397,7 +420,8 @@ section {
 
 .about_img {
   object-fit: cover;
-  max-height: 400px;
+  width: 50vw;
+  height: auto;
 }
 
 .block_category {
@@ -408,6 +432,7 @@ section {
 
 .category_flex {
   display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 
@@ -419,8 +444,6 @@ section {
   background-color: var(--light-beige);
   height: 22rem;
 }
-
-
 
 .img-wrapper {
   width: 10.4375rem;
@@ -457,7 +480,8 @@ section {
 }
 
 .img_environment {
-  max-height: 240px;
+  width: 100vw;
+  height: auto;
 }
 
 .text_environment {
@@ -480,6 +504,11 @@ section {
   justify-content: center;
 }
 
+.review_flex {
+  display: flex;
+  flex-direction: row;
+}
+
 .block_review {
   background-color: var(--dark-beige);
   padding: 1rem;
@@ -487,14 +516,14 @@ section {
   margin: auto;
   margin-top: 1rem;
   margin-bottom: 3rem;
-}
-
-.review_flex {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  max-width: 220px;
 }
 
-.block_review_desktop {
+.show_hide_one,
+.show_hide_two,
+.show_hide_three {
   display: none;
 }
 
@@ -535,10 +564,37 @@ section {
   .product_list {
     justify-content: flex-start;
   }
+}
+
+@media screen and (min-width: 560px) {
+  .specific_product_big {
+    width: 40vw;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between;
+  }
+
+  .category_flex {
+    justify-content: center;
+  }
+
+  .specific_product_big .img-wrapper img {
+    border-radius: 19px 0 0 19px;
+  }
+
+  .img-wrapper_big {
+    flex-grow: 1;
+    height: auto;
+  }
+
+  .category_text {
+    display: flex;
+    flex-direction: column;
+  }
 
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width:800px) {
   .section_environment {
     padding-top: 0;
     display: flex;
@@ -558,31 +614,39 @@ section {
     align-items: center;
   }
 
+  .img_environment {
+    width: 50vw;
+    border-radius: 19px;
+  }
+
   .text_environment {
     display: flex;
     flex-direction: column;
   }
 
-  .block_review_desktop {
-    display: contents;
+  .show_hide_one {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 220px;
   }
 }
 
-@media screen and (min-width: 700px) and (max-width: 993px) {
-  .img_environment {
-    object-fit: scale-down;
-    max-height: 250px;
-    border-radius: 19px;
-    padding-left: 1rem;
+@media screen and (min-width: 820px) {
+  .show_hide_two {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 220px;
   }
 }
 
-@media screen and (min-width: 994px) {
-  .img_environment {
-    object-fit: scale-down;
-    max-height: 400px;
-    border-radius: 19px;
-    padding-left: 1rem;
+@media screen and (min-width: 1074px) {
+  .show_hide_three {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 220px;
   }
 }
 </style>
