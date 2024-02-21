@@ -84,6 +84,7 @@ export default {
                 <i class="bi bi-heart"></i>
               </div>
             </div>
+            <p style="padding: 0.3rem; min-height: 4rem;">{{ items.description_title }}</p>
             <div class="price">
               <p>{{ items.price }} kr/kg</p>
             </div>

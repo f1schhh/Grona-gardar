@@ -116,6 +116,21 @@ main {
   width: 100%;
 }
 
+.bread-crumb-meny {
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+  gap: 0.2rem
+}
+
+.bread-crumb-meny li .active {
+  font-weight: bolder;
+}
+
+.bread-crumb-meny li a:hover {
+  text-decoration: underline;
+}
+
 .title-bold {
   font-weight: bolder;
 }
