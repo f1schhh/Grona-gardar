@@ -50,6 +50,8 @@ export default {
   }
 }
 </script>
+
+
 <template>
   <section v-if="productData">
     <nav>
@@ -62,6 +64,7 @@ export default {
         </li>
       </ul>
     </nav>
+
     <div class="specific_product">
       <div class="product_information">
         <div class="img-wrapper">

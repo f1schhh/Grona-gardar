@@ -1,5 +1,6 @@
 <script>
 import SearchBar from '../components/SearchBar.vue';
+import router from '../router';
 
 export default {
   data() {
@@ -68,7 +69,14 @@ export default {
       } catch {
 
       }
-    }
+    },
+
+    //Method that forwards user to a specific product page
+    onProductClick(id) {
+      // Use router.push to navigate to page Search
+      router.push(`/product/${id}`)
+    },
+
   },
   components: {
     SearchBar
@@ -99,11 +107,12 @@ export default {
         <ul class="product_list">
           <li v-for="items in categoryData.fruits">
             <div class="specific_product">
-              <div class="img-wrapper">
+              <div class="img-wrapper" @click="onProductClick(items.id)">
                 <img :src="items.product_image" :alt="items.product_name">
               </div>
               <div class="h3_and_heart">
-                <h3>{{ items.product_name }}</h3>
+                <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
+                }}</router-link></h3>
                 <div class="button_like">
                   <i class="bi bi-heart"></i>
                 </div>
@@ -119,11 +128,12 @@ export default {
         <ul class="product_list">
           <li v-for="items in categoryData.vegetables">
             <div class="specific_product">
-              <div class="img-wrapper">
+              <div class="img-wrapper" @click="onProductClick(items.id)">
                 <img :src="items.product_image" :alt="items.product_name">
               </div>
               <div class="h3_and_heart">
-                <h3>{{ items.product_name }}</h3>
+                <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
+                }}</router-link></h3>
                 <div class="button_like">
                   <i class="bi bi-heart"></i>
                 </div>
@@ -138,11 +148,12 @@ export default {
         <ul class="product_list">
           <li v-for="items in categoryData.season">
             <div class="specific_product">
-              <div class="img-wrapper">
+              <div class="img-wrapper" @click="onProductClick(items.id)">
                 <img :src="items.product_image" :alt="items.product_name">
               </div>
               <div class="h3_and_heart">
-                <h3>{{ items.product_name }}</h3>
+                <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
+                }}</router-link></h3>
                 <div class="button_like">
                   <i class="bi bi-heart"></i>
                 </div>
@@ -192,6 +203,7 @@ export default {
 .img-wrapper {
   width: 10.4375rem;
   height: 10.4375rem;
+  cursor: pointer;
 }
 
 .img-wrapper img {

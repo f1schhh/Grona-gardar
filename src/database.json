@@ -4,7 +4,7 @@
       "id": 1,
       "product_name": "Morot",
       "description_title": "God kulturarvssort",
-      "description": "Kulturarvssort som introducerades redan år 1885.Morötterna är cylindriska, orange-färgade och nästan märgfria.",
+      "description": "Kulturarvssort som introducerades redan år 1885. Morötterna är cylindriska, orange-färgade och nästan märgfria.",
       "product_type": "Early Nantes",
       "category": "Grönsaker",
       "product_image": "/src/assets/media/product_images/Carrots_Early_Nantes.jpg",
@@ -191,7 +191,7 @@
       "description_title": "Klassisk och god sort",
       "description": "Köttet är sprött och gulvitt med en söt, mild, aromrik, syrlig smak.",
       "product_type": "Aroma",
-      "category": "rukt",
+      "category": "Frukt",
       "product_image": "/src/assets/media/product_images/Apple_Aroma.jpg",
       "price": 52,
       "season": "autumn"
