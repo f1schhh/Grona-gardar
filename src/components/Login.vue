@@ -4,14 +4,22 @@
             <h1 class="register-link" :class="{ underline: !loginBtn }" @click="onRegisterClick">Registrera</h1>
         </div>
 
-        <div class="login-menu-wrapper">
+        <div v-if="loginBtn" class="login-menu-wrapper">
 
           <form action="" method="post">
             <p for="username">E-postadress </p>
             <input type="text" required >
             <p for="password">Lösenord </p>
             <input type="text" required>
+
+            <p>Glömt lösenord?</p>
+
+
           </form>
+          <input class="login-butt" type="button" value="Logga in">
+        </div>
+        <div v-else="!loginBtn" class="login-menu-wrapper">
+            <p>Hej</p>
         </div>
 </template>
 
@@ -38,12 +46,14 @@ export default{
   background-color: var(--dark-green);
   border-radius: 16px;
   width: 90%;
-  height: 200px;
   display: flex;
   align-self: center;
   align-content: center;
   justify-content: center;
-  padding: 10px;
+  text-align:center;
+  flex-direction: column;
+
+  /* Centers the input fields */
 }
 
 .login-register-link-wrapper{
@@ -63,28 +73,40 @@ export default{
     border-bottom: var(--dark-green) 0.125em solid;
 }
 
-/* label{
-    color: var(--light-beige);
-    font-family: Anevir Next Cyr Medium;
-    font-size: 16px;
-} */
-
 p{
     color: var(--light-beige);
     font-size: 16px;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
-.login-menu-wrapper input {
-  background-color: var(--light-beige);
+form{
+    /* background-color: chocolate; */
+    width: 100%;
+}
+
+.login-menu-wrapper input[type="text"]{
+   background-color: var(--light-beige);
   width: 90%;
   height: 30px;
-  background: rgba(255, 255, 255, 0.535);
+  /* background: rgba(255, 255, 255, 0.535); */
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
   border: 1px solid #FFF;
   border-radius: 24px;
-  background-color: var(--light-beige);
+
+}
+
+.login-butt{
+    background-color: var(--mid-beige);
+    border-radius: 24px;
+    border: 1px solid #FFF;
+    width: 143px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+    height: 37px;
+    font-size: 16px;
+    position: relative;
+    bottom: -18.5px;
+    align-self: center;
 }
 
 
