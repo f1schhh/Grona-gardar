@@ -1,5 +1,5 @@
 <template>
-    <footer :style="{ backgroundColor: $route.meta.footerBackgroundColor }">
+    <footer :style="{ backgroundColor: this.$route.meta.footerBackgroundColor }">
         <div class="svg-container">
             <svg id="Lager_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 519.54 50.15">
                 <defs></defs>
@@ -43,8 +43,6 @@
                     <p><b style="font-family: Anevir Next Cyr Medium;">Telefon:</b> 032-234234</p>
                 </div>
 
-
-
             </div>
 
 
@@ -54,6 +52,10 @@
     </footer>
 </template>
 
+<script>
+
+</script>
+
 
 
 <style scoped>
@@ -61,6 +63,15 @@ footer {
     font-size: 3vw;
     width: 100vw;
     text-align: center;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Anevir Next DemiBold";
 }
 
 .svg-container {
