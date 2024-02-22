@@ -43,8 +43,6 @@
                     <p><b style="font-family: Anevir Next Cyr Medium;">Telefon:</b> 032-234234</p>
                 </div>
 
-
-
             </div>
 
 
@@ -65,6 +63,14 @@ footer {
     font-size: 3vw;
     width: 100vw;
     text-align: center;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: "Anevir Next DemiBold";
 }
 

@@ -16,33 +16,13 @@
       </ul>
     </div>
     <div class="login-field-to-center-container">
-    <div class="login-menu-container">
-      <Login></Login>
+      <div class="login-menu-container">
+        <Login></Login>
       </div>
     </div>
+
     <!--==== Cart conent Container ====-->
-    <div class="cart-content-container">
-
-      <div class="exit-cart-content-container">
-
-        <div @click="exitCart" class="exit-cart-icon-wrapper">
-          <i class="bi bi-x-lg"></i>
-        </div>
-      </div>
-
-      <h1>Din Varukorg</h1>
-
-      <div class="products-overview-container">
-
-        <div class="single-product-wrapper">
-          <div class="product-image-wrapper">
-          </div>
-          <div class="single-product-info-wrapper">
-          </div>
-        </div>
-      </div>
-
-    </div>
+    <Cart></Cart>
     <!--End of Cart Content COntainer-->
 
     <nav id="navBar">
@@ -85,10 +65,12 @@
 <script>
 import { RouterLink } from 'vue-router';
 import Login from './Login.vue';
+import Cart from './Cart.vue'
 
 export default {
-  components:{
-    Login
+  components: {
+    Login,
+    Cart,
   },
   data() {
     return {
@@ -171,17 +153,17 @@ export default {
       const login = document.querySelector("Login")
       loginContainer.classList.remove('fade-out')
 
-      loginContainer.style.display ="flex"
+      loginContainer.style.display = "flex"
       overlay.style.display = "flex"
 
-      setTimeout(function (){
+      setTimeout(function () {
         overlay.classList.add("increase-blur-when-using-login")
         loginContainer.classList.add('fade-in');
-      },100)
+      }, 100)
 
     },
     //Method for exiting login page
-    exitLogin(){
+    exitLogin() {
 
       const overlay = document.querySelector(".overlay-for-login")
       const loginContainer = document.querySelector(".login-menu-container ")
@@ -235,6 +217,8 @@ export default {
         overlay.style.display = "none";
       }, 500)
     }
+
+
   }
 
 }
@@ -244,7 +228,6 @@ export default {
 
 
 <style scoped>
-
 header {
   width: 100vw;
   background-color: var(--dark-beige);
@@ -298,6 +281,7 @@ header {
   justify-content: center;
   align-content: center;
 }
+
 .increase-blur-when-using-login {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
@@ -397,63 +381,6 @@ nav {
   justify-content: flex-end;
 }
 
-.cart-content-container {
-  width: 230px;
-  height: 100vh;
-  right: -280px;
-  top: 0;
-  background-color: var(--mid-beige);
-  position: absolute;
-  z-index: 3;
-  transition: right 0.75s;
-  display: flex;
-  flex-direction: column;
-  row-gap: 30px;
-  box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.4);
-  padding-left: 25px;
-  padding-right: 25px;
-}
-
-.move-cart-content-container {
-  right: 0;
-}
-
-.exit-cart-content-container {
-  height: 68px;
-  margin-top: 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.exit-cart-icon-wrapper {
-  width: fit-content;
-  height: fit-content;
-  line-height: 10px;
-  height: 25px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
-.cart-content-container h1 {
-  font-size: 4.45vw;
-  text-align: center;
-
-}
-
-.products-overview-container {
-  background-color: coral;
-  width: 100%;
-}
-
-.single-product-wrapper {
-  background-color: lightblue;
-  width: 100%;
-  height: 100px;
-  border-radius: 19px;
-}
-
 .bi {
   font-size: 25px;
   cursor: pointer;
@@ -499,17 +426,22 @@ main {
   transition: opacity 1.5s ease-in-out;
 }
 
-.fade-in{
+.fade-in {
   opacity: 1;
 }
 
-.fade-out{
+.fade-out {
   animation: fade-out 0.5s ease-in-out forwards;
 }
 
 @keyframes fade-out {
-  from {opacity: 1;}
-  to {opacity: 0;}
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 
 }
 
@@ -536,14 +468,11 @@ li {
 
 /*===================*/
 @media screen and (min-width: 451px) {
-  .cart-content-container h1 {
+
+  .login-register-link-wrapper h1 {
+
     font-size: 20px;
   }
-
-  .login-register-link-wrapper h1{
-
-    font-size: 20px;
-}
 
 }
 
