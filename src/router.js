@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from './views/HomeView.vue'
 import AboutProductsview from './views/AboutProductsview.vue'
-import SpecificProductView from "./views/SpecificProductView.vue"
 import ProductsPageview from './views/ProductsPageview.vue'
 import AccountView from './views/AccountView.vue'
 import OrderHistoryView from './views/OrderHistoryView.vue'
@@ -23,10 +22,8 @@ const router = createRouter({
       meta: { footerBackgroundColor: '#fff8ee' }
     },
     {
-      path: '/product/:productId',
-      component: SpecificProductView,
-      name: "SpecificProduct",
-      props: true,
+      path: '/product/:id',
+      component: AboutProductsview,
       //Background color used by footer to match the bg of current page
       meta: { footerBackgroundColor: '#efe9de' }
     },
