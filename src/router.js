@@ -44,6 +44,7 @@ const router = createRouter({
     },
     {
       path: '/account',
+      redirect: '/account/orderhistory',
       component: AccountView,
       //Background color used by footer to match the bg of current page
       meta: { footerBackgroundColor: '#efe9de' },
