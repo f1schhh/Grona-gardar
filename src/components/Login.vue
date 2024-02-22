@@ -111,8 +111,6 @@ form{
 
 
 
-
-
 /*===================*/
 @media screen and (min-width: 451px) {
 
