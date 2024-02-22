@@ -56,6 +56,34 @@
     font-size: 0.8rem;
     width: 6.5rem;
 }
+
+@media screen and (min-width: 600px) {
+    article {
+        padding-left: 2rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    #logOut_section h2 {
+        width: 50rem;
+        margin: 1.5rem 0;
+        font-size: 1.5rem;
+    }
+
+    #logOut_section p {
+        font-size: 1.2rem;
+    }
+
+    .buttons_stay_logout {
+        font-size: 1rem;
+        color: var(--dark-green);
+    }
+
+    #hrDiv {
+        display: none;
+    }
+}
 </style>
 
 <template>

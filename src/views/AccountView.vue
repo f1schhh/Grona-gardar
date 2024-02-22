@@ -3,47 +3,6 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <style scoped>
-@media screen and (min-width: 386px) {
-    article {
-
-        display: flex;
-        flex-direction: row;
-        /* justify-content: flex-start;
-        align-items: flex-start;
-        justify-self: flex-start;
-        align-self: flex-start; */
-        flex-wrap: nowrap;
-        width: 100%;
-    }
-
-    #profileInfo {
-        display: flex;
-        flex-direction: row;
-        /* justify-content: flex-start;
-        align-items: flex-start;
-        justify-self: flex-start;
-        align-self: flex-start; */
-        flex-wrap: nowrap;
-        margin: 0;
-        padding: 0;
-    }
-
-    #hrDividePage {
-        display: none;
-    }
-
-    #test {
-        flex-wrap: nowrap;
-        /* float: left; */
-        /* position: relative; */
-        height: 5rem;
-        margin: 0;
-        padding: 0;
-        width: 0rem;
-        border: solid 3px var(--dark-beige);
-    }
-}
-
 article {
     display: flex;
     flex-direction: column;
@@ -55,7 +14,7 @@ article {
 
 #hrDividePage {
     width: 100%;
-    border: solid 5px var(--dark-beige);
+    border-left: solid 5px var(--dark-beige);
 }
 
 #profileInfo {
@@ -81,7 +40,6 @@ article {
 ul {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
 }
 
 .profileInfo_li {
@@ -107,6 +65,71 @@ i {
         width: 100%;
     }
 }
+
+@media screen and (min-width: 600px) {
+    article {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        flex-wrap: nowrap;
+        gap: 0;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin: 1rem;
+    }
+
+    #profilePic {
+        width: 10rem;
+    }
+
+    h2 {
+        font-weight: 100;
+        font-size: 1.2rem;
+        /* padding: 1.5rem; */
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        /* padding-top: 2rem; */
+    }
+
+    .profileInfo_li {
+        padding: 0;
+        margin: 0;
+    }
+
+    .i_and_p {
+        padding: 1rem;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        font-size: 1rem;
+    }
+
+    .hrDivideLi {
+        height: 0;
+        width: 20rem;
+        border: solid 2px var(--dark-beige);
+        margin: 0;
+        padding: 0;
+    }
+
+    #hrDividePage {
+        /* display: flex; */
+        width: 0;
+        /* Changed from 0% to take up the remaining space */
+        height: 100%;
+        /* flex-wrap: nowrap; */
+        border: solid 2px var(--dark-beige);
+        margin: 0;
+        /* Adjust margin as needed */
+        padding: 0;
+    }
+}
 </style>
 
 
@@ -120,9 +143,10 @@ i {
 
                 <li class="profileInfo_li">
                     <router-link to="/account/orderhistory">
-
-                        <i class="bi bi-basket3"></i>
-                        <p>Orderhistorik</p>
+                        <div class="i_and_p">
+                            <i class="bi bi-basket3"></i>
+                            <p>Orderhistorik</p>
+                        </div>
                     </router-link>
                 </li>
 
@@ -131,8 +155,10 @@ i {
                 </li>
                 <li class="profileInfo_li">
                     <router-link to="/account/editaccount">
-                        <i class="bi bi-person"></i>
-                        <p>Mitt konto</p>
+                        <div class="i_and_p">
+                            <i class="bi bi-person"></i>
+                            <p>Mitt konto</p>
+                        </div>
                     </router-link>
                 </li>
                 <li class="profileInfo_li">
@@ -140,10 +166,12 @@ i {
                 </li>
                 <li class="profileInfo_li">
                     <router-link to="/account/favorites">
-                        <i class="bi bi-heart"></i>
-                        <p>
-                            Favoriter
-                        </p>
+                        <div class="i_and_p">
+                            <i class="bi bi-heart"></i>
+                            <p>
+                                Favoriter
+                            </p>
+                        </div>
                     </router-link>
                 </li>
                 <li class="profileInfo_li">
@@ -151,16 +179,16 @@ i {
                 </li>
                 <li class="profileInfo_li">
                     <router-link to="/account/logout">
-                        <i class="bi bi-box-arrow-left"></i>
-                        <p>Logga ut</p>
+                        <div class="i_and_p">
+                            <i class="bi bi-box-arrow-left"></i>
+                            <p>Logga ut</p>
+                        </div>
                     </router-link>
                 </li>
             </ul>
-            <!-- <hr id="endAside"> -->
 
         </aside>
         <hr id="hrDividePage">
-        <hr id="test">
         <RouterView />
 
     </article>

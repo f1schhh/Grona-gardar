@@ -44,7 +44,7 @@ article {
     justify-items: center;
 }
 
-#accountInfo div {
+#accountInfo {
     display: flex;
     flex-direction: column;
     width: 17rem;
@@ -60,13 +60,11 @@ article {
     font-size: 1rem;
 }
 
-/* #editProfilePic {
-        display: flex;
-        justify-items: center;
-        justify-self: center;
-        justify-content: center;
-        text-align: center;
-    } */
+#editProfilePic {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
 
 #profilePic {
     width: 5rem;
@@ -76,11 +74,19 @@ article {
 }
 
 #editPicSymbol {
+    width: 0;
+    padding: 0;
+    margin: 0;
     display: flex;
-    position: absolute;
-    right: 8rem;
-    bottom: 18.5rem;
-    color: black;
+    flex-wrap: nowrap;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.inputBox,
+#adressDiv {
+    display: flex;
+    flex-direction: column;
 }
 
 #adressDiv {
@@ -98,6 +104,74 @@ article {
     font-size: 0.8rem;
     width: 8rem;
 }
+
+@media screen and (min-width: 600px) {
+    article {
+        padding-left: 2rem;
+    }
+
+    #editAccount {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    #editAccount h2 {
+        text-align: left;
+        margin: 0;
+        padding: 2rem 0;
+        font-size: 1.5rem;
+    }
+
+    #editProfilePic {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    #profilePic {
+        width: 8rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    #accountInfo {
+        display: flex;
+        flex-direction: column;
+        width: 17rem;
+        font-weight: bold;
+    }
+
+    #editPicSymbol {
+        width: 0;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-self: flex-end;
+        align-self: flex-end;
+    }
+
+    label {
+        font-size: 1.2rem;
+    }
+
+    .inputBox,
+    #adressDiv {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .buttons {
+        font-size: 0.9rem;
+        color: var(--dark-green);
+    }
+
+    #hrDiv {
+        display: none;
+    }
+}
 </style>
 
 <template>
@@ -112,15 +186,15 @@ article {
                     <img id="profilePic" src="../assets/media/profile_pictures/profilePic1.jpg" alt="">
                     <i id="editPicSymbol" class="bi bi-pencil-square"></i>
                 </div>
-                <div>
+                <div class="inputBox">
                     <label for="fname">Förnamn</label>
                     <input type="text" id="fname" name="fname" placeholder="Exempel" required>
                 </div>
-                <div>
+                <div class="inputBox">
                     <label for="lname">Efternamn</label>
                     <input type="text" id="lname" name="lname" placeholder="Exempelsson" required>
                 </div>
-                <div>
+                <div class="inputBox">
                     <label for="fname">E-post</label>
                     <input type="email" id="email" name="fname" placeholder="exempel@exempel.com" required>
                 </div>

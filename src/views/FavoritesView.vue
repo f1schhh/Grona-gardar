@@ -129,6 +129,43 @@ article {
         height: 6.5rem;
     }
 }
+
+@media screen and (min-width: 600px) {
+    article {
+        padding-left: 2rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    #favorites h2 {
+        text-align: left;
+        width: 0;
+        margin: 1.5rem 0;
+        font-size: 1.5rem;
+    }
+
+    #hrDiv {
+        display: none;
+    }
+
+
+
+    .favorites_list_li {
+        width: 25rem;
+        font-size: 1.2rem;
+    }
+
+    .infoProduct h3 {
+        font-size: 1.5rem;
+        font-weight: lighter;
+    }
+
+    .button_addToShoppingCart {
+        font-size: 1rem;
+        color: var(--dark-green);
+    }
+}
 </style>
 
 <template>

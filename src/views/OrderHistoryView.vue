@@ -110,6 +110,35 @@ article {
         height: 6.5rem;
     }
 }
+
+@media screen and (min-width: 600px) {
+    article {
+        padding-left: 2rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    #orderHistory h2 {
+        text-align: left;
+        width: 0;
+        margin: 1.5rem 0;
+        font-size: 1.5rem;
+    }
+
+    .orderHistory_list_li {
+        font-size: 1.2rem;
+    }
+
+    .button_seeOrder {
+        font-size: 1rem;
+        color: var(--dark-green)
+    }
+
+    #hrDiv {
+        display: none;
+    }
+}
 </style>
 
 <template>
