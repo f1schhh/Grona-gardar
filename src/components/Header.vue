@@ -1,5 +1,5 @@
 <template>
-  <header id="header">
+  <header id="header" autofocus>
     <div @click="exitMenu" class="overlay"></div>
     <div @click="exitCart" class="overlay-for-cart"></div>
     <!--Login div-->

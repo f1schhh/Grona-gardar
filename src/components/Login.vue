@@ -1,24 +1,15 @@
 <template>
           <div class="login-register-link-wrapper">
-<<<<<<< HEAD
-            <h1 >Logga in</h1>
-            <input type="button" value="Logga in">
-            <h1>Registrera</h1>
-          </div>
-=======
             <h1 class="login-link" :class="{ underline: loginBtn }" @click="onLoginClick">Logga in</h1>
             <h1 class="register-link" :class="{ underline: !loginBtn }" @click="onRegisterClick">Registrera</h1>
         </div>
 
-
-
->>>>>>> login
         <div class="login-menu-wrapper">
 
           <form action="" method="post">
-            <label for="username">E-postadress: </label>
-            <input type="text" required placeholder="E-postadress:">
-            <label for="password">Lösenord: </label>
+            <p for="username">E-postadress </p>
+            <input type="text" required >
+            <p for="password">Lösenord </p>
             <input type="text" required>
           </form>
         </div>
@@ -26,18 +17,6 @@
 
 <script>
 export default{
-<<<<<<< HEAD
-
-    data(){
-        return{
-
-        }
-    },
-    methods:{
-
-    }
-
-=======
     data(){
         return{
             loginBtn: true,
@@ -51,7 +30,6 @@ export default{
             this.loginBtn = false
         }
     }
->>>>>>> login
 }
 </script>
 
@@ -64,6 +42,8 @@ export default{
   display: flex;
   align-self: center;
   align-content: center;
+  justify-content: center;
+  padding: 10px;
 }
 
 .login-register-link-wrapper{
@@ -72,26 +52,28 @@ export default{
   text-align: center;
   justify-content: center;
   column-gap: 20px;
-  /* height: 40px; */
   margin: 20px 00;
 }
 .login-register-link-wrapper h1{
     cursor: pointer;
-    color: var(--light-beige);
+    color: var(--dark-green);
+}
+.underline{
+    font-family: Anevir Next DemiBold ;
+    border-bottom: var(--dark-green) 0.125em solid;
 }
 
-<<<<<<< HEAD
-/* Anevir Next DemiBold */
-/* Anevir Next Cyr Medium */
+/* label{
+    color: var(--light-beige);
+    font-family: Anevir Next Cyr Medium;
+    font-size: 16px;
+} */
 
-.login-register-link-wrapp h1{
-  color: var(--light-beige);
-=======
-.underline{
-    font-family: var();
-    border-bottom: var(--dark-green) 0.125em solid;
-
->>>>>>> login
+p{
+    color: var(--light-beige);
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .login-menu-wrapper input {
@@ -102,6 +84,7 @@ export default{
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
   border: 1px solid #FFF;
   border-radius: 24px;
+  background-color: var(--light-beige);
 }
 
 
