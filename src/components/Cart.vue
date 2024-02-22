@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { useCounterStore } from '../store';
 
 export default {
     components: {
@@ -31,8 +32,21 @@ export default {
     },
     data() {
         return {
-
+            isCartShowed: false
         }
+    },
+    created() {
+
+        this.onIncomingProductId();
+    },
+    props: {
+
+
+    },
+    computed: {
+
+
+
     },
     methods: {
         //method for exiting cart
@@ -51,8 +65,24 @@ export default {
             setTimeout(function () {
                 overlay.style.display = "none";
             }, 500)
-        }
-    }
+        },
+
+        onIncomingProductId() {
+            //Retrieve the Pinia store instance
+            const counterStore = useCounterStore();
+            counterStore.productId = "500";
+
+            //Access the productId from the store
+            const productId = counterStore.productId;
+
+            console.log(productId);
+        },
+
+    },
+    watch: {
+
+    },
+
 }
 </script>
 
