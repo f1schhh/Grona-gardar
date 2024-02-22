@@ -52,6 +52,9 @@ export default{
   column-gap: 20px
 }
 
+/* Anevir Next DemiBold */
+/* Anevir Next Cyr Medium */
+
 .login-register-link-wrapp h1{
   color: var(--light-beige);
 }
