@@ -57,7 +57,7 @@ export default {
      ===========================TOP============================
      ==========================================================  -->
     <section class="main_top">
-      <SearchBar></SearchBar>
+      <SearchBar class="search_style"></SearchBar>
       <div class="block_info">
         <h2>
           Färsk Frukt, Närodlad och Hållbar
@@ -113,16 +113,20 @@ export default {
      ==========================================================  -->
     <section class="section_about">
       <div class="block_about">
-        <h3>
-          Om oss
-        </h3>
-        <div>
-          Vi tror på hållbarhet och miljövänliga metoder. Genom att köpa från oss stödjer du lokal odling och minskar din
-          klimatpåverkan. Vi strävar efter att främja en naturlig och ekologisk produktion.
+        <img src="../assets/media/Couple_In_Field.jpg" alt="" class="about_img about_img_div">
+
+        <div class="about_text">
+
+          <h3>
+            Om oss
+          </h3>
+
+          <div>
+            Vi tror på hållbarhet och miljövänliga metoder. Genom att köpa från oss stödjer du lokal odling och minskar
+            din
+            klimatpåverkan. Vi strävar efter att främja en naturlig och ekologisk produktion.
+          </div>
         </div>
-      </div>
-      <div class="about_img_div">
-        <img src="../assets/media/Couple_In_Field.jpg" alt="" class="about_img">
       </div>
     </section>
 
@@ -136,7 +140,7 @@ export default {
           <li>
             <router-link :to="{ path: `/products/vegetables` }">
               <div class="specific_product category_box specific_product_big">
-                <div class="img-wrapper">
+                <div class="img-wrapper img-wrapper_big">
                   <img src="../assets/media/Artichoke.jpg" alt="">
                 </div>
                 <div class="category_text">
@@ -155,7 +159,7 @@ export default {
           <li>
             <router-link :to="{ path: `/products/fruits` }">
               <div class="specific_product category_box specific_product_big">
-                <div class="img-wrapper">
+                <div class="img-wrapper img-wrapper_big">
                   <img src="../assets/media/Flowers.jpg" alt="">
                 </div>
                 <div class="category_text">
@@ -196,7 +200,7 @@ export default {
             Genom ekologisk odling och avståndstagande från kemiska ämnen skapar vi en
             miljö där jorden flödar av liv.
           </p>
-          <p class="p_environment">
+          <!-- <p class="p_environment">
             <span class="new_p">Kretsloppsanpassning</span> är kärnan i vårt arbete
             -genom kompostering till återvinning minimerar vi vårt avfall och bidrar
             till ett hållbart användande av våra resurser. Energiförbrukningen optimeras
@@ -210,7 +214,7 @@ export default {
             ekologisk odling hoppas vi kunna inspirera andra till att välja en mer
             hållbar livsstil. Vår gård är en plats där varje gröda är en handling av
             kärlek till planeten och varje skörd är ett framsteg mot en grönare framtid.
-          </p>
+          </p> -->
         </div>
       </div>
     </section>
@@ -307,13 +311,18 @@ article {
   background-color: var(--dark-beige);
 }
 
-section {
-  padding: 1rem 0;
+/* h3 {
+  padding-left: 5%;
+} */
+
+.search_style {
+  margin-top: 5%;
 }
 
 .main_top {
   background-image: url("../assets/media/GreenHouse.jpg");
   background-size: cover;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -325,10 +334,10 @@ section {
   padding: 1rem;
   border-radius: 19px;
   width: 80%;
-  max-width: 70rem;
+  max-width: 25rem;
   display: flex;
   flex-direction: column;
-  margin-top: 4rem;
+  margin-top: 10%;
 }
 
 .main_info_text {
@@ -348,8 +357,12 @@ section {
 
 .section_season {
   background-color: var(--dark-beige);
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
+}
+
+.section_season h3 {
+  padding-bottom: 1rem;
 }
 
 .specific_product {
@@ -359,7 +372,7 @@ section {
 .product_list {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .product_information {
@@ -393,36 +406,32 @@ section {
 .section_about {
   background-color: var(--dark-green);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 0;
 }
 
 .block_about {
-  padding: 1rem;
+  /* padding: 1rem; */
   color: var(--light-beige);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 5rem;
 }
 
 .block_about h3 {
   padding-bottom: 1rem;
 }
 
-.about_img_div {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0;
-  margin: 0;
+.about_text {
+  padding: 1rem 10%;
 }
 
 .about_img {
-  object-fit: cover;
-  width: 50vw;
+  width: 100%;
   height: auto;
 }
+
 
 .block_category {
   padding: 1rem;
@@ -470,7 +479,6 @@ section {
 }
 
 .block_environment {
-  padding: 1rem;
   padding-top: 0;
   display: flex;
   flex-direction: column;
@@ -480,12 +488,12 @@ section {
 }
 
 .img_environment {
-  width: 100vw;
+  width: 100%;
   height: auto;
 }
 
 .text_environment {
-  padding: 1rem;
+  padding: 1rem 5%;
 }
 
 .p_environment {
@@ -550,7 +558,7 @@ section {
   }
 }
 
-@media screen and (max-width: 920px) {
+/* @media screen and (max-width: 920px) {
   .about_img_div {
     display: none;
   }
@@ -558,20 +566,23 @@ section {
   .about_img {
     display: none;
   }
-}
+} */
 
 @media screen and (min-width: 370px) {
   .product_list {
     justify-content: flex-start;
   }
+
 }
 
 @media screen and (min-width: 560px) {
-  .specific_product_big {
-    width: 40vw;
+  /* .specific_product_big {
     flex-direction: row;
     justify-content: center;
-    justify-content: space-between;
+  } */
+
+  .block_category .product_list li {
+    max-width: 30vw;
   }
 
   .category_flex {
@@ -579,12 +590,12 @@ section {
   }
 
   .specific_product_big .img-wrapper img {
-    border-radius: 19px 0 0 19px;
+    border-radius: 19px 19px 0 0;
+    width: 100%;
   }
 
   .img-wrapper_big {
-    flex-grow: 1;
-    height: auto;
+    width: 100%;
   }
 
   .category_text {
@@ -594,7 +605,36 @@ section {
 
 }
 
-@media screen and (min-width:800px) {
+@media screen and (min-width:650px) {
+  .block_about {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about_img_div:first-child {
+    order: 1;
+  }
+
+  .about_img_div {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+  }
+
+  .about_img {
+    object-fit: cover;
+    width: 50vw;
+    height: auto;
+  }
+
+  .about_text {
+    display: flex;
+    flex-direction: column;
+  }
+
   .section_environment {
     padding-top: 0;
     display: flex;
@@ -602,7 +642,6 @@ section {
   }
 
   .block_environment {
-    padding: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -615,8 +654,9 @@ section {
   }
 
   .img_environment {
+    object-fit: cover;
     width: 50vw;
-    border-radius: 19px;
+    height: auto;
   }
 
   .text_environment {
