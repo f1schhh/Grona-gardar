@@ -122,6 +122,10 @@ export default {
                   <i class="bi bi-heart"></i>
                 </div>
               </div>
+              <div style="display:flex; flex-direction: column; gap: 1rem; padding-left: 0.8rem; min-height: 3rem;">
+                {{ items.product_type }}
+                <span>{{ items.price }} kr/kg</span>
+              </div>
               <button class="button_cart">Lägg i varukorg</button>
             </div>
           </li>
