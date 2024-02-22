@@ -87,7 +87,7 @@
       "description": "En av de absolut sötaste tomater vi smakat. Den är rena godiset.",
       "product_type": "Chilega",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Tomtatoe_Chilega.jpg",
+      "product_image": "/src/assets/media/product_images/Tomatoe_Chilega.jpg",
       "price": 55,
       "season": [
         "summer",
@@ -225,7 +225,7 @@
       "description": "En gammal dansk sort med sött och saftigt Fruktkött, som ändå är fast.",
       "product_type": "Clara Frijs",
       "category": "Frukt",
-      "product_image": "Pear_Clara_Frijs.jpg",
+      "product_image": "/src/assets/media/product_images/Pear_Clara_Frijs.jpg",
       "price": 52,
       "season": "autumn"
     }
