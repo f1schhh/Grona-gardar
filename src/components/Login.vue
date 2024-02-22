@@ -57,10 +57,7 @@ export default{
 }
 .login-register-link-wrapper h1{
     cursor: pointer;
-}
-.login-register-link-wrapp h1{
-  color: var(--light-beige);
-
+    color: var(--light-beige);
 }
 
 .underline{
