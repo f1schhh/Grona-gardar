@@ -140,51 +140,59 @@ i {
             <h1>Min profil</h1><img id="profilePic" src="../assets/media/profile_pictures/profilePic1.jpg" alt="">
             <h2>Namn</h2>
             <ul>
+                <router-link to="/account/orderhistory">
+                    <li class="profileInfo_li">
 
-                <li class="profileInfo_li">
-                    <router-link to="/account/orderhistory">
                         <div class="i_and_p">
                             <i class="bi bi-basket3"></i>
                             <p>Orderhistorik</p>
                         </div>
-                    </router-link>
-                </li>
 
+                    </li>
+                </router-link>
                 <li class="profileInfo_li">
                     <hr class="hrDivideLi">
                 </li>
-                <li class="profileInfo_li">
-                    <router-link to="/account/editaccount">
+                <router-link to="/account/editaccount">
+                    <li class="profileInfo_li">
+
                         <div class="i_and_p">
                             <i class="bi bi-person"></i>
                             <p>Mitt konto</p>
                         </div>
-                    </router-link>
-                </li>
+
+                    </li>
+                </router-link>
                 <li class="profileInfo_li">
                     <hr class="hrDivideLi">
                 </li>
-                <li class="profileInfo_li">
-                    <router-link to="/account/favorites">
+                <router-link to="/account/favorites">
+
+                    <li class="profileInfo_li">
+
                         <div class="i_and_p">
                             <i class="bi bi-heart"></i>
                             <p>
                                 Favoriter
                             </p>
                         </div>
-                    </router-link>
-                </li>
+
+                    </li>
+                </router-link>
+
                 <li class="profileInfo_li">
                     <hr class="hrDivideLi">
                 </li>
-                <li class="profileInfo_li">
-                    <router-link to="/account/logout">
+                <router-link to="/account/logout">
+                    <li class="profileInfo_li">
+
                         <div class="i_and_p">
                             <i class="bi bi-box-arrow-left"></i>
                             <p>Logga ut</p>
                         </div>
-                    </router-link>
-                </li>
+
+                    </li>
+                </router-link>
             </ul>
 
         </aside>
