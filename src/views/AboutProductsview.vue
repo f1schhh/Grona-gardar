@@ -209,7 +209,8 @@ section {
   border-radius: 19px;
   padding: 0.6rem;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  background-color: var(--dusty-pink);
+  background-color: var(--light-beige);
+  font-size: 0.9rem;
 }
 
 .similiar_products {

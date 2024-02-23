@@ -53,7 +53,7 @@
     padding: 0.5rem 1rem;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     font-weight: lighter;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     width: 6.5rem;
 }
 

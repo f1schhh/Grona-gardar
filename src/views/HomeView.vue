@@ -351,8 +351,10 @@ article {
 
 .button_more_products {
   background-color: transparent;
-  border: 1px solid var(--dark-green);
-  font-size: 15px;
+  /* border: 1px solid var(--dark-green); */
+  font-size: 1rem;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
 }
 
 .section_season {

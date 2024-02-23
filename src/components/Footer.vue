@@ -12,8 +12,9 @@
             <div class="company-info-container">
                 <div class="about-us-container">
                     <h2>Om oss</h2>
-                    <p>Gröna gårdar startades 1991 av Glenn Olsson och har sedan dess levererat närodlat och ekologiskt till
-                        kunder, både nära och från långa vägar.</p>
+                    <p>Gröna Gårdar grundades år 1991 av Glenn Olsson och har sedan dess levererat närodlat och ekologiskt
+                        till
+                        sina kunder.</p>
                     <h4 style="font-family: Anevir Next Cyr Medium;">
                         <span>Detta är en fiktiv sida designad av:</span>
                     </h4>
@@ -29,17 +30,17 @@
                     <p>Vår gårdsbutik är lätt att hitta. Besök oss personligen och upplev det bästa av lokala råvaror.</p>
 
                     <h4 style="font-family: Anevir Next Cyr Medium;">Adress:</h4>
-                    <p>Grönagårdar 12, 400 23 Lindome</p>
+                    <p>Gröna Gårdar 12, 400 23 Lindome</p>
 
                     <h4 style="font-family: Anevir Next Cyr Medium;">Öppettider:</h4>
                     <span>Måndag - Torsdag: 11:00 - 18:00</span>
-                    <p>Lördag - Söndag: 10:00-16:00</p>
+                    <p>Lördag - Söndag: 10:00 - 16:00</p>
                 </div>
 
                 <div class="contact-us-container">
                     <h2>Kontakt</h2>
                     <p>Har du frågor eller vill komma i kontakt med oss? Tveka inte att nå ut till vår kundtjänst.</p>
-                    <p><b style="font-family: Anevir Next Cyr Medium;">Kundtjänst:</b> info@grönagårdar.com</p>
+                    <p><b style="font-family: Anevir Next Cyr Medium;">E-mail:</b> info@grönagårdar.com</p>
                     <p><b style="font-family: Anevir Next Cyr Medium;">Telefon:</b> 032-234234</p>
                 </div>
 

@@ -197,7 +197,9 @@ export default {
 .filter_categories li {
   background-color: var(--dark-beige);
   border-radius: 19px;
-  padding: 1rem;
+  padding: 0.5rem 0.6rem;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
 }
 
 .filter_categories .active {
@@ -263,9 +265,9 @@ button:hover {
   border: 0;
   text-align: center;
   border-radius: 19px;
-  padding: 0.6rem;
+  padding: 0.5rem;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  padding: 5px 10px;
+  font-size: 0.9rem;
 
 }
 
