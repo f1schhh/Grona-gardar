@@ -166,9 +166,9 @@ export default {
     },
     // Method that opens the login and blurres background
     onLoginClick() {
-      const overlay = document.querySelector(".overlay-for-login")
-      const loginContainer = document.querySelector(".login-menu-container ")gi
-      loginContainer.classList.remove('fade-out')
+      const overlay = document.querySelector(".overlay-for-login");
+      const loginContainer = document.querySelector(".login-menu-container ");
+      loginContainer.classList.remove('fade-out');
 
       loginContainer.style.display ="flex"
       overlay.style.display = "flex"
@@ -184,7 +184,7 @@ export default {
 
       const overlay = document.querySelector(".overlay-for-login")
       const loginContainer = document.querySelector(".login-menu-container ")
-
+      loginContainer.classList.remove("fade-in")
       //Transition opacity to make div transparent
       overlay.classList.remove("increase-blur-when-using-login")
       loginContainer.classList.add('fade-out')
