@@ -1,7 +1,6 @@
 <template>
   <header id="header">
     <div @click="exitMenu" class="overlay"></div>
-    <div @click="exitCart" class="overlay-for-cart"></div>
     <!--Login div-->
     <div @click="exitLogin" class="overlay-for-login"></div>
 
@@ -22,7 +21,7 @@
     </div>
 
     <!--==== Cart conent Container ====-->
-    <Cart></Cart>
+    <Cart :on-cart-click="isCartClicked" @overlay-clicked="isCartClicked = false"></Cart>
     <!--End of Cart Content COntainer-->
 
     <nav id="navBar">
@@ -74,7 +73,7 @@ export default {
   },
   data() {
     return {
-
+      isCartClicked: false,
     }
   },
   methods: {
@@ -182,42 +181,14 @@ export default {
     },
     //Method regulating what happens when cart icon is clicked
     onCartClick() {
-      //Select elements from DOM
-      const cartContentContainer = document.querySelector(".cart-content-container")
-      const overlay = document.querySelector(".overlay-for-cart")
 
-      //make cart content wrapper visible for user
-      cartContentContainer.classList.add("move-cart-content-container")
-
-      //Show overlay
-      overlay.style.display = "block";
-
-      //Transition overlay opacity
-      setTimeout(function () {
-        overlay.classList.add("increase-blur-when-using-cart")
-      }, 100)
-
-
+      if (this.isCartClicked === false) {
+        this.isCartClicked = true;
+      }
+      else {
+        this.isCartClicked = false;
+      }
     },
-
-    //method for exiting cart
-    exitCart() {
-      //Select elements from DOM
-      const cartContentContainer = document.querySelector(".cart-content-container");
-      const overlay = document.querySelector(".overlay-for-cart");
-
-      //Make cart content dissapear to the right
-      cartContentContainer.classList.remove("move-cart-content-container")
-
-      //Transition opacity to make div transparent
-      overlay.classList.remove("increase-blur-when-using-cart")
-
-      //Remove overlay styles once transition has finished
-      setTimeout(function () {
-        overlay.style.display = "none";
-      }, 500)
-    }
-
 
   }
 
@@ -252,21 +223,6 @@ header {
   backdrop-filter: blur(1px);
 }
 
-.overlay-for-cart {
-  display: none;
-  background-color: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(0px);
-  transition: background-color 0.75s, backdrop-filter 0.75s;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 3;
-}
-
-.increase-blur-when-using-cart {
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(1px);
-}
 
 .overlay-for-login {
   display: none;

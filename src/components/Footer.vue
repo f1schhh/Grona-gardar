@@ -138,6 +138,7 @@ span::after {
     padding-left: 35px;
     padding-right: 35px;
     padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .contact-us-container p {
@@ -147,7 +148,7 @@ span::after {
 .last-paragraph {
     height: fit-content;
     margin-top: 0px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     font-size: 12px;
 }
 
@@ -194,14 +195,10 @@ span::after {
 
     .contact-us-container {
         width: 220px;
-
         padding-left: 0;
         padding-right: 0;
         margin-right: 40px;
     }
 
-    .last-paragraph {
-        padding-bottom: 20px;
-    }
 }
 </style>

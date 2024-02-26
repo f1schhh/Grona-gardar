@@ -1,5 +1,7 @@
 <template>
-    <div class="cart-content-container">
+    <div @click="exitCart" v-if="isCartVisible" class="cart-overlay"></div>
+
+    <div v-if="isCartVisible" class="cart-content-container">
 
         <div class="exit-cart-content-container">
 
@@ -32,15 +34,15 @@ export default {
     },
     data() {
         return {
-            isCartShowed: false
+            isCartVisible: false,
         }
     },
     created() {
 
-        this.onIncomingProductId();
+
     },
     props: {
-
+        onCartClick: Boolean,
 
     },
     computed: {
@@ -49,23 +51,44 @@ export default {
 
     },
     methods: {
-        //method for exiting cart
-        exitCart() {
-            //Select elements from DOM
-            const cartContentContainer = document.querySelector(".cart-content-container");
-            const overlay = document.querySelector(".overlay-for-cart");
 
-            //Make cart content dissapear to the right
-            cartContentContainer.classList.remove("move-cart-content-container")
+        //Method used to make cart visible
+        cartClicked(isCartClicked) {
 
-            //Transition opacity to make div transparent
-            overlay.classList.remove("increase-blur-when-using-cart")
+            if (isCartClicked === true && this.isCartVisible === false) {
 
-            //Remove overlay styles once transition has finished
-            setTimeout(function () {
-                overlay.style.display = "none";
-            }, 500)
+                //Toggle isCartVisible to show overlay and cart
+                this.isCartVisible = true;
+
+                //Increase blur of overlay by adding class
+                setTimeout(() => {
+                    document.querySelector(".cart-overlay").style.transition = "background-color 1s, backdrop-filter 1s;";
+                    document.querySelector(".cart-overlay").classList.add("increase");
+
+                    document.querySelector(".cart-content-container").classList.add("move-cart-content-container")
+                }, 100)
+
+            }
         },
+
+        //Emit an event when the overlay is clicked
+        exitCart() {
+            if (this.isCartVisible === true) {
+
+                document.querySelector(".cart-overlay").style.transition = "background-color 0s, backdrop-filter 0s;";
+                document.querySelector(".cart-overlay").classList.remove("increase");
+                this.$emit('overlay-clicked');
+
+                document.querySelector(".cart-content-container").classList.remove("move-cart-content-container")
+
+                setTimeout(() => {
+                    this.isCartVisible = false;
+                }, 950)
+            }
+
+
+        },
+
 
         onIncomingProductId() {
             //Retrieve the Pinia store instance
@@ -81,6 +104,14 @@ export default {
     },
     watch: {
 
+        onCartClick(newValue) {
+
+
+            if (newValue === true && this.isCartVisible === false) {
+                this.cartClicked(newValue);
+            }
+
+        },
     },
 
 }
@@ -89,6 +120,23 @@ export default {
 
 
 <style scoped>
+.cart-overlay {
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0px);
+    transition: background-color 1s, backdrop-filter 1s;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    opacity: 0.5;
+    z-index: 3;
+}
+
+.increase {
+    background-color: rgba(255, 255, 255, 1.3);
+    backdrop-filter: blur(16px);
+}
+
+
 .cart-content-container {
     width: 230px;
     height: 100vh;
