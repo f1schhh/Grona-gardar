@@ -93,18 +93,18 @@ export default {
     </nav>
     <!-- <SearchBar></SearchBar> -->
     <ul class="filter_categories">
-      <li :class="{ active: $route.path === '/products' || $route.path === '/products/' }">
-        <router-link to="/products">Alla</router-link>
-      </li>
-      <li :class="{ active: $route.path === '/products/fruits' }">
-        <router-link to="/products/fruits">Frukter</router-link>
-      </li>
-      <li :class="{ active: $route.path === '/products/vegetables' }">
-        <router-link to="/products/vegetables">Grönsaker</router-link>
-      </li>
-      <li :class="{ active: $route.path === '/products/season' }">
-        <router-link to="/products/season">I säsong</router-link>
-      </li>
+      <router-link to="/products" :class="{ active: $route.path === '/products' || $route.path === '/products/' }">
+        <li>Alla</li>
+      </router-link>
+      <router-link to="/products/fruits" :class="{ active: $route.path === '/products/fruits' }">
+        <li>Frukter</li>
+      </router-link>
+      <router-link to="/products/vegetables" :class="{ active: $route.path === '/products/vegetables' }">
+        <li>Grönsaker</li>
+      </router-link>
+      <router-link to="/products/season" :class="{ active: $route.path === '/products/season' }">
+        <li>I säsong</li>
+      </router-link>
     </ul>
     <div class="category_container">
       <section v-if="categoryData.fruits.length !== 0">
@@ -122,7 +122,7 @@ export default {
                   <i class="bi bi-heart"></i>
                 </div>
               </div>
-              <div style="display:flex; flex-direction: column; gap: 1rem; padding-left: 0.8rem; min-height: 3rem;">
+              <div class="product_type">
                 {{ items.product_type }}
                 <span>{{ items.price }} kr/kg</span>
               </div>
@@ -147,6 +147,10 @@ export default {
                   <i class="bi bi-heart"></i>
                 </div>
               </div>
+              <div class="product_type">
+                {{ items.product_type }}
+                <span>{{ items.price }} kr/kg</span>
+              </div>
               <button class="button_cart">Lägg i varukorg</button>
             </div>
           </li>
@@ -166,6 +170,10 @@ export default {
                 <div class="button_like">
                   <i class="bi bi-heart"></i>
                 </div>
+              </div>
+              <div class="product_type">
+                {{ items.product_type }}
+                <span>{{ items.price }} kr/kg</span>
               </div>
               <button class="button_cart">Lägg i varukorg</button>
             </div>
@@ -194,7 +202,7 @@ export default {
   margin-bottom: 1rem;
 }
 
-.filter_categories li {
+.filter_categories a {
   background-color: var(--dark-beige);
   border-radius: 19px;
   padding: 0.5rem 0.6rem;
@@ -210,12 +218,18 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding-right: 1rem;
 }
 
 .img-wrapper {
-  width: 10.4375rem;
+  /* width: 10.4375rem; */
   height: 10.4375rem;
   cursor: pointer;
+}
+
+.product_list li {
+  max-width: none !important;
+  width: calc(12.5% - 1rem);
 }
 
 .img-wrapper img {
@@ -251,6 +265,14 @@ h3,
 /* CSS for buttons in general */
 button:hover {
   cursor: pointer;
+}
+
+.product_type {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 0.8rem;
+  min-height: 3rem;
 }
 
 /* Knapp för varukorg */
@@ -306,6 +328,42 @@ button:hover {
   .img-wrapper {
     width: 9.5rem;
     height: 9.5rem;
+  }
+}
+
+@media screen and (min-width: 300px) and (max-width: 515px) {
+  .product_list li {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media screen and (min-width: 515px) and (max-width: 680px) {
+  .product_list li {
+    width: calc(33.33% - 1rem);
+  }
+}
+
+@media screen and (min-width: 680px) and (max-width: 844px) {
+  .product_list li {
+    width: calc(25% - 1rem);
+  }
+}
+
+@media screen and (min-width: 844px) and (max-width: 1010px) {
+  .product_list li {
+    width: calc(20% - 1rem);
+  }
+}
+
+@media screen and (min-width: 1010px) and (max-width: 1180px) {
+  .product_list li {
+    width: calc(16.66% - 1rem);
+  }
+}
+
+@media screen and (min-width: 1180px) and (max-width: 1369px) {
+  .product_list li {
+    width: calc(14.28% - 1rem);
   }
 }
 </style>

@@ -128,7 +128,6 @@ body {
 
 main {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   flex-grow: 1;
   max-width: var(--desktop-size);

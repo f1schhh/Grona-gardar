@@ -117,6 +117,11 @@ export default {
       </div>
     </div>
   </section>
+  <div class="loading-spinner-container" v-else>
+    <div class="loading-spinner">
+      <div></div>
+    </div>
+  </div>
 </template>
 <style scoped>
 .bread-crumb-meny {

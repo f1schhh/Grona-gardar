@@ -11,6 +11,10 @@ import LogOutView from './views/LogOutView.vue'
 import SearchView from './views/SearchView.vue'
 import PageNotFoundView from './views/PageNotFoundView.vue'
 
+//Admin views
+import AdminView from './views/admin/AdminView.vue'
+import AdminOrders from './views/admin/AdminOrdersView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(),
@@ -62,8 +66,13 @@ const router = createRouter({
         },
       ],
     },
-
-
+    {
+      path: '/admin',
+      component: AdminView,
+      children: [
+        { path: 'orders', component: AdminOrders }
+      ]
+    },
     {
       path: '/search/:query',
       component: SearchView
