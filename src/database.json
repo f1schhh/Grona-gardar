@@ -7,7 +7,7 @@
       "description": "Kulturarvssort som introducerades redan år 1885. Morötterna är cylindriska, orange-färgade och nästan märgfria.",
       "product_type": "Early Nantes",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Carrots_Early_Nantes.jpg",
+      "product_image": "/src/assets/media/resize-products/Carrots_Early_Nantes.jpg",
       "price": 35,
       "season": "summer"
     },
@@ -18,7 +18,7 @@
       "description": "Enormt stora, långa, spetsiga rötter, bra genomfärgade med god smak.",
       "product_type": "De Saint-Valery",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Carrots_De_SaintValery.jpg",
+      "product_image": "/src/assets/media/resize-products/Carrots_De_SaintValery.jpg",
       "price": 39,
       "season": "autumn"
     },
@@ -29,7 +29,7 @@
       "description": "Välfyllda baljor på 15 cm med 5 bönor per balja. Lämplig att frysa eller torka.",
       "product_type": "Eleonora",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Broadbeans_Eleonora.jpg",
+      "product_image": "/src/assets/media/resize-products/Broadbeans_Eleonora.jpg",
       "price": 28,
       "season": "summer"
     },
@@ -40,7 +40,7 @@
       "description": "Utsökt, Fruktig, medelstark chilismak ( 5.000-30.000 Scovillegrader). Utmärkt att torka och mala till pulver.",
       "product_type": "Hot Portugal",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Chilipepper_Hot_Portugal.jpg",
+      "product_image": "/src/assets/media/resize-products/Chilipepper_Hot_Portugal.jpg",
       "price": 5,
       "season": "summer"
     },
@@ -51,7 +51,7 @@
       "description": "Smakar mycket gurka och blir aldrig bitter.",
       "product_type": "Sonja",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Cucumber_Sonja.jpg",
+      "product_image": "/src/assets/media/resize-products/Cucumber_Sonja.jpg",
       "price": 35,
       "season": "summer"
     },
@@ -62,7 +62,7 @@
       "description": "Stora, symmetriska, orange Frukter, med ett tjockt, gott kött perfekt till pumpapaj.",
       "product_type": "Howden",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Pumpkin_Howden.jpg",
+      "product_image": "/src/assets/media/resize-products/Pumpkin_Howden.jpg",
       "price": 53,
       "season": "autumn"
     },
@@ -73,7 +73,7 @@
       "description": "Ljuvligt saftiga tomater med en smak som fyller hela munnen. Det röda köttet har en mycket rik, nästan kryddig tomatsmak.",
       "product_type": "Brandywine",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Tomatoe_Brandywine.jpg",
+      "product_image": "/src/assets/media/resize-products/Tomatoe_Brandywine.jpg",
       "price": 53,
       "season": [
         "summer",
@@ -101,7 +101,7 @@
       "description": "De djupt blågröna, buckliga ytterbladen döljer ett milt och sött inre.",
       "product_type": "Vertus 2",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Savoycabbage_Vertus2.jpg",
+      "product_image": "/src/assets/media/resize-products/Savoycabbage_Vertus2.jpg",
       "price": 48,
       "season": "autumn"
     },
@@ -112,7 +112,7 @@
       "description": "Fin smak och textur. Passar bra både rå och tillagad.",
       "product_type": "Gigante de Inverno",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Spinach_Gigante_deinverno.jpg",
+      "product_image": "/src/assets/media/resize-products/Spinach_Gigante_deinverno.jpg",
       "price": 322,
       "season": "autumn"
     },
@@ -123,7 +123,7 @@
       "description": "Lång, vit, tät stjälk.",
       "product_type": "Hilari",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Leek_Hilari.jpg",
+      "product_image": "/src/assets/media/resize-products/Leek_Hilari.jpg",
       "price": 63,
       "season": [
         "autumn",
@@ -137,7 +137,7 @@
       "description": "Medeltjocka söta och fina sparrisskott. Skotten är fulla med antioxidanter, vitaminer och mineraler. En riktig hälsoboost för kroppen.",
       "product_type": "Guelph Millenium",
       "category": "Grönsaker",
-      "product_image": "/src/assets/media/product_images/Asparagus_Guelph_Millenium.jpg",
+      "product_image": "/src/assets/media/resize-products/Asparagus_Guelph_Millenium.jpg",
       "price": 219,
       "season": "spring"
     },
@@ -148,7 +148,7 @@
       "description": "Det kraftigt orange, saftiga köttet har en delikat sötma och en aromatisk fyllighet. Vissa påstår att det påminner om brunt socker! ",
       "product_type": "Cantaloupe",
       "category": "Frukt",
-      "product_image": "/src/assets/media/product_images/Melon_Cantaloupe.jpg",
+      "product_image": "/src/assets/media/resize-products/Melon_Cantaloupe.jpg",
       "price": 59,
       "season": "summer"
     },
@@ -159,7 +159,7 @@
       "description": "Stora röda bär med söt och mild smak, utmärkt till desserter. ",
       "product_type": "Preussen",
       "category": "Frukt",
-      "product_image": "/src/assets/media/product_images/Raspberry_Preussen.jpg",
+      "product_image": "/src/assets/media/resize-products/Raspberry_Preussen.jpg",
       "price": 119,
       "season": "summer"
     },
@@ -170,7 +170,7 @@
       "description": "Svensk sort med medelstora bär, påminner om våra svenska vilda bär i smaken.",
       "product_type": "Emil",
       "category": "Frukt",
-      "product_image": "/src/assets/media/product_images/Blueberries_Emil.jpg",
+      "product_image": "/src/assets/media/resize-products/Blueberries_Emil.jpg",
       "price": 114,
       "season": "summer"
     },
@@ -181,7 +181,7 @@
       "description": "Fruktköttet är gulvitt, saftigt och fast. Smakegenskaperna är fantastiska, med en frisk och syrlig grund. Elise äter man gärna som det är men det är även ett utmärkt äpple i matlagningen, till exempel i grytor och sallader men även i efterrättspajer och kakor.",
       "product_type": "Elise",
       "category": "Frukt",
-      "product_image": "/src/assets/media/product_images/Apple_Elise.jpg",
+      "product_image": "/src/assets/media/resize-products/Apple_Elise.jpg",
       "price": 52,
       "season": "summer"
     },
@@ -192,7 +192,7 @@
       "description": "Köttet är sprött och gulvitt med en söt, mild, aromrik, syrlig smak.",
       "product_type": "Aroma",
       "category": "Frukt",
-      "product_image": "/src/assets/media/product_images/Apple_Aroma.jpg",
+      "product_image": "/src/assets/media/resize-products/Apple_Aroma.jpg",
       "price": 52,
       "season": "autumn"
     },
@@ -203,7 +203,7 @@
       "description": "Mörkt röda och ganska fasta, medelstora till stora bär. Mycket fin och söt smak.",
       "product_type": "Polka",
       "category": "Frukt",
-      "product_image": "/src/assets/media/product_images/Strawberries_Polka.jpg",
+      "product_image": "/src/assets/media/resize-products/Strawberries_Polka.jpg",
       "price": 72,
       "season": "summer"
     },
@@ -214,7 +214,7 @@
       "desccription": "Rödvioletta Frukter. Fast kött, saftiga med sötsyrlig smak.",
       "product_type": "Jubileum",
       "category": "Frukt",
-      "product_image": "/src/assets/media/product_images/Plum_Jubileum.jpg",
+      "product_image": "/src/assets/media/resize-products/Plum_Jubileum.jpg",
       "price": 58,
       "season": "summer"
     },
