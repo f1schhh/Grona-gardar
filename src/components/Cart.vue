@@ -4,20 +4,55 @@
     <div v-if="isCartVisible" class="cart-content-container">
 
         <div class="exit-cart-content-container">
+            <div class="title-container">
+                <h1>Varukorg ({{ this.itemsInCart }})</h1>
+            </div>
+
 
             <div @click="exitCart" class="exit-cart-icon-wrapper">
                 <i class="bi bi-x-lg"></i>
             </div>
+
         </div>
 
-        <h1>Din Varukorg</h1>
+
+        <div class="underline"></div>
 
         <div class="products-overview-container">
 
+            <div v-if="this.itemsInCart === 0" class="empty-cart-container">
+
+                <div class="cart-immage-wrapper">
+                    <i class="bi bi-basket3"></i>
+                    <div class="zero-items-in-cart-wrapper">
+                        <h1>{{ this.itemsInCart }}</h1>
+                    </div>
+                </div>
+
+                <h5>Din varukorg är tom</h5>
+
+                <p>Du kan behöva logga in för att komma åt tidigare tillagda produkter.</p>
+            </div>
+
+            <div v-if="this.itemsInCart === 0" class="empty-cart-footer">
+
+                <div @click="exitCart" class="back-button">
+                    <i class="bi bi-arrow-left"></i>
+                    <p>Tillbaka</p>
+                </div>
+
+            </div>
+
+
             <div class="single-product-wrapper">
+
+
+
                 <div class="product-image-wrapper">
+
                 </div>
                 <div class="single-product-info-wrapper">
+
                 </div>
             </div>
         </div>
@@ -35,11 +70,13 @@ export default {
     data() {
         return {
             isCartVisible: false,
+            productId: null,
+            itemsInCart: 0,
         }
     },
     created() {
 
-
+        this.onIncomingProductId()
     },
     props: {
         onCartClick: Boolean,
@@ -93,24 +130,39 @@ export default {
         onIncomingProductId() {
             //Retrieve the Pinia store instance
             const counterStore = useCounterStore();
-            counterStore.productId = "500";
+            counterStore.productId = parseInt("2");;
 
             //Access the productId from the store
-            const productId = counterStore.productId;
+            this.productId = counterStore.productId;
 
-            console.log(productId);
+
+            //Fetch data for the product and store it
+            this.getProductData(this.productId);
+
+
+        },
+
+        async getProductData(pId) {
+
+            console.log(pId);
+
+            //Fetch data from JSON-file
+            const response = await fetch('/src/database.json');
+            const data = await response.json();
+
+            //Match incoming product ID width ID in JSON
+            const product = data.products.find(item => item.id === pId);
+
+            console.log(product);
         },
 
     },
     watch: {
 
         onCartClick(newValue) {
-
-
             if (newValue === true && this.isCartVisible === false) {
                 this.cartClicked(newValue);
             }
-
         },
     },
 
@@ -162,38 +214,130 @@ export default {
     height: 68px;
     margin-top: 0;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .exit-cart-icon-wrapper {
     width: fit-content;
     height: fit-content;
     line-height: 10px;
-    height: 25px;
     display: flex;
     justify-content: center;
     align-content: center;
     cursor: pointer;
+    position: absolute;
+    right: 0;
 }
 
-.cart-content-container h1 {
+.exit-cart-content-container h1 {
     font-size: 4.45vw;
     text-align: center;
+}
 
+.underline {
+    height: 1.5px;
+    width: 100%;
+    background-color: rgba(71, 81, 51, 0.2);
+    top: 67px;
+    position: absolute;
+    transform: translateX(-25px);
 }
 
 .products-overview-container {
-    background-color: coral;
+
     width: 100%;
 }
 
 .single-product-wrapper {
-    background-color: lightblue;
     width: 100%;
-    height: 100px;
     border-radius: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.empty-cart-container {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+.cart-immage-wrapper {
+    font-size: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    width: fit-content;
+    border-radius: 46px;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(218, 178, 158, 0.4);
+
+
+}
+
+.zero-items-in-cart-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    width: 15px;
+    height: 15px;
+    top: 52.5%;
+    border-radius: 86px;
+    position: absolute;
+    background-color: var(--light-beige);
+}
+
+.empty-cart-container h5 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.empty-cart-container p {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.empty-cart-footer {
+    height: 15%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    box-shadow: -2px -5px 5px 1px rgba(71, 81, 51, 0.13);
+    -webkit-box-shadow: -2px -5px 5px 1px rgba(71, 81, 51, 0.13);
+    -moz-box-shadow: -2px -5px 5px 1px rgba(71, 81, 51, 0.13);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-button {
+    background-color: var(--dark-beige);
+    width: fit-content;
+    border-radius: 26px;
+    padding: 10px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.bi-arrow-left {
+    margin-right: 5px;
+    font-size: 18px;
+}
+
 
 @media screen and (min-width: 451px) {
     .cart-content-container h1 {
