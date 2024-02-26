@@ -167,8 +167,7 @@ export default {
     // Method that opens the login and blurres background
     onLoginClick() {
       const overlay = document.querySelector(".overlay-for-login")
-      const loginContainer = document.querySelector(".login-menu-container ")
-      const login = document.querySelector("Login")
+      const loginContainer = document.querySelector(".login-menu-container ")gi
       loginContainer.classList.remove('fade-out')
 
       loginContainer.style.display ="flex"
