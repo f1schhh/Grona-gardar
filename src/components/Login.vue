@@ -32,12 +32,12 @@
             </div>
             <div>
             <p for="password">Lösenord </p>
-                <input v-model="password" type="password" required>
+                <input v-model="password" type="text" required>
             <p class="error-message">{{ newPasswordErrorMessage }}</p>
             </div>
             <div>
             <p for="confirmPassword">Bekräfta lösenordet </p>
-                <input v-model="confirmPassword" type="password" required>
+                <input v-model="confirmPassword" type="text" required>
             <p class="error-message">{{ newPasswordErrorMessage2 }}</p>
             </div>
         </form>
@@ -46,15 +46,15 @@
 
 </template>
 
-<script>
+    <script>
   import { mapStores } from 'pinia'
   import { useAccountsStore } from '../store'
 
 export default{
-    // computed: {
-    //     // ...mapStores(useAccountsStore)
+    computed: {
+        ...mapsStores(useAccountStore)
 
-    //     },
+        },
     data(){
     return{
         loginLink: true,
@@ -95,9 +95,6 @@ export default{
         onSignUpClick(){
             this.accountsStore.createAccount({
 
-                name: this.name,
-                password:this.password,
-                userName:this.userName
             })
         }
     }
