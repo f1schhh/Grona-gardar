@@ -19,6 +19,7 @@
   </div>
 
   <div v-else="!loginLink" class="login-menu-wrapper">
+
       <form>
       <p for="name">Namn</p>
       <input v-model="name" type="text" required >
@@ -65,7 +66,7 @@ methods:{
       if(this.password === null || this.password === ''){
           this.passwordErrorMessage = "Skriv in ett lösenord i fältet ovan."
       }
-  }
+    }
 }
 }
 </script>
@@ -162,7 +163,6 @@ cursor:pointer;
 background-color: var(--dark-beige);
 
 }
-
 
 /*===================*/
 @media screen and (min-width: 451px) {
