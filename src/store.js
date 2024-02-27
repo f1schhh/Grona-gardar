@@ -1,9 +1,16 @@
 import { defineStore } from "pinia";
+import { watch } from "vue";
+
+/*======================*/
+/*===== CART PINIA =====*/
+/*======================*/
 
 // Store for managing products
 export const useProductStore = defineStore('product', {
     state: () => ({
         products: [
+
+            //Example product
             {
                 pId: 19,
                 pImage: "BOOM",
@@ -68,7 +75,22 @@ export const useProductStore = defineStore('product', {
         // Other product-related actions
     },
     // Define getters and mutations as needed
+
+
 });
+
+// Watch for changes in the products array and notify
+watch(
+    () => useProductStore.products,
+    (newProducts, oldProducts) => {
+        console.log("Products updated:", newProducts);
+        // Trigger an action or update the component as needed
+    }
+);
+
+/*==========================*/
+/*===== ACCOUNTS PINIA =====*/
+/*==========================*/
 
 // Store for managing accounts
 export const useAccountStore = defineStore('account', {
