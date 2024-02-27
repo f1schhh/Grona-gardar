@@ -8,7 +8,7 @@
 
     <form action="" method="post">
       <p for="username">E-postadress </p>
-      <input v-model="username" type="text" required :placeholder="suggestedUsername">
+      <input v-model="username" type="text" required>
       <p class="error-message">{{ usernameErrorMessage }}</p>
       <p for="password">Lösenord </p>
       <input v-model="password" type="text" required >
@@ -19,57 +19,90 @@
   </div>
 
   <div v-else="!loginLink" class="login-menu-wrapper">
+        <form>
+            <div>
+            <p for="name">Namn</p>
+                <input v-model="name" type="text" required >
+            <p class="error-message">{{ nameError }}</p>
+            </div>
+            <div>
+            <p for="username">E-postadress </p>
+                <input v-model="username" type="text" required >
+            <p class="error-message">{{ newUsernameErrorMessage }}</p>
+            </div>
+            <div>
+            <p for="password">Lösenord </p>
+                <input v-model="password" type="password" required>
+            <p class="error-message">{{ newPasswordErrorMessage }}</p>
+            </div>
+            <div>
+            <p for="confirmPassword">Bekräfta lösenordet </p>
+                <input v-model="confirmPassword" type="password" required>
+            <p class="error-message">{{ newPasswordErrorMessage2 }}</p>
+            </div>
+        </form>
+    <input class="login-butt" @click="onSignUpClick" type="button" value="Registrera" :disabled="invalidRegistration">
+    </div>
 
-      <form>
-      <p for="name">Namn</p>
-      <input v-model="name" type="text" required >
-      <p class="error-message">{{ name }}</p>
-      <p for="username">E-postadress </p>
-      <input v-model="username" type="text" required >
-      <p class="error-message">{{ newUsernameErrorMessage }}</p>
-      <p for="password">Lösenord </p>
-      <input v-model="password" type="text" required>
-      <p class="error-message">{{ usernameErrorMessage }}</p>
-      <p for="confirmPassword">Bekräfta lösenordet </p>
-      <input v-model="confirmPassword" type="text" required>
-      <p class="error-message">{{ usernameErrorMessage }}</p>
-  </form>
-  <input class="login-butt" @click="onRegisterClick" type="button" value="Registrera">
-  </div>
 </template>
 
 <script>
-export default{
-data(){
-  return{
-      loginLink: true,
-      username: null,
-      password: null,
-      usernameErrorMessage: null,
-      suggestedUsername:null
-  }
-},
-methods:{
-  onLoginLink(){
-      this.loginLink = true
-  },
-  onRegisterLink(){
-      this.loginLink = false
-      this.usernameErrorMessage = null
-  },
-  onLoginClick(){
-      if(this.username === null || this.username === ''){
-          this.usernameErrorMessage = "Skriv din e-mail i fältet ovan."
+  import { mapStores } from 'pinia'
+  import { useAccountsStore } from '../store'
 
-          this.suggestedUsername = "malin@admin.com"
-      }
-      if(this.password === null || this.password === ''){
-          this.passwordErrorMessage = "Skriv in ett lösenord i fältet ovan."
-      }
+export default{
+    // computed: {
+    //     // ...mapStores(useAccountsStore)
+
+    //     },
+    data(){
+    return{
+        loginLink: true,
+        username: null,
+        password: null,
+        name: '',
+        password2: null
+
+        //   usernameErrorMessage: null,
+        //   suggestedUsername:null
     }
-}
-}
-</script>
+    },
+    methods:{
+        onLoginLink(){
+            this.loginLink = true
+        },
+        onRegisterLink(){
+            this.loginLink = false
+            this.usernameErrorMessage = null
+        },
+        onLoginClick(){
+            //   if(this.username === null || this.username === ''){
+            //       this.usernameErrorMessage = "Skriv din e-mail i fältet ovan."
+
+
+            //   }
+            //   else{
+            //     this.passwordErrorMessage =''
+            //   }
+
+            //   if(this.password === null || this.password === ''){
+            //       this.passwordErrorMessage = "Skriv in ett lösenord i fältet ovan."
+            //   }
+            //   else{
+            //     this.passwordErrorMessage =''
+            //   }
+            },
+        onSignUpClick(){
+            this.accountsStore.createAccount({
+
+                name: this.name,
+                password:this.password,
+                userName:this.userName
+            })
+        }
+    }
+    }
+    </script>
 
 <style scoped>
 .login-menu-wrapper {
