@@ -11,7 +11,7 @@
       <input v-model="username" type="text" required>
       <p class="error-message">{{ usernameErrorMessage }}</p>
       <p for="password">Lösenord </p>
-      <input v-model="password" type="text" required >
+      <input v-model="password" type="password" required >
       <p class="error-message">{{ passwordErrorMessage }}</p>
       <p class="forgotten-password-link">Glömt lösenord?</p>
     </form>
