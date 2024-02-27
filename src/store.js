@@ -8,17 +8,7 @@ import { watch } from "vue";
 // Store for managing products
 export const useProductStore = defineStore('product', {
     state: () => ({
-        products: [
-
-            //Example product
-            {
-                pId: 19,
-                pImage: "BOOM",
-                pName: "Dragon fruit ",
-                pQuantity: 5,
-
-            }
-        ]
+        products: []
     }),
     actions: {
         // Define actions to manipulate products
@@ -38,10 +28,13 @@ export const useProductStore = defineStore('product', {
                     throw new Error("Product not found");
                 }
 
+                console.log("All products:", data)
+                console.log("chosen product:", product)
                 //Product object that is to be pushed into Pinia cart
                 const newProduct = {
                     pId: product.id,
                     pName: product.product_name,
+                    pType: product.product_type,
                     pImage: product.product_image,
                     pPrice: product.price,
                     pQuantity: 1,
@@ -63,7 +56,7 @@ export const useProductStore = defineStore('product', {
                     console.log("Yay, just added new product: ", this.products);
                 }
 
-                console.log(this.products)
+                console.log("Currently in cart: ", this.products)
 
             }
             catch (error) {

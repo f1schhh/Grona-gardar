@@ -76,7 +76,7 @@ export default {
     },
     created() {
 
-        this.onIncomingProductId()
+        // this.onIncomingProductId()
     },
     props: {
         onCartClick: Boolean,

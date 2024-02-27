@@ -1,4 +1,7 @@
 <script>
+//Import ProductStore to push product ID to Pinia cart
+import { useProductStore } from '../store';
+
 export default {
   data() {
     return {
@@ -46,7 +49,16 @@ export default {
       } catch {
 
       }
-    }
+    },
+    //Method that forwards product ID to a Pinia method
+    onAddToCartClick(productId) {
+
+      //Retrieve Pinia store instance
+      const productStore = useProductStore();
+
+      //Send product to addProduct function in Pinia as integer
+      productStore.addProduct(parseInt(productId));
+    },
   }
 }
 </script>
@@ -80,7 +92,7 @@ export default {
             </p>
           </div>
           <div class="product_navigation">
-            <button class="add_to_cart">Lägg i varukorg</button>
+            <button @click="onAddToCartClick(productData.id)" class="add_to_cart">Lägg i varukorg</button>
           </div>
         </div>
       </div>

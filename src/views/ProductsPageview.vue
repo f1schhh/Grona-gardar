@@ -1,5 +1,6 @@
 <script>
 import SearchBar from '../components/SearchBar.vue';
+import { useProductStore } from '../store';
 
 export default {
   data() {
@@ -76,6 +77,16 @@ export default {
       this.$router.push(`/product/${id}`)
     },
 
+    //Method that forwards product ID to a Pinia method
+    onAddToCartClick(productId) {
+
+      //Retrieve Pinia store instance
+      const productStore = useProductStore();
+
+      //Send product to addProduct function in Pinia as integer
+      productStore.addProduct(parseInt(productId));
+    },
+
   },
   components: {
     SearchBar
@@ -126,7 +137,7 @@ export default {
                 {{ items.product_type }}
                 <span>{{ items.price }} kr/kg</span>
               </div>
-              <button class="button_cart">Lägg i varukorg</button>
+              <button @click="onAddToCartClick(items.id)" class="button_cart">Lägg i varukorg</button>
             </div>
           </li>
         </ul>
@@ -151,7 +162,7 @@ export default {
                 {{ items.product_type }}
                 <span>{{ items.price }} kr/kg</span>
               </div>
-              <button class="button_cart">Lägg i varukorg</button>
+              <button @click="onAddToCartClick(items.id)" class="button_cart">Lägg i varukorg</button>
             </div>
           </li>
         </ul>
@@ -175,7 +186,7 @@ export default {
                 {{ items.product_type }}
                 <span>{{ items.price }} kr/kg</span>
               </div>
-              <button class="button_cart">Lägg i varukorg</button>
+              <button @click="onAddToCartClick(items.id)" class="button_cart">Lägg i varukorg</button>
             </div>
           </li>
         </ul>
