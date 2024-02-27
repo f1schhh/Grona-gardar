@@ -230,5 +230,63 @@
       "season": "autumn"
     }
   ],
-  "active_season": "summer"
+  "active_season": "summer",
+
+
+  "order_history": [
+    {
+      "id": 2091765223,
+      "order_by": 1,
+      "order_status": "ongoing",
+      "order_date": "2024-02-13",
+      "total_cost": 1200,
+      "delivery_alternative": "PostNord Hem",
+      "delivery_adress": "Axel Dahlströms Torg, Göteborg",
+      "delivery_zipcode": "433 38",
+      "delivery_name": "Atko Dahlstrom",
+      "email": "atko.dahlstrom@cat.com"
+    },
+
+    {
+      "id": 2091765224,
+      "order_by": 1,
+      "order_status": "ongoing",
+      "order_date": "2024-02-15",
+      "total_cost": 300,
+      "delivery_alternative": "PostNord Hem",
+      "delivery_adress": "Axel Dahlströms Torg, Göteborg",
+      "delivery_zipcode": "433 38",
+      "delivery_name": "Atko Dahlstrom",
+      "email": "atko.dahlstrom@cat.com"
+    }
+  ],
+
+  "order_product_list": [
+    {
+      "id": 1,
+      "order_id": 2091765223,
+      "product_id": 20
+    },
+    {
+      "id": 2,
+      "order_id": 2091765223,
+      "product_id": 18
+    },
+    {
+      "id": 3,
+      "order_id": 2091765223,
+      "product_id": 20
+    },
+
+    {
+      "id": 4,
+      "order_id": 2091765224,
+      "product_id": 17
+    },
+    {
+      "id": 5,
+      "order_id": 2091765224,
+      "product_id": 2
+    }
+  ]
 }

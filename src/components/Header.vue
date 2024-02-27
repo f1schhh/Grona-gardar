@@ -77,7 +77,6 @@ export default {
     }
   },
   methods: {
-
     //Method that expands menu and manipulates the hamburger
     onMenuClick() {
       const header = document.getElementById("header");
@@ -149,8 +148,8 @@ export default {
     onLoginClick() {
       const overlay = document.querySelector(".overlay-for-login")
       const loginContainer = document.querySelector(".login-menu-container ")
-      const login = document.querySelector("Login")
-      loginContainer.classList.remove('fade-out')
+
+      loginContainer.classList.remove("fade-out")
 
       loginContainer.style.display = "flex"
       overlay.style.display = "flex"
@@ -166,10 +165,11 @@ export default {
 
       const overlay = document.querySelector(".overlay-for-login")
       const loginContainer = document.querySelector(".login-menu-container ")
-
+      loginContainer.classList.remove("fade-in")
       //Transition opacity to make div transparent
       overlay.classList.remove("increase-blur-when-using-login")
-      loginContainer.classList.add('fade-out')
+      loginContainer.classList.remove("fade-in")
+      loginContainer.classList.add("fade-out")
 
       setTimeout(function () {
 
@@ -364,10 +364,11 @@ main {
 .login-menu-container {
   display: none;
   background-color: var(--mid-beige);
-
   width: 60vw;
-  padding: 10px;
+  width: 300px;
   height: fit-content;
+  height: 500px;
+  padding: 10px;
   border-radius: 16px;
   z-index: 5;
   box-shadow: -8px 0px 12px 0px rgba(0, 0, 0, 0.4);
