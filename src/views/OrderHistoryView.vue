@@ -1,4 +1,64 @@
 <script>
+export default {
+
+    data() {
+        return {
+            order_history_data: null,
+            order_image: []
+        }
+    },
+
+    async created() {
+        await this.find_orders()
+    },
+
+    methods: {
+        async find_orders() {
+            try {
+                const response = await fetch('/src/database.json');
+                const data = await response.json();
+
+                const orders = data.order_history.filter(item => item.order_by === 1);
+
+                if (orders.length !== 0) {
+                    for (let i = 0; i < orders.length; i++) {
+                        this.order_image.push(await this.find_image(orders[i].id));
+                    }
+                    this.order_history_data = orders;
+                }
+
+            } catch {
+
+            }
+
+        },
+
+        async find_image(id) {
+            try {
+                const response = await fetch('/src/database.json');
+                const data = await response.json();
+
+                const orders = data.order_product_list.find(item => item.order_id === id);
+
+                if (orders.length !== 0) {
+                    const findImage = data.products.find(item => item.id === orders.product_id);
+                    console.log(findImage.product_image);
+
+
+                    if (findImage) {
+                        return findImage.product_image
+                    }
+
+                }
+
+            } catch {
+
+            }
+        }
+    }
+
+}
+
 
 </script>
 
@@ -149,61 +209,15 @@ article {
                 <hr id="orderHistory_hr">
             </div>
             <ul class="orderHistory_list">
-                <li class="orderHistory_list_li">
-                    <div class="img-wrapper">
-                        <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
+                <li class="orderHistory_list_li" v-for="(items, index) in order_history_data">
+                    <div class="img-wrapper" v-if="order_image.length !== 0">
+                        <img :src="order_image[index]" alt="">
                     </div>
                     <div class="summar_and_button">
                         <div class="order_summary">
-                            <p><span>Ordernummer:</span> 43210</p>
-                            <p>Datum: 2023-12-16</p>
-                            <p>Total belopp: 1500kr</p>
-                        </div>
-                        <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Se order</button>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="orderHistory_list_li">
-                    <div class="img-wrapper">
-                        <img src="../assets/media/product_images/Cucumber_Sonja.jpg" alt="">
-                    </div>
-                    <div class="summar_and_button">
-                        <div class="order_summary">
-                            <p><span>Ordernummer:</span> 43210</p>
-                            <p>Datum: 2023-12-16</p>
-                            <p>Total belopp: 600kr</p>
-                        </div>
-                        <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Se order</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="orderHistory_list_li">
-                    <div class="img-wrapper">
-                        <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
-                    </div>
-                    <div class="summar_and_button">
-                        <div class="order_summary">
-                            <p><span>Ordernummer:</span> 43210</p>
-                            <p>Datum: 2023-12-16</p>
-                            <p>Total belopp: 1500kr</p>
-                        </div>
-                        <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Se order</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="orderHistory_list_li">
-                    <div class="img-wrapper">
-                        <img src="../assets/media/product_images/Apple_Elise.jpg" alt="">
-                    </div>
-                    <div class="summar_and_button">
-                        <div class="order_summary">
-                            <p><span>Ordernummer:</span> 43210</p>
-                            <p>Datum: 2023-12-16</p>
-                            <p>Total belopp: 365kr</p>
+                            <p><span>Ordernummer:</span> {{ items.id }}</p>
+                            <p>Datum: {{ items.order_date }}</p>
+                            <p>Total belopp: {{ items.total_cost }}</p>
                         </div>
                         <div class="button_seeOrder_div">
                             <button class="button_seeOrder">Se order</button>
