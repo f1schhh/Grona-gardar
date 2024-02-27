@@ -129,32 +129,18 @@ export default {
 
         onIncomingProductId() {
             //Retrieve the Pinia store instance
-            const counterStore = useProductStore();
-            counterStore.productId = parseInt("2");;
+            const productStore = useProductStore();
+
+            //Put value into product
+            productStore.addProduct(parseInt("20"));
 
             //Access the productId from the store
-            this.productId = counterStore.productId;
+            // this.productId = productStore.products;
 
-
-            //Fetch data for the product and store it
-            this.getProductData(this.productId);
 
 
         },
 
-        async getProductData(pId) {
-
-            console.log(pId);
-
-            //Fetch data from JSON-file
-            const response = await fetch('/src/database.json');
-            const data = await response.json();
-
-            //Match incoming product ID width ID in JSON
-            const product = data.products.find(item => item.id === pId);
-
-            console.log(product);
-        },
 
     },
     watch: {

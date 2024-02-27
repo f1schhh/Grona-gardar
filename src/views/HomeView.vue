@@ -22,7 +22,7 @@ export default {
         const response = await fetch('/src/database.json');
         const data = await response.json()
         const product = data.products.filter(item => item.season === 'autumn');
-        console.log(product)
+        // console.log(product)
 
         if (product) {
           this.productData = product
