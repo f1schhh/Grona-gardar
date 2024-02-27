@@ -1,15 +1,31 @@
 import { defineStore } from "pinia";
 
-export const useCounterStore = defineStore('counter', {
-
-    //Actions is somewhat of a methods section in options API
+// Store for managing products
+export const useProductStore = defineStore('product', {
+    state: () => ({
+        products: []
+    }),
     actions: {
-        increment() {
-
-        }
+        // Define actions to manipulate products
+        addProduct(product) {
+            this.products.push(product);
+        },
+        // Other product-related actions
     },
+    // Define getters and mutations as needed
+});
 
-    //Pinia uses state as its central storage variable
-    state: () => ({ productId: 69 })
-
-})
+// Store for managing accounts
+export const useAccountStore = defineStore('account', {
+    state: () => ({
+        accounts: []
+    }),
+    actions: {
+        // Define actions to manipulate accounts
+        addAccount(account) {
+            this.accounts.push(account);
+        },
+        // Other account-related actions
+    },
+    // Define getters and mutations as needed
+});

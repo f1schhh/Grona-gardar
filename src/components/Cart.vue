@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { useCounterStore } from '../store';
+import { useProductStore } from '../store';
 
 export default {
     components: {
@@ -129,7 +129,7 @@ export default {
 
         onIncomingProductId() {
             //Retrieve the Pinia store instance
-            const counterStore = useCounterStore();
+            const counterStore = useProductStore();
             counterStore.productId = parseInt("2");;
 
             //Access the productId from the store
