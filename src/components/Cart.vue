@@ -99,7 +99,7 @@ export default {
 
                 //Increase blur of overlay by adding class
                 setTimeout(() => {
-                    document.querySelector(".cart-overlay").style.transition = "background-color 1s, backdrop-filter 1s;";
+                    document.querySelector(".cart-overlay").style.transition = "background-color 1s, backdrop-filter 1s";
                     document.querySelector(".cart-overlay").classList.add("increase");
 
                     document.querySelector(".cart-content-container").classList.add("move-cart-content-container")

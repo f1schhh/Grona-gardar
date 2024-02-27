@@ -165,7 +165,7 @@ export default {
 
       const overlay = document.querySelector(".overlay-for-login")
       const loginContainer = document.querySelector(".login-menu-container ")
-
+      loginContainer.classList.remove("fade-in")
       //Transition opacity to make div transparent
       overlay.classList.remove("increase-blur-when-using-login")
       loginContainer.classList.remove("fade-in")
