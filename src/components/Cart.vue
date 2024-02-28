@@ -18,8 +18,10 @@
 
         <div class="underline"></div>
 
+
         <div class="products-overview-container">
 
+            <!--Show following div is cart is empty-->
             <div v-if="this.itemsInCart === 0" class="empty-cart-container">
 
                 <div class="cart-immage-wrapper">
@@ -33,6 +35,51 @@
 
                 <p>Du kan behöva logga in för att komma åt tidigare tillagda produkter.</p>
             </div>
+            <!--Show this div if items in cart > 0-->
+            <div v-else class="cart-products-container">
+
+                <div v-for="product in cartMirror" class="single-product-wrapper">
+
+                    <div class="product-image-wrapper">
+                        <img :src="product.pImage" alt="">
+                    </div>
+
+                    <div class="product-data-and-controls-container">
+                        <div class="product-data-container">
+
+                            <div class="product-data-wrapper">
+                                <div class="p-name">
+                                    {{ product.pName }}
+                                </div>
+                                <div class="p-type">
+                                    {{ product.pType }}
+                                </div>
+                                <div class="p-price">
+                                    {{ product.pPrice }} kr/kg
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="controls-container">
+                            <div class="controls-wrapper">
+
+                                <button>-</button>
+                                <p>{{ product.pQuantity }}</p>
+                                <button>+</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
 
             <div v-if="this.itemsInCart === 0" class="empty-cart-footer">
 
@@ -44,17 +91,6 @@
             </div>
 
 
-            <div class="single-product-wrapper">
-
-
-
-                <div class="product-image-wrapper">
-
-                </div>
-                <div class="single-product-info-wrapper">
-
-                </div>
-            </div>
         </div>
 
     </div>
@@ -71,12 +107,15 @@ export default {
         return {
             isCartVisible: false,
             productId: null,
-            itemsInCart: 0,
+            itemsInCart: null,
+            cartMirror: null,
+            productStore: null, // Store the store instance
         }
     },
     created() {
 
-        // this.onIncomingProductId()
+        // Initialize the store instance
+        this.productStore = useProductStore();
     },
     props: {
         onCartClick: Boolean,
@@ -127,16 +166,30 @@ export default {
         },
 
 
-        onIncomingProductId() {
-            //Retrieve the Pinia store instance
+        onIncomingProduct() {
+            // Retrieve the Pinia store instance
             const productStore = useProductStore();
+            const products = productStore.products;
 
-            //Put value into product
-            productStore.addProduct(parseInt("20"));
+            // Set itemsInCart based on the number of products
+            if (products.length > 0) {
 
-            //Access the productId from the store
-            // this.productId = productStore.products;
+                // Calculate the sum of all pQuantity values
+                const totalQuantity = products.reduce((acc, product) => acc + product.pQuantity, 0);
 
+                // Set itemsInCart to the sum of all pQuantity values
+                this.itemsInCart = totalQuantity;
+
+            } else {
+                // If there are no products, set itemsInCart to 0
+                this.itemsInCart = 0;
+            }
+
+            //add cart products into a local component variable
+            this.cartMirror = products;
+
+            // Log products in varukorg
+            console.log("Products in varukorg:", products);
 
 
         },
@@ -146,10 +199,19 @@ export default {
     watch: {
 
         onCartClick(newValue) {
-            if (newValue === true && this.isCartVisible === false) {
+            if (newValue && !this.isCartVisible) {
                 this.cartClicked(newValue);
             }
         },
+        // Watch for changes in the products state and call onIncomingProductId method
+        'productStore.products': {
+            handler() {
+                this.onIncomingProduct();
+            },
+            // Deep watch ensures changes in nested properties are detected
+            deep: true,
+        },
+
     },
 
 }
@@ -232,16 +294,88 @@ export default {
 }
 
 .products-overview-container {
-
     width: 100%;
 }
 
-.single-product-wrapper {
+.cart-products-container {
     width: 100%;
-    border-radius: 19px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.single-product-wrapper {
+    background-color: var(--dark-beige);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    width: 100%;
+    height: 90px;
+    margin-bottom: 20px;
+}
+
+.product-image-wrapper {
+    width: 40%;
+}
+
+.product-image-wrapper img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.product-data-and-controls-container {
+    width: 60%;
+}
+
+.product-data-container {
+    height: 65%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.product-data-wrapper {
+
+    width: 85%;
+    height: 80%;
+}
+
+.p-name {
+    font-weight: bolder;
+}
+
+.p-name,
+.p-type,
+.p-price {
+    font-size: 13px;
+}
+
+.controls-container {
+    height: 35%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.controls-wrapper {
+    background-color: var(--mid-beige);
+    border-radius: 16px;
+    height: 20px;
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+
+.controls-wrapper button {
+
+    background-color: var(--light-beige);
+    border: none;
+    width: 20px;
+    border-radius: 16px;
 }
 
 .empty-cart-container {
