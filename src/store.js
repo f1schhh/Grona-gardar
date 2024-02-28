@@ -8,7 +8,8 @@ import { watch } from "vue";
 // Store for managing products
 export const useProductStore = defineStore('product', {
     state: () => ({
-        products: []
+        // Retrieve products from local storage or initialize an empty array
+        products: JSON.parse(localStorage.getItem("products")) || [],
     }),
     actions: {
         // Define actions to manipulate products
@@ -72,14 +73,6 @@ export const useProductStore = defineStore('product', {
 
 });
 
-// Watch for changes in the products array and notify
-watch(
-    () => useProductStore.products,
-    (newProducts, oldProducts) => {
-        console.log("Products updated:", newProducts);
-        // Trigger an action or update the component as needed
-    }
-);
 
 /*==========================*/
 /*===== ACCOUNTS PINIA =====*/
