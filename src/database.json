@@ -288,5 +288,29 @@
       "order_id": 2091765224,
       "product_id": 2
     }
+  ],
+
+  "users" : [
+    {
+      "id": 1,
+      "first_name": "" ,
+      "last_name": "Gardener",
+      "email": "adam@gardener.com",
+      "phone": "+70-123 45 67",
+      "location": "",
+      "password": "apple"
+    },
+    {
+      "id": 2,
+      "first_name": "Alice" ,
+      "last_name": "Farmer",
+      "email": "admin@gronagardar.com",
+      "phone": "+73-987 65 43",
+      "password": "lemon"
+    }
   ]
+
+  }
+
+
 }
