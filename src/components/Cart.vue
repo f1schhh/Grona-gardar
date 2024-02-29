@@ -93,6 +93,13 @@
                 </div>
 
             </div>
+            <div v-else class="to-checkout-footer">
+                <p class="tot-cart-price"><b>Totalt: X XXX kr</b></p>
+                <div class="to-checkout-btn">
+                    <p>Till kassan</p>
+                    <i class="bi bi-chevron-right"></i>
+                </div>
+            </div>
 
 
         </div>
@@ -456,7 +463,7 @@ export default {
 }
 
 .empty-cart-footer {
-    height: 15%;
+    height: 20%;
     width: 100%;
     position: absolute;
     left: 0;
@@ -471,10 +478,9 @@ export default {
 
 .back-button {
     background-color: var(--dark-beige);
-    width: fit-content;
     border-radius: 26px;
     padding: 10px;
-    width: 100px;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -482,8 +488,6 @@ export default {
     transition: box-shadow 0.3s;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-
-
 
 .back-button:active {
     box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -494,6 +498,52 @@ export default {
     font-size: 18px;
 }
 
+
+.to-checkout-footer {
+    height: 20%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    box-shadow: -2px -5px 5px 1px rgba(71, 81, 51, 0.13);
+    -webkit-box-shadow: -2px -5px 5px 1px rgba(71, 81, 51, 0.13);
+    -moz-box-shadow: -2px -5px 5px 1px rgba(71, 81, 51, 0.13);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.tot-cart-price {
+    background-color: orange;
+    width: fit-content;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.to-checkout-btn {
+    background-color: var(--dark-beige);
+    height: 20px;
+    border-radius: 26px;
+    margin-top: 15px;
+    padding: 10px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.to-checkout-btn:active {
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.bi-chevron-right {
+
+    height: 16px;
+}
 
 @media screen and (min-width: 451px) {
     .cart-content-container h1 {
