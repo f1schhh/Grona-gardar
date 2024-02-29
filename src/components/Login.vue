@@ -117,6 +117,9 @@ export default {
             if(user.email === this.email && user.password === this.password){
                 console.log('du är inloggad')
                 this.$emit('user-name', user.first_name);
+
+                localStorage.setItem("userId", user.id);
+
                 this.email = null
                 this.password = null
             }

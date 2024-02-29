@@ -76,7 +76,6 @@ export default {
       isCartClicked: false,
       userName: "Konto",
       cartTitleAndPrice: "Varukorg",
-      popupLogin: ""
     }
   },
   methods: {
@@ -135,7 +134,7 @@ export default {
         rectB.classList.add('rotate-rectA-rectB')
         rectC.classList.add('rotate-rectC')
 
-        menuContainer.classList.ad('move-menu-right')
+        menuContainer.classList.add('move-menu-right')
 
       }
     },
@@ -176,7 +175,6 @@ export default {
       setTimeout(function () {
 
         overlay.style.display = "none";
-        popupLogin.style.display = "none";
 
       }, 500)
 
@@ -203,7 +201,6 @@ export default {
 
 </script>
 
-
 <style scoped>
 header {
   width: 100vw;
@@ -228,7 +225,6 @@ header {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
 }
-
 
 .overlay-for-login {
   display: none;
