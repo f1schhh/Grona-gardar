@@ -402,6 +402,11 @@ export default {
     border: none;
     width: 20px;
     border-radius: 16px;
+    transition: box-shadow 0.3s;
+}
+
+.controls-wrapper button:active {
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .empty-cart-container {
@@ -474,7 +479,14 @@ export default {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: box-shadow 0.3s;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+
+.back-button:active {
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .bi-arrow-left {
