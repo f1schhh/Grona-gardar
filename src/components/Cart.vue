@@ -41,7 +41,10 @@
                 <div v-for="product in cartMirror" class="single-product-wrapper">
 
                     <div class="product-image-wrapper">
-                        <img :src="product.pImage" alt="">
+                        <router-link :to="`/product/${product.pId}`">
+                            <img :src="product.pImage" alt="">
+                        </router-link>
+
                     </div>
 
                     <div class="product-data-and-controls-container">
@@ -49,7 +52,9 @@
 
                             <div class="product-data-wrapper">
                                 <div class="p-name">
-                                    {{ product.pName }}
+                                    <router-link :to="`/product/${product.pId}`">
+                                        {{ product.pName }}
+                                    </router-link>
                                 </div>
                                 <div class="p-type">
                                     {{ product.pType }}
@@ -63,10 +68,9 @@
 
                         <div class="controls-container">
                             <div class="controls-wrapper">
-
-                                <button>-</button>
+                                <button @click="decreaseProduct(product.pId)">-</button>
                                 <p>{{ product.pQuantity }}</p>
-                                <button>+</button>
+                                <button @click="increaseProduct(product.pId)">+</button>
 
                             </div>
                         </div>
@@ -190,10 +194,32 @@ export default {
 
             // Log products in varukorg
             console.log("Products in varukorg:", products);
-
-
         },
 
+        //Method that reduces items in the pinia cart
+        decreaseProduct(productId) {
+            // Find the index of the current product in the store's products array
+            const productIndex = this.productStore.products.findIndex(product => product.pId === productId);
+            // If the product is found and its quantity is greater than 0, decrease its quantity
+            if (productIndex !== -1) {
+                if (this.productStore.products[productIndex].pQuantity > 0) {
+                    this.productStore.products[productIndex].pQuantity--;
+                }
+                // If the quantity becomes 0 after decrementing, remove the product from the store
+                if (this.productStore.products[productIndex].pQuantity === 0) {
+                    this.productStore.products.splice(productIndex, 1);
+                }
+            }
+        },
+        //Method that increases product quantity in the pinia cart
+        increaseProduct(productId) {
+            // Find the index of the current product in the store's products array
+            const productIndex = this.productStore.products.findIndex(product => product.pId === productId);
+            // If the product is found, increase its quantity
+            if (productIndex !== -1) {
+                this.productStore.products[productIndex].pQuantity++;
+            }
+        },
 
     },
     watch: {
@@ -324,6 +350,7 @@ export default {
     object-fit: cover;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
 .product-data-and-controls-container {
@@ -371,7 +398,6 @@ export default {
 }
 
 .controls-wrapper button {
-
     background-color: var(--light-beige);
     border: none;
     width: 20px;
@@ -393,14 +419,11 @@ export default {
     justify-content: center;
     align-items: center;
     position: relative;
-
     width: fit-content;
     border-radius: 46px;
     width: 70px;
     height: 70px;
     background-color: rgba(218, 178, 158, 0.4);
-
-
 }
 
 .zero-items-in-cart-wrapper {
