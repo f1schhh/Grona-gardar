@@ -191,7 +191,7 @@ export default {
       }
     },
     handleUserNameEvent(user){
-      console.log(user)
+      console.log("detta sker i header" + user)
 
       this.userName = user
     }
