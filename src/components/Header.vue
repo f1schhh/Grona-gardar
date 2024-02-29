@@ -53,7 +53,7 @@
           </div>
 
           <div @click="onCartClick" class="cart-icon-wrapper">
-            <i class="bi bi-cart"></i>
+            <i class="bi bi-cart"></i><p> {{ cartTitleAndPrice }}</p>
           </div>
         </div>
       </div>
@@ -74,7 +74,8 @@ export default {
   data() {
     return {
       isCartClicked: false,
-      userName: ''
+      userName: "Konto",
+      cartTitleAndPrice: "Varukorg"
     }
   },
   methods: {
@@ -133,10 +134,9 @@ export default {
         rectB.classList.add('rotate-rectA-rectB')
         rectC.classList.add('rotate-rectC')
 
-        menuContainer.classList.add('move-menu-right')
+        menuContainer.classList.ad('move-menu-right')
 
       }
-
     },
     //Method that exist menu when user closes menu
     exitMenu() {
@@ -433,9 +433,13 @@ li {
 }
 
 .login-wrapper p{
-  margin-left: 5px;
-  font-size: 12px;
+  display: none;
 }
+
+.cart-icon-wrapper p{
+ display: none;
+}
+
 
 
 @media screen and (max-width: 451px) {
@@ -482,6 +486,25 @@ li {
 
   .login-wrapper {
     visibility: visible;
+  }
+
+}
+
+@media screen and (min-width: 980px){
+
+  .login-and-cart-container{
+    width: 50%;
+    display: flex;
+    justify-content: end;
+  }
+  .cart-icon-wrapper{
+  display: flex;
+  align-items: center;
+  }
+  .cart-icon-wrapper p, .login-wrapper p{
+    margin-left: 5px;
+    font-size: 12px;
+    display: inline-block;
   }
 
 }
