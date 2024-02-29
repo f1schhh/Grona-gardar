@@ -57,6 +57,10 @@
     width: 6.5rem;
 }
 
+.buttons_stay_logout:active {
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
 @media screen and (min-width: 600px) {
     article {
         padding-left: 2rem;

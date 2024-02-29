@@ -254,6 +254,7 @@ export default {
     padding-right: 25px;
 }
 
+
 .move-cart-content-container {
     right: 0;
 }
@@ -452,6 +453,10 @@ export default {
     justify-content: center;
     cursor: pointer;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.back-button:active {
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .bi-arrow-left {

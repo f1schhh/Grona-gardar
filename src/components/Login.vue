@@ -3,47 +3,48 @@
         <h1 class="login-link" :class="{ underline: loginLink }" @click="onLoginLink">Logga in</h1>
         <h1 class="register-link" :class="{ underline: !loginLink }" @click="onRegisterLink">Registrera</h1>
     </div>
-<div class="login-container">
-    <div   v-if="loginLink" class="login-menu-wrapper">
+    <div class="login-container">
+        <div v-if="loginLink" class="login-menu-wrapper">
 
-        <form action="" method="post">
-            <p for="username">E-postadress </p>
-            <input v-model="email" type="email" required>
-            <p class="error-message">{{ usernameErrorMessage }}</p>
-            <p for="password">Lösenord </p>
-            <input v-model="password" type="password" required>
-            <p class="error-message">{{ passwordErrorMessage }}</p>
-            <p class="forgotten-password-link">Glömt lösenord?</p>
-        </form>
-        <input class="login-butt" @click="onLoginClick" type="button" value="Logga in">
-    </div>
-
-    <div v-else="!loginLink" class="login-menu-wrapper">
-        <form>
-            <div>
-                <p for="name">Namn</p>
-                <input v-model="name" type="text" required>
-                <p class="error-message">{{ nameErrorMessage }}</p>
-            </div>
-            <div>
+            <form action="" method="post">
                 <p for="username">E-postadress </p>
-                <input v-model="username" type="text" required>
-                <p class="error-message">{{ newUsernameErrorMessage }}</p>
-            </div>
-            <div>
+                <input v-model="email" type="email" required>
+                <p class="error-message">{{ usernameErrorMessage }}</p>
                 <p for="password">Lösenord </p>
-                <input v-model="password" type="text" required>
-                <p class="error-message">{{ newPasswordErrorMessage }}</p>
-            </div>
-            <div>
-                <p for="confirmPassword">Bekräfta lösenordet </p>
-                <input v-model="confirmPassword" type="text" required>
-                <p class="error-message">{{ newPasswordErrorMessage2 }}</p>
-            </div>
-        </form>
-        <input class="login-butt" @click="onSignUpClick" type="button" value="Registrera" :disabled="invalidRegistration">
+                <input v-model="password" type="password" required>
+                <p class="error-message">{{ passwordErrorMessage }}</p>
+                <p class="forgotten-password-link">Glömt lösenord?</p>
+            </form>
+            <input class="login-butt" @click="onLoginClick" type="button" value="Logga in">
+        </div>
+
+        <div v-else="!loginLink" class="login-menu-wrapper">
+            <form>
+                <div>
+                    <p for="name">Namn</p>
+                    <input v-model="name" type="text" required>
+                    <p class="error-message">{{ nameErrorMessage }}</p>
+                </div>
+                <div>
+                    <p for="username">E-postadress </p>
+                    <input v-model="username" type="text" required>
+                    <p class="error-message">{{ newUsernameErrorMessage }}</p>
+                </div>
+                <div>
+                    <p for="password">Lösenord </p>
+                    <input v-model="password" type="text" required>
+                    <p class="error-message">{{ newPasswordErrorMessage }}</p>
+                </div>
+                <div>
+                    <p for="confirmPassword">Bekräfta lösenordet </p>
+                    <input v-model="confirmPassword" type="text" required>
+                    <p class="error-message">{{ newPasswordErrorMessage2 }}</p>
+                </div>
+            </form>
+            <input class="login-butt" @click="onSignUpClick" type="button" value="Registrera"
+                :disabled="invalidRegistration">
+        </div>
     </div>
-</div>
 </template>
 
 <script>
@@ -73,7 +74,7 @@ export default {
             newPasswordErrorMessage: null,
             newPasswordErrorMessage2: null,
 
-            users:''
+            users: ''
 
         }
     },
@@ -105,17 +106,17 @@ export default {
             const data = await response.json();
 
             for (const user of data.users) {
-            console.log(`Email: ${user.email}, Password: ${user.password}`);
+                console.log(`Email: ${user.email}, Password: ${user.password}`);
 
-            if(user.email === this.email && user.password === this.password){
-                console.log('du är inloggad')
-                this.$emit('userName', user.first_name);
-                this.email = null
-                this.password = null
-            }
-            else{
+                if (user.email === this.email && user.password === this.password) {
+                    console.log('du är inloggad')
+                    this.$emit('userName', user.first_name);
+                    this.email = null
+                    this.password = null
+                }
+                else {
 
-            }
+                }
             }
 
         },
@@ -133,14 +134,14 @@ export default {
 </script>
 
 <style scoped>
-
-.login-container{
+.login-container {
     height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
+
 .login-menu-wrapper {
     background-color: var(--dark-green);
     border-radius: 16px;
@@ -208,7 +209,9 @@ input {
     cursor: pointer;
 }
 
-.login-menu-wrapper input[type="text"], input[type="password"], input[type="email"] {
+.login-menu-wrapper input[type="text"],
+input[type="password"],
+input[type="email"] {
     background-color: var(--light-beige);
     width: 90%;
     height: 30px;
@@ -234,7 +237,7 @@ input {
 
 .login-butt:active {
     background-color: var(--dark-beige);
-
+    box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 /*===================*/

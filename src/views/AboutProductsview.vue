@@ -230,6 +230,10 @@ section {
   font-size: 0.9rem;
 }
 
+.add_to_cart:active {
+  box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
 .similiar_products {
   display: flex;
   flex-direction: column;

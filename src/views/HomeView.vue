@@ -66,10 +66,12 @@ export default {
           Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt. Varje
           produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
         </p>
-        <div class="div_button_more_products">
-          <button class="button_more_products" @click="goToProducts">Våra produkter<i
-              class="bi bi-arrow-right"></i></button>
-        </div>
+        <router-link to="/products">
+          <div class="div_button_more_products">
+            <button class="button_more_products" @click="goToProducts">Våra produkter<i
+                class="bi bi-arrow-right"></i></button>
+          </div>
+        </router-link>
       </div>
     </section>
 
@@ -357,6 +359,10 @@ article {
 
 }
 
+.button_more_products:active {
+  box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
 .section_season {
   background-color: var(--dark-beige);
   padding: 1rem;
@@ -550,6 +556,15 @@ article {
 
 @media screen and (max-width: 385px) {
 
+  .main_top {
+    height: 45vh;
+  }
+
+  .block_info {
+    padding-top: 4rem;
+
+  }
+
   li {
     max-width: 9.5rem;
   }
@@ -574,6 +589,15 @@ article {
   .product_list {
     justify-content: flex-start;
   }
+
+}
+
+.main_top {
+  height: 45vh;
+}
+
+.block_info {
+  padding-top: 4rem;
 
 }
 
@@ -608,6 +632,7 @@ article {
 }
 
 @media screen and (min-width:650px) {
+
   .block_about {
     display: flex;
     flex-direction: row;
@@ -675,6 +700,7 @@ article {
 }
 
 @media screen and (min-width: 820px) {
+
   .show_hide_two {
     display: flex;
     flex-wrap: wrap;
@@ -684,11 +710,24 @@ article {
 }
 
 @media screen and (min-width: 1074px) {
+
   .show_hide_three {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 220px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .main_top {
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  .main_top {
+    height: 100vh;
   }
 }
 </style>

@@ -100,14 +100,14 @@ h6 {
 @font-face {
   font-family: "Anevir Next Cyr Medium";
   src: url("./assets/font/avenir-next/AvenirNextCyr-Medium.ttf") format("opentype");
-  font-weight: medium;
+  font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Anevir Next DemiBold";
   src: url("./assets/font/avenir-next/AvenirNextCyr-Demi.ttf") format("opentype");
-  font-weight: medium;
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -164,11 +164,13 @@ main {
 .product_list li {
   max-width: 10.4375rem;
   border-radius: 19px;
+  transition: 1s;
+
 }
 
 .product_list li:hover {
-  box-shadow: 1px 0px 15px 0px rgba(0, 0, 0, 0.85);
-  transition: 0.6s;
+  box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.85);
+  transition: 0.35s;
 }
 
 .product_list li:focus {
@@ -182,6 +184,10 @@ main {
   border-radius: 19px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   background-color: #dfd3c3;
+}
+
+.specific_product:active {
+  box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .specific_product .price {
@@ -220,6 +226,10 @@ main {
   padding-left: 1rem;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   background-color: var(--dusty-pink);
+}
+
+.button_more_products:active {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .button_more_products i {
