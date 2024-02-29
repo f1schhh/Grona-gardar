@@ -430,6 +430,11 @@ li {
 .login-wrapper{
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.cart-icon-wrapper{
+  cursor: pointer;
 }
 
 .login-wrapper p{

@@ -21,23 +21,23 @@
     <div v-else="!loginLink" class="login-menu-wrapper">
         <form>
             <div>
-                <p for="name">Namn</p>
-                <input v-model="name" type="text" required>
+                <p>Namn</p>
+                <input v-model="signUpName" type="text" required>
                 <p class="error-message">{{ nameErrorMessage }}</p>
             </div>
             <div>
-                <p for="username">E-postadress </p>
-                <input v-model="username" type="text" required>
+                <p>E-postadress</p>
+                <input v-model="signUpEmail" type="email" required>
                 <p class="error-message">{{ newUsernameErrorMessage }}</p>
             </div>
             <div>
-                <p for="password">Lösenord </p>
-                <input v-model="password" type="text" required>
+                <p>Lösenord </p>
+                <input v-model="signUpPassword" type="password" required>
                 <p class="error-message">{{ newPasswordErrorMessage }}</p>
             </div>
             <div>
                 <p for="confirmPassword">Bekräfta lösenordet </p>
-                <input v-model="confirmPassword" type="text" required>
+                <input v-model="signUpPassword2" type="password" required>
                 <p class="error-message">{{ newPasswordErrorMessage2 }}</p>
             </div>
         </form>
@@ -68,11 +68,17 @@ export default {
             usernameErrorMessage: null,
             passwordErrorMessage: null,
 
-            // Sign up
+            // Sign up error message
             nameErrorMessage: null,
             newUsernameErrorMessage: null,
             newPasswordErrorMessage: null,
             newPasswordErrorMessage2: null,
+
+            // Sign up input
+            signUpName:'',
+            signUpEmail:'',
+            signUpPassword:'',
+            signUpPassword2:'',
 
             users:''
 
@@ -201,9 +207,6 @@ input {
 .forgotten-password-link {
     text-align: center;
     margin: 0;
-}
-
-.forgotten-password-link:hover {
     cursor: pointer;
 }
 
@@ -220,7 +223,7 @@ input {
 .login-butt {
     background-color: var(--mid-beige);
     border-radius: 24px;
-    border: 1px solid #FFF;
+    border: 1px solid var(--mid-beige);
     width: 143px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     height: 37px;
@@ -232,7 +235,8 @@ input {
 }
 
 .login-butt:active {
-    background-color: var(--dark-beige);
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--dark-beige);
 
 }
 
