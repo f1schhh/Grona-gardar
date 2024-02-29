@@ -16,7 +16,7 @@
     </div>
     <div class="login-field-to-center-container">
       <div class="login-menu-container">
-        <Login></Login>
+        <Login @userName="handleUserNameEvent"></Login>
       </div>
     </div>
 
