@@ -14,7 +14,7 @@ import PageNotFoundView from './views/PageNotFoundView.vue'
 //Admin views
 import AdminView from './views/admin/AdminView.vue'
 import AdminOrders from './views/admin/AdminOrdersView.vue'
-
+import AdminCustomers from './views/admin/AdminCustomersView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -70,7 +70,8 @@ const router = createRouter({
       path: '/admin',
       component: AdminView,
       children: [
-        { path: 'orders', component: AdminOrders }
+        { path: 'orders', component: AdminOrders },
+        { path: 'customers', component: AdminCustomers },
       ]
     },
     {
