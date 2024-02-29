@@ -1,4 +1,10 @@
 <script>
+import OrderHistory from '../../components/Admin/OrderHistory.vue';
+export default {
+  components: {
+    OrderHistory
+  }
+}
 </script>
 <template>
   <div class="orders_container">
@@ -7,26 +13,7 @@
         <h3>Alla ordrar</h3>
         <span class="small_text">Överblick</span>
       </div>
-      <table class="orders_table">
-        <tr>
-          <th>Order id</th>
-          <th>Kund</th>
-          <th>Pris</th>
-          <th>Status</th>
-        </tr>
-        <tr>
-          <td>3399393</td>
-          <td>Adam Fischer</td>
-          <td>199 SEK</td>
-          <td>Pågående</td>
-        </tr>
-        <tr>
-          <td>3399393</td>
-          <td>Adam Fischer</td>
-          <td>199 SEK</td>
-          <td>Pågående</td>
-        </tr>
-      </table>
+      <OrderHistory :amount="50" />
     </div>
   </div>
 </template>
