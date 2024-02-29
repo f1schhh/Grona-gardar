@@ -137,6 +137,7 @@ export default {
 
 
     },
+    emits: ['overlay-clicked'],
     methods: {
 
         //Method used to make cart visible
@@ -276,7 +277,7 @@ export default {
     right: -280px;
     top: 0;
     background-color: var(--mid-beige);
-    position: absolute;
+    position: fixed;
     z-index: 3;
     transition: right 0.75s;
     display: flex;
@@ -332,11 +333,15 @@ export default {
 
 .cart-products-container {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    background-color: orange;
+    overflow-y: auto;
+    /* Add scroll effect */
 }
 
 .single-product-wrapper {
@@ -347,6 +352,7 @@ export default {
     width: 100%;
     height: 90px;
     margin-bottom: 20px;
+
 }
 
 .product-image-wrapper {
@@ -515,7 +521,6 @@ export default {
 
 
 .tot-cart-price {
-    background-color: orange;
     width: fit-content;
     margin-top: 10px;
     font-size: 12px;
