@@ -49,7 +49,7 @@
 
         <div class="login-and-cart-icons-wrapper">
           <div @click="onLoginClick" class="login-wrapper">
-            <i class="bi bi-person"></i>
+            <i class="bi bi-person"></i><p>{{ userName }}</p>
           </div>
 
           <div @click="onCartClick" class="cart-icon-wrapper">
@@ -74,6 +74,7 @@ export default {
   data() {
     return {
       isCartClicked: false,
+      userName: ''
     }
   },
   methods: {
@@ -189,7 +190,11 @@ export default {
         this.isCartClicked = false;
       }
     },
+    handleUserNameEvent(user){
+      console.log(user)
 
+      this.userName = user
+    }
   }
 
 }
@@ -420,6 +425,24 @@ li {
   padding-top: 20px;
   margin-left: 25px;
   font-size: 30px;
+}
+
+.login-wrapper{
+  display: flex;
+  align-items: center;
+}
+
+.login-wrapper p{
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+
+@media screen and (max-width: 451px) {
+
+  .login-wrapper p{
+    display: none;
+}
 }
 
 
