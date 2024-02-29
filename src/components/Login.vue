@@ -49,9 +49,10 @@
 <script>
 import { mapStores } from 'pinia'
 import { useAccountStore } from '../store'
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
+    emits: ['userName'],
     computed: {
         ...mapStores(useAccountStore)
 
@@ -109,14 +110,12 @@ export default {
 
             if(user.email === this.email && user.password === this.password){
                 console.log('du är inloggad')
-                this.$emit('userName', user.first_name);
+                this.$emit('user-name', user.first_name);
                 this.email = null
                 this.password = null
             }
-            else{
 
-            }
-            }
+        }
 
         },
         onSignUpClick() {
