@@ -75,7 +75,8 @@ export default {
     return {
       isCartClicked: false,
       userName: "Konto",
-      cartTitleAndPrice: "Varukorg"
+      cartTitleAndPrice: "Varukorg",
+      popupLogin: ""
     }
   },
   methods: {
