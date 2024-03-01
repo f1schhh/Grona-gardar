@@ -21,7 +21,8 @@
     </div>
 
     <!--==== Cart conent Container ====-->
-    <Cart :on-cart-click="isCartClicked" @overlay-clicked="isCartClicked = false"></Cart>
+    <Cart :on-cart-click="isCartClicked" @overlay-clicked="isCartClicked = false"
+      @tot-items-in-cart="setTotQuantityOfItemsInCart" @tot-cost-in-cart="setTotCostOfItemsInCart"></Cart>
     <!--End of Cart Content COntainer-->
 
     <nav id="navBar">
@@ -55,7 +56,8 @@
 
           <div @click="onCartClick" class="cart-icon-wrapper">
             <i class="bi bi-cart"></i>
-            <p> {{ cartTitleAndPrice }}</p>
+            <div class="quantity-in-cart" v-if="quantityOfItemsInCart"><b>{{ quantityOfItemsInCart }}</b></div>
+            <p v-html="`${quantityOfItemsInCart ? `<b>${totCostForItemsInCart}</b>` : 'Varukorg'}`"></p>
           </div>
         </div>
       </div>
@@ -77,7 +79,8 @@ export default {
     return {
       isCartClicked: false,
       userName: "Konto",
-      cartTitleAndPrice: "Varukorg",
+      quantityOfItemsInCart: null,
+      totCostForItemsInCart: null,
     }
   },
   created() {
@@ -216,6 +219,17 @@ export default {
         this.userName = userNameFromStorage;
       }
 
+    },
+
+    //Update quantity of items in cart for header
+    setTotQuantityOfItemsInCart(incomingQuantityOfItems) {
+      this.quantityOfItemsInCart = incomingQuantityOfItems;
+      console.log("header shows quantity of items:", this.quantityOfItemsInCart)
+    },
+    //Update tot. Cost of items in cart for header
+    setTotCostOfItemsInCart(incomingTotCostOfItems) {
+      this.totCostForItemsInCart = incomingTotCostOfItems + " kr";
+      console.log("header shows tot cost of items: ", this.totCostForItemsInCart)
     }
   }
 
@@ -455,6 +469,21 @@ li {
 
 .cart-icon-wrapper {
   cursor: pointer;
+  position: relative;
+}
+
+.quantity-in-cart {
+  background-color: var(--dusty-pink);
+  font-size: 12px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  position: absolute;
+  left: 12px;
+  top: 0;
 }
 
 .login-wrapper p {

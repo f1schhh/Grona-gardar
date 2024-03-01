@@ -125,6 +125,7 @@ export default {
             productStore: null, // Store the store instance
         }
     },
+    emits: ['tot-items-in-cart', 'tot-cost-in-cart'],
     created() {
 
         // Initialize the store instance
@@ -203,7 +204,8 @@ export default {
 
 
                 //Emit amount of items and total cost to parent header
-
+                this.$emit('tot-items-in-cart', this.itemsInCart);
+                this.$emit('tot-cost-in-cart', this.totalCostOfItemsInCart);
 
             } else {
                 // If there are no products, set itemsInCart to 0
@@ -213,7 +215,8 @@ export default {
                 this.totalCostOfItemsInCart = 0;
 
                 //Emit amount of items and total cost to parent header
-
+                this.$emit('tot-items-in-cart', this.itemsInCart);
+                this.$emit('tot-cost-in-cart', this.totalCostOfItemsInCart);
             }
 
             //add cart products into a local component variable
@@ -465,7 +468,6 @@ export default {
     align-items: center;
     flex-direction: column;
     padding-top: 50px;
-    background-color: orange;
     padding-left: 20px;
     padding-right: 20px;
 }
