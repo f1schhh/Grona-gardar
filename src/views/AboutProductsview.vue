@@ -15,6 +15,8 @@ export default {
   },
   watch: {
     async "$route.params.id"(newId) {
+      this.productData = null;
+      this.similiarData = null;
       await this.getProducts(parseInt(this.$route.params.id), newId);
       await this.getSimilarProducts();
     }
@@ -129,9 +131,11 @@ export default {
       </div>
     </div>
   </section>
-  <div class="loading-spinner-container" v-else>
-    <div class="loading-spinner">
-      <div></div>
+  <div style="width: 100%; height: 100%; display:flex; justify-content:center; align-items: center;" v-else>
+    <div class="loading-spinner-container">
+      <div class="loading-spinner">
+        <div></div>
+      </div>
     </div>
   </div>
 </template>

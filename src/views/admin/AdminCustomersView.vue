@@ -25,8 +25,8 @@ export default {
 <template>
   <div class="customers_container">
     <div>
-      <h3>Order status</h3>
-      <span class="small_text">Överblick utav senaste ordrar</span>
+      <h3>Alla kundar</h3>
+      <span class="small_text">Lista över alla våra kunder</span>
     </div>
     <table class="orders_table">
       <tr>

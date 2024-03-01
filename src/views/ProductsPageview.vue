@@ -119,7 +119,7 @@ export default {
     </ul>
     <div class="category_container">
       <section v-if="categoryData.fruits.length !== 0">
-        <h2 style="padding: 0.3rem;">Frukt</h2>
+        <h2 class="category_title">Frukt</h2>
         <ul class="product_list">
 
           <li v-for="items in categoryData.fruits">
@@ -146,55 +146,51 @@ export default {
       </section>
 
       <section v-if="categoryData.vegetables.length !== 0">
-        <h2 style="padding: 0.3rem;">Grönsaker</h2>
+        <h2 class="category_title">Grönsaker</h2>
         <ul class="product_list">
-          <div @mouseenter="hover = true" @mouseleave="hover = false" class="overlay">
-            <li v-for="items in categoryData.vegetables">
-              <div class="specific_product">
-                <div class="img-wrapper" @click="onProductClick(items.id)">
-                  <img :src="items.product_image" :alt="items.product_name">
-                </div>
-                <div class="h3_and_heart">
-                  <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
-                  }}</router-link></h3>
-                  <div class="button_like">
-                    <i class="bi bi-heart"></i>
-                  </div>
-                </div>
-                <div class="product_type">
-                  {{ items.product_type }}
-                  <span>{{ items.price }} kr/kg</span>
-                </div>
-                <button @click="onAddToCartClick(items.id)" class="button_cart">Lägg i varukorg</button>
+          <li v-for="items in categoryData.vegetables">
+            <div class="specific_product">
+              <div class="img-wrapper" @click="onProductClick(items.id)">
+                <img :src="items.product_image" :alt="items.product_name">
               </div>
-            </li>
-          </div>
+              <div class="h3_and_heart">
+                <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
+                }}</router-link></h3>
+                <div class="button_like">
+                  <i class="bi bi-heart"></i>
+                </div>
+              </div>
+              <div class="product_type">
+                {{ items.product_type }}
+                <span>{{ items.price }} kr/kg</span>
+              </div>
+              <button @click="onAddToCartClick(items.id)" class="button_cart">Lägg i varukorg</button>
+            </div>
+          </li>
         </ul>
       </section>
       <section v-if="categoryData.season.length !== 0">
-        <h2 style="padding: 0.3rem;">I säsong</h2>
+        <h2 class="category_title">I säsong</h2>
         <ul class="product_list">
-          <div @mouseenter="hover = true" @mouseleave="hover = false" class="overlay">
-            <li v-for="items in categoryData.season">
-              <div class="specific_product">
-                <div class="img-wrapper" @click="onProductClick(items.id)">
-                  <img :src="items.product_image" :alt="items.product_name">
-                </div>
-                <div class="h3_and_heart">
-                  <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
-                  }}</router-link></h3>
-                  <div class="button_like">
-                    <i class="bi bi-heart"></i>
-                  </div>
-                </div>
-                <div class="product_type">
-                  {{ items.product_type }}
-                  <span>{{ items.price }} kr/kg</span>
-                </div>
-                <button @click="onAddToCartClick(items.id)" class="button_cart">Lägg i varukorg</button>
+          <li v-for="items in categoryData.season">
+            <div class="specific_product">
+              <div class="img-wrapper" @click="onProductClick(items.id)">
+                <img :src="items.product_image" :alt="items.product_name">
               </div>
-            </li>
-          </div>
+              <div class="h3_and_heart">
+                <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
+                }}</router-link></h3>
+                <div class="button_like">
+                  <i class="bi bi-heart"></i>
+                </div>
+              </div>
+              <div class="product_type">
+                {{ items.product_type }}
+                <span>{{ items.price }} kr/kg</span>
+              </div>
+              <button @click="onAddToCartClick(items.id)" class="button_cart">Lägg i varukorg</button>
+            </div>
+          </li>
         </ul>
       </section>
     </div>
@@ -286,9 +282,16 @@ export default {
   justify-content: space-between;
 }
 
+.category_title {
+  padding: 0.3rem;
+  margin-bottom: 1rem;
+}
+
 h3 {
   color: black;
   font-weight: 700;
+  padding: 0.3rem;
+  margin-bottom: 1rem;
 }
 
 

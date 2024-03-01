@@ -11,7 +11,7 @@ export default {
     <div class="last_orders">
       <div>
         <h3>Alla ordrar</h3>
-        <span class="small_text">Överblick</span>
+        <span class="small_text">Överblick utav alla ordrar</span>
       </div>
       <OrderHistory :amount="50" />
     </div>
