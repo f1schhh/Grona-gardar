@@ -6,11 +6,11 @@
     <div class="login-container">
         <div v-if="loginLink" class="login-menu-wrapper">
 
-            <form action="" method="post">
-                <p for="username">E-postadress </p>
+            <form>
+                <p>E-postadress </p>
                 <input v-model="email" type="email" required>
                 <p class="error-message">{{ usernameErrorMessage }}</p>
-                <p for="password">Lösenord </p>
+                <p>Lösenord </p>
                 <input v-model="password" type="password" required>
                 <p class="error-message">{{ passwordErrorMessage }}</p>
                 <p class="forgotten-password-link">Glömt lösenord?</p>
@@ -21,42 +21,42 @@
         <div v-else="!loginLink" class="login-menu-wrapper">
             <form>
                 <div>
-                    <p for="name">Namn</p>
-                    <input v-model="name" type="text" required>
+                    <p>Namn</p>
+                    <input v-model="signUpName" type="text" required>
                     <p class="error-message">{{ nameErrorMessage }}</p>
                 </div>
                 <div>
-                    <p for="username">E-postadress </p>
-                    <input v-model="username" type="text" required>
+                    <p>E-postadress </p>
+                    <input v-model="signUpEmail" type="email" required>
                     <p class="error-message">{{ newUsernameErrorMessage }}</p>
                 </div>
                 <div>
-                    <p for="password">Lösenord </p>
-                    <input v-model="password" type="text" required>
+                    <p>Lösenord </p>
+                    <input v-model="signUpPassword" type="password" required>
                     <p class="error-message">{{ newPasswordErrorMessage }}</p>
                 </div>
                 <div>
-                    <p for="confirmPassword">Bekräfta lösenordet </p>
-                    <input v-model="confirmPassword" type="text" required>
+                    <p>Bekräfta lösenordet </p>
+                    <input v-model="signUpPassword2" type="password" required>
                     <p class="error-message">{{ newPasswordErrorMessage2 }}</p>
                 </div>
             </form>
-            <input class="login-butt" @click="onSignUpClick" type="button" value="Registrera"
-                :disabled="invalidRegistration">
+            <input class="login-butt" @click="onSignUpClick" type="button" value="Registrera">
         </div>
     </div>
 </template>
 
 <script>
-import { mapStores } from 'pinia'
-import { useAccountStore } from '../store'
-import axios from 'axios'
+// import { mapStores } from 'pinia'
+// import { useAccountStore } from '../store'
+// import axios from 'axios'
 
 export default {
-    computed: {
-        ...mapStores(useAccountStore)
+    emits: ['user-name'],
+    // computed: {
+    //     ...mapStores(useAccountStore)
 
-    },
+    // },
     data() {
         return {
             loginLink: true,
@@ -73,6 +73,12 @@ export default {
             newUsernameErrorMessage: null,
             newPasswordErrorMessage: null,
             newPasswordErrorMessage2: null,
+
+            // Sign up input
+            signUpName:'',
+            signUpEmail:'',
+            signUpPassword:'',
+            signUpPassword2:'',
 
             users: ''
 
@@ -115,20 +121,23 @@ export default {
                     this.password = null
                 }
                 else {
+                    this.passwordErrorMessage = 'Felaktigt lösenor eller epost.';
+                    this.email = null
+                    this.password = null
 
                 }
             }
 
         },
-        onSignUpClick() {
+        // onSignUpClick() {
 
-            this.accountsStore.createAccount({
-                name: this.name,
-                username: this.mail,
-                password: this.password
+        //     this.accountsStore.createAccount({
+        //         name: this.name,
+        //         username: this.mail,
+        //         password: this.password
 
-            })
-        }
+        //     })
+        // }
     }
 }
 </script>
