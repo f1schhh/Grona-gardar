@@ -1,15 +1,31 @@
-<script></script>
+<script>
+export default{
+    methods:{
+    onLogOutClick(){
+      localStorage.removeItem("userName");
+    }
+}
+
+}
+</script>
+
+<template>
+    <article>
+        <section id="logOut_section">
+            <h2>Logga ut</h2>
+            <div id="hrDiv">
+                <hr id="logOut_section_hr">
+            </div>
+            <p>Är du säker på att du vill logga ut?</p>
+            <div id="buttons">
+                <button class="buttons_stay_logout">Stanna</button>
+                <button @click="onLogOutClick" class="buttons_stay_logout">Logga ut</button>
+            </div>
+        </section>
+    </article>
+</template>
 
 <style scoped>
-/* article {
-    display: flex;
-    flex-direction: column;
-} */
-
-
-
-
-
 #logOut_section {
     background-color: var(--mid-beige);
 }
@@ -89,19 +105,3 @@
     }
 }
 </style>
-
-<template>
-    <article>
-        <section id="logOut_section">
-            <h2>Logga ut</h2>
-            <div id="hrDiv">
-                <hr id="logOut_section_hr">
-            </div>
-            <p>Är du säker på att du vill logga ut?</p>
-            <div id="buttons">
-                <button class="buttons_stay_logout">Stanna</button>
-                <button class="buttons_stay_logout">Logga ut</button>
-            </div>
-        </section>
-    </article>
-</template>
