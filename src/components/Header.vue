@@ -80,7 +80,6 @@ export default {
   },
   created(){
 
-      console.log(this.userName)
       this.sendUserNameToHeader()
 
   },
@@ -195,20 +194,20 @@ export default {
         this.isCartClicked = false;
       }
     },
-    handleUserNameEvent(user){
+    // Method that gets the name of the user as a parameter from an emit in login component
+      handleUserNameEvent(user){
       console.log("detta sker i header" + user)
 
       this.userName = user
       localStorage.setItem("userName", this.userName);
-      // const userNameFromStorage = localStorage.getItem(this.userName)
-
 
       this.exitLogin()
 
     },
+    // Method that sends the user name to be visible in the header.
     sendUserNameToHeader(){
-      // const userNameFromStorage = localStorage.getItem("userName");
       const userNameFromStorage = localStorage.getItem("userName")
+
       if(!userNameFromStorage){
         this.userName = "Konto"
       }

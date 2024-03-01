@@ -128,13 +128,17 @@ export default {
         },
         onSignUpClick() {
 
-            this.accountsStore.createAccount({
-                name: this.name,
-                username: this.mail,
-                password: this.password
-
-            })
         }
+
+
+
+        //     this.accountsStore.createAccount({
+        //         name: this.name,
+        //         username: this.mail,
+        //         password: this.password
+
+        //     })
+        // }
     }
 }
 </script>
