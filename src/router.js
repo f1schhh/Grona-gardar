@@ -29,8 +29,8 @@ const router = createRouter({
     },
     {
       path: '/about',
-component: AboutUs,
-meta: { footerBackgroundColor: '#efe9de' }
+      component: AboutUs,
+      meta: { footerBackgroundColor: '#efe9de' }
     },
     {
       path: '/product/:id',

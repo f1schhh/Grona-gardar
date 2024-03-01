@@ -42,7 +42,7 @@
                 <div v-for="product in cartMirror" class="single-product-wrapper">
 
                     <div class="product-image-wrapper">
-                        <router-link :to="`/product/${product.pId}`">
+                        <router-link @click="exitCart" :to="`/product/${product.pId}`">
                             <img :src="product.pImage" alt="">
                         </router-link>
 
@@ -53,7 +53,7 @@
 
                             <div class="product-data-wrapper">
                                 <div class="p-name">
-                                    <router-link :to="`/product/${product.pId}`">
+                                    <router-link @click="exitCart" :to="`/product/${product.pId}`">
                                         {{ product.pName }}
                                     </router-link>
                                 </div>

@@ -235,7 +235,8 @@ export default {
     setTotCostOfItemsInCart(incomingTotCostOfItems) {
       this.totCostForItemsInCart = incomingTotCostOfItems + " kr";
       console.log("header shows tot cost of items: ", this.totCostForItemsInCart)
-    }
+    },
+
   }
 
 }
