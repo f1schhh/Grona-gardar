@@ -1,7 +1,7 @@
 <template>
     <div class="login-register-link-wrapper">
         <h1 class="login-link" :class="{ underline: loginLink }" @click="onLoginLink">Logga in</h1>
-        <h1 class="register-link" :class="{ underline : !loginLink }" @click="onRegisterLink">Registrera</h1>
+        <h1 class="register-link" :class="{ underline: !loginLink }" @click="onRegisterLink">Registrera</h1>
     </div>
     <div class="login-container">
         <div v-if="loginLink" class="login-menu-wrapper">
@@ -83,10 +83,10 @@ export default {
             newPasswordErrorMessage2: null,
 
             // Sign up input
-            signUpName:'',
-            signUpEmail:'',
-            signUpPassword:'',
-            signUpPassword2:'',
+            signUpName: '',
+            signUpEmail: '',
+            signUpPassword: '',
+            signUpPassword2: '',
 
             users: ''
 
@@ -156,7 +156,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .login-menu-wrapper {
