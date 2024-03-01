@@ -137,8 +137,8 @@ i {
     <article>
 
         <aside id="profileInfo">
-            <h1>Min profil</h1><img id="profilePic" src="../assets/media/profile_pictures/profilePic1.jpg" alt="">
-            <h2>Namn</h2>
+            <h1>Min profil</h1><img id="profilePic" src="../assets/media/profile_pictures/profilePic2.jpg" alt="">
+            <h2>Atko Van Marszwin</h2>
             <ul>
                 <router-link to="/account/orderhistory">
                     <li class="profileInfo_li">

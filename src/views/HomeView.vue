@@ -66,10 +66,12 @@ export default {
           Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt. Varje
           produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
         </p>
-        <div class="div_button_more_products">
-          <button class="button_more_products" @click="goToProducts">Våra produkter<i
-              class="bi bi-arrow-right"></i></button>
-        </div>
+        <router-link to="/products">
+          <div class="div_button_more_products">
+            <button class="button_more_products" @click="goToProducts">Våra produkter<i
+                class="bi bi-arrow-right"></i></button>
+          </div>
+        </router-link>
       </div>
     </section>
 
@@ -321,23 +323,32 @@ article {
 
 .main_top {
   background-image: url("../assets/media/GreenHouse.jpg");
+  /* background-attachment: fixed; */
+  background-repeat: no-repeat;
   background-size: cover;
+  background-position: 100% 30%;
+
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-bottom: 5rem;
+
 }
 
 .block_info {
   background-color: var(--light-beige-opacity);
-  padding: 1rem;
+  padding: 3.5rem 1.5rem;
   border-radius: 19px;
   width: 80%;
   max-width: 25rem;
   display: flex;
   flex-direction: column;
   margin-top: 10%;
+}
+
+.block_info h2 {
+  padding-bottom: 1rem;
 }
 
 .main_info_text {
@@ -355,6 +366,10 @@ article {
   font-size: 1rem;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
+}
+
+.button_more_products:active {
+  box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .section_season {
@@ -550,6 +565,10 @@ article {
 
 @media screen and (max-width: 385px) {
 
+  .main_top {
+    height: 45vh;
+  }
+
   li {
     max-width: 9.5rem;
   }
@@ -575,6 +594,19 @@ article {
     justify-content: flex-start;
   }
 
+}
+
+.main_top {
+  height: 45vh;
+}
+
+.block_info {
+  /* padding-top: 4rem; */
+  padding: 1rem 1rem;
+}
+
+.block_info h2 {
+  padding-bottom: 0.5rem;
 }
 
 @media screen and (min-width: 560px) {
@@ -605,9 +637,17 @@ article {
     flex-direction: column;
   }
 
+  .block_info {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .block_info h2 {
+    padding-bottom: 1rem;
+  }
 }
 
 @media screen and (min-width:650px) {
+
   .block_about {
     display: flex;
     flex-direction: row;
@@ -675,20 +715,39 @@ article {
 }
 
 @media screen and (min-width: 820px) {
+
   .show_hide_two {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 220px;
   }
+
 }
 
+
 @media screen and (min-width: 1074px) {
+
   .show_hide_three {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 220px;
   }
+
+}
+
+@media screen and (max-width: 700px) {
+  .main_top {
+    height: auto;
+  }
+
+}
+
+@media screen and (min-width: 701px) {
+  .main_top {
+    height: 100vh;
+  }
+
 }
 </style>

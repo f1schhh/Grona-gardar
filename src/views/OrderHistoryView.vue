@@ -156,6 +156,10 @@ article {
     font-size: 0.9rem;
 }
 
+.button_seeOrder:active {
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
 @media screen and (max-width: 385px) {
     article {
         width: 100%;
@@ -194,6 +198,7 @@ article {
         font-size: 1rem;
         color: var(--dark-green)
     }
+
 
     #hrDiv {
         display: none;

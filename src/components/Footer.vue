@@ -40,7 +40,7 @@
                 <div class="contact-us-container">
                     <h2>Kontakt</h2>
                     <p>Har du frågor eller vill komma i kontakt med oss? Tveka inte att nå ut till vår kundtjänst.</p>
-                    <p><b style="font-family: Anevir Next Cyr Medium;">E-mail:</b> info@grönagårdar.com</p>
+                    <p><b style="font-family: Anevir Next Cyr Medium;">E-mail:</b> info@gronagardar.com</p>
                     <p><b style="font-family: Anevir Next Cyr Medium;">Telefon:</b> 032-234234</p>
                 </div>
 

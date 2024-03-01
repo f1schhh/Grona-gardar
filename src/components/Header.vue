@@ -10,8 +10,8 @@
         <li @click="onMenuClick"><router-link to="/">Hem</router-link></li>
         <li @click="onMenuClick"><router-link to="/account">Min Profil</router-link></li>
         <li @click="onMenuClick"><router-link to="/products">Produkter</router-link></li>
-        <li @click="onMenuClick"><a href="#about">Om oss</a></li>
-        <li @click="onMenuClick"><router-link to="/">Kontakt</router-link></li>
+        <li @click="onMenuClick"><router-link to="/about">Om oss</router-link></li>
+        <li @click="onMenuClick"><router-link to="/contact">Kontakt</router-link></li>
       </ul>
     </div>
     <div class="login-field-to-center-container">
@@ -34,8 +34,8 @@
         </div>
         <div class="links-wrapper">
           <p><router-link to="/products">Produkter</router-link></p>
-          <p><a href="#about">Om oss</a></p>
-          <p><router-link to="/">Kontakt</router-link></p>
+          <p><router-link to="/about">Om oss</router-link></p>
+          <p><router-link to="/contact">Kontakt</router-link></p>
         </div>
       </div>
 
@@ -49,11 +49,13 @@
 
         <div class="login-and-cart-icons-wrapper">
           <div @click="onLoginClick" class="login-wrapper">
-            <i class="bi bi-person"></i><p>{{ userName }}</p>
+            <i class="bi bi-person"></i>
+            <p>{{ userName }}</p>
           </div>
 
           <div @click="onCartClick" class="cart-icon-wrapper">
-            <i class="bi bi-cart"></i><p> {{ cartTitleAndPrice }}</p>
+            <i class="bi bi-cart"></i>
+            <p> {{ cartTitleAndPrice }}</p>
           </div>
         </div>
       </div>
@@ -78,10 +80,9 @@ export default {
       cartTitleAndPrice: "Varukorg",
     }
   },
-  created(){
+  created() {
 
-      console.log(this.userName)
-      this.sendUserNameToHeader()
+    this.sendUserNameToHeader()
 
   },
   methods: {
@@ -195,24 +196,23 @@ export default {
         this.isCartClicked = false;
       }
     },
-    handleUserNameEvent(user){
+    handleUserNameEvent(user) {
       console.log("detta sker i header" + user)
 
       this.userName = user
       localStorage.setItem("userName", this.userName);
-      // const userNameFromStorage = localStorage.getItem(this.userName)
-
 
       this.exitLogin()
 
     },
-    sendUserNameToHeader(){
-      // const userNameFromStorage = localStorage.getItem("userName");
+    // Method that sends the user name to be visible in the header.
+    sendUserNameToHeader() {
       const userNameFromStorage = localStorage.getItem("userName")
-      if(!userNameFromStorage){
+
+      if (!userNameFromStorage) {
         this.userName = "Konto"
       }
-      else{
+      else {
         this.userName = userNameFromStorage;
       }
 
@@ -447,31 +447,31 @@ li {
   font-size: 30px;
 }
 
-.login-wrapper{
+.login-wrapper {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-.cart-icon-wrapper{
+.cart-icon-wrapper {
   cursor: pointer;
 }
 
-.login-wrapper p{
+.login-wrapper p {
   display: none;
 }
 
-.cart-icon-wrapper p{
- display: none;
+.cart-icon-wrapper p {
+  display: none;
 }
 
 
 
 @media screen and (max-width: 451px) {
 
-  .login-wrapper p{
+  .login-wrapper p {
     display: none;
-}
+  }
 }
 
 
@@ -515,18 +515,21 @@ li {
 
 }
 
-@media screen and (min-width: 980px){
+@media screen and (min-width: 980px) {
 
-  .login-and-cart-container{
+  .login-and-cart-container {
     width: 50%;
     display: flex;
     justify-content: end;
   }
-  .cart-icon-wrapper{
-  display: flex;
-  align-items: center;
+
+  .cart-icon-wrapper {
+    display: flex;
+    align-items: center;
   }
-  .cart-icon-wrapper p, .login-wrapper p{
+
+  .cart-icon-wrapper p,
+  .login-wrapper p {
     margin-left: 5px;
     font-size: 12px;
     display: inline-block;

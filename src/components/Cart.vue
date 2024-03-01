@@ -288,6 +288,7 @@ export default {
     padding-right: 15px;
 }
 
+
 .move-cart-content-container {
     right: 0;
 }

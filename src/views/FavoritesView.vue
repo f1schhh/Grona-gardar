@@ -115,6 +115,10 @@ article {
     font-size: 0.9rem;
 }
 
+.button_addToShoppingCart:active {
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
 @media screen and (max-width: 385px) {
     article {
         width: 100%;
