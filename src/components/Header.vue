@@ -49,10 +49,15 @@
       <div class="login-and-cart-container">
 
         <div class="login-and-cart-icons-wrapper">
-          <div @click="onLoginClick" class="login-wrapper">
+          <div v-if="userName === 'Konto'" @click="onLoginClick" class="login-wrapper">
             <i class="bi bi-person"></i>
             <p>{{ userName }}</p>
           </div>
+          <router-link v-else="userName !== 'Konto'" to="/account" class="login-wrapper">
+            <i class="bi bi-person"></i>
+            <p>{{ userName }}</p>
+          </router-link>
+
 
           <div @click="onCartClick" class="cart-icon-wrapper">
             <i class="bi bi-cart"></i>
