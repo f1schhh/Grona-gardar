@@ -1,5 +1,5 @@
 <template>
-    <div @click="exitCart" v-if="isCartVisible" class="cart-overlay"></div>
+    <div @click="exitCart" class="cart-overlay"></div>
 
     <div v-if="isCartVisible" class="cart-content-container">
 
@@ -99,7 +99,7 @@
 
         <div v-else class="to-checkout-footer">
             <p class="tot-cart-price"><b>Totalt: {{ this.totalCostOfItemsInCart }} kr</b></p>
-            <p class="delivery-info">Fri frak & returer vid köp över 500kr</p>
+            <p class="delivery-info">Fri frak & returer vid köp över 500 kr</p>
             <div class="to-checkout-btn">
                 <p>Till kassan</p>
                 <i class="bi bi-chevron-right"></i>
@@ -267,14 +267,19 @@ export default {
         //Method used to make cart visible
         cartClicked(isCartClicked) {
 
-            if (isCartClicked === true && this.isCartVisible === false) {
+            if (isCartClicked === true) {
 
                 //Toggle isCartVisible to show overlay and cart
                 this.isCartVisible = true;
 
-                //Increase blur of overlay by adding class
+                //Show overlay
+                document.querySelector(".cart-overlay").classList.add("show-overlay");
+
+                //Increase opacity and blur of overlay, and animate cart left
                 setTimeout(() => {
-                    document.querySelector(".cart-overlay").style.transition = "background-color 1s, backdrop-filter 1s";
+
+                    document.querySelector(".cart-overlay").style.transition = "background-color 0.75s, backdrop-filter 0.75s";
+
                     document.querySelector(".cart-overlay").classList.add("increase");
 
                     document.querySelector(".cart-content-container").classList.add("move-cart-content-container")
@@ -285,17 +290,29 @@ export default {
 
         //Emit an event when the overlay is clicked
         exitCart() {
+
             if (this.isCartVisible === true) {
 
-                document.querySelector(".cart-overlay").style.transition = "background-color 0s, backdrop-filter 0s;";
-                document.querySelector(".cart-overlay").classList.remove("increase");
-                this.$emit('overlay-clicked');
-
+                //Animate cart to right, to hide it from showing
                 document.querySelector(".cart-content-container").classList.remove("move-cart-content-container")
 
+                //Remove blur and decrease opacity of ovarlay
+                document.querySelector(".cart-overlay").classList.remove("increase");
+
+                //Emit an event to parent that overlay or X is clicked
+                this.$emit('overlay-clicked');
+
                 setTimeout(() => {
+
+                    document.querySelector(".cart-overlay").style.transition = "background-color 0.5s, backdrop-filter 0.5s";
+
+                    //Make overlay disappear
+                    document.querySelector(".cart-overlay").classList.remove("show-overlay");
+
+                    //Notify local flag that cart is not visible anymore
                     this.isCartVisible = false;
-                }, 950)
+
+                }, 550)
             }
 
 
@@ -376,11 +393,13 @@ export default {
     },
     watch: {
 
+        //Watch prop on cart click and call CartClicked method when value changes
         onCartClick(newValue) {
             if (newValue && !this.isCartVisible) {
-                this.cartClicked(newValue);
+                this.cartClicked(newValue)
             }
         },
+
         // Watch for changes in the products state and call onIncomingProductId method
         'productStore.products': {
             handler() {
@@ -399,19 +418,23 @@ export default {
 
 <style scoped>
 .cart-overlay {
+    display: none;
     background-color: rgba(255, 255, 255, 0);
     backdrop-filter: blur(0px);
-    transition: background-color 1s, backdrop-filter 1s;
+    transition: background-color 0.75s, backdrop-filter 0.75s;
     width: 100%;
     height: 100%;
     position: fixed;
-    opacity: 0.5;
     z-index: 3;
 }
 
+.show-overlay {
+    display: block;
+}
+
 .increase {
-    background-color: rgba(255, 255, 255, 1.3);
-    backdrop-filter: blur(16px);
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(1px);
 }
 
 
@@ -717,7 +740,7 @@ export default {
 }
 
 .payment-methods-container {
-    width: 60%;
+    width: 65%;
     height: 25px;
     display: flex;
     align-items: center;
@@ -727,10 +750,14 @@ export default {
 .klarna-wrapper,
 .visa-wrapper,
 .master-card-wrapper,
-.amex-wrapper,
-.swish-wrapper {
+.amex-wrapper {
     width: 30px;
     height: 20px;
+}
+
+.swish-wrapper {
+    width: 45px;
+    height: 35px;
 }
 
 .klarna-wrapper svg {
