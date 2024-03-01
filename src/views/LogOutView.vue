@@ -1,8 +1,12 @@
 <script>
+import { RouterLink } from 'vue-router';
+
 export default{
     methods:{
     onLogOutClick(){
-      localStorage.removeItem("userName");
+
+      localStorage.setItem("userName", "Konto");
+
     }
 }
 
@@ -19,7 +23,9 @@ export default{
             <p>Är du säker på att du vill logga ut?</p>
             <div id="buttons">
                 <button class="buttons_stay_logout">Stanna</button>
-                <button @click="onLogOutClick" class="buttons_stay_logout">Logga ut</button>
+
+               <router-link to="/"><button @click="onLogOutClick" class="buttons_stay_logout">Logga ut</button></router-link>
+
             </div>
         </section>
     </article>

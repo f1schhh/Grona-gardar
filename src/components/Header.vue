@@ -28,7 +28,6 @@
     <nav id="navBar">
       <div class="hamburger-and-links-container">
         <div class="hamburger-wrapper" @click="onMenuClick()">
-          <!-- <i class="bi bi-list kajsa"></i> -->
           <div class="rectA"></div>
           <div class="rectB"></div>
           <div class="rectC"></div>
@@ -87,11 +86,6 @@ export default {
       quantityOfItemsInCart: null,
       totCostForItemsInCart: null,
     }
-  },
-  created() {
-
-    this.sendUserNameToHeader()
-
   },
   methods: {
     //Method that expands menu and manipulates the hamburger
@@ -208,7 +202,7 @@ export default {
       console.log("detta sker i header" + user)
 
       this.userName = user
-      localStorage.setItem("userName", this.userName);
+      localStorage.setItem("userName" , this.userName);
 
       this.exitLogin()
 
@@ -225,7 +219,6 @@ export default {
       }
 
     },
-
     //Update quantity of items in cart for header
     setTotQuantityOfItemsInCart(incomingQuantityOfItems) {
       this.quantityOfItemsInCart = incomingQuantityOfItems;
@@ -237,10 +230,7 @@ export default {
       console.log("header shows tot cost of items: ", this.totCostForItemsInCart)
     }
   }
-
 }
-
-
 </script>
 
 <style scoped>
