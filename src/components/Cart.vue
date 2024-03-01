@@ -85,24 +85,25 @@
 
             </div>
 
-            <div v-if="this.itemsInCart === 0" class="empty-cart-footer">
+        </div>
 
-                <div @click="exitCart" class="back-button">
-                    <i class="bi bi-arrow-left"></i>
-                    <p>Tillbaka</p>
-                </div>
+        <div v-if="this.itemsInCart === 0" class="empty-cart-footer">
 
+            <div @click="exitCart" class="back-button">
+                <i class="bi bi-arrow-left"></i>
+                <p>Tillbaka</p>
             </div>
-            <div v-else class="to-checkout-footer">
-                <p class="tot-cart-price"><b>Totalt: X XXX kr</b></p>
-                <div class="to-checkout-btn">
-                    <p>Till kassan</p>
-                    <i class="bi bi-chevron-right"></i>
-                </div>
-            </div>
-
 
         </div>
+
+        <div v-else class="to-checkout-footer">
+            <p class="tot-cart-price"><b>Totalt: X XXX kr</b></p>
+            <div class="to-checkout-btn">
+                <p>Till kassan</p>
+                <i class="bi bi-chevron-right"></i>
+            </div>
+        </div>
+
 
     </div>
 </template>
@@ -133,7 +134,6 @@ export default {
 
     },
     computed: {
-
 
 
     },
@@ -272,9 +272,9 @@ export default {
 
 
 .cart-content-container {
-    width: 230px;
+    width: 280px;
     height: 100vh;
-    right: -280px;
+    right: -340px;
     top: 0;
     background-color: var(--mid-beige);
     position: fixed;
@@ -282,10 +282,10 @@ export default {
     transition: right 0.75s;
     display: flex;
     flex-direction: column;
-    row-gap: 30px;
+    row-gap: 5px;
     box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.4);
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 0px;
+    padding-right: 15px;
 }
 
 .move-cart-content-container {
@@ -294,11 +294,14 @@ export default {
 
 .exit-cart-content-container {
     height: 68px;
+    width: 100%;
     margin-top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+
+
 }
 
 .exit-cart-icon-wrapper {
@@ -311,6 +314,7 @@ export default {
     cursor: pointer;
     position: absolute;
     right: 0;
+    margin-right: 7px;
 }
 
 .exit-cart-content-container h1 {
@@ -321,6 +325,7 @@ export default {
 .underline {
     height: 1.5px;
     width: 100%;
+    left: 25px;
     background-color: rgba(71, 81, 51, 0.2);
     top: 67px;
     position: absolute;
@@ -329,19 +334,33 @@ export default {
 
 .products-overview-container {
     width: 100%;
+    height: 69.5%;
+    overflow-y: scroll;
+    padding-left: 10px;
+}
+
+
+/* Hiding scrollbar for Chrome, Safari and Opera */
+.products-overview-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hiding scrollbar for IE, Edge and Firefox */
+.products-overview-container {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
 }
 
 .cart-products-container {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
-    background-color: orange;
-    overflow-y: auto;
-    /* Add scroll effect */
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .single-product-wrapper {
@@ -349,10 +368,10 @@ export default {
     border-radius: 16px;
     overflow: hidden;
     display: flex;
-    width: 100%;
+    width: 90%;
     height: 90px;
-    margin-bottom: 20px;
-
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .product-image-wrapper {
@@ -480,6 +499,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--mid-beige);
 }
 
 .back-button {
@@ -517,6 +537,8 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 10;
+    background-color: var(--mid-beige);
 }
 
 
