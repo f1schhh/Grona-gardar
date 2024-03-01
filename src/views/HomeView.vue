@@ -323,23 +323,32 @@ article {
 
 .main_top {
   background-image: url("../assets/media/GreenHouse.jpg");
+  /* background-attachment: fixed; */
+  background-repeat: no-repeat;
   background-size: cover;
+  background-position: 100% 30%;
+
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-bottom: 5rem;
+
 }
 
 .block_info {
   background-color: var(--light-beige-opacity);
-  padding: 1rem;
+  padding: 3.5rem 1.5rem;
   border-radius: 19px;
   width: 80%;
   max-width: 25rem;
   display: flex;
   flex-direction: column;
   margin-top: 10%;
+}
+
+.block_info h2 {
+  padding-bottom: 1rem;
 }
 
 .main_info_text {
@@ -560,11 +569,6 @@ article {
     height: 45vh;
   }
 
-  .block_info {
-    padding-top: 4rem;
-
-  }
-
   li {
     max-width: 9.5rem;
   }
@@ -597,8 +601,12 @@ article {
 }
 
 .block_info {
-  padding-top: 4rem;
+  /* padding-top: 4rem; */
+  padding: 1rem 1rem;
+}
 
+.block_info h2 {
+  padding-bottom: 0.5rem;
 }
 
 @media screen and (min-width: 560px) {
@@ -629,6 +637,13 @@ article {
     flex-direction: column;
   }
 
+  .block_info {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .block_info h2 {
+    padding-bottom: 1rem;
+  }
 }
 
 @media screen and (min-width:650px) {
@@ -707,7 +722,9 @@ article {
     justify-content: space-between;
     max-width: 220px;
   }
+
 }
+
 
 @media screen and (min-width: 1074px) {
 
@@ -717,17 +734,20 @@ article {
     justify-content: space-between;
     max-width: 220px;
   }
+
 }
 
 @media screen and (max-width: 700px) {
   .main_top {
     height: auto;
   }
+
 }
 
 @media screen and (min-width: 701px) {
   .main_top {
     height: 100vh;
   }
+
 }
 </style>

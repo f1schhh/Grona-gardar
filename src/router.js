@@ -11,6 +11,8 @@ import LogOutView from './views/LogOutView.vue'
 import SearchView from './views/SearchView.vue'
 import PageNotFoundView from './views/PageNotFoundView.vue'
 
+import AboutUs from './views/AboutUs.vue'
+
 //Admin views
 import AdminView from './views/admin/AdminView.vue'
 import AdminOrders from './views/admin/AdminOrdersView.vue'
@@ -24,6 +26,11 @@ const router = createRouter({
       component: HomeView,
       //Background color used by footer to match the bg of current page
       meta: { footerBackgroundColor: '#fff8ee' }
+    },
+    {
+      path: '/about',
+component: AboutUs,
+meta: { footerBackgroundColor: '#efe9de' }
     },
     {
       path: '/product/:id',
