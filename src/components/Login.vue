@@ -1,25 +1,32 @@
 <template>
     <div class="login-register-link-wrapper">
         <h1 class="login-link" :class="{ underline: loginLink }" @click="onLoginLink">Logga in</h1>
-        <h1 class="register-link" :class="{ underline: !loginLink }" @click="onRegisterLink">Registrera</h1>
+        <h1 class="register-link" :class="{ underline : !loginLink }" @click="onRegisterLink">Registrera</h1>
     </div>
     <div class="login-container">
         <div v-if="loginLink" class="login-menu-wrapper">
-
             <form>
-                <p>E-postadress </p>
-                <input v-model="email" type="email" required>
-                <p class="error-message">{{ usernameErrorMessage }}</p>
-                <p>Lösenord </p>
-                <input v-model="password" type="password" required>
-                <p class="error-message">{{ passwordErrorMessage }}</p>
+
+                <div>
+                    <p>E-postadress </p>
+                    <input v-model="email" type="email" required>
+                    <p class="error-message">{{ usernameErrorMessage }}</p>
+                </div>
+                <div>
+                    <p>Lösenord </p>
+                    <input v-model="password" type="password" required>
+                    <p class="error-message">{{ passwordErrorMessage }}</p>
+                </div>
+
                 <p class="forgotten-password-link">Glömt lösenord?</p>
+
             </form>
             <input class="login-butt" @click="onLoginClick" type="button" value="Logga in">
         </div>
 
         <div v-else="!loginLink" class="login-menu-wrapper">
             <form>
+
                 <div>
                     <p>Namn</p>
                     <input v-model="signUpName" type="text" required>
@@ -40,6 +47,7 @@
                     <input v-model="signUpPassword2" type="password" required>
                     <p class="error-message">{{ newPasswordErrorMessage2 }}</p>
                 </div>
+
             </form>
             <input class="login-butt" @click="onSignUpClick" type="button" value="Registrera">
         </div>
