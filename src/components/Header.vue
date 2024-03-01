@@ -78,6 +78,12 @@ export default {
       cartTitleAndPrice: "Varukorg",
     }
   },
+  created(){
+
+      console.log(this.userName)
+      this.sendUserNameToHeader()
+
+  },
   methods: {
     //Method that expands menu and manipulates the hamburger
     onMenuClick() {
@@ -193,6 +199,23 @@ export default {
       console.log("detta sker i header" + user)
 
       this.userName = user
+      localStorage.setItem("userName", this.userName);
+      // const userNameFromStorage = localStorage.getItem(this.userName)
+
+
+      this.exitLogin()
+
+    },
+    sendUserNameToHeader(){
+      // const userNameFromStorage = localStorage.getItem("userName");
+      const userNameFromStorage = localStorage.getItem("userName")
+      if(!userNameFromStorage){
+        this.userName = "Konto"
+      }
+      else{
+        this.userName = userNameFromStorage;
+      }
+
     }
   }
 

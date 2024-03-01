@@ -49,10 +49,9 @@
 <script>
 import { mapStores } from 'pinia'
 import { useAccountStore } from '../store'
-// import axios from 'axios'
 
 export default {
-    emits: ['userName'],
+    emits: ['user-name'],
     computed: {
         ...mapStores(useAccountStore)
 
