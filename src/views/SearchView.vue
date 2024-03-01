@@ -129,6 +129,7 @@ h2 {
   border: 0;
   height: 45px;
   border: 2px solid #9A876F;
+  margin-right: 1.3rem;
   background-color: transparent;
 }
 

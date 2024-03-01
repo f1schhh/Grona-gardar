@@ -50,9 +50,9 @@
 <script>
 import { mapStores } from 'pinia'
 import { useAccountStore } from '../store'
-import axios from 'axios'
 
 export default {
+    emits: ['user-name'],
     computed: {
         ...mapStores(useAccountStore)
 
@@ -68,11 +68,17 @@ export default {
             usernameErrorMessage: null,
             passwordErrorMessage: null,
 
-            // Sign up
+            // Sign up error message
             nameErrorMessage: null,
             newUsernameErrorMessage: null,
             newPasswordErrorMessage: null,
             newPasswordErrorMessage2: null,
+
+            // Sign up input
+            signUpName: '',
+            signUpEmail: '',
+            signUpPassword: '',
+            signUpPassword2: '',
 
             users: ''
 
@@ -122,13 +128,17 @@ export default {
         },
         onSignUpClick() {
 
-            this.accountsStore.createAccount({
-                name: this.name,
-                username: this.mail,
-                password: this.password
-
-            })
         }
+
+
+
+        //     this.accountsStore.createAccount({
+        //         name: this.name,
+        //         username: this.mail,
+        //         password: this.password
+
+        //     })
+        // }
     }
 }
 </script>
@@ -203,9 +213,6 @@ input {
 .forgotten-password-link {
     text-align: center;
     margin: 0;
-}
-
-.forgotten-password-link:hover {
     cursor: pointer;
 }
 
@@ -224,7 +231,7 @@ input[type="email"] {
 .login-butt {
     background-color: var(--mid-beige);
     border-radius: 24px;
-    border: 1px solid #FFF;
+    border: 1px solid var(--mid-beige);
     width: 143px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     height: 37px;
@@ -237,7 +244,7 @@ input[type="email"] {
 
 .login-butt:active {
     background-color: var(--dark-beige);
-    box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
 }
 
 /*===================*/

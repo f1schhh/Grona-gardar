@@ -231,8 +231,6 @@
     }
   ],
   "active_season": "summer",
-
-
   "order_history": [
     {
       "id": 2091765223,
@@ -246,7 +244,6 @@
       "delivery_name": "Atko Dahlstrom",
       "email": "atko.dahlstrom@cat.com"
     },
-
     {
       "id": 2091765224,
       "order_by": 1,
@@ -260,7 +257,6 @@
       "email": "atko.dahlstrom@cat.com"
     }
   ],
-
   "order_product_list": [
     {
       "id": 1,
@@ -277,7 +273,6 @@
       "order_id": 2091765223,
       "product_id": 20
     },
-
     {
       "id": 4,
       "order_id": 2091765224,
@@ -289,25 +284,26 @@
       "product_id": 2
     }
   ],
-
-  "users" : [
+  "users": [
     {
       "id": 1,
-      "first_name": "Eva" ,
+      "first_name": "Eva",
       "last_name": "Gardener",
       "email": "eva@gardener.com",
       "phone": "+70-123 45 67",
-      "location": "",
+      "adress": "Axel Dahlströms Torg, Göteborg",
+      "zipcode": "433 38",
       "password": "apple"
     },
     {
       "id": 2,
-      "first_name": "Alice" ,
+      "first_name": "Alice",
       "last_name": "Farmer",
       "email": "admin@gronagardar.com",
       "phone": "+73-987 65 43",
+      "adress": "Axel Dahlströms Torg, Göteborg",
+      "zipcode": "433 38",
       "password": "lemon"
     }
   ]
-
 }

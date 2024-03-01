@@ -1,6 +1,7 @@
 <script>
 import CategoryChart from '../../components/Admin/CategoryChart.vue';
 import MonthlyChart from '../../components/Admin/MonthlyChart.vue';
+import OrderHistory from '../../components/Admin/OrderHistory.vue';
 
 export default {
   data() {
@@ -13,7 +14,8 @@ export default {
   },
   components: {
     CategoryChart,
-    MonthlyChart
+    MonthlyChart,
+    OrderHistory
   }
 }
 </script>
@@ -76,26 +78,7 @@ export default {
               </div>
               <router-link to="/admin/orders" class="go-to"><i class="bi bi-arrow-right-circle-fill"></i></router-link>
             </div>
-            <table class="orders_table">
-              <tr>
-                <th>Order id</th>
-                <th>Kund</th>
-                <th>Pris</th>
-                <th>Status</th>
-              </tr>
-              <tr>
-                <td>3399393</td>
-                <td>Adam Fischer</td>
-                <td>199 SEK</td>
-                <td>Pågående</td>
-              </tr>
-              <tr>
-                <td>3399393</td>
-                <td>Adam Fischer</td>
-                <td>199 SEK</td>
-                <td>Pågående</td>
-              </tr>
-            </table>
+            <OrderHistory :amount="5" />
           </div>
         </div>
         <div class="category_stats">

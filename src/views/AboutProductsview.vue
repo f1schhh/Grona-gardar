@@ -214,6 +214,7 @@ section {
   justify-content: space-between;
 }
 
+
 .go_back {
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;

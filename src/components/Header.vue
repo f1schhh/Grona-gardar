@@ -77,8 +77,13 @@ export default {
     return {
       isCartClicked: false,
       userName: "Konto",
-      cartTitleAndPrice: "Varukorg"
+      cartTitleAndPrice: "Varukorg",
     }
+  },
+  created() {
+
+    this.sendUserNameToHeader()
+
   },
   methods: {
     //Method that expands menu and manipulates the hamburger
@@ -136,7 +141,7 @@ export default {
         rectB.classList.add('rotate-rectA-rectB')
         rectC.classList.add('rotate-rectC')
 
-        menuContainer.classList.ad('move-menu-right')
+        menuContainer.classList.add('move-menu-right')
 
       }
     },
@@ -177,7 +182,6 @@ export default {
       setTimeout(function () {
 
         overlay.style.display = "none";
-        popupLogin.style.display = "none";
 
       }, 500)
 
@@ -196,6 +200,22 @@ export default {
       console.log("detta sker i header" + user)
 
       this.userName = user
+      localStorage.setItem("userName", this.userName);
+
+      this.exitLogin()
+
+    },
+    // Method that sends the user name to be visible in the header.
+    sendUserNameToHeader() {
+      const userNameFromStorage = localStorage.getItem("userName")
+
+      if (!userNameFromStorage) {
+        this.userName = "Konto"
+      }
+      else {
+        this.userName = userNameFromStorage;
+      }
+
     }
   }
 
@@ -203,7 +223,6 @@ export default {
 
 
 </script>
-
 
 <style scoped>
 header {
@@ -229,7 +248,6 @@ header {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
 }
-
 
 .overlay-for-login {
   display: none;
@@ -432,6 +450,11 @@ li {
 .login-wrapper {
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.cart-icon-wrapper {
+  cursor: pointer;
 }
 
 .login-wrapper p {

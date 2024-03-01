@@ -41,7 +41,10 @@
                 <div v-for="product in cartMirror" class="single-product-wrapper">
 
                     <div class="product-image-wrapper">
-                        <img :src="product.pImage" alt="">
+                        <router-link :to="`/product/${product.pId}`">
+                            <img :src="product.pImage" alt="">
+                        </router-link>
+
                     </div>
 
                     <div class="product-data-and-controls-container">
@@ -49,7 +52,9 @@
 
                             <div class="product-data-wrapper">
                                 <div class="p-name">
-                                    {{ product.pName }}
+                                    <router-link :to="`/product/${product.pId}`">
+                                        {{ product.pName }}
+                                    </router-link>
                                 </div>
                                 <div class="p-type">
                                     {{ product.pType }}
@@ -63,10 +68,9 @@
 
                         <div class="controls-container">
                             <div class="controls-wrapper">
-
-                                <button>-</button>
+                                <button @click="decreaseProduct(product.pId)">-</button>
                                 <p>{{ product.pQuantity }}</p>
-                                <button>+</button>
+                                <button @click="increaseProduct(product.pId)">+</button>
 
                             </div>
                         </div>
@@ -88,6 +92,13 @@
                     <p>Tillbaka</p>
                 </div>
 
+            </div>
+            <div v-else class="to-checkout-footer">
+                <p class="tot-cart-price"><b>Totalt: X XXX kr</b></p>
+                <div class="to-checkout-btn">
+                    <p>Till kassan</p>
+                    <i class="bi bi-chevron-right"></i>
+                </div>
             </div>
 
 
@@ -126,6 +137,7 @@ export default {
 
 
     },
+    emits: ['overlay-clicked'],
     methods: {
 
         //Method used to make cart visible
@@ -190,10 +202,32 @@ export default {
 
             // Log products in varukorg
             console.log("Products in varukorg:", products);
-
-
         },
 
+        //Method that reduces items in the pinia cart
+        decreaseProduct(productId) {
+            // Find the index of the current product in the store's products array
+            const productIndex = this.productStore.products.findIndex(product => product.pId === productId);
+            // If the product is found and its quantity is greater than 0, decrease its quantity
+            if (productIndex !== -1) {
+                if (this.productStore.products[productIndex].pQuantity > 0) {
+                    this.productStore.products[productIndex].pQuantity--;
+                }
+                // If the quantity becomes 0 after decrementing, remove the product from the store
+                if (this.productStore.products[productIndex].pQuantity === 0) {
+                    this.productStore.products.splice(productIndex, 1);
+                }
+            }
+        },
+        //Method that increases product quantity in the pinia cart
+        increaseProduct(productId) {
+            // Find the index of the current product in the store's products array
+            const productIndex = this.productStore.products.findIndex(product => product.pId === productId);
+            // If the product is found, increase its quantity
+            if (productIndex !== -1) {
+                this.productStore.products[productIndex].pQuantity++;
+            }
+        },
 
     },
     watch: {
@@ -243,7 +277,7 @@ export default {
     right: -280px;
     top: 0;
     background-color: var(--mid-beige);
-    position: absolute;
+    position: fixed;
     z-index: 3;
     transition: right 0.75s;
     display: flex;
@@ -300,11 +334,15 @@ export default {
 
 .cart-products-container {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    background-color: orange;
+    overflow-y: auto;
+    /* Add scroll effect */
 }
 
 .single-product-wrapper {
@@ -315,6 +353,7 @@ export default {
     width: 100%;
     height: 90px;
     margin-bottom: 20px;
+
 }
 
 .product-image-wrapper {
@@ -325,6 +364,7 @@ export default {
     object-fit: cover;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
 .product-data-and-controls-container {
@@ -372,11 +412,15 @@ export default {
 }
 
 .controls-wrapper button {
-
     background-color: var(--light-beige);
     border: none;
     width: 20px;
     border-radius: 16px;
+    transition: box-shadow 0.3s;
+}
+
+.controls-wrapper button:active {
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .empty-cart-container {
@@ -394,14 +438,11 @@ export default {
     justify-content: center;
     align-items: center;
     position: relative;
-
     width: fit-content;
     border-radius: 46px;
     width: 70px;
     height: 70px;
     background-color: rgba(218, 178, 158, 0.4);
-
-
 }
 
 .zero-items-in-cart-wrapper {
@@ -429,7 +470,7 @@ export default {
 }
 
 .empty-cart-footer {
-    height: 15%;
+    height: 20%;
     width: 100%;
     position: absolute;
     left: 0;
@@ -444,14 +485,14 @@ export default {
 
 .back-button {
     background-color: var(--dark-beige);
-    width: fit-content;
     border-radius: 26px;
     padding: 10px;
-    width: 100px;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: box-shadow 0.3s;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -464,6 +505,51 @@ export default {
     font-size: 18px;
 }
 
+
+.to-checkout-footer {
+    height: 20%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    box-shadow: -2px -5px 5px 1px rgba(71, 81, 51, 0.13);
+    -webkit-box-shadow: -2px -5px 5px 1px rgba(71, 81, 51, 0.13);
+    -moz-box-shadow: -2px -5px 5px 1px rgba(71, 81, 51, 0.13);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.tot-cart-price {
+    width: fit-content;
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.to-checkout-btn {
+    background-color: var(--dark-beige);
+    height: 20px;
+    border-radius: 26px;
+    margin-top: 15px;
+    padding: 10px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.to-checkout-btn:active {
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.bi-chevron-right {
+
+    height: 16px;
+}
 
 @media screen and (min-width: 451px) {
     .cart-content-container h1 {

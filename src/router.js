@@ -16,7 +16,7 @@ import AboutUs from './views/AboutUs.vue'
 //Admin views
 import AdminView from './views/admin/AdminView.vue'
 import AdminOrders from './views/admin/AdminOrdersView.vue'
-
+import AdminCustomers from './views/admin/AdminCustomersView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -77,7 +77,8 @@ meta: { footerBackgroundColor: '#efe9de' }
       path: '/admin',
       component: AdminView,
       children: [
-        { path: 'orders', component: AdminOrders }
+        { path: 'orders', component: AdminOrders },
+        { path: 'customers', component: AdminCustomers },
       ]
     },
     {
