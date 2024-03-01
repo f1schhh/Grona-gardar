@@ -97,7 +97,7 @@
         </div>
 
         <div v-else class="to-checkout-footer">
-            <p class="tot-cart-price"><b>Totalt: X XXX kr</b></p>
+            <p class="tot-cart-price"><b>Totalt: {{ this.totalCostOfItemsInCart }} kr</b></p>
             <div class="to-checkout-btn">
                 <p>Till kassan</p>
                 <i class="bi bi-chevron-right"></i>
@@ -119,8 +119,9 @@ export default {
         return {
             isCartVisible: false,
             productId: null,
-            itemsInCart: null,
             cartMirror: null,
+            itemsInCart: null,
+            totalCostOfItemsInCart: null,
             productStore: null, // Store the store instance
         }
     },
@@ -192,9 +193,27 @@ export default {
                 // Set itemsInCart to the sum of all pQuantity values
                 this.itemsInCart = totalQuantity;
 
+                // Calculate the sum of all cost for all products in cart
+                const totalCost = products.reduce((acc, product) => {
+                    return acc + (product.pPrice * product.pQuantity);
+                }, 0);
+
+                // Set total cost of items in cart
+                this.totalCostOfItemsInCart = totalCost;
+
+
+                //Emit amount of items and total cost to parent header
+
+
             } else {
                 // If there are no products, set itemsInCart to 0
                 this.itemsInCart = 0;
+
+                //If there are no products, set total cost to zero
+                this.totalCostOfItemsInCart = 0;
+
+                //Emit amount of items and total cost to parent header
+
             }
 
             //add cart products into a local component variable
@@ -288,7 +307,6 @@ export default {
     padding-right: 15px;
 }
 
-
 .move-cart-content-container {
     right: 0;
 }
@@ -301,8 +319,7 @@ export default {
     justify-content: center;
     align-items: center;
     position: relative;
-
-
+    margin-left: 10px;
 }
 
 .exit-cart-icon-wrapper {
@@ -315,7 +332,7 @@ export default {
     cursor: pointer;
     position: absolute;
     right: 0;
-    margin-right: 7px;
+    margin-right: 17px;
 }
 
 .exit-cart-content-container h1 {
@@ -339,7 +356,6 @@ export default {
     overflow-y: scroll;
     padding-left: 10px;
 }
-
 
 /* Hiding scrollbar for Chrome, Safari and Opera */
 .products-overview-container::-webkit-scrollbar {
@@ -449,6 +465,9 @@ export default {
     align-items: center;
     flex-direction: column;
     padding-top: 50px;
+    background-color: orange;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .cart-immage-wrapper {
