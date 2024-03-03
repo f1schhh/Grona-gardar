@@ -328,7 +328,7 @@ article {
   background-size: cover;
   background-position: 100% 30%;
 
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
