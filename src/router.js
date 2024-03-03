@@ -12,6 +12,7 @@ import SearchView from './views/SearchView.vue'
 import PageNotFoundView from './views/PageNotFoundView.vue'
 
 import AboutUs from './views/AboutUs.vue'
+import Contact from './views/Contact.vue'
 
 //Admin views
 import AdminView from './views/admin/AdminView.vue'
@@ -30,6 +31,11 @@ const router = createRouter({
     {
       path: '/about',
       component: AboutUs,
+      meta: { footerBackgroundColor: '#efe9de' }
+    },
+    {
+      path: '/contact',
+      component: Contact,
       meta: { footerBackgroundColor: '#efe9de' }
     },
     {
