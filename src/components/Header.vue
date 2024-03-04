@@ -93,6 +93,16 @@ export default {
     this.sendUserNameToHeader()
 
   },
+  // mounted(){
+  //   if(localStorage.userName){
+  //     this.userName = $localStorage.userName
+  //   }
+  // },
+  // watch:{
+  //   userName(newUserName){
+  //     this.userName = newUserName
+  //   }
+  // },
   methods: {
     //Method that expands menu and manipulates the hamburger
     onMenuClick() {

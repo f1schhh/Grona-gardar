@@ -5,7 +5,11 @@ export default{
     methods:{
     onLogOutClick(){
 
-      localStorage.setItem("userName", "Konto");
+    localStorage.setItem("userName", "Konto");
+    const changeAccountTitle = localStorage.getItem("userName")
+        console.log("LocalStorage gets a new value " + localStorage.getItem("userName"))
+
+    this.$emit('onLoggOut', 'changeAccountTitle')
 
     }
 }
