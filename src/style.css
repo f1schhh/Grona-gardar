@@ -11,7 +11,7 @@
 body {
   color: var(--dark-green);
   overflow-x: hidden;
-  font-size: 3vw;
+  font-size: 3.5vw;
 
 }
 
@@ -302,6 +302,12 @@ main {
    ========================================================== */
 
 
+
+@media screen and (min-width: 400px) {
+  body {
+    font-size: 3.0vw;
+  }
+}
 
 @media screen and (min-width: 530px) {
   body {

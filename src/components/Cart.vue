@@ -99,7 +99,7 @@
 
         <div v-else class="to-checkout-footer">
             <p class="tot-cart-price"><b>Totalt: {{ this.totalCostOfItemsInCart }} kr</b></p>
-            <p class="delivery-info">Fri frak & returer vid köp över 500 kr</p>
+            <p class="delivery-info">Fri frak & retur vid köp över 500 kr</p>
             <div class="to-checkout-btn">
                 <p>Till kassan</p>
                 <i class="bi bi-chevron-right"></i>

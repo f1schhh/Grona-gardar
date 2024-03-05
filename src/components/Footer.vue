@@ -30,7 +30,7 @@
                     <p>Vår gårdsbutik är lätt att hitta. Besök oss personligen och upplev det bästa av lokala råvaror.</p>
 
                     <h4 style="font-family: Anevir Next Cyr Medium;">Adress:</h4>
-                    <p>Gröna Gårdar 12, 400 23 Lindome</p>
+                    <p>Göna Gårdar 12, 400 23 Lindome</p>
 
                     <h4 style="font-family: Anevir Next Cyr Medium;">Öppettider:</h4>
                     <span>Måndag - Torsdag: 11:00 - 18:00</span>
@@ -39,9 +39,9 @@
 
                 <div class="contact-us-container">
                     <h2>Kontakt</h2>
-                    <p>Har du frågor eller vill komma i kontakt med oss? Tveka inte att nå ut till vår kundtjänst.</p>
+                    <p>Har du frågor eller vill komma i kontakt med oss? Tveka inte att kontakta vår kundtjänst.</p>
                     <p><b style="font-family: Anevir Next Cyr Medium;">E-mail:</b> info@gronagardar.com</p>
-                    <p><b style="font-family: Anevir Next Cyr Medium;">Telefon:</b> 032-234234</p>
+                    <p><b style="font-family: Anevir Next Cyr Medium;"><span>Telefon:</span></b>032-234234</p>
                 </div>
 
             </div>
@@ -61,7 +61,7 @@
 
 <style scoped>
 footer {
-    font-size: 3vw;
+
     width: 100vw;
     text-align: center;
 
@@ -152,11 +152,7 @@ span::after {
     font-size: 12px;
 }
 
-@media screen and (min-width: 530px) {
-    footer {
-        font-size: 16px;
-    }
-}
+
 
 @media screen and (min-width: 980px) {
 
@@ -201,4 +197,6 @@ span::after {
     }
 
 }
+
+
 </style>
