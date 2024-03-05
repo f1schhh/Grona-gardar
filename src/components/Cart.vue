@@ -414,8 +414,6 @@ export default {
 }
 </script>
 
-
-
 <style scoped>
 .cart-overlay {
     display: none;

@@ -1,6 +1,5 @@
 <script>
-//Import ProductStore to push product ID to Pinia cart
-import { useProductStore } from '../store';
+import AddToCartButton from '../components/AddToCartButton.vue';
 
 export default {
   data() {
@@ -61,6 +60,9 @@ export default {
       //Send product to addProduct function in Pinia as integer
       productStore.addProduct(parseInt(productId));
     },
+  },
+  components: {
+    AddToCartButton,
   }
 }
 </script>
@@ -94,7 +96,7 @@ export default {
             </p>
           </div>
           <div class="product_navigation">
-            <button @click="onAddToCartClick(productData.id)" class="add_to_cart">Lägg i varukorg</button>
+            <AddToCartButton :id="productData.id" />
           </div>
         </div>
       </div>
@@ -114,6 +116,9 @@ export default {
                 <span class="title-bold">{{ items.product_name }}</span>
                 <span>{{ items.product_type }} </span>
                 <span>{{ items.price }}kr/kg</span>
+              </div>
+              <div class="product_navigation">
+                <AddToCartButton :id="productData.id" />
               </div>
             </div>
           </li>
@@ -139,6 +144,7 @@ export default {
     </div>
   </div>
 </template>
+
 <style scoped>
 .bread-crumb-meny {
   display: flex;
@@ -218,27 +224,6 @@ section {
   justify-content: space-between;
 }
 
-
-.go_back {
-  padding-top: 0.6rem;
-  padding-bottom: 0.6rem;
-  cursor: pointer;
-}
-
-.add_to_cart {
-  border: 0;
-  text-align: center;
-  border-radius: 19px;
-  padding: 0.6rem;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  background-color: var(--light-beige);
-  font-size: 0.9rem;
-}
-
-.add_to_cart:active {
-  box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-}
-
 .similiar_products {
   display: flex;
   flex-direction: column;
@@ -262,7 +247,7 @@ section {
   }
 
   .img-wrapper {
-    width: 30rem;
+    width: 20rem;
   }
 
   .title-bold {

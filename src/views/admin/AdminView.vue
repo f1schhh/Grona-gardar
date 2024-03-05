@@ -259,6 +259,26 @@ export default {
   font-size: 1.3rem;
 }
 
+@media screen and (max-width: 700px) {
+  .dashboard_stats{
+    flex-direction: column;
+  }
+  .monthly_stats_left{
+    width: 100%;
+  }
+  .monthly_stats_right{
+    width: 100%;
+  }
+  .category_stats{
+    display: flex;
+    justify-content: center;
+  }
+  .category_stats{
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
 @media screen and (max-width: 950px) {
   .stats_container {
     flex-direction: column;

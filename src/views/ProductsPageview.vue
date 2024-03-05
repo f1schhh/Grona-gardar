@@ -2,6 +2,7 @@
 import SearchBar from '../components/SearchBar.vue';
 import FavoriteButton from '../components/FavoriteButton.vue';
 import { useProductStore } from '../store';
+import AddToCartButton from '../components/AddToCartButton.vue';
 
 export default {
   data() {
@@ -78,20 +79,11 @@ export default {
       this.$router.push(`/product/${id}`)
     },
 
-    //Method that forwards product ID to a Pinia method
-    onAddToCartClick(productId) {
-
-      //Retrieve Pinia store instance
-      const productStore = useProductStore();
-
-      //Send product to addProduct function in Pinia as integer
-      productStore.addProduct(parseInt(productId));
-    },
-
   },
   components: {
     SearchBar,
     FavoriteButton,
+    AddToCartButton
   },
 }
 </script>
@@ -138,7 +130,7 @@ export default {
                 {{ items.product_type }}
                 <span>{{ items.price }} kr/kg</span>
               </div>
-              <button @click="onAddToCartClick(items.id)" class="button_cart">Lägg i varukorg</button>
+              <AddToCartButton :id="items.id" />
             </div>
           </li>
 
@@ -162,7 +154,7 @@ export default {
                 {{ items.product_type }}
                 <span>{{ items.price }} kr/kg</span>
               </div>
-              <button @click="onAddToCartClick(items.id)" class="button_cart">Lägg i varukorg</button>
+              <AddToCartButton :id="items.id" />
             </div>
           </li>
         </ul>
@@ -184,7 +176,7 @@ export default {
                 {{ items.product_type }}
                 <span>{{ items.price }} kr/kg</span>
               </div>
-              <button @click="onAddToCartClick(items.id)" class="button_cart">Lägg i varukorg</button>
+              <AddToCartButton :id="items.id" />
             </div>
           </li>
         </ul>
@@ -317,21 +309,10 @@ button:hover {
 
 .button_cart {
 
-  clear: both;
   margin-left: auto;
   margin-right: 2;
-  background-color: #FFF8EE;
-  border: 0;
-  text-align: center;
-  border-radius: 19px;
-  padding: 0.5rem;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-  font-size: 0.9rem;
 }
 
-.button_cart:active {
-  box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-}
 
 .div_button_more_products {
   clear: both;

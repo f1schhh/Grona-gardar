@@ -1,4 +1,5 @@
 <script>
+import AddToCartButton from '../components/AddToCartButton.vue';
 export default {
   data() {
     return {
@@ -58,42 +59,48 @@ export default {
         this.productData = 0;
       }
     }
-  }
+  },
+  components: {
+    AddToCartButton
+  },
 }
 </script>
+
 <template>
   <section>
     <div class="top_of_search" v-if="productData !== 0">
       <h2>Sökresultat för "{{ this.$route.params.query }}"</h2>
       <select v-model="filterType" class="filter_type">
-        <option v-for="category in filterCategories" :value="category.value" :key="category.value">
+        <option v-for="category in filterCategories" :value="category.value">
           {{ category.text }}
         </option>
       </select>
     </div>
     <ul class="product_list" v-if="productData">
-      <router-link :to="'/product/' + items.id" v-for="items in productData" :key="items.id">
-        <li>
-          <div class="specific_product">
+      <li v-for="items in productData">
+        <div class="specific_product">
+          <router-link :to="'/product/' + items.id">
             <div class="img-wrapper">
               <img :src="items.product_image" :alt="'Bild på ' + items.product_name">
             </div>
-            <div class="h3_and_heart">
+          </router-link>
+          <div class="h3_and_heart">
+            <router-link :to="'/product/' + items.id">
               <h3>{{ items.product_name }}</h3>
-              <div class="button_like">
-                <i class="bi bi-heart"></i>
-              </div>
-            </div>
-            <p style="padding: 0.3rem; min-height: 4rem;">{{ items.description_title }}</p>
-            <div class="price">
-              <p>{{ items.price }} kr/kg</p>
-            </div>
-            <div class="button_container">
-              <button class="button_cart">Lägg i varukorg</button>
+            </router-link>
+            <div class="button_like">
+              <i class="bi bi-heart"></i>
             </div>
           </div>
-        </li>
-      </router-link>
+          <p style="padding: 0.3rem; min-height: 4rem;">{{ items.description_title }}</p>
+          <div class="price">
+            <p>{{ items.price }} kr/kg</p>
+          </div>
+          <div class="button_container">
+            <AddToCartButton :id="items.id" />
+          </div>
+        </div>
+      </li>
     </ul>
     <div class="loading-items" v-else>
       <div v-if="productData === 0">
@@ -107,6 +114,7 @@ export default {
     </div>
   </section>
 </template>
+
 <style scoped>
 section {
   width: 100%;
