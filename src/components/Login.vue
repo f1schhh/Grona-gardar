@@ -3,7 +3,10 @@
 
     <div ref="overlay" @click="exitLogin" class="overlay-for-login"></div>
 
-    <div ref="loginContainer" class="login-menu-container" >
+    <div ref="loginContainer" class="login-menu-container">
+
+    <div class="exit-login-container"><div class="exit-login-wrapper" @click="exitLogin"><i class="bi bi-x-lg"></i></div></div>
+
     <div class="login-register-link-wrapper">
         <h1 class="login-link" :class="{ underline: loginLink }" @click="onLoginLink">Logga in</h1>
         <h1 class="register-link" :class="{ underline: !loginLink }" @click="onRegisterLink">Registrera</h1>
@@ -70,8 +73,8 @@ export default {
     props:{
         onLoginIconClick: Boolean
     },
-    emits: ['user-name'],
-    emits: ['overlay-clicked'],
+    emits: ['user-name', 'overlay-clicked'],
+    // emits: ['overlay-clicked'],
     // computed: {
     //     ...mapStores(useAccountStore)
 
@@ -146,6 +149,7 @@ export default {
             const loginContainer = this.$refs.loginContainer;
 
             loginContainer.classList.remove("fade-in")
+
             //Transition opacity to make div transparent
             overlay.classList.remove("increase-blur-when-using-login")
             loginContainer.classList.remove("fade-in")
@@ -160,6 +164,9 @@ export default {
             }, 500)
 
             this.$emit('overlay-clicked');
+
+            this.passwordErrorMessage = '';
+            this.usernameErrorMessage = '';
 
 
         },
@@ -196,12 +203,14 @@ export default {
 
                     console.log('du är inloggad')
                     this.$emit('userName', user.first_name);
+                    localStorage.setItem("user_id", user.id);
                     this.email = null
                     this.password = null
                     this.exitLogin()
 
                 }
                 else {
+
                     this.passwordErrorMessage = 'Felaktigt lösenor eller epost.';
                     this.email = null
                     this.password = null
@@ -230,6 +239,23 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.exit-login-wrapper{
+    cursor: pointer;
+    width: fit-content;
+}
+
+.exit-login-container{
+    width: 90%;
+    /* background-color: chartreuse; */
+    margin: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bi {
+    font-size: 24px;
 }
 
 .login-menu-wrapper {
@@ -389,6 +415,8 @@ input[type="email"] {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
 }
+
+
 
 /*===================*/
 @media screen and (min-width: 451px) {
