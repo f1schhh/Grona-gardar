@@ -70,7 +70,8 @@ export default {
 </template>
 
 
-<style>
-
-
+<style scoped>
+.button_like{
+  cursor: pointer;
+}
 </style>
