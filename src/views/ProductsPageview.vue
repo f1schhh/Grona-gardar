@@ -1,5 +1,6 @@
 <script>
 import SearchBar from '../components/SearchBar.vue';
+import FavoriteButton from '../components/FavoriteButton.vue';
 import { useProductStore } from '../store';
 
 export default {
@@ -89,7 +90,8 @@ export default {
 
   },
   components: {
-    SearchBar
+    SearchBar,
+    FavoriteButton,
   },
 }
 </script>
@@ -130,9 +132,7 @@ export default {
               <div class="h3_and_heart">
                 <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
                 }}</router-link></h3>
-                <div class="button_like">
-                  <i class="bi bi-heart"></i>
-                </div>
+                <FavoriteButton :id="items.id"/>
               </div>
               <div class="product_type">
                 {{ items.product_type }}
@@ -156,9 +156,7 @@ export default {
               <div class="h3_and_heart">
                 <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
                 }}</router-link></h3>
-                <div class="button_like">
-                  <i class="bi bi-heart"></i>
-                </div>
+                <FavoriteButton :id="items.id"/>
               </div>
               <div class="product_type">
                 {{ items.product_type }}
@@ -180,9 +178,7 @@ export default {
               <div class="h3_and_heart">
                 <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
                 }}</router-link></h3>
-                <div class="button_like">
-                  <i class="bi bi-heart"></i>
-                </div>
+                <FavoriteButton :id="items.id"/>
               </div>
               <div class="product_type">
                 {{ items.product_type }}

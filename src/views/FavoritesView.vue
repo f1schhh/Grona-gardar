@@ -1,5 +1,45 @@
 <script>
+    import FavoriteButton from '../components/FavoriteButton.vue';
 
+
+    export default{
+        components:{
+            FavoriteButton,
+        },
+
+        data(){
+            return{
+                favoriteProducts: []
+            }
+        },
+        methods:{
+            async getFavorites(){
+                try{
+                const favoriteList = localStorage.getItem('favorite');
+                const favorite = favoriteList ? JSON.parse(favoriteList) : [];
+
+                const response = await fetch('/src/database.json')
+                const data = await response.json();
+
+                const favoriteProducts = data.products.filter(product => {
+                    return favorite.includes(product.id)
+                });
+
+                if (favoriteProducts.length > 0){
+                    this.favoriteProducts = favoriteProducts;
+                }
+
+            } catch (error){
+                    console.log('There seems to be a problem:', error);
+                }
+            }
+        },
+
+        created(){
+            this.getFavorites();
+
+        },
+    }
 </script>
 
 <style scoped>
@@ -179,7 +219,30 @@ article {
             <div id="hrDiv">
                 <hr id="favorites_hr">
             </div>
-            <ul class="favorites_list">
+            <ul class="favorites_list" v-if="favoriteProducts.length > 0">
+
+<!-- TEST AV FAVORITKNAPP -->
+                <li class="favorites_list_li" v-for="product in favoriteProducts" :key="product.id">
+                    <router-link :to="{ path: `/product/${product.id}` }">
+                  <div class="img-wrapper">
+                    <img :src="product.product_image" alt="">
+                  </div>
+                </router-link>
+
+                  <div class="infoProduct">
+                    <div class="">
+                      <h3>{{ product.product_name }}</h3>
+                      <favoriteButton/>
+                    </div>
+                    <div>
+                      <span class="text_type">{{ product.product_type }}</span>
+                      <span>{{ product.price }}kr/kg</span>
+                    </div>
+                    <!-- <VARUKORGKNAPP/> -->
+                  </div>
+            </li>
+<!-- SLUT TEST FAVORITKNAPP -->
+
                 <li class="favorites_list_li">
                     <div class="img-wrapper">
                         <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
@@ -201,7 +264,7 @@ article {
                     </div>
                 </li>
 
-                <li class="favorites_list_li">
+                <!-- <li class="favorites_list_li">
                     <div class="img-wrapper">
                         <img src="../assets/media/product_images/Apple_Elise.jpg" alt="">
                     </div>
@@ -260,8 +323,12 @@ article {
                             <button class="button_addToShoppingCart">Lägg i varukorg</button>
                         </div>
                     </div>
-                </li>
+                </li> -->
             </ul>
+
+            <div v-else>
+                <p>Det verkar som att du inte har valt några favoriter än.</p>
+            </div>
         </section>
     </article>
 </template>
