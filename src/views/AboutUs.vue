@@ -79,8 +79,8 @@ article {
     .about_text {
         display: flex;
         flex-direction: column;
-        font-size: 1.25rem;
-        line-height: 1.3rem;
+
+
         padding: 1rem 10%;
         margin: 0;
     }

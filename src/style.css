@@ -11,6 +11,8 @@
 body {
   color: var(--dark-green);
   overflow-x: hidden;
+  font-size: 3vw;
+
 }
 
 body,
@@ -76,7 +78,6 @@ h6 {
   --dark-beige: #dfd3c3;
   --dark-green: #475133;
   --dusty-pink: #dab29e;
-  --bread-size: 16px;
   --mobile-size: 375px;
   --desktop-size: 128rem;
 }
@@ -299,3 +300,11 @@ main {
    Large:   960 - 1279  ( columns at 960  )
    X-Large: 1280+       ( columns at 1280 )
    ========================================================== */
+
+
+
+@media screen and (min-width: 530px) {
+  body {
+    font-size: 16px;
+  }
+}
