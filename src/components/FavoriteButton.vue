@@ -29,27 +29,48 @@ export default {
             const currentFavorite = localStorage.getItem('favorite')
             const checkFavorite = currentFavorite ? JSON.parse(currentFavorite) : [];
 
-            if (!checkFavorite.includes(this.id) || checkFavorite === null){
+            if (!checkFavorite.includes(this.id)){
                 checkFavorite.push(this.id)
                 localStorage.setItem('favorite', JSON.stringify(checkFavorite))
                 this.heartClass = 'bi bi-heart-fill';
-                localStorage.setItem('heartClass_${this.id}', this.heartClass);
-                console.log(checkFavorite)
+                localStorage.setItem(`heartClass_${this.id}`, this.heartClass);
+                console.log("checkfavorite" + checkFavorite)
             } else {
                 const deleteFavorite = checkFavorite.filter(item => item !== this.id)
                 localStorage.setItem('favorite', JSON.stringify(deleteFavorite))
                 this.heartClass = 'bi bi-heart';
                 localStorage.setItem('heartClass_${this.id}', this.heartClass);
-                console.log(checkFavorite)
+                console.log("else" +  checkFavorite)
             }
+
         },
+
+        checkItem(){
+            const currentFavorite = localStorage.getItem('favorite')
+            const checkFavorite = currentFavorite ? JSON.parse(currentFavorite) : [];
+
+            if (checkFavorite.includes(this.id)){
+                return true
+            } else {
+                return false
+            }
+
+        }
     },
 
 };
+
 </script>
+
 
 <template>
     <div class="button_like" >
         <i @click="favoriteClick" :class="heartClass"></i>
     </div>
 </template>
+
+
+<style>
+
+
+</style>
