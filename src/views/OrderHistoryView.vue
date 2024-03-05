@@ -82,6 +82,7 @@ article {
 
 #orderHistory_hr {
     border: 1px solid #475133;
+    width: 100%;
 }
 
 #orderHistory {
@@ -179,23 +180,133 @@ article {
     article {
         padding-left: 2rem;
         display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
+        /* justify-content: flex-start;
+        align-items: flex-start; */
+        padding-right: 0;
+        max-width: 100%;
+        padding-top: 2.8rem;
+        margin-top: 0;
+        /* height: 24rem; */
+    }
+
+    #orderHistory {
+        padding-top: 0;
+        margin-top: 0;
+        height: 100%;
     }
 
     #orderHistory h2 {
         text-align: left;
         width: 0;
-        margin: 1.5rem 0;
-        font-size: 1.5rem;
+        padding-bottom: 1.5rem;
+        font-size: 1rem;
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    .orderHistory_list {
+        flex-direction: row;
+        max-width: 100%;
+        flex-wrap: wrap;
     }
 
     .orderHistory_list_li {
-        font-size: 1.2rem;
+        font-size: 0.7rem;
+        height: 8rem;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        width: 80%;
+        max-width: 20rem;
+    }
+
+    .order_summary {
+        padding-top: 2rem;
+    }
+
+    .img-wrapper {
+        height: 100%;
+        width: 8rem;
     }
 
     .button_seeOrder {
+        margin-top: 0;
+        font-size: 0.7rem;
+        color: var(--dark-green)
+    }
+
+
+    #hrDiv {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .orderHistory_list_li {
+        font-size: 0.9rem;
+
+    }
+
+    .order_summary {
+        padding-top: 1rem;
+    }
+}
+
+
+@media screen and (min-width: 850px) {
+    article {
+        padding-left: 2rem;
+        display: flex;
+        /* justify-content: flex-start;
+        align-items: flex-start; */
+        padding-right: 0;
+        max-width: 50rem;
+        padding-top: 2.8rem;
+        margin-top: 0;
+        /* height: 24rem; */
+    }
+
+    #orderHistory {
+        padding-top: 0;
+        margin-top: 0;
+        height: 100%;
+    }
+
+    #orderHistory h2 {
+        text-align: left;
+        width: 0;
+        padding-bottom: 1.5rem;
         font-size: 1rem;
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    .orderHistory_list {
+        flex-direction: row;
+        max-width: 80rem;
+        flex-wrap: wrap;
+    }
+
+    .orderHistory_list_li {
+        font-size: 0.9rem;
+        height: 8rem;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        width: 60%;
+        max-width: 20rem;
+    }
+
+    .order_summary {
+        padding-top: 1rem;
+    }
+
+    .img-wrapper {
+        height: 100%;
+        width: 8rem;
+    }
+
+    .button_seeOrder {
+        margin-top: 0;
+        font-size: 0.7rem;
         color: var(--dark-green)
     }
 
@@ -222,7 +333,23 @@ article {
                         <div class="order_summary">
                             <p><span>Ordernummer:</span> {{ items.id }}</p>
                             <p>Datum: {{ items.order_date }}</p>
-                            <p>Total belopp: {{ items.total_cost }}</p>
+                            <p>Totalbelopp: {{ items.total_cost }}</p>
+                        </div>
+                        <div class="button_seeOrder_div">
+                            <button class="button_seeOrder">Se order</button>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="orderHistory_list_li" v-for="(items, index) in order_history_data">
+                    <div class="img-wrapper" v-if="order_image.length !== 0">
+                        <img :src="order_image[index]" alt="">
+                    </div>
+                    <div class="summar_and_button">
+                        <div class="order_summary">
+                            <p><span>Ordernummer:</span> {{ items.id }}</p>
+                            <p>Datum: {{ items.order_date }}</p>
+                            <p>Totalbelopp: {{ items.total_cost }}</p>
                         </div>
                         <div class="button_seeOrder_div">
                             <button class="button_seeOrder">Se order</button>

@@ -6,6 +6,9 @@ import { RouterLink } from 'vue-router';
 article {
     display: flex;
     flex-direction: column;
+    padding-left: 0rem;
+    /* justify-content: center;
+    align-items: center; */
 }
 
 #test {
@@ -28,7 +31,7 @@ article {
 }
 
 #profilePic {
-    width: 4rem;
+    width: 5rem;
     border-radius: 100%;
 }
 
@@ -59,10 +62,20 @@ i {
     height: 2.5rem;
 }
 
+#hrDividePage_Div {
+    padding: 0;
+    margin: 0;
+}
 
 @media screen and (max-width: 385px) {
     article {
         width: 100%;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    #profilePic {
+        width: 7rem;
     }
 }
 
@@ -73,6 +86,7 @@ i {
         width: 100%;
         flex-wrap: nowrap;
         gap: 0;
+        padding-left: 2rem;
     }
 
     h1 {
@@ -81,7 +95,88 @@ i {
     }
 
     #profilePic {
+        width: 7rem;
+    }
+
+    h2 {
+        font-weight: 100;
+        font-size: 1.2rem;
+        /* padding: 1.5rem; */
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 100%;
+        /* padding-top: 2rem; */
+    }
+
+    .profileInfo_li {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .i_and_p {
+        padding: 1rem;
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        font-size: 1rem;
+    }
+
+    .hrDivideLi {
+        height: 0;
         width: 10rem;
+        border: solid 2px var(--dark-beige);
+        margin: 0;
+        padding: 0;
+    }
+
+
+    #hrDividePage_Div {
+        padding-left: 2rem;
+        padding-right: 0;
+    }
+
+    #hrDividePage {
+        /* display: flex; */
+        width: 0;
+        /* Changed from 0% to take up the remaining space */
+        height: 32rem;
+        /* flex-wrap: nowrap; */
+        border: solid 2px var(--dark-beige);
+        margin: 0;
+        /* Adjust margin as needed */
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .hrDivideLi {
+        width: 15rem;
+    }
+}
+
+
+@media screen and (min-width: 900px) {
+    article {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        flex-wrap: nowrap;
+        gap: 0;
+        padding-left: 2rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin: 1rem;
+    }
+
+    #profilePic {
+        width: 7rem;
     }
 
     h2 {
@@ -112,17 +207,23 @@ i {
 
     .hrDivideLi {
         height: 0;
-        width: 20rem;
+        width: 23rem;
         border: solid 2px var(--dark-beige);
         margin: 0;
         padding: 0;
+    }
+
+
+    #hrDividePage_Div {
+        padding-left: 2rem;
+        padding-right: 0;
     }
 
     #hrDividePage {
         /* display: flex; */
         width: 0;
         /* Changed from 0% to take up the remaining space */
-        height: 100%;
+        height: 32rem;
         /* flex-wrap: nowrap; */
         border: solid 2px var(--dark-beige);
         margin: 0;
@@ -196,7 +297,9 @@ i {
             </ul>
 
         </aside>
-        <hr id="hrDividePage">
+        <div id="hrDividePage_Div">
+            <hr id="hrDividePage">
+        </div>
         <RouterView />
 
     </article>
