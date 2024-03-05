@@ -19,6 +19,7 @@ export default {
   }
 }
 </script>
+
 <template>
   <div class="admin_container">
     <nav class="admin_nav">
@@ -95,7 +96,7 @@ export default {
               <div>
                 <h4>Gillar</h4>
                 <div class="small_text">
-                  <b>Adam Fischer</b>
+                  <b>Atko</b>
                   gillar Äpple
                 </div>
               </div>
@@ -134,6 +135,7 @@ export default {
 
   </div>
 </template>
+
 <style scoped>
 .default_gap {
   display: flex;
@@ -166,6 +168,7 @@ export default {
   gap: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-bottom: 2rem;
   margin-top: 1rem;
 }
 
@@ -260,20 +263,24 @@ export default {
 }
 
 @media screen and (max-width: 700px) {
-  .dashboard_stats{
+  .dashboard_stats {
     flex-direction: column;
   }
-  .monthly_stats_left{
+
+  .monthly_stats_left {
     width: 100%;
   }
-  .monthly_stats_right{
+
+  .monthly_stats_right {
     width: 100%;
   }
-  .category_stats{
+
+  .category_stats {
     display: flex;
     justify-content: center;
   }
-  .category_stats{
+
+  .category_stats {
     flex-direction: column;
     gap: 1rem;
   }
@@ -291,6 +298,16 @@ export default {
 
   .category_stats {
     width: 100%;
+  }
+}
+
+@media screen and (min-width: 950px) and (max-width: 1125px) {
+  .dashboard_stats {
+    min-width: calc(70% - 2rem);
+  }
+
+  .category_stats {
+    min-width: calc(30% - 3rem);
   }
 }
 </style>

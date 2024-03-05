@@ -1,5 +1,7 @@
 <script>
 import AddToCartButton from '../components/AddToCartButton.vue';
+import SearchBar from '../components/SearchBar.vue';
+
 export default {
   data() {
     return {
@@ -61,13 +63,23 @@ export default {
     }
   },
   components: {
-    AddToCartButton
+    AddToCartButton,
+    SearchBar,
   },
 }
 </script>
 
 <template>
+  <nav style="padding: 1rem;">
+    <ul class="bread-crumb-meny">
+      <li><router-link to="/">Hem</router-link> <i class="bi bi-chevron-right"></i></li>
+      <li>Sök<i class="bi bi-chevron-right"></i></li>
+      <li><router-link :to="'/search/' + this.$route.params.query"><b>{{ this.$route.params.query }}</b></router-link>
+      </li>
+    </ul>
+  </nav>
   <section>
+    <SearchBar style="margin: auto; width: 100%; margin-bottom: 1rem;" />
     <div class="top_of_search" v-if="productData !== 0">
       <h2>Sökresultat för "{{ this.$route.params.query }}"</h2>
       <select v-model="filterType" class="filter_type">
@@ -117,7 +129,11 @@ export default {
 
 <style scoped>
 section {
-  width: 100%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
   padding: 1rem;
 }
 
@@ -137,7 +153,6 @@ h2 {
   border: 0;
   height: 45px;
   border: 2px solid #9A876F;
-  margin-right: 1.3rem;
   background-color: transparent;
 }
 
@@ -179,6 +194,12 @@ h2 {
   .img-wrapper {
     width: 9.5rem;
     height: 9.5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  section {
+    width: 90%;
   }
 }
 </style>
