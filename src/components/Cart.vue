@@ -233,6 +233,7 @@
 <script>
 import { useProductStore } from '../store';
 
+
 export default {
     components: {
 
@@ -247,8 +248,7 @@ export default {
             productStore: null, // Store the store instance
         }
     },
-    emits: ['tot-items-in-cart'],
-    emits: ['tot-cost-in-cart'],
+    emits: ['tot-items-in-cart', "tot-cost-in-cart", 'overlay-clicked'],
     created() {
 
         // Initialize the store instance
@@ -262,7 +262,6 @@ export default {
 
 
     },
-    emits: ['overlay-clicked'],
     methods: {
 
         //Method used to make cart visible
