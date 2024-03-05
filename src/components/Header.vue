@@ -1,8 +1,6 @@
 <template>
   <header id="header">
     <div @click="exitMenu" class="overlay"></div>
-    <!--Login div-->
-    <div @click="exitLogin" class="overlay-for-login"></div>
 
     <!--Hamburger Menu Div-->
     <div class="menu-container">
@@ -14,11 +12,11 @@
         <li @click="onMenuClick"><router-link to="/contact">Kontakt</router-link></li>
       </ul>
     </div>
-    <div class="login-field-to-center-container">
-      <div class="login-menu-container">
-        <Login @userName="handleUserNameEvent"></Login>
-      </div>
-    </div>
+
+        <!-- Skickar booleanen isLoginClicked som en prop till Login-komponenten -->
+        <!-- Lyssnar på overlay-clicked eventet och sätter isLoginClicked till false -->
+        <!-- Lyssnar på userName eventet och anropar handleUserNameEvent-metoden -->
+    <Login :on-login-icon-click="isLoginClicked" @userName="handleUserNameEvent" @overlay-clicked="isLoginClicked = false"></Login>
 
     <!--==== Cart conent Container ====-->
     <Cart :on-cart-click="isCartClicked" @overlay-clicked="isCartClicked = false"
@@ -49,15 +47,17 @@
       <div class="login-and-cart-container">
 
         <div class="login-and-cart-icons-wrapper">
-          <div v-if="userName === 'Konto'" @click="onLoginClick" class="login-wrapper">
+
+          <!-- :onLoginIconClick="true" -->
+          <div v-if="userName === 'Konto'"  @click="onLoginClick" class="login-wrapper">
             <i class="bi bi-person"></i>
             <p>{{ userName }}</p>
           </div>
-          <router-link v-else="userName !== 'Konto'" to="/account" class="login-wrapper">
+
+          <router-link v-else=" userName !== 'Konto'" to="/account" class="login-wrapper">
             <i class="bi bi-person"></i>
             <p>{{ userName }}</p>
           </router-link>
-
 
           <div @click="onCartClick" class="cart-icon-wrapper">
             <i class="bi bi-cart"></i>
@@ -82,10 +82,13 @@ export default {
   },
   data() {
     return {
+
       isCartClicked: false,
+      isLoginClicked: false,
       userName: "Konto",
       quantityOfItemsInCart: null,
       totCostForItemsInCart: null,
+
     }
   },
   created() {
@@ -93,20 +96,10 @@ export default {
     this.sendUserNameToHeader()
 
   },
-  // mounted(){
-  //   if(localStorage.userName){
-  //     this.userName = $localStorage.userName
-  //   }
-  // },
-  // watch:{
-  //   userName(newUserName){
-  //     this.userName = newUserName
-  //   }
-  // },
   methods: {
     //Method that expands menu and manipulates the hamburger
     onMenuClick() {
-      const header = document.getElementById("header");
+      // const header = document.getElementById("header");
       const overlay = document.querySelector(".overlay");
       const rectA = document.querySelector(".rectA")
       const rectB = document.querySelector('.rectB')
@@ -172,38 +165,9 @@ export default {
     },
     // Method that opens the login and blurres background
     onLoginClick() {
-      const overlay = document.querySelector(".overlay-for-login")
-      const loginContainer = document.querySelector(".login-menu-container ")
-
-      loginContainer.classList.remove("fade-out")
-
-      loginContainer.style.display = "flex"
-      overlay.style.display = "flex"
-
-      setTimeout(function () {
-        overlay.classList.add("increase-blur-when-using-login")
-        loginContainer.classList.add('fade-in');
-      }, 100)
-
+      this.isLoginClicked = true;
     },
-    //Method for exiting login page
-    exitLogin() {
 
-      const overlay = document.querySelector(".overlay-for-login")
-      const loginContainer = document.querySelector(".login-menu-container ")
-      loginContainer.classList.remove("fade-in")
-      //Transition opacity to make div transparent
-      overlay.classList.remove("increase-blur-when-using-login")
-      loginContainer.classList.remove("fade-in")
-      loginContainer.classList.add("fade-out")
-
-      setTimeout(function () {
-
-        overlay.style.display = "none";
-
-      }, 500)
-
-    },
     //Method regulating what happens when cart icon is clicked
     onCartClick() {
 
@@ -215,12 +179,12 @@ export default {
       }
     },
     handleUserNameEvent(user) {
-      console.log("detta sker i header" + user)
+      console.log("This is sent to header " + user)
 
       this.userName = user
       localStorage.setItem("userName", this.userName);
 
-      this.exitLogin()
+      // this.exitLogin()
 
     },
     // Method that sends the user name to be visible in the header.
@@ -278,7 +242,7 @@ header {
   backdrop-filter: blur(1px);
 }
 
-.overlay-for-login {
+/* .overlay-for-login {
   display: none;
   background-color: rgba(255, 255, 255, 0);
   backdrop-filter: blur(0px);
@@ -290,12 +254,12 @@ header {
   z-index: 3;
   justify-content: center;
   align-content: center;
-}
+} */
 
-.increase-blur-when-using-login {
+/* .increase-blur-when-using-login {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
-}
+} */
 
 nav {
   top: 0;
@@ -415,7 +379,7 @@ main {
 /* =========================== */
 /* ======= Log in page ======= */
 /* =========================== */
-.login-menu-container {
+/* .login-menu-container {
   display: none;
   background-color: var(--mid-beige);
   width: 60vw;
@@ -454,7 +418,7 @@ main {
     opacity: 0;
   }
 
-}
+} */
 
 /* Hamburger */
 .move-menu-right {

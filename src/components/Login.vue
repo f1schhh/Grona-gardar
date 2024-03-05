@@ -1,4 +1,9 @@
 <template>
+    <!-- Login div -->
+
+    <div ref="overlay" @click="exitLogin" class="overlay-for-login"></div>
+
+    <div ref="loginContainer" class="login-menu-container" >
     <div class="login-register-link-wrapper">
         <h1 class="login-link" :class="{ underline: loginLink }" @click="onLoginLink">Logga in</h1>
         <h1 class="register-link" :class="{ underline: !loginLink }" @click="onRegisterLink">Registrera</h1>
@@ -52,6 +57,8 @@
             <input class="login-butt" @click="onSignUpClick" type="button" value="Registrera">
         </div>
     </div>
+</div>
+<!-- </div> -->
 </template>
 
 <script>
@@ -60,13 +67,21 @@
 // import axios from 'axios'
 
 export default {
+    props:{
+        onLoginIconClick: Boolean
+    },
     emits: ['user-name'],
+    emits: ['overlay-clicked'],
     // computed: {
     //     ...mapStores(useAccountStore)
 
     // },
     data() {
         return {
+
+            receivedLoginIconClick: false,
+            isLoginIconClickTrue: false,
+
             loginLink: true,
 
             // Sign in
@@ -92,7 +107,62 @@ export default {
 
         }
     },
+    watch: {
+        onLoginIconClick(ifLoginIconIsClickedBoolean) {
+            console.log('onLoginIconClick updated:', ifLoginIconIsClickedBoolean);
+            this.isLoginIconClickTrue = ifLoginIconIsClickedBoolean
+
+            if(!ifLoginIconIsClickedBoolean){
+                this.exitLogin()
+            }
+            else if(ifLoginIconIsClickedBoolean){
+                this.handleLoginIconClick()
+            }
+        },
+    },
     methods: {
+        handleLoginIconClick(){
+
+        console.log('The form is supposed to show');
+
+        const overlay = this.$refs.overlay;
+        const loginContainer = this.$refs.loginContainer;
+
+        loginContainer.classList.remove("fade-out")
+        loginContainer.style.display = "flex"
+        overlay.style.display = "flex"
+
+        setTimeout(function () {
+            overlay.classList.add("increase-blur-when-using-login")
+            loginContainer.classList.add('fade-in');
+        }, 100)
+        },
+
+        // },
+        // THis is written i native because I cant find a solution that is similar using vue.
+        exitLogin(){
+            console.log('exit login form')
+            const overlay = this.$refs.overlay;
+            const loginContainer = this.$refs.loginContainer;
+
+            loginContainer.classList.remove("fade-in")
+            //Transition opacity to make div transparent
+            overlay.classList.remove("increase-blur-when-using-login")
+            loginContainer.classList.remove("fade-in")
+            loginContainer.classList.add("fade-out")
+
+
+            setTimeout(function () {
+
+                overlay.style.display = "none";
+                loginContainer.style.display ="none"
+
+            }, 500)
+
+            this.$emit('overlay-clicked');
+
+
+        },
         // To change page between log in and sign up on click
         onLoginLink() {
             this.loginLink = true
@@ -123,10 +193,13 @@ export default {
                 console.log(`Email: ${user.email}, Password: ${user.password}`);
 
                 if (user.email === this.email && user.password === this.password) {
+
                     console.log('du är inloggad')
                     this.$emit('userName', user.first_name);
                     this.email = null
                     this.password = null
+                    this.exitLogin()
+
                 }
                 else {
                     this.passwordErrorMessage = 'Felaktigt lösenor eller epost.';
@@ -144,10 +217,11 @@ export default {
         //         username: this.mail,
         //         password: this.password
 
-        //     })
-        // }
-    }
+            // })
+        //  }
 }
+}
+
 </script>
 
 <style scoped>
@@ -254,6 +328,66 @@ input[type="email"] {
 .login-butt:active {
     background-color: var(--dark-beige);
     box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.login-menu-container {
+  display: none;
+  background-color: var(--mid-beige);
+  width: 60vw;
+  width: 300px;
+  height: fit-content;
+  height: 500px;
+  padding: 10px;
+  border-radius: 16px;
+  z-index: 5;
+  box-shadow: -8px 0px 12px 0px rgba(0, 0, 0, 0.4);
+  align-self: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  animation: fade-out 0.5s ease-in-out forwards;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+
+}
+
+.overlay-for-login {
+  display: none;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(0px);
+  transition: background-color 0.75s, backdrop-filter 0.75s;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 3;
+  cursor: pointer;
+  justify-content: center;
+  align-content: center;
+}
+
+.increase-blur-when-using-login {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(1px);
 }
 
 /*===================*/
