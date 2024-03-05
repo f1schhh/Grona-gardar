@@ -85,8 +85,6 @@ dt {
     .about_text {
         display: flex;
         flex-direction: column;
-        font-size: 1.25rem;
-        line-height: 1.3rem;
         padding: 3rem 10%;
         margin: 0;
     }
