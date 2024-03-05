@@ -203,12 +203,10 @@ export default {
     //Update quantity of items in cart for header
     setTotQuantityOfItemsInCart(incomingQuantityOfItems) {
       this.quantityOfItemsInCart = incomingQuantityOfItems;
-      console.log("header shows quantity of items:", this.quantityOfItemsInCart)
     },
     //Update tot. Cost of items in cart for header
     setTotCostOfItemsInCart(incomingTotCostOfItems) {
       this.totCostForItemsInCart = incomingTotCostOfItems + " kr";
-      console.log("header shows tot cost of items: ", this.totCostForItemsInCart)
     }
   }
 

@@ -167,7 +167,6 @@ span::after {
 
     .about-us-container {
         width: 300px;
-
         padding-left: 0;
         padding-right: 0;
         margin-left: 40px;
@@ -183,10 +182,10 @@ span::after {
 
 
     .visit-us-container {
-        width: 250px;
-        max-width: 250px;
+        width: 280px;
         padding-left: 0;
         padding-right: 0;
+
     }
 
     .contact-us-container {

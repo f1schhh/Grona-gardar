@@ -247,7 +247,8 @@ export default {
             productStore: null, // Store the store instance
         }
     },
-    emits: ['tot-items-in-cart', 'tot-cost-in-cart'],
+    emits: ['tot-items-in-cart'],
+    emits: ['tot-cost-in-cart'],
     created() {
 
         // Initialize the store instance
@@ -360,9 +361,6 @@ export default {
 
             //add cart products into a local component variable
             this.cartMirror = products;
-
-            // Log products in varukorg
-            console.log("Products in varukorg:", products);
         },
 
         //Method that reduces items in the pinia cart
