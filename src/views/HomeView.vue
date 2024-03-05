@@ -1,9 +1,11 @@
 <script>
 import SearchBar from '../components/SearchBar.vue';
+import FavoriteButton from '../components/FavoriteButton.vue';
 
 export default {
   components: {
     SearchBar,
+    FavoriteButton,
   },
 
   data() {
@@ -56,24 +58,31 @@ export default {
     <!-- ======================================================
      ===========================TOP============================
      ==========================================================  -->
-    <section class="main_top">
+    <section class="home_top">
       <SearchBar class="search_style"></SearchBar>
-      <div class="block_info">
+      <div class="home_top_block">
+        <div class="home_top_space">
         <h2>
-          Färsk Frukt, Närodlad och Hållbar
+          Nyskördat efter säsong - Närproducerat, färskt och hållbart
+          <!-- Färsk Frukt - Närodlad och Hållbar -->
         </h2>
-        <p class="main_info_text">
+        <p>
           Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt. Varje
           produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
         </p>
         <router-link to="/products">
-          <div class="div_button_more_products">
-            <button class="button_more_products" @click="goToProducts">Våra produkter<i
-                class="bi bi-arrow-right"></i></button>
+          <div class="div_button_more_products button_space">
+            <button class="button_more_products" @click="goToProducts">
+              Våra produkter
+              <i class="bi bi-arrow-right"></i>
+            </button>
           </div>
         </router-link>
+        </div>
       </div>
     </section>
+
+
 
     <!-- ======================================================
      ==========================SEASON==========================
@@ -84,20 +93,24 @@ export default {
         <div>
           <ul class="product_list">
             <li v-for="product in productData">
-              <router-link :to="{ path: `/product/${product.id}` }">
                 <div class="specific_product">
+                  <router-link :to="{ path: `/product/${product.id}` }">
                   <div class="img-wrapper">
                     <img :src="product.product_image" alt="">
                   </div>
+                </router-link>
+
                   <div class="product_information">
                     <div class="product-text">
-                      <span class="title-bold">{{ product.product_name }}</span>
+                      <router-link :to="{ path: `/product/${product.id}` }">
+                      <span class="title-bold">{{ product.product_name }} </span>
+                      </router-link>
+                      <FavoriteButton :id="product.id"/>
                       <span class="text_type">{{ product.product_type }}</span>
                       <span>{{ product.price }}kr/kg</span>
                     </div>
                   </div>
                 </div>
-              </router-link>
             </li>
 
           </ul>
@@ -109,6 +122,7 @@ export default {
         </div>
       </div>
     </section>
+
 
     <!-- ======================================================
      ==========================ABOUT===========================
@@ -321,37 +335,44 @@ article {
   margin-top: 5%;
 }
 
-.main_top {
-  background-image: url("../assets/media/GreenHouse.jpg");
-  /* background-attachment: fixed; */
+ /*  ==========================================================
+     ===========================TOP============================
+     ==========================================================   */
+
+.home_top {
+  /* background-image: url("../assets/media/GreenHouse.jpg"); */
+  /* background-image: url("../assets/media/pexels-karolina-grabowska-4750274.jpg"); */
+  /* background-image: url("../assets/media/pexels-gustavo-fring-4894638.jpg"); */
+  background-image: url("../assets/media/pexels-karolina-grabowska-4750271.jpg");
+
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 100% 30%;
-
-  height: 100vh;
+  background-position: center;
+  height: calc(100vh - 66.4px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 5rem;
-
 }
 
-.block_info {
+.home_top_space{
+  max-width: 776px;
+  margin: auto;
+}
+.home_top_block {
   background-color: var(--light-beige-opacity);
-  padding: 3.5rem 1.5rem;
   border-radius: 19px;
   width: 80%;
-  max-width: 25rem;
   display: flex;
   flex-direction: column;
-  margin-top: 10%;
+  margin-top: 6%;
+  padding: 1rem 1rem;
 }
 
-.block_info h2 {
-  padding-bottom: 1rem;
+.home_top_block h2 {
+  padding-bottom: 2rem;
 }
 
-.main_info_text {
+.home_top_block p {
   color: black;
 }
 
@@ -362,19 +383,29 @@ article {
 
 .button_more_products {
   background-color: transparent;
-  /* border: 1px solid var(--dark-green); */
+  border: 1px solid var(--dark-green);
   font-size: 1rem;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
 }
 
 .button_more_products:active {
   box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
+.button_space {
+  padding-top: 2rem;
+}
+
+
+
+
+ /*  ==========================================================
+     ========================SEASON============================
+     ==========================================================   */
+
 .section_season {
   background-color: var(--dark-beige);
-  padding: 1rem;
+  padding: 2rem 6%;
   display: flex;
 }
 
@@ -388,9 +419,12 @@ article {
 
 .product_list {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
 }
+
+/* .product_list li {
+margin: 0.5rem;
+} */
 
 .product_information {
   display: flex;
@@ -441,7 +475,7 @@ article {
 }
 
 .about_text {
-  padding: 1rem 10%;
+  padding: 2rem 6%;
 }
 
 .about_img {
@@ -565,9 +599,9 @@ article {
 
 @media screen and (max-width: 385px) {
 
-  .main_top {
+  /* .home_top {
     height: 45vh;
-  }
+  } */
 
   li {
     max-width: 9.5rem;
@@ -596,18 +630,20 @@ article {
 
 }
 
-.main_top {
+
+/* .home_top {
   height: 45vh;
-}
+} */
 
-.block_info {
-  /* padding-top: 4rem; */
+
+/* .home_top_block {
+  padding-top: 4rem;
   padding: 1rem 1rem;
-}
+} */
 
-.block_info h2 {
+/* .home_top_block h2 {
   padding-bottom: 0.5rem;
-}
+} */
 
 @media screen and (min-width: 560px) {
   /* .specific_product_big {
@@ -637,13 +673,10 @@ article {
     flex-direction: column;
   }
 
-  .block_info {
-    padding: 3.5rem 1.5rem;
+  .home_top_block {
+    padding-top: 3rem;
   }
 
-  .block_info h2 {
-    padding-bottom: 1rem;
-  }
 }
 
 @media screen and (min-width:650px) {
@@ -737,17 +770,17 @@ article {
 
 }
 
-@media screen and (max-width: 700px) {
-  .main_top {
+/* @media screen and (max-width: 700px) {
+  .home_top {
     height: auto;
   }
 
-}
+} */
 
 @media screen and (min-width: 701px) {
-  .main_top {
+  /* .home_top {
     height: 100vh;
-  }
+  } */
 
 }
 </style>
