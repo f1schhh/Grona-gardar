@@ -1,15 +1,16 @@
 <script>
     import FavoriteButton from '../components/FavoriteButton.vue';
-
+    import AddToCartButton from '../components/AddToCartButton.vue'
 
     export default{
         components:{
             FavoriteButton,
+            AddToCartButton
         },
 
         data(){
             return{
-                favoriteProducts: []
+                favoriteProducts: [],
             }
         },
         methods:{
@@ -20,17 +21,19 @@
 
                 const response = await fetch('/src/database.json')
                 const data = await response.json();
-
+                console.log(favoriteList)
                 const favoriteProducts = data.products.filter(product => {
                     return favorite.includes(product.id)
                 });
 
                 if (favoriteProducts.length > 0){
                     this.favoriteProducts = favoriteProducts;
+                } else{
+                    this.favoriteProducts = []
                 }
 
             } catch (error){
-                    console.log('There seems to be a problem:', error);
+                    console.log('There seems to be a problem: ', error);
                 }
             }
         },
@@ -216,9 +219,6 @@ article {
     <article>
         <section id="favorites">
             <h2>Favoriter</h2>
-            <div id="hrDiv">
-                <hr id="favorites_hr">
-            </div>
             <ul class="favorites_list" v-if="favoriteProducts.length > 0">
 
 <!-- TEST AV FAVORITKNAPP -->
@@ -232,17 +232,17 @@ article {
                   <div class="infoProduct">
                     <div class="">
                       <h3>{{ product.product_name }}</h3>
-                      <favoriteButton/>
+                      <favoriteButton @click="getFavorites" :id="product.id" />
                     </div>
                     <div>
                       <span class="text_type">{{ product.product_type }}</span>
                       <span>{{ product.price }}kr/kg</span>
                     </div>
-                    <!-- <VARUKORGKNAPP/> -->
+                    <AddToCartButton/>
                   </div>
             </li>
 <!-- SLUT TEST FAVORITKNAPP -->
-
+<!--
                 <li class="favorites_list_li">
                     <div class="img-wrapper">
                         <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">
@@ -262,7 +262,7 @@ article {
                             <button class="button_addToShoppingCart">Lägg i varukorg</button>
                         </div>
                     </div>
-                </li>
+                </li> -->
 
                 <!-- <li class="favorites_list_li">
                     <div class="img-wrapper">
