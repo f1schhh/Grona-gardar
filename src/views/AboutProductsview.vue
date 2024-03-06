@@ -1,5 +1,7 @@
 <script>
 import AddToCartButton from '../components/AddToCartButton.vue';
+import ProductCard from '../components/ProductCard.vue';
+import SearchBar from '../components/SearchBar.vue';
 
 export default {
   data() {
@@ -51,6 +53,17 @@ export default {
 
       }
     },
+
+    categoryLink() {
+      switch (this.productData.category) {
+        case "Frukt":
+          return '/products/fruits'
+          break;
+        case "Grönsaker":
+          return '/products/vegetables'
+          break;
+      }
+    },
     //Method that forwards product ID to a Pinia method
     onAddToCartClick(productId) {
 
@@ -63,25 +76,27 @@ export default {
   },
   components: {
     AddToCartButton,
+    ProductCard,
+    SearchBar
   }
 }
 </script>
 
 
 <template>
+  <nav style="padding: 1rem;" v-if="productData">
+    <ul class="bread-crumb-meny">
+      <li><router-link to="/">Hem</router-link> <i class="bi bi-chevron-right"></i></li>
+      <li><router-link to="/products">Produkter</router-link> <i class="bi bi-chevron-right"></i></li>
+      <li><router-link :to="categoryLink()">{{ productData.category }}</router-link> <i class="bi bi-chevron-right"></i>
+      </li>
+      <li><router-link to="/" class="active">{{ productData.product_name }}</router-link>
+      </li>
+    </ul>
+  </nav>
   <section v-if="productData">
-    <nav>
-      <ul class="bread-crumb-meny">
-        <li><router-link to="/">Hem</router-link> <i class="bi bi-chevron-right"></i></li>
-        <li><router-link to="/products">Produkter</router-link> <i class="bi bi-chevron-right"></i></li>
-        <li><router-link to="/">{{ productData.category }}</router-link> <i class="bi bi-chevron-right"></i>
-        </li>
-        <li><router-link to="/" class="active">{{ productData.product_name }}</router-link>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="specific_product">
+    <SearchBar class="searchbar" />
+    <div class="product_container">
       <div class="product_information">
         <div class="img-wrapper">
           <img :src="productData.product_image" :alt="productData.product_name">
@@ -90,39 +105,27 @@ export default {
           <div class="product_info">
             <span class="title-bold">{{ productData.product_name }}</span>
             <span>{{ productData.price }}kr/kg</span>
-            <span class="title-bold">{{ productData.description_title }}</span>
-            <p>
+            <p style="margin-top: 1rem;">
               {{ productData.description }}
             </p>
           </div>
           <div class="product_navigation">
-            <AddToCartButton :id="productData.id" />
+            <router-link to="/products" style="padding: 0.5rem; padding-left: 0px; "><i class="bi bi-arrow-left"></i>
+              Tillbaka</router-link>
+            <AddToCartButton class="custombtn" :id="productData.id" />
           </div>
         </div>
       </div>
     </div>
-
+    <hr style="width: 100%; margin-top: 3rem;">
+    </hr>
     <div class="similiar_products">
-      <h3>Liknande varor </h3>
+      <h3 style="margin-left: 0.7rem;">Liknande varor </h3>
 
-      <ul class="similiar_list" v-if="similiarData">
-        <router-link :to="'/product/' + items.id" v-for="items in similiarData" :key="items.id">
-          <li class="specific_product">
-            <div class="product_information" style="flex-direction: column; padding: 1rem;">
-              <div class="img-list">
-                <img :src="items.product_image" :alt="items.product_name">
-              </div>
-              <div class="product_info" style="flex-direction: column;">
-                <span class="title-bold">{{ items.product_name }}</span>
-                <span>{{ items.product_type }} </span>
-                <span>{{ items.price }}kr/kg</span>
-              </div>
-              <div class="product_navigation">
-                <AddToCartButton :id="productData.id" />
-              </div>
-            </div>
-          </li>
-        </router-link>
+      <ul class="product_list" v-if="similiarData">
+        <li v-for="items in similiarData">
+          <ProductCard :productid="items.id" />
+        </li>
       </ul>
       <div class="loading-items" v-else>
         <div v-if="productData === 0">
@@ -161,11 +164,30 @@ export default {
   text-decoration: underline;
 }
 
+.product_container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 19px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: #dfd3c3;
+}
+
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
+  object-fit: cover;
+  object-position: center;
+}
+
 section {
+  width: 60%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   padding: 1rem;
+  margin: auto;
 }
 
 .product_information {
@@ -173,7 +195,6 @@ section {
   flex-direction: column;
   gap: 1rem;
   color: var(--dark-green);
-  padding: 2rem;
 }
 
 .product_info {
@@ -182,39 +203,27 @@ section {
   gap: 0.3rem;
 }
 
-.img-wrapper img {
-  width: 100%;
-  height: 100%;
-  border-top-right-radius: 0px;
-  border-top-left-radius: 19px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 19px;
-  object-fit: cover;
-  object-position: center;
-}
-
 .img-list {
   width: 10rem;
   height: 10rem;
 }
 
-.img-list img {
-  width: 100%;
-  height: 100%;
-  border-radius: 19px;
-  object-fit: cover;
-  object-position: center;
-}
 
 .product-container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding: 1rem;
+  padding-top: 0.2rem;
   justify-content: flex-start;
 }
 
 .product-container p {
   margin: 0;
+}
+
+.product_container {
+  margin-top: 1.5rem;
 }
 
 .product_navigation {
@@ -224,17 +233,45 @@ section {
   justify-content: space-between;
 }
 
+.product_list {
+  justify-content: center;
+  row-gap: 3rem;
+}
+
+.product_list li {
+  max-width: none !important;
+  width: calc(25% - 1rem);
+}
+
 .similiar_products {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.similiar_list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1rem;
+.similiar_products h3 {
+  margin-left: 0.7rem;
+}
+
+.custombtn {
+  background-color: var(--dusty-pink);
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.searchbar {
+  width: 50%;
+  margin: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .product_list {
+    justify-content: center !important;
+  }
+
+  .searchbar {
+    width: 100% !important;
+  }
 }
 
 @media screen and (min-width: 700px) {
@@ -243,16 +280,79 @@ section {
   }
 
   .product-container {
+    padding-top: 1rem;
     justify-content: space-between;
   }
 
   .img-wrapper {
-    width: 20rem;
+    width: 70%;
+  }
+
+  .img-wrapper img {
+    border-top-left-radius: 19px;
+    border-bottom-left-radius: 19px;
+    border-top-right-radius: 0px;
   }
 
   .title-bold {
-    font-size: 1.3rem;
+    font-size: 2rem;
+  }
+
+  .similiar_products h3 {
+    margin-left: 0rem;
   }
 
 }
+
+@media screen and (max-width: 830px) {
+  section {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1px) and (max-width: 700px) {
+  .product_list {
+    justify-content: center !important;
+  }
+
+  .product_list li {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .product_list li {
+    width: calc(25% - 1rem);
+  }
+}
+
+/* @media screen and (min-width: 1px) and (max-width: 600px) {
+  .product_list li {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 820px) {
+  .product_list li {
+    width: calc(33.33% - 1rem);
+  }
+}
+
+@media screen and (min-width: 820px) and (max-width: 1150px) {
+  .product_list li {
+    width: calc(20% - 1rem);
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  .product_list li {
+    width: calc(14.28% - 1rem);
+  }
+}
+
+@media screen and (min-width: 128rem) {
+  .product_list li {
+    width: calc(12.5% - 1rem);
+  }
+} */
 </style>

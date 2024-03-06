@@ -1,10 +1,12 @@
 <script>
 import AddToCartButton from '../components/AddToCartButton.vue';
 import SearchBar from '../components/SearchBar.vue';
+import ProductCard from '../components/ProductCard.vue';
 
 export default {
   data() {
     return {
+      isLoading: true,
       productData: null,
       filterType: null,
       filterCategories: [
@@ -17,11 +19,18 @@ export default {
   },
   async created() {
     await this.getSearchItems(this.$route.params.query, this.filterType);
+    this.isLoading = false;
   },
   watch: {
     async filterType(newFilter) {
+      this.isLoading = true;
+      this.productData = [];
       this.filterType = newFilter;
       await this.getSearchItems(this.$route.params.query, this.filterType);
+      this.isLoading = false;
+    },
+    async '$route.params.query'(newRoute) {
+      await this.getSearchItems(newRoute, this.filterType);
     }
   },
   methods: {
@@ -65,6 +74,7 @@ export default {
   components: {
     AddToCartButton,
     SearchBar,
+    ProductCard
   },
 }
 </script>
@@ -88,46 +98,37 @@ export default {
         </option>
       </select>
     </div>
-    <ul class="product_list" v-if="productData">
-      <li v-for="items in productData">
-        <div class="specific_product">
-          <router-link :to="'/product/' + items.id">
-            <div class="img-wrapper">
-              <img :src="items.product_image" :alt="'Bild på ' + items.product_name">
-            </div>
-          </router-link>
-          <div class="h3_and_heart">
-            <router-link :to="'/product/' + items.id">
-              <h3>{{ items.product_name }}</h3>
-            </router-link>
-            <div class="button_like">
-              <i class="bi bi-heart"></i>
-            </div>
-          </div>
-          <p style="padding: 0.3rem; min-height: 4rem;">{{ items.description_title }}</p>
-          <div class="price">
-            <p>{{ items.price }} kr/kg</p>
-          </div>
-          <div class="button_container">
-            <AddToCartButton :id="items.id" />
-          </div>
-        </div>
-      </li>
-    </ul>
-    <div class="loading-items" v-else>
-      <div v-if="productData === 0">
-        <h2>Vi kunde inte hitta några resultat, vänligen försök igen</h2>
-      </div>
-      <div class="loading-spinner-container" v-else>
+    <transition name="fade" mode="out-in">
+      <div class="loading-spinner-container" v-if="isLoading" style="margin: auto;">
         <div class="loading-spinner">
           <div></div>
         </div>
       </div>
-    </div>
+      <ul class="product_list" v-else-if="productData && productData.length > 0">
+        <li v-for="items in productData">
+          <ProductCard :productid="items.id" />
+        </li>
+      </ul>
+      <div class="loading-items" v-else>
+        <div v-if="productData === 0">
+          <h2>Vi kunde inte hitta några resultat, vänligen försök igen</h2>
+        </div>
+      </div>
+    </transition>
   </section>
 </template>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.7s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
 section {
   width: 60%;
   display: flex;
@@ -160,23 +161,6 @@ h2 {
   cursor: pointer;
 }
 
-
-.img-wrapper {
-  width: 10.4375rem;
-  height: 10.4375rem;
-}
-
-.img-wrapper img {
-  width: 100%;
-  height: 100%;
-  border-top-right-radius: 19px;
-  border-top-left-radius: 19px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  object-fit: cover;
-  object-position: center;
-}
-
 .top_of_search {
   display: flex;
   flex-direction: row;
@@ -186,20 +170,37 @@ h2 {
   padding-bottom: 1rem;
 }
 
-@media screen and (max-width: 385px) {
-  li {
-    max-width: 9.5rem;
-  }
+.product_list {
+  gap: 1.5rem;
+  row-gap: 3.5rem;
+}
 
-  .img-wrapper {
-    width: 9.5rem;
-    height: 9.5rem;
+.product_list li {
+  max-width: none !important;
+  width: calc(33.33% - 1rem);
+}
+
+
+@media screen and (max-width: 830px) {
+  section {
+    width: 90%;
   }
 }
 
-@media screen and (max-width: 767px) {
-  section {
-    width: 90%;
+@media screen and (min-width: 1px) and (max-width: 551px) {
+  .product_list {
+    row-gap: 1rem;
+    justify-content: center !important;
+  }
+
+  .product_list li {
+    width: calc(50% - 1.5rem);
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .product_list li {
+    width: calc(25% - 1.5rem);
   }
 }
 </style>
