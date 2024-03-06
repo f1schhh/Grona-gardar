@@ -49,7 +49,7 @@
 
         <div class="login-and-cart-icons-wrapper">
 
-          <div v-if="userName === 'Konto'"  @click="onLoginClick" class="login-wrapper">
+          <div v-if="userName === 'Konto'" @click="onLoginClick" class="login-wrapper">
             <i class="bi bi-person"></i>
             <p>{{ userName }}</p>
           </div>
@@ -90,6 +90,9 @@ export default {
       totCostForItemsInCart: null,
 
     }
+  },
+  watch:{
+
   },
   created() {
 
@@ -179,7 +182,6 @@ export default {
       }
     },
     handleUserNameEvent(user) {
-      console.log("This is sent to header " + user)
 
       this.userName = user
       localStorage.setItem("userName", this.userName);
@@ -187,6 +189,7 @@ export default {
     },
     // Method that sends the user name to be visible in the header.
     sendUserNameToHeader() {
+
       const userNameFromStorage = localStorage.getItem("userName")
 
       if (!userNameFromStorage) {
