@@ -111,6 +111,7 @@ article {
     gap: 1rem;
     padding: 2rem;
     width: 70%;
+    max-width: 18rem;
     font-weight: bold;
     background-color: var(--dark-beige);
     border-radius: 19px;
@@ -134,10 +135,21 @@ article {
 #adressDiv {
     display: flex;
     flex-direction: column;
+    padding-bottom: 1rem;
 }
 
 #adressDiv {
     padding-bottom: 1rem;
+}
+
+#adress {
+    width: 15rem;
+}
+
+#buttonsDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .buttons {
@@ -176,22 +188,30 @@ article {
         padding-bottom: 1.5rem;
     }
 
-    #accountInfo {
+    /*#accountInfo {
         display: flex;
         flex-direction: column;
-        /* width: 17rem; */
-        font-weight: bold;
-        width: 100%;
-        padding-left: 1rem;
-        padding-right: 1rem;
+         width: 17rem; 
+    font-weight: bold;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+     width: 20vh; 
+    max-width: 1000px;
+} */
+
+    #accountInfo {
+        width: 40vw;
+        max-width: 300px;
     }
 
-    #inputBoxDiv {
+
+    /* #inputBoxDiv {
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
-    }
+    } */
 
     label {
         font-size: 1rem;
@@ -203,12 +223,12 @@ article {
         flex-direction: column;
     }
 
-    #buttonsDiv {
+    /* #buttonsDiv {
         display: flex;
         flex-direction: row;
         gap: 2rem;
         padding-top: 2rem;
-    }
+    } */
 
     .buttons {
 
