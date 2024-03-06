@@ -1,14 +1,11 @@
 <script>
 import SearchBar from '../components/SearchBar.vue';
 import FavoriteButton from '../components/FavoriteButton.vue';
-import ProductCard from '../components/ProductCard.vue';
-
 
 export default {
   components: {
     SearchBar,
     FavoriteButton,
-    ProductCard,
   },
 
   data() {
@@ -65,22 +62,23 @@ export default {
       <SearchBar class="search_style"></SearchBar>
       <div class="home_top_block">
         <div class="home_top_space">
-          <h2>
-            Nyskördat efter säsong
-          </h2>
-          <p>
-            Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt.
-            Varje
-            produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
-          </p>
-          <router-link to="/products">
-            <div class="div_button_more_products button_space">
-              <button class="button_more_products" @click="goToProducts">
-                Våra produkter
-                <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </router-link>
+        <h2>
+          <!-- Färsk, närodlad och hållbart -->
+          <!-- Färsk Frukt - Närodlad och Hållbar -->
+          Nyskördat efter säsong
+        </h2>
+        <p >
+          Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt. Varje
+          produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
+        </p>
+        <router-link to="/products">
+          <div class="div_button_more_products button_space">
+            <button class="button_more_products" @click="goToProducts">
+              Våra produkter
+              <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </router-link>
         </div>
       </div>
     </section>
@@ -91,12 +89,29 @@ export default {
      ==========================SEASON==========================
      ==========================================================  -->
     <section class="section_season">
-      <div style="margin: auto;">
+      <div>
         <h3>I säsong</h3>
         <div>
           <ul class="product_list">
             <li v-for="product in productData">
-              <ProductCard :productid="product.id" />
+                <div class="specific_product">
+                  <router-link :to="{ path: `/product/${product.id}` }">
+                  <div class="img-wrapper">
+                    <img :src="product.product_image" alt="">
+                  </div>
+                </router-link>
+
+                  <div class="product_information">
+                    <div class="product-text">
+                      <router-link :to="{ path: `/product/${product.id}` }">
+                      <span class="title-bold">{{ product.product_name }} </span>
+                      </router-link>
+                      <FavoriteButton :id="product.id"/>
+                      <span class="text_type">{{ product.product_type }}</span>
+                      <span>{{ product.price }}kr/kg</span>
+                    </div>
+                  </div>
+                </div>
             </li>
 
           </ul>
@@ -274,8 +289,7 @@ export default {
             <i class="bi bi-star-fill"></i>
           </div>
           <p class="main_review_text">
-            Gröna Gårdar har gjort mig till en trogen kund med sin otroliga kvalitet och smakupplevelse. Varje produkt
-            är
+            Gröna Gårdar har gjort mig till en trogen kund med sin otroliga kvalitet och smakupplevelse. Varje produkt är
             som en smakresa genom naturens underverk och jag kan inte få nog av deras fantastiska utbud som varierar med
             säsongerna!
           </p>
@@ -284,7 +298,7 @@ export default {
           </p>
         </div>
 
-        <!-- <div class="block_review show_hide_three">
+        <div class="block_review show_hide_three">
           <div>
             <i class="bi bi-star-fill"></i>
             <i class="bi bi-star-fill"></i>
@@ -294,14 +308,13 @@ export default {
           </div>
           <p class="main_review_text">
             Gröna Gårdar har verkligen förändrat mitt sätt att se på ekologiskt odlade produkter. Deras grönsaker och
-            frukter är inte bara hälsosamma utan också otroligt goda. Varje produkt är fylld med sådan smakrikedom. Jag
-            är
+            frukter är inte bara hälsosamma utan också otroligt goda. Varje produkt är fylld med sådan smakrikedom. Jag är
             hooked för livet!
           </p>
           <p class="review_signature">
             Amir
           </p>
-        </div> -->
+        </div>
 
       </div>
 
@@ -324,7 +337,7 @@ article {
   margin-top: 40px;
 }
 
-/*  ==========================================================
+ /*  ==========================================================
      ===========================TOP============================
      ==========================================================   */
 
@@ -337,8 +350,7 @@ article {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
-  /* height: calc(100vh - 65.4px); */
+  height: calc(100vh - 66.4px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -349,31 +361,49 @@ article {
   max-width: 500px !important;
 }
 
+/* Container to slogan */
 .home_top_block {
   background-color: var(--light-beige-opacity);
-  border-radius: 19px;
+  border-radius: 16px;
   width: 80%;
   max-width: 500px !important;
+  /* max-width: 500px; */
   display: flex;
   flex-direction: column;
   margin-top: 6%;
   padding: 1rem 1rem;
+  padding-top:50px;
+
 }
 
-.home_top_space {
-  max-width: 776px;
-  margin: auto;
+/* Wrapper to slogan text + button */
+.home_top_space{
+  /* background-color: rgb(255, 220, 105); */
+  /* margin: 5%;
+   */
+   margin: 1%;
+  /* max-width: 776px; */
+  /* margin: auto; */
+
 }
 
 .home_top_block h2 {
-  padding-bottom: 2rem;
-  font-size: 2rem;
-  font-weight: bold;
+  padding-bottom: 0.5rem;
+  /* font-size: 2rem; */
+  font-size: 200%;
+  /* font-weight: bold; */
+  font-family: Anevir Next Cyr Medium
+
 }
 
 .home_top_block p {
   color: black;
+  padding: 0;
+  margin: 0;
+
 }
+  /* font-size: ;
+} */
 
 .div_button_more_products {
   display: flex;
@@ -398,15 +428,14 @@ article {
 
 
 
-/*  ==========================================================
+ /*  ==========================================================
      ========================SEASON============================
      ==========================================================   */
 
 .section_season {
   background-color: var(--dark-beige);
-  padding:4rem 6%;
+  padding: 2rem 6%;
   display: flex;
-  margin: auto;
 }
 
 .section_season h3 {
@@ -457,7 +486,7 @@ margin: 0.5rem;
 
 
 
-/*  ==========================================================
+ /*  ==========================================================
      ========================ABOUT=============================
      ==========================================================   */
 
@@ -482,7 +511,7 @@ margin: 0.5rem;
 
 .about_text {
   padding: 0 6%;
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 .about_img {
@@ -490,20 +519,18 @@ margin: 0.5rem;
   height: auto;
 }
 
-/*  ==========================================================
-     =======================CATEGORY==========================
-     ==========================================================   */
-
 
 .block_category {
-  margin: 4rem 6%;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
+  padding: 4rem 6%;
 }
 
 .category_flex {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .block_category h3 {
@@ -512,12 +539,13 @@ margin: 0.5rem;
 
 .category_box {
   background-color: var(--light-beige);
-  height: 22rem;
+  height:350px;
 }
 
 .img-wrapper {
-  width: 10.4375rem;
+  width:100%;
   height: 10.4375rem;
+
 }
 
 .img-wrapper img {
@@ -531,11 +559,6 @@ margin: 0.5rem;
 .p_category {
   padding: 0 1rem 0.3rem 0.3rem;
 }
-
-
-/*  ==========================================================
-     =====================ENVIRONMENT=========================
-     ==========================================================   */
 
 .section_environment {
   background-color: var(--dark-green);
@@ -559,9 +582,7 @@ margin: 0.5rem;
 }
 
 .text_environment {
-  padding: 0 6%;
-  margin: 3rem 0;
-  padding: 0 6%;
+  padding: 1rem 5%;
 }
 
 .p_environment {
@@ -571,10 +592,6 @@ margin: 0.5rem;
 .new_p {
   font-weight: bold;
 }
-
-/*  ==========================================================
-     ========================REVIEW==========================
-     ==========================================================   */
 
 .main_review {
   background: var(--light-beige);
@@ -623,16 +640,6 @@ margin: 0.5rem;
   color: black;
 }
 
-.product_list li {
-  max-width: none !important;
-  width: calc(16.67% - 1rem);
-}
-
-.section_season .button_more_products {
-  margin-right: 1rem;
-  margin-top: 2rem !important;
-}
-
 @media screen and (max-width: 385px) {
 
   /* .home_top {
@@ -676,7 +683,40 @@ margin: 0.5rem;
     flex-direction: row;
     justify-content: center;
   } */
+  /* Home top */
+  /* .home_top_space{
+  /* background-color: rgb(255, 220, 105); */
+  /* margin: 5%;
+   */
 
+  /* max-width: 776px; */
+  /* margin: auto; */
+
+  /* Text wrapper */
+  .home_top_space{
+  /* background-color: hotpink; */
+  /* max-width: 776px; */
+  /* margin: auto; */
+  margin: 20px
+}
+
+.home_top_block h2 {
+  padding-bottom: 0.5rem;
+  font-size: 2rem;
+  font-size: 200%;
+}
+
+  .home_top_block {
+    padding-top: 3rem;
+  }
+
+  /* .home_top_block p {
+  font-size: 20px;
+} */
+/* End of home top */
+  .block_category .product_list li {
+    max-width: 30vw;
+  }
 
   .category_flex {
     justify-content: center;
@@ -694,10 +734,7 @@ margin: 0.5rem;
   .category_text {
     display: flex;
     flex-direction: column;
-  }
-
-  .home_top_block {
-    padding-top: 3rem;
+    padding: 15px;
   }
 
 }
@@ -731,8 +768,8 @@ margin: 0.5rem;
   .about_text {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0rem;
-    padding-right: 6%;
+    margin: 1rem;
+    padding: 0;
     padding-left: 6% !important;
 
   }
@@ -764,8 +801,6 @@ margin: 0.5rem;
   .text_environment {
     display: flex;
     flex-direction: column;
-    margin: 0;
-    padding-right: 6% !important;
   }
 
   .show_hide_one {
@@ -810,31 +845,4 @@ margin: 0.5rem;
   } */
 
 }
-
-@media screen and (max-width: 1224px) {
-  .product_list li {
-    width: calc(33.33% - 1rem);
-  }
-}
-
-@media screen and (min-width: 1px) and (max-width: 551px) {
-  .product_list {
-    row-gap: 1rem;
-    justify-content: center !important;
-  }
-
-  .product_list li {
-    width: calc(50% - 1rem);
-  }
-
-  .section_season .button_more_products {
-    margin-right: 0.4rem;
-  }
-}
-
-/* @media screen and (min-width: 1100px) {
-  .product_list li {
-    width: calc(25% - 1rem);
-  }
-} */
 </style>
