@@ -1,8 +1,6 @@
 <script>
 import SearchBar from '../components/SearchBar.vue';
-import FavoriteButton from '../components/FavoriteButton.vue';
-import { useProductStore } from '../store';
-import AddToCartButton from '../components/AddToCartButton.vue';
+import ProductCard from '../components/ProductCard.vue';
 
 export default {
   data() {
@@ -82,8 +80,7 @@ export default {
   },
   components: {
     SearchBar,
-    FavoriteButton,
-    AddToCartButton
+    ProductCard
   },
 }
 </script>
@@ -117,21 +114,7 @@ export default {
         <ul class="product_list">
 
           <li v-for="items in categoryData.fruits">
-            <div class="specific_product">
-              <div class="img-wrapper" @click="onProductClick(items.id)">
-                <img :src="items.product_image" :alt="items.product_name">
-              </div>
-              <div class="h3_and_heart">
-                <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
-                }}</router-link></h3>
-                <FavoriteButton :id="items.id"/>
-              </div>
-              <div class="product_type">
-                {{ items.product_type }}
-                <span>{{ items.price }} kr/kg</span>
-              </div>
-              <AddToCartButton :id="items.id" />
-            </div>
+            <ProductCard :productid="items.id" />
           </li>
 
         </ul>
@@ -141,21 +124,7 @@ export default {
         <h2 class="category_title">Grönsaker</h2>
         <ul class="product_list">
           <li v-for="items in categoryData.vegetables">
-            <div class="specific_product">
-              <div class="img-wrapper" @click="onProductClick(items.id)">
-                <img :src="items.product_image" :alt="items.product_name">
-              </div>
-              <div class="h3_and_heart">
-                <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
-                }}</router-link></h3>
-                <FavoriteButton :id="items.id"/>
-              </div>
-              <div class="product_type">
-                {{ items.product_type }}
-                <span>{{ items.price }} kr/kg</span>
-              </div>
-              <AddToCartButton :id="items.id" />
-            </div>
+            <ProductCard :productid="items.id" />
           </li>
         </ul>
       </section>
@@ -163,21 +132,7 @@ export default {
         <h2 class="category_title">I säsong</h2>
         <ul class="product_list">
           <li v-for="items in categoryData.season">
-            <div class="specific_product">
-              <div class="img-wrapper" @click="onProductClick(items.id)">
-                <img :src="items.product_image" :alt="items.product_name">
-              </div>
-              <div class="h3_and_heart">
-                <h3><router-link :to="`/product/${items.id}`" class="router-link-custom">{{ items.product_name
-                }}</router-link></h3>
-                <FavoriteButton :id="items.id"/>
-              </div>
-              <div class="product_type">
-                {{ items.product_type }}
-                <span>{{ items.price }} kr/kg</span>
-              </div>
-              <AddToCartButton :id="items.id" />
-            </div>
+            <ProductCard :productid="items.id" />
           </li>
         </ul>
       </section>
@@ -188,7 +143,6 @@ export default {
 <style scoped>
 .container {
   width: 100%;
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -223,8 +177,6 @@ export default {
 }
 
 .img-wrapper {
-  /* width: 10.4375rem; */
-  height: 10.4375rem;
   cursor: pointer;
 }
 
@@ -254,54 +206,16 @@ export default {
   width: calc(12.5% - 1rem);
 }
 
-.img-wrapper img {
-  width: 100%;
-  height: 100%;
-  border-top-right-radius: 19px;
-  border-top-left-radius: 19px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  object-fit: cover;
-  object-position: center;
-}
-
-.h3_and_heart {
-  display: flex;
-  justify-content: space-between;
-}
 
 .category_title {
   padding: 0.3rem;
   margin-bottom: 1rem;
 }
 
-h3 {
-  color: black;
-  font-weight: 700;
-  padding: 0.3rem;
-  margin-bottom: 1rem;
-}
-
-
-
-h3,
-.button_like,
-.button_cart {
-  margin: 7px;
-}
-
 
 /* CSS for buttons in general */
 button:hover {
   cursor: pointer;
-}
-
-.product_type {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding-left: 0.8rem;
-  min-height: 3rem;
 }
 
 /* Knapp för varukorg */
@@ -345,18 +259,14 @@ button:hover {
   padding-left: 15px;
 }
 
-@media screen and (max-width: 385px) {
-  li {
-    max-width: 9.5rem;
+@media screen and (min-width: 700px) {
+  .container {
+    margin-top: 1rem;
   }
 
-  .img-wrapper {
-    width: 9.5rem;
-    height: 9.5rem;
-  }
 }
 
-@media screen and (min-width: 300px) and (max-width: 515px) {
+@media screen and (min-width: 1px) and (max-width: 515px) {
   .product_list li {
     width: calc(50% - 1rem);
   }

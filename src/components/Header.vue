@@ -12,10 +12,12 @@
       </ul>
     </div>
 
-        <!-- Skickar booleanen isLoginClicked som en prop till Login-komponenten -->
-        <!-- Lyssnar på overlay-clicked eventet och sätter isLoginClicked till false -->
-        <!-- Lyssnar på userName eventet och anropar handleUserNameEvent-metoden -->
+      <!--==== Login conent Container ====-->
+        <!-- Send boolean isLoginClicked as a prop to Login-component -->
+        <!-- Listening on the overlay-clicked event and sets isLoginClicked to false -->
+        <!-- Listening on userName event and calls handleUserNameEvent-method -->
     <Login :on-login-icon-click="isLoginClicked" @userName="handleUserNameEvent" @overlay-clicked="isLoginClicked = false"></Login>
+    <!--==== Login conent Container ====-->
 
     <!--==== Cart conent Container ====-->
     <Cart :on-cart-click="isCartClicked" @overlay-clicked="isCartClicked = false"
@@ -47,7 +49,6 @@
 
         <div class="login-and-cart-icons-wrapper">
 
-          <!-- :onLoginIconClick="true" -->
           <div v-if="userName === 'Konto'"  @click="onLoginClick" class="login-wrapper">
             <i class="bi bi-person"></i>
             <p>{{ userName }}</p>
@@ -183,8 +184,6 @@ export default {
       this.userName = user
       localStorage.setItem("userName", this.userName);
 
-      // this.exitLogin()
-
     },
     // Method that sends the user name to be visible in the header.
     sendUserNameToHeader() {
@@ -242,25 +241,6 @@ header {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
 }
-
-/* .overlay-for-login {
-  display: none;
-  background-color: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(0px);
-  transition: background-color 0.75s, backdrop-filter 0.75s;
-  width: 100%;
-  height: 100%;
-  height: 100vh;
-  position: fixed;
-  z-index: 3;
-  justify-content: center;
-  align-content: center;
-} */
-
-/* .increase-blur-when-using-login {
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(1px);
-} */
 
 nav {
   top: 0;
@@ -378,51 +358,6 @@ main {
   box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.4);
 }
 
-/* =========================== */
-/* ======= Log in page ======= */
-/* =========================== */
-/* .login-menu-container {
-  display: none;
-  background-color: var(--mid-beige);
-  width: 60vw;
-  width: 300px;
-  height: fit-content;
-  height: 500px;
-  padding: 10px;
-  border-radius: 16px;
-  z-index: 5;
-  box-shadow: -8px 0px 12px 0px rgba(0, 0, 0, 0.4);
-  align-self: center;
-  justify-content: center;
-  flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-}
-
-.fade-in {
-  opacity: 1;
-}
-
-.fade-out {
-  animation: fade-out 0.5s ease-in-out forwards;
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-
-} */
-
-/* Hamburger */
 .move-menu-right {
   left: 0;
 }
@@ -523,12 +458,8 @@ li {
     visibility: visible;
   }
 
-}
-
-@media screen and (min-width: 980px) {
-
   .login-and-cart-container {
-    width: 50%;
+    width: 40%;
     display: flex;
     justify-content: end;
   }
@@ -546,4 +477,6 @@ li {
   }
 
 }
+
+
 </style>

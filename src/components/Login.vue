@@ -234,6 +234,7 @@ export default {
 </script>
 
 <style scoped>
+
 .login-container {
     height: 350px;
     display: flex;
@@ -248,7 +249,6 @@ export default {
 
 .exit-login-container{
     width: 90%;
-    /* background-color: chartreuse; */
     margin: 10px;
     display: flex;
     justify-content: flex-end;
@@ -270,7 +270,6 @@ export default {
 }
 
 .login-register-link-wrapper {
-    /* background-color: aquamarine; */
     display: flex;
     font-size: 2.2vw;
     width: 90%;
@@ -359,7 +358,6 @@ input[type="email"] {
 .login-menu-container {
   display: none;
   background-color: var(--mid-beige);
-  width: 60vw;
   width: 300px;
   height: fit-content;
   height: 500px;
