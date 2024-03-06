@@ -112,7 +112,7 @@ export default {
     },
     watch: {
         onLoginIconClick(ifLoginIconIsClickedBoolean) {
-            console.log('onLoginIconClick updated:', ifLoginIconIsClickedBoolean);
+
             this.isLoginIconClickTrue = ifLoginIconIsClickedBoolean
 
             if(!ifLoginIconIsClickedBoolean){
@@ -125,8 +125,6 @@ export default {
     },
     methods: {
         handleLoginIconClick(){
-
-        console.log('The form is supposed to show');
 
         const overlay = this.$refs.overlay;
         const loginContainer = this.$refs.loginContainer;
@@ -141,13 +139,13 @@ export default {
         }, 100)
         },
 
-        // },
-        // THis is written i native because I cant find a solution that is similar using vue.
+        // THis is written i native because I cant find a solution that is similar using only vue.
         exitLogin(){
-            console.log('exit login form')
+
             const overlay = this.$refs.overlay;
             const loginContainer = this.$refs.loginContainer;
 
+            //Remove class so that it can added again next time
             loginContainer.classList.remove("fade-in")
 
             //Transition opacity to make div transparent
@@ -201,11 +199,13 @@ export default {
 
                 if (user.email === this.email && user.password === this.password) {
 
-                    console.log('du är inloggad')
                     this.$emit('userName', user.first_name);
+
                     localStorage.setItem("user_id", user.id);
+
                     this.email = null
                     this.password = null
+
                     this.exitLogin()
 
                 }
