@@ -478,6 +478,10 @@ export default {
     margin-right: 17px;
 }
 
+.bi-x-lg{
+    font-size: 24px;
+}
+
 .exit-cart-content-container h1 {
     font-size: 4.45vw;
     text-align: center;

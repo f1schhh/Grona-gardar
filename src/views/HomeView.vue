@@ -325,6 +325,7 @@ export default {
 <style scoped>
 article {
   background-color: var(--dark-beige);
+  position: relative;
 }
 
 /* h3 {
@@ -332,7 +333,7 @@ article {
 } */
 
 .search_style {
-  margin-top: 5%;
+  margin-top: 7%;
 }
 
  /*  ==========================================================

@@ -95,7 +95,10 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       component: PageNotFoundView
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }; // Scroll to top when navigating to a new page
+  }
 });
 
 export default router;

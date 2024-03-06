@@ -6,7 +6,6 @@
     <div class="menu-container">
       <ul>
         <li @click="onMenuClick"><router-link to="/">Hem</router-link></li>
-        <li @click="onMenuClick"><router-link to="/account">Min Profil</router-link></li>
         <li @click="onMenuClick"><router-link to="/products">Produkter</router-link></li>
         <li @click="onMenuClick"><router-link to="/about">Om oss</router-link></li>
         <li @click="onMenuClick"><router-link to="/contact">Kontakt</router-link></li>
@@ -220,6 +219,10 @@ header {
   width: 100vw;
   background-color: var(--dark-beige);
   overflow: hidden;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  position: fixed;
 }
 
 .overlay {
@@ -266,6 +269,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0px 25px;
+  background-color: var(--dark-beige);
 }
 
 .hamburger-and-links-container {
