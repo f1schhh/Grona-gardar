@@ -117,12 +117,22 @@ article {
     position: relative;
     font-size: 0.8rem;
     font-weight: lighter;
-    width: 17.5rem;
+    /* width: 17.5rem; */
+
+    overflow: hidden;
+    width: 70vw;
+    max-width: 20rem;
+    height: 50vw;
+    max-height: 8rem;
+
 }
 
 .img-wrapper {
-    width: 10.4375rem;
-    height: 10.4375rem;
+    /* height: 20vw; */
+    width: 20vw;
+    /* width: 10.4375rem;
+    height: 10.4375rem; */
+
 }
 
 .img-wrapper img {
@@ -132,8 +142,10 @@ article {
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 0rem;
-    object-fit: cover;
-    object-position: center;
+    /* object-fit: cover; */
+    /* object-position: center; */
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 
@@ -173,8 +185,9 @@ article {
     }
 
     .img-wrapper {
-        width: 6.5rem;
-        height: 6.5rem;
+        /* width: 6.5rem;
+        height: 6.5rem; */
+        width: 20vh;
     }
 }
 
@@ -213,23 +226,28 @@ article {
     }
 
     .orderHistory_list_li {
-        font-size: 0.7rem;
+        font-size: 0.9rem;
         height: 8rem;
         margin-right: 1rem;
         margin-bottom: 1rem;
-        background-color: orange;
 
-        width: 50vw;
-        height: 15vw;
+        width: 80%;
+        max-width: 20rem;
+
+        /* width: 50vw;
+        max-width: 20rem;
+        height: 18vw;
+        max-height: 8rem; */
     }
 
-    .order_summary {
+    /* .order_summary {
         padding-top: 2rem;
-    }
+    } */
 
     .img-wrapper {
         height: 100%;
-        width: 8rem;
+        /* width: 8rem; */
+        width: 20vh;
     }
 
     .button_seeOrder {
@@ -244,7 +262,7 @@ article {
     }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 715px) {
     .orderHistory_list_li {
         font-size: 0.9rem;
 
@@ -295,8 +313,6 @@ article {
         height: 8rem;
         margin-right: 1rem;
         margin-bottom: 1rem;
-        width: 60%;
-        max-width: 20rem;
     }
 
     .order_summary {
@@ -318,22 +334,6 @@ article {
                 <hr id="orderHistory_hr">
             </div>
             <ul class="orderHistory_list">
-                <li class="orderHistory_list_li" v-for="(items, index) in order_history_data">
-                    <div class="img-wrapper" v-if="order_image.length !== 0">
-                        <img :src="order_image[index]" alt="">
-                    </div>
-                    <div class="summar_and_button">
-                        <div class="order_summary">
-                            <p><span>Ordernummer:</span> {{ items.id }}</p>
-                            <p>Datum: {{ items.order_date }}</p>
-                            <p>Totalbelopp: {{ items.total_cost }}</p>
-                        </div>
-
-                        <button class="button_seeOrder">Se order</button>
-
-                    </div>
-                </li>
-
                 <li class="orderHistory_list_li" v-for="(items, index) in order_history_data">
                     <div class="img-wrapper" v-if="order_image.length !== 0">
                         <img :src="order_image[index]" alt="">

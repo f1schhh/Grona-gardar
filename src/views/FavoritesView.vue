@@ -79,7 +79,7 @@ article {
     /* justify-content: center; */
     align-items: center;
     color: black;
-    padding-bottom: 1.5rem;
+    /* padding-bottom: 1.5rem; */
 }
 
 .favorites_list_li {
@@ -99,7 +99,16 @@ article {
     position: relative;
     font-size: 0.8rem;
     font-weight: lighter;
-    width: 17.5rem;
+    /* width: 17.5rem; */
+
+    overflow: hidden;
+    width: 70vw;
+    max-width: 20rem;
+    height: 50vw;
+    max-height: 8rem;
+
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .favorites_list_li span {
@@ -107,12 +116,15 @@ article {
 }
 
 .img-wrapper {
-    width: 10.4375rem;
-    height: 10.4375rem;
+    width: 22vw;
+    height: 100%;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .img-wrapper img {
     width: 100%;
+    min-height: 8rem;
     height: 100%;
     border-top-right-radius: 0rem;
     border-top-left-radius: 1rem;
@@ -120,6 +132,8 @@ article {
     border-bottom-right-radius: 0rem;
     object-fit: cover;
     object-position: center;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 
@@ -127,6 +141,8 @@ article {
 
 .infoProduct {
     padding: 1rem;
+    padding-bottom: 0rem;
+    margin-bottom: 0rem;
 }
 
 .infoProduct h3 {
@@ -153,23 +169,23 @@ article {
 }
 
 #button {
-    background-color: #FFF8EE;
+    /* background-color: #FFF8EE;
     border: 0;
-    text-align: center;
+    text-align: center; */
     border-radius: 19px;
-    padding: 0.3rem 0.6rem;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    /* padding: 0.3rem 0.6rem;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25); */
     position: absolute;
     right: 10px;
     bottom: 9px;
-    font-weight: lighter;
-    font-size: 0.9rem;
+    /* font-weight: lighter;
+    font-size: 0.9rem; */
 }
 
-#button:active {
+/* #button:active {
     box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     font-size: pink;
-}
+} */
 
 @media screen and (max-width: 385px) {
     article {
@@ -229,8 +245,8 @@ article {
 
     #button {
         margin-top: 0;
-        font-size: 0.7rem;
-        color: var(--dark-green)
+        /* font-size: 0.7rem;
+        color: var(--dark-green) */
     }
 }
 </style>
@@ -239,6 +255,11 @@ article {
     <article>
         <section id="favorites">
             <h2>Favoriter</h2>
+
+            <div id="hrDiv">
+                <hr id="favorites_hr">
+            </div>
+
             <ul class="favorites_list" v-if="favoriteProducts.length > 0">
 
                 <!-- TEST AV FAVORITKNAPP -->
@@ -258,9 +279,9 @@ article {
                             <span class="text_type">{{ product.product_type }}</span>
                             <span>{{ product.price }}kr/kg</span>
                         </div>
-                        <!-- <div id="button"> -->
-                        <AddToCartButton />
-                        <!-- </div> -->
+                        <div id="button">
+                            <AddToCartButton />
+                        </div>
                     </div>
                 </li>
                 <!-- SLUT TEST FAVORITKNAPP -->
