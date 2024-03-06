@@ -222,7 +222,7 @@ export default {
     </section>
 
     <!-- ======================================================
-     ==========================REVIEWS=========================
+     ==========================REVIEW==========================
      ==========================================================  -->
     <section class="main_review">
       <h3>
@@ -578,7 +578,8 @@ margin: 0.5rem;
 
 .main_review {
   background: var(--light-beige);
-  padding: 6% 1rem;
+  padding: 4rem 6%;
+  /* padding: 6% 1rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -587,13 +588,17 @@ margin: 0.5rem;
 .review_flex {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  gap: 3rem;
+  padding: 0 6%;
+  /* max-width: 1000px; */
 }
 
 .block_review {
   background-color: var(--dark-beige);
-  padding: 1rem;
+  padding: 1rem 2rem;
   border-radius: 19px;
-  margin: auto;
+  /* margin: auto; */
   margin-top: 1rem;
   margin-bottom: 3rem;
   display: flex;
@@ -766,12 +771,10 @@ margin: 0.5rem;
   .show_hide_one {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 220px;
   }
 }
 
-@media screen and (min-width: 820px) {
+@media screen and (min-width: 970px) {
 
   .show_hide_two {
     display: flex;
