@@ -499,13 +499,11 @@ margin: 0.5rem;
   margin: 4rem 6%;
   display: flex;
   flex-direction: column;
-  background-color: orange;
 }
 
 .category_flex {
   display: flex;
   flex-direction: row;
-  justify-content: center;
 }
 
 .block_category h3 {
