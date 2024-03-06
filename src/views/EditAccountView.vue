@@ -37,6 +37,7 @@ article {
     gap: 1rem;
     padding: 2rem;
     width: 70%;
+    font-weight: bold;
     background-color: var(--dark-beige);
     border-radius: 19px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -44,12 +45,7 @@ article {
     justify-items: center;
 }
 
-#accountInfo {
-    display: flex;
-    flex-direction: column;
-    width: 17rem;
-    font-weight: bold;
-}
+
 
 #accountInfo input {
     background-color: var(--mid-beige);
@@ -58,29 +54,6 @@ article {
     text-align: center;
     color: black;
     font-size: 1rem;
-}
-
-#editProfilePic {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-
-#profilePic {
-    width: 5rem;
-    border-radius: 100%;
-    display: flex;
-    align-self: center;
-}
-
-#editPicSymbol {
-    width: 0;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-self: flex-end;
-    align-self: flex-end;
 }
 
 .inputBox,
@@ -112,6 +85,7 @@ article {
 @media screen and (min-width: 600px) {
     article {
         padding-left: 2rem;
+        padding-top: 0.8rem;
     }
 
     #editAccount {
@@ -124,41 +98,29 @@ article {
         text-align: left;
         margin: 0;
         padding: 2rem 0;
-        font-size: 1.5rem;
-    }
-
-    #editProfilePic {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-    }
-
-    #profilePic {
-        width: 8rem;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
+        font-size: 1rem;
+        padding-bottom: 1.5rem;
     }
 
     #accountInfo {
         display: flex;
         flex-direction: column;
-        width: 17rem;
+        /* width: 17rem; */
         font-weight: bold;
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
-    #editPicSymbol {
-        width: 0;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-self: flex-end;
-        align-self: flex-end;
+    #inputBoxDiv {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
     }
 
     label {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .inputBox,
@@ -167,9 +129,19 @@ article {
         flex-direction: column;
     }
 
+    #buttonsDiv {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        padding-top: 2rem;
+    }
+
     .buttons {
+
         font-size: 0.9rem;
         color: var(--dark-green);
+        justify-self: center;
+        align-self: center;
     }
 
     #hrDiv {
@@ -186,28 +158,28 @@ article {
                 <hr id="editAccount_hr">
             </div>
             <form id="accountInfo">
-                <div id="editProfilePic">
-                    <img id="profilePic" src="../assets/media/profile_pictures/profilePic1.jpg" alt="">
-                    <i id="editPicSymbol" class="bi bi-pencil-square"></i>
+                <div id="inputBoxDiv">
+                    <div class="inputBox">
+                        <label for="fname">Förnamn</label>
+                        <input type="text" id="fname" name="fname" placeholder="Exempel" required>
+                    </div>
+                    <div class="inputBox">
+                        <label for="lname">Efternamn</label>
+                        <input type="text" id="lname" name="lname" placeholder="Exempelsson" required>
+                    </div>
+                    <div class="inputBox">
+                        <label for="fname">E-post</label>
+                        <input type="email" id="email" name="fname" placeholder="exempel@exempel.com" required>
+                    </div>
+                    <div id="adressDiv">
+                        <label for="lname">Adress</label>
+                        <input type="text" id="adress" name="lname" placeholder="Exempelgatan 123" required>
+                    </div>
                 </div>
-                <div class="inputBox">
-                    <label for="fname">Förnamn</label>
-                    <input type="text" id="fname" name="fname" placeholder="Exempel" required>
+                <div id="buttonsDiv">
+                    <button class="buttons">Ändra lösenord</button>
+                    <button class="buttons">Spara ändringar</button>
                 </div>
-                <div class="inputBox">
-                    <label for="lname">Efternamn</label>
-                    <input type="text" id="lname" name="lname" placeholder="Exempelsson" required>
-                </div>
-                <div class="inputBox">
-                    <label for="fname">E-post</label>
-                    <input type="email" id="email" name="fname" placeholder="exempel@exempel.com" required>
-                </div>
-                <div id="adressDiv">
-                    <label for="lname">Adress</label>
-                    <input type="text" id="adress" name="lname" placeholder="Exempelgatan 123" required>
-                </div>
-                <button class="buttons">Ändra lösenord</button>
-                <button class="buttons">Spara ändringar</button>
             </form>
         </section>
     </article>

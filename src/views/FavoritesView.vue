@@ -1,21 +1,21 @@
 <script>
-    import FavoriteButton from '../components/FavoriteButton.vue';
-    import AddToCartButton from '../components/AddToCartButton.vue'
+import FavoriteButton from '../components/FavoriteButton.vue';
+import AddToCartButton from '../components/AddToCartButton.vue'
 
-    export default{
-        components:{
-            FavoriteButton,
-            AddToCartButton
-        },
+export default {
+    components: {
+        FavoriteButton,
+        AddToCartButton
+    },
 
-        data(){
-            return{
-                favoriteProducts: [],
-            }
-        },
-        methods:{
-            async getFavorites(){
-                try{
+    data() {
+        return {
+            favoriteProducts: [],
+        }
+    },
+    methods: {
+        async getFavorites() {
+            try {
                 const favoriteList = localStorage.getItem('favorite');
                 const favorite = favoriteList ? JSON.parse(favoriteList) : [];
 
@@ -26,23 +26,23 @@
                     return favorite.includes(product.id)
                 });
 
-                if (favoriteProducts.length > 0){
+                if (favoriteProducts.length > 0) {
                     this.favoriteProducts = favoriteProducts;
-                } else{
+                } else {
                     this.favoriteProducts = []
                 }
 
-            } catch (error){
-                    console.log('There seems to be a problem: ', error);
-                }
+            } catch (error) {
+                console.log('There seems to be a problem: ', error);
             }
-        },
+        }
+    },
 
-        created(){
-            this.getFavorites();
+    created() {
+        this.getFavorites();
 
-        },
-    }
+    },
+}
 </script>
 
 <style scoped>
@@ -84,12 +84,13 @@ article {
 
 .favorites_list_li {
     display: flex;
+    flex-direction: row;
     text-align: left;
     background-color: var(--dark-beige);
-    /* flex-wrap: wrap; */
-    flex-direction: row;
-    /* padding: 0rem 5rem; */
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+
+
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -129,9 +130,10 @@ article {
 }
 
 .infoProduct h3 {
-    font-size: 0.8rem;
+    /* font-size: 0.8rem;
     padding: 0rem;
-    padding-bottom: 0.2rem;
+    padding-bottom: 0.2rem; */
+    font-weight: bold;
 }
 
 .h3_and_heart {
@@ -144,7 +146,13 @@ article {
     right: 13px;
 }
 
-.button_addToShoppingCart {
+#text_type_price span {
+    font-weight: normal;
+    display: flex;
+    flex-direction: column;
+}
+
+#button {
     background-color: #FFF8EE;
     border: 0;
     text-align: center;
@@ -158,8 +166,9 @@ article {
     font-size: 0.9rem;
 }
 
-.button_addToShoppingCart:active {
+#button:active {
     box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    font-size: pink;
 }
 
 @media screen and (max-width: 385px) {
@@ -189,28 +198,39 @@ article {
         text-align: left;
         width: 0;
         margin: 1.5rem 0;
-        font-size: 1.5rem;
+        font-size: 1rem;
+        padding-top: 1.2rem;
+        padding-bottom: 0;
     }
 
     #hrDiv {
         display: none;
     }
 
-
+    .favorites_list {
+        flex-direction: row;
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
 
     .favorites_list_li {
-        width: 25rem;
-        font-size: 1.2rem;
+        font-size: 0.9rem;
+        height: 8rem;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        width: 80%;
+        max-width: 20rem;
     }
 
-    .infoProduct h3 {
-        font-size: 1.5rem;
-        font-weight: lighter;
+    .img-wrapper {
+        height: 100%;
+        width: 8rem;
     }
 
-    .button_addToShoppingCart {
-        font-size: 1rem;
-        color: var(--dark-green);
+    #button {
+        margin-top: 0;
+        font-size: 0.7rem;
+        color: var(--dark-green)
     }
 }
 </style>
@@ -221,28 +241,30 @@ article {
             <h2>Favoriter</h2>
             <ul class="favorites_list" v-if="favoriteProducts.length > 0">
 
-<!-- TEST AV FAVORITKNAPP -->
+                <!-- TEST AV FAVORITKNAPP -->
                 <li class="favorites_list_li" v-for="product in favoriteProducts" :key="product.id">
                     <router-link :to="{ path: `/product/${product.id}` }">
-                  <div class="img-wrapper">
-                    <img :src="product.product_image" alt="">
-                  </div>
-                </router-link>
+                        <div class="img-wrapper">
+                            <img :src="product.product_image" alt="">
+                        </div>
+                    </router-link>
 
-                  <div class="infoProduct">
-                    <div class="">
-                      <h3>{{ product.product_name }}</h3>
-                      <favoriteButton @click="getFavorites" :id="product.id" />
+                    <div class="infoProduct">
+                        <div class="h3_and_heart">
+                            <h3>{{ product.product_name }}</h3>
+                            <favoriteButton @click="getFavorites" :id="product.id" />
+                        </div>
+                        <div id="text_type_price">
+                            <span class="text_type">{{ product.product_type }}</span>
+                            <span>{{ product.price }}kr/kg</span>
+                        </div>
+                        <div id="button">
+                            <AddToCartButton :id="items.id" />
+                        </div>
                     </div>
-                    <div>
-                      <span class="text_type">{{ product.product_type }}</span>
-                      <span>{{ product.price }}kr/kg</span>
-                    </div>
-                    <AddToCartButton/>
-                  </div>
-            </li>
-<!-- SLUT TEST FAVORITKNAPP -->
-<!--
+                </li>
+                <!-- SLUT TEST FAVORITKNAPP -->
+                <!--
                 <li class="favorites_list_li">
                     <div class="img-wrapper">
                         <img src="../assets/media/product_images/Pumpkin_Howden.jpg" alt="">

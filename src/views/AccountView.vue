@@ -1,5 +1,32 @@
 <script>
 import { RouterLink } from 'vue-router';
+
+export default {
+
+    data() {
+        return {
+            user: null,
+        }
+    },
+
+    created() {
+        fetch('./src/database.json', {
+            headers: {
+                // Request JSON
+                Accept: 'application/json'
+            }
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                this.user = result
+
+            })
+        localStorage.setItem("user_id", user.id);
+    },
+
+
+
+}
 </script>
 
 <style scoped>
@@ -30,9 +57,27 @@ article {
     padding-bottom: 0.8rem;
 }
 
+#editProfilePic {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
 #profilePic {
     width: 5rem;
     border-radius: 100%;
+}
+
+#editPicSymbol {
+    width: 0;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-self: flex-end;
+    align-self: flex-end;
 }
 
 #profileInfo h2 {
@@ -96,6 +141,16 @@ i {
 
     #profilePic {
         width: 7rem;
+    }
+
+    #editPicSymbol {
+        width: 0;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-self: flex-end;
+        align-self: flex-end;
     }
 
     h2 {
@@ -238,8 +293,15 @@ i {
     <article>
 
         <aside id="profileInfo">
-            <h1>Min profil</h1><img id="profilePic" src="../assets/media/profile_pictures/profilePic1.jpg" alt="">
-            <h2>Namn</h2>
+
+            <h1>Min profil</h1>
+            <div id="editProfilePic">
+                <img id="profilePic" src="../assets/media/profile_pictures/profilePic1.jpg" alt="">
+
+                <i id="editPicSymbol" class="bi bi-pencil-square"></i>
+            </div>
+
+            <h2>{{ user.id }}</h2>
             <ul>
                 <router-link to="/account/orderhistory">
                     <li class="profileInfo_li">
