@@ -265,6 +265,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0px 25px;
+  background-color: var(--dark-beige);
 }
 
 .hamburger-and-links-container {
