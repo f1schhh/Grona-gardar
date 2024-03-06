@@ -404,7 +404,7 @@ article {
 
 .section_season {
   background-color: var(--dark-beige);
-  padding: 2rem 6%;
+  padding:4rem 6%;
   display: flex;
   margin: auto;
 }
@@ -496,9 +496,10 @@ margin: 0.5rem;
 
 
 .block_category {
-  margin: 6% 2rem;
+  margin: 4rem 6%;
   display: flex;
   flex-direction: column;
+  background-color: orange;
 }
 
 .category_flex {

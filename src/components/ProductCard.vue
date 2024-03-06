@@ -99,7 +99,7 @@ h3 {
 .product_info_card {
   display: flex;
   flex-direction: column;
-  padding: 0.5rem
+  padding: 0.5rem;
 }
 
 .button_cart {
