@@ -66,8 +66,7 @@ export default {
       <div class="home_top_block">
         <div class="home_top_space">
           <h2>
-            Nyskördat efter säsong - Närproducerat, färskt och hållbart
-            <!-- Färsk Frukt - Närodlad och Hållbar -->
+            Nyskördat efter säsong
           </h2>
           <p>
             Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt.
@@ -285,7 +284,7 @@ export default {
           </p>
         </div>
 
-        <div class="block_review show_hide_three">
+        <!-- <div class="block_review show_hide_three">
           <div>
             <i class="bi bi-star-fill"></i>
             <i class="bi bi-star-fill"></i>
@@ -302,7 +301,7 @@ export default {
           <p class="review_signature">
             Amir
           </p>
-        </div>
+        </div> -->
 
       </div>
 
@@ -483,7 +482,7 @@ margin: 0.5rem;
 
 .about_text {
   padding: 0 6%;
-  margin: 2rem 0;
+  margin: 3rem 0;
 }
 
 .about_img {
@@ -491,9 +490,13 @@ margin: 0.5rem;
   height: auto;
 }
 
+/*  ==========================================================
+     =======================CATEGORY==========================
+     ==========================================================   */
+
 
 .block_category {
-  padding: 1rem;
+  margin: 6% 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -530,6 +533,11 @@ margin: 0.5rem;
   padding: 0 1rem 0.3rem 0.3rem;
 }
 
+
+/*  ==========================================================
+     =====================ENVIRONMENT=========================
+     ==========================================================   */
+
 .section_environment {
   background-color: var(--dark-green);
   padding-top: 0;
@@ -552,7 +560,9 @@ margin: 0.5rem;
 }
 
 .text_environment {
-  padding: 1rem 5%;
+  padding: 0 6%;
+  margin: 3rem 0;
+  padding: 0 6%;
 }
 
 .p_environment {
@@ -563,9 +573,13 @@ margin: 0.5rem;
   font-weight: bold;
 }
 
+/*  ==========================================================
+     ========================REVIEW==========================
+     ==========================================================   */
+
 .main_review {
   background: var(--light-beige);
-  padding: 2rem 1rem;
+  padding: 6% 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -713,8 +727,8 @@ margin: 0.5rem;
   .about_text {
     display: flex;
     flex-direction: column;
-    margin: 1rem;
-    padding: 0;
+    margin: 1rem 0rem;
+    padding-right: 6%;
     padding-left: 6% !important;
 
   }
@@ -746,6 +760,8 @@ margin: 0.5rem;
   .text_environment {
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding-right: 6% !important;
   }
 
   .show_hide_one {
