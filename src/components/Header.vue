@@ -219,6 +219,10 @@ header {
   width: 100vw;
   background-color: var(--dark-beige);
   overflow: hidden;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  position: fixed;
 }
 
 .overlay {

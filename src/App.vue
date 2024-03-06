@@ -19,7 +19,10 @@ export default {
 
 
 </script>
+<style>
 
+
+</style>
 
 <template>
   <Header></Header>

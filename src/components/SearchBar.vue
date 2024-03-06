@@ -20,6 +20,8 @@ export default {
   width: 80%;
   display: flex;
   align-items: center;
+  margin-top: 100px;
+  max-width: 600px;
   position: relative;
 }
 
