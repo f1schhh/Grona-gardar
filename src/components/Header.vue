@@ -221,7 +221,7 @@ header {
   left: 0;
   top: 0;
   z-index: 20;
-  position: fixed;
+  position: sticky;
 }
 
 .overlay {
