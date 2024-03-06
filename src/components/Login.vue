@@ -358,7 +358,6 @@ input[type="email"] {
 .login-menu-container {
   display: none;
   background-color: var(--mid-beige);
-  /* width: 60vw; */
   width: 300px;
   height: fit-content;
   height: 500px;

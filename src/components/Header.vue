@@ -49,7 +49,6 @@
 
         <div class="login-and-cart-icons-wrapper">
 
-          <!-- :onLoginIconClick="true" -->
           <div v-if="userName === 'Konto'"  @click="onLoginClick" class="login-wrapper">
             <i class="bi bi-person"></i>
             <p>{{ userName }}</p>
@@ -242,25 +241,6 @@ header {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
 }
-
-/* .overlay-for-login {
-  display: none;
-  background-color: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(0px);
-  transition: background-color 0.75s, backdrop-filter 0.75s;
-  width: 100%;
-  height: 100%;
-  height: 100vh;
-  position: fixed;
-  z-index: 3;
-  justify-content: center;
-  align-content: center;
-} */
-
-/* .increase-blur-when-using-login {
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(1px);
-} */
 
 nav {
   top: 0;
