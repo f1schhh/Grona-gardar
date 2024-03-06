@@ -65,22 +65,23 @@ export default {
       <SearchBar class="search_style"></SearchBar>
       <div class="home_top_block">
         <div class="home_top_space">
-        <h2>
-          Nyskördat efter säsong - Närproducerat, färskt och hållbart
-          <!-- Färsk Frukt - Närodlad och Hållbar -->
-        </h2>
-        <p>
-          Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt. Varje
-          produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
-        </p>
-        <router-link to="/products">
-          <div class="div_button_more_products button_space">
-            <button class="button_more_products" @click="goToProducts">
-              Våra produkter
-              <i class="bi bi-arrow-right"></i>
-            </button>
-          </div>
-        </router-link>
+          <h2>
+            Nyskördat efter säsong - Närproducerat, färskt och hållbart
+            <!-- Färsk Frukt - Närodlad och Hållbar -->
+          </h2>
+          <p>
+            Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt.
+            Varje
+            produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
+          </p>
+          <router-link to="/products">
+            <div class="div_button_more_products button_space">
+              <button class="button_more_products" @click="goToProducts">
+                Våra produkter
+                <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </router-link>
         </div>
       </div>
     </section>
@@ -91,12 +92,12 @@ export default {
      ==========================SEASON==========================
      ==========================================================  -->
     <section class="section_season">
-      <div>
+      <div style="margin: auto;">
         <h3>I säsong</h3>
         <div>
           <ul class="product_list">
             <li v-for="product in productData">
-                <ProductCard :productid="product.id" />
+              <ProductCard :productid="product.id" />
             </li>
 
           </ul>
@@ -274,7 +275,8 @@ export default {
             <i class="bi bi-star-fill"></i>
           </div>
           <p class="main_review_text">
-            Gröna Gårdar har gjort mig till en trogen kund med sin otroliga kvalitet och smakupplevelse. Varje produkt är
+            Gröna Gårdar har gjort mig till en trogen kund med sin otroliga kvalitet och smakupplevelse. Varje produkt
+            är
             som en smakresa genom naturens underverk och jag kan inte få nog av deras fantastiska utbud som varierar med
             säsongerna!
           </p>
@@ -293,7 +295,8 @@ export default {
           </div>
           <p class="main_review_text">
             Gröna Gårdar har verkligen förändrat mitt sätt att se på ekologiskt odlade produkter. Deras grönsaker och
-            frukter är inte bara hälsosamma utan också otroligt goda. Varje produkt är fylld med sådan smakrikedom. Jag är
+            frukter är inte bara hälsosamma utan också otroligt goda. Varje produkt är fylld med sådan smakrikedom. Jag
+            är
             hooked för livet!
           </p>
           <p class="review_signature">
@@ -322,7 +325,7 @@ article {
   margin-top: 40px;
 }
 
- /*  ==========================================================
+/*  ==========================================================
      ===========================TOP============================
      ==========================================================   */
 
@@ -358,7 +361,7 @@ article {
   padding: 1rem 1rem;
 }
 
-.home_top_space{
+.home_top_space {
   max-width: 776px;
   margin: auto;
 }
@@ -396,7 +399,7 @@ article {
 
 
 
- /*  ==========================================================
+/*  ==========================================================
      ========================SEASON============================
      ==========================================================   */
 
@@ -404,6 +407,7 @@ article {
   background-color: var(--dark-beige);
   padding: 2rem 6%;
   display: flex;
+  margin: auto;
 }
 
 .section_season h3 {
@@ -454,7 +458,7 @@ margin: 0.5rem;
 
 
 
- /*  ==========================================================
+/*  ==========================================================
      ========================ABOUT=============================
      ==========================================================   */
 
@@ -601,6 +605,16 @@ margin: 0.5rem;
   color: black;
 }
 
+.product_list li {
+  max-width: none !important;
+  width: calc(16.67% - 1rem);
+}
+
+.section_season .button_more_products {
+  margin-right: 1rem;
+  margin-top: 2rem !important;
+}
+
 @media screen and (max-width: 385px) {
 
   /* .home_top {
@@ -645,9 +659,6 @@ margin: 0.5rem;
     justify-content: center;
   } */
 
-  .block_category .product_list li {
-    max-width: 30vw;
-  }
 
   .category_flex {
     justify-content: center;
@@ -781,4 +792,31 @@ margin: 0.5rem;
   } */
 
 }
+
+@media screen and (max-width: 1224px) {
+  .product_list li {
+    width: calc(33.33% - 1rem);
+  }
+}
+
+@media screen and (min-width: 1px) and (max-width: 551px) {
+  .product_list {
+    row-gap: 1rem;
+    justify-content: center !important;
+  }
+
+  .product_list li {
+    width: calc(50% - 1rem);
+  }
+
+  .section_season .button_more_products {
+    margin-right: 0.4rem;
+  }
+}
+
+/* @media screen and (min-width: 1100px) {
+  .product_list li {
+    width: calc(25% - 1rem);
+  }
+} */
 </style>
