@@ -1,11 +1,14 @@
 <script>
 import SearchBar from '../components/SearchBar.vue';
 import FavoriteButton from '../components/FavoriteButton.vue';
+import ProductCard from '../components/ProductCard.vue';
+
 
 export default {
   components: {
     SearchBar,
     FavoriteButton,
+    ProductCard,
   },
 
   data() {
@@ -93,24 +96,7 @@ export default {
         <div>
           <ul class="product_list">
             <li v-for="product in productData">
-                <div class="specific_product">
-                  <router-link :to="{ path: `/product/${product.id}` }">
-                  <div class="img-wrapper">
-                    <img :src="product.product_image" alt="">
-                  </div>
-                </router-link>
-
-                  <div class="product_information">
-                    <div class="product-text">
-                      <router-link :to="{ path: `/product/${product.id}` }">
-                      <span class="title-bold">{{ product.product_name }} </span>
-                      </router-link>
-                      <FavoriteButton :id="product.id"/>
-                      <span class="text_type">{{ product.product_type }}</span>
-                      <span>{{ product.price }}kr/kg</span>
-                    </div>
-                  </div>
-                </div>
+                <ProductCard :productid="product.id" />
             </li>
 
           </ul>
@@ -349,7 +335,8 @@ article {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: calc(100vh - 66.4px);
+  height: 100vh;
+  /* height: calc(100vh - 65.4px); */
   display: flex;
   flex-direction: column;
   align-items: center;
