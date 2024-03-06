@@ -1,5 +1,22 @@
 <script>
 import { RouterLink } from 'vue-router';
+
+export default {
+
+    data() {
+        return {
+            user: null,
+        }
+    },
+
+    created() {
+
+        this.user = localStorage.getItem("userName");
+
+
+    },
+
+}
 </script>
 
 <style scoped>
@@ -30,9 +47,27 @@ article {
     padding-bottom: 0.8rem;
 }
 
+#editProfilePic {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
 #profilePic {
     width: 5rem;
     border-radius: 100%;
+}
+
+#editPicSymbol {
+    width: 0;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-self: flex-end;
+    align-self: flex-end;
 }
 
 #profileInfo h2 {
@@ -73,11 +108,11 @@ i {
     }
 }
 
-@media screen and (min-width: 500px) {
+/* @media screen and (min-width: 500px) {
     #profilePic {
         width: 7rem;
     }
-}
+} */
 
 @media screen and (min-width: 600px) {
     article {
@@ -98,6 +133,16 @@ i {
         width: 7rem;
     }
 
+    #editPicSymbol {
+        width: 0;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-self: flex-end;
+        align-self: flex-end;
+    }
+
     h2 {
         font-weight: 100;
         font-size: 1.2rem;
@@ -115,7 +160,10 @@ i {
     .profileInfo_li {
         padding: 0;
         margin: 0;
-        width: 100%;
+        min-width: 170px;
+        width: 20vw;
+        max-width: 300px;
+        overflow: hidden;
     }
 
     .i_and_p {
@@ -128,7 +176,7 @@ i {
 
     .hrDivideLi {
         height: 0;
-        width: 10rem;
+
         border: solid 2px var(--dark-beige);
         margin: 0;
         padding: 0;
@@ -153,11 +201,11 @@ i {
     }
 }
 
-@media screen and (min-width: 750px) {
+/* @media screen and (min-width: 750px) {
     .hrDivideLi {
         width: 15rem;
     }
-}
+} */
 
 
 @media screen and (min-width: 900px) {
@@ -205,13 +253,13 @@ i {
         font-size: 1rem;
     }
 
-    .hrDivideLi {
+    /* .hrDivideLi {
         height: 0;
         width: 23rem;
         border: solid 2px var(--dark-beige);
         margin: 0;
         padding: 0;
-    }
+    } */
 
 
     #hrDividePage_Div {
@@ -238,8 +286,16 @@ i {
     <article>
 
         <aside id="profileInfo">
-            <h1>Min profil</h1><img id="profilePic" src="../assets/media/profile_pictures/profilePic1.jpg" alt="">
-            <h2>Namn</h2>
+
+            <h1>Min profil</h1>
+            <div id="editProfilePic">
+                <img id="profilePic" src="../assets/media/profile_pictures/profilePic1.jpg" alt="">
+
+                <i id="editPicSymbol" class="bi bi-pencil-square"></i>
+            </div>
+
+            <!-- <h2>Namn</h2> -->
+            <h2>{{ user }}</h2>
             <ul>
                 <router-link to="/account/orderhistory">
                     <li class="profileInfo_li">

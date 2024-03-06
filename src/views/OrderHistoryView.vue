@@ -102,12 +102,13 @@ article {
 
 .orderHistory_list_li {
     display: flex;
+    flex-direction: row;
     text-align: left;
     background-color: var(--dark-beige);
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    /* flex-wrap: wrap; */
-    flex-direction: row;
-    /* padding: 0rem 5rem; */
+
+
+
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -116,6 +117,7 @@ article {
     position: relative;
     font-size: 0.8rem;
     font-weight: lighter;
+    width: 17.5rem;
 }
 
 .img-wrapper {
@@ -215,8 +217,10 @@ article {
         height: 8rem;
         margin-right: 1rem;
         margin-bottom: 1rem;
-        width: 80%;
-        max-width: 20rem;
+        background-color: orange;
+
+        width: 50vw;
+        height: 15vw;
     }
 
     .order_summary {
@@ -246,9 +250,9 @@ article {
 
     }
 
-    .order_summary {
+    /* .order_summary {
         padding-top: 1rem;
-    }
+    } */
 }
 
 
@@ -299,17 +303,6 @@ article {
         padding-top: 1rem;
     }
 
-    .img-wrapper {
-        height: 100%;
-        width: 8rem;
-    }
-
-    .button_seeOrder {
-        margin-top: 0;
-        font-size: 0.7rem;
-        color: var(--dark-green)
-    }
-
 
     #hrDiv {
         display: none;
@@ -335,9 +328,9 @@ article {
                             <p>Datum: {{ items.order_date }}</p>
                             <p>Totalbelopp: {{ items.total_cost }}</p>
                         </div>
-                        <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Se order</button>
-                        </div>
+
+                        <button class="button_seeOrder">Se order</button>
+
                     </div>
                 </li>
 
@@ -351,9 +344,9 @@ article {
                             <p>Datum: {{ items.order_date }}</p>
                             <p>Totalbelopp: {{ items.total_cost }}</p>
                         </div>
-                        <div class="button_seeOrder_div">
-                            <button class="button_seeOrder">Se order</button>
-                        </div>
+
+                        <button class="button_seeOrder">Se order</button>
+
                     </div>
                 </li>
             </ul>

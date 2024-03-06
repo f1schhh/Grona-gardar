@@ -1,39 +1,21 @@
 <script>
 import { RouterLink } from 'vue-router';
 
-export default{
-    methods:{
-    onLogOutClick(){
+export default {
+    methods: {
+        onLogOutClick() {
 
-    localStorage.setItem("userName", "Konto");
-    const changeAccountTitle = localStorage.getItem("userName")
-        console.log("LocalStorage gets a new value " + localStorage.getItem("userName"))
+            localStorage.setItem("userName", "Konto");
+            const changeAccountTitle = localStorage.getItem("userName")
+            console.log("LocalStorage gets a new value " + localStorage.getItem("userName"))
 
-    this.$emit('onLoggOut', 'changeAccountTitle')
+            this.$emit('onLoggOut', 'changeAccountTitle')
 
+        }
     }
-}
 
 }
 </script>
-
-<template>
-    <article>
-        <section id="logOut_section">
-            <h2>Logga ut</h2>
-            <div id="hrDiv">
-                <hr id="logOut_section_hr">
-            </div>
-            <p>Är du säker på att du vill logga ut?</p>
-            <div id="buttons">
-                <button class="buttons_stay_logout">Stanna</button>
-
-               <router-link to="/"><button @click="onLogOutClick" class="buttons_stay_logout">Logga ut</button></router-link>
-
-            </div>
-        </section>
-    </article>
-</template>
 
 <style scoped>
 #logOut_section {
@@ -89,24 +71,40 @@ export default{
 
 @media screen and (min-width: 600px) {
     article {
-        padding-left: 2rem;
+        /* padding-left: 2rem; */
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
+        padding-left: 2rem;
+    }
+
+    #logOut_section {
+        padding-right: 0;
+        margin-right: 0;
     }
 
     #logOut_section h2 {
-        width: 50rem;
         margin: 1.5rem 0;
-        font-size: 1.5rem;
+        font-size: 1rem;
+        text-align: left;
+        padding-top: 1.2rem;
+        padding-left: 0;
+        margin-left: 0;
     }
 
     #logOut_section p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #buttons {
+        padding-left: 0;
+        margin-left: 0;
     }
 
     .buttons_stay_logout {
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: var(--dark-green);
     }
 
@@ -115,3 +113,22 @@ export default{
     }
 }
 </style>
+
+<template>
+    <article>
+        <section id="logOut_section">
+            <h2>Logga ut</h2>
+            <div id="hrDiv">
+                <hr id="logOut_section_hr">
+            </div>
+            <p>Är du säker på att du vill logga ut?</p>
+            <div id="buttons">
+                <button class="buttons_stay_logout">Stanna</button>
+
+                <router-link to="/"><button @click="onLogOutClick" class="buttons_stay_logout">Logga
+                        ut</button></router-link>
+
+            </div>
+        </section>
+    </article>
+</template>
