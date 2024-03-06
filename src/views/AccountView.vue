@@ -10,21 +10,11 @@ export default {
     },
 
     created() {
-        fetch('./src/database.json', {
-            headers: {
-                // Request JSON
-                Accept: 'application/json'
-            }
-        })
-            .then((response) => response.json())
-            .then((result) => {
-                this.user = result
 
-            })
-        localStorage.setItem("user_id", user.id);
+        this.user = localStorage.getItem("userName");
+
+
     },
-
-
 
 }
 </script>
@@ -118,11 +108,11 @@ i {
     }
 }
 
-@media screen and (min-width: 500px) {
+/* @media screen and (min-width: 500px) {
     #profilePic {
         width: 7rem;
     }
-}
+} */
 
 @media screen and (min-width: 600px) {
     article {
@@ -170,7 +160,10 @@ i {
     .profileInfo_li {
         padding: 0;
         margin: 0;
-        width: 100%;
+        min-width: 170px;
+        width: 20vw;
+        max-width: 300px;
+        overflow: hidden;
     }
 
     .i_and_p {
@@ -183,7 +176,7 @@ i {
 
     .hrDivideLi {
         height: 0;
-        width: 10rem;
+
         border: solid 2px var(--dark-beige);
         margin: 0;
         padding: 0;
@@ -208,11 +201,11 @@ i {
     }
 }
 
-@media screen and (min-width: 750px) {
+/* @media screen and (min-width: 750px) {
     .hrDivideLi {
         width: 15rem;
     }
-}
+} */
 
 
 @media screen and (min-width: 900px) {
@@ -260,13 +253,13 @@ i {
         font-size: 1rem;
     }
 
-    .hrDivideLi {
+    /* .hrDivideLi {
         height: 0;
         width: 23rem;
         border: solid 2px var(--dark-beige);
         margin: 0;
         padding: 0;
-    }
+    } */
 
 
     #hrDividePage_Div {
@@ -301,7 +294,8 @@ i {
                 <i id="editPicSymbol" class="bi bi-pencil-square"></i>
             </div>
 
-            <h2>{{ user.id }}</h2>
+            <!-- <h2>Namn</h2> -->
+            <h2>{{ user }}</h2>
             <ul>
                 <router-link to="/account/orderhistory">
                     <li class="profileInfo_li">

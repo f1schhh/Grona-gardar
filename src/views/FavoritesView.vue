@@ -258,9 +258,9 @@ article {
                             <span class="text_type">{{ product.product_type }}</span>
                             <span>{{ product.price }}kr/kg</span>
                         </div>
-                        <div id="button">
-                            <AddToCartButton :id="items.id" />
-                        </div>
+                        <!-- <div id="button"> -->
+                        <AddToCartButton />
+                        <!-- </div> -->
                     </div>
                 </li>
                 <!-- SLUT TEST FAVORITKNAPP -->

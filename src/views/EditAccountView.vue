@@ -1,4 +1,78 @@
-<script></script>
+<script>
+
+export default {
+
+    data() {
+        return {
+
+            firstName: null,
+            lastName: null,
+            email: null,
+            address: null
+        }
+    },
+
+    created() {
+
+
+
+        this.getUserInfo()
+
+
+    },
+    methods: {
+
+        getUserInfo() {
+            const id = parseInt(localStorage.getItem("user_id"));
+
+
+            fetch('/src/database.json')
+                .then(response => response.json())
+                .then(result => {
+                    result.users.forEach(user => {
+
+                        console.log(typeof (id) + "if satsen körs")
+                        console.log(user.id)
+                        if (user.id === id) {
+                            this.firstName = user.first_name;
+                            this.lastName = user.last_name;
+                            this.email = user.email;
+                            this.address = user.adress;
+                        }
+                    });
+
+                    console.log(result.users);
+                });
+
+
+
+            // fetch('/src/database.json').then(response => response.json()).then(result => {
+
+            //     for (const user in result.users) {
+            //         console.log(typeof (id) + "if satsen körs")
+            //         console.log(user.id)
+            //         if (user.id === 1) {
+
+
+
+            //             this.firstName = user.first_name;
+            //             this.secondName = user.last_name;
+            //             this.email = user.email;
+            //             this.address = user.adress;
+            //         }
+
+
+            //     }
+            //     console.log(result.users)
+            // });
+
+
+        }
+    }
+}
+
+
+</script>
 
 <style scoped>
 article {
@@ -161,19 +235,19 @@ article {
                 <div id="inputBoxDiv">
                     <div class="inputBox">
                         <label for="fname">Förnamn</label>
-                        <input type="text" id="fname" name="fname" placeholder="Exempel" required>
+                        <input type="text" id="fname" name="fname" v-model="firstName" required>
                     </div>
                     <div class="inputBox">
                         <label for="lname">Efternamn</label>
-                        <input type="text" id="lname" name="lname" placeholder="Exempelsson" required>
+                        <input type="text" id="lname" name="lname" v-model="lastName" required>
                     </div>
                     <div class="inputBox">
                         <label for="fname">E-post</label>
-                        <input type="email" id="email" name="fname" placeholder="exempel@exempel.com" required>
+                        <input type="email" id="email" name="fname" v-model="email" required>
                     </div>
                     <div id="adressDiv">
                         <label for="lname">Adress</label>
-                        <input type="text" id="adress" name="lname" placeholder="Exempelgatan 123" required>
+                        <input type="text" id="adress" name="lname" v-model="address" required>
                     </div>
                 </div>
                 <div id="buttonsDiv">

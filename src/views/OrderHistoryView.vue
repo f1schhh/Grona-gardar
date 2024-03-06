@@ -217,8 +217,10 @@ article {
         height: 8rem;
         margin-right: 1rem;
         margin-bottom: 1rem;
-        width: 80%;
-        max-width: 20rem;
+        background-color: orange;
+
+        width: 50vw;
+        height: 15vw;
     }
 
     .order_summary {
@@ -248,9 +250,9 @@ article {
 
     }
 
-    .order_summary {
+    /* .order_summary {
         padding-top: 1rem;
-    }
+    } */
 }
 
 
