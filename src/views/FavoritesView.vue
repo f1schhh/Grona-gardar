@@ -280,7 +280,7 @@ article {
                             <span>{{ product.price }}kr/kg</span>
                         </div>
                         <div id="button">
-                            <AddToCartButton />
+                            <AddToCartButton :id="product.id"/>
                         </div>
                     </div>
                 </li>
