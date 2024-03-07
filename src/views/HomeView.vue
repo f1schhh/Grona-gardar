@@ -27,7 +27,6 @@ export default {
         const response = await fetch('/src/database.json');
         const data = await response.json()
         const product = data.products.filter(item => item.season === 'autumn');
-        // console.log(product)
 
         if (product) {
           this.productData = product
@@ -37,7 +36,7 @@ export default {
 
 
       } catch {
-        console.log('Whoops')
+        console.log('There seems to be a problem: ', error);
       }
     },
 
@@ -138,12 +137,13 @@ export default {
     <section>
       <div class="block_category">
         <h3>Kategorier</h3>
-        <ul class="product_list category_flex">
+        <div class="block_space">
+        <ul class="category_flex">
           <li>
             <router-link :to="{ path: `/products/vegetables` }">
               <div class="specific_product category_box specific_product_big">
                 <div class="img-wrapper img-wrapper_big">
-                  <img src="../assets/media/Artichoke.jpg" alt="">
+                  <img src="../assets/media/ArtichokeScale.jpg" alt="">
                 </div>
                 <div class="category_text">
                   <div class="h3_and_heart">
@@ -162,7 +162,7 @@ export default {
             <router-link :to="{ path: `/products/fruits` }">
               <div class="specific_product category_box specific_product_big">
                 <div class="img-wrapper img-wrapper_big">
-                  <img src="../assets/media/Flowers.jpg" alt="">
+                  <img src="../assets/media/AppleOnBranch.jpg" alt="">
                 </div>
                 <div class="category_text">
                   <div class="h3_and_heart">
@@ -179,9 +179,10 @@ export default {
         </ul>
 
         <div class="div_button_more_products">
-          <button class="button_more_products button_color" @click="goToProducts">Våra produkter<i
-              class="bi bi-arrow-right"></i></button>
+          <button class="button_more_products button_color" @click="goToProducts">
+            Våra produkter<i class="bi bi-arrow-right"></i></button>
         </div>
+      </div>
       </div>
     </section>
 
@@ -202,21 +203,6 @@ export default {
             Genom ekologisk odling och avståndstagande från kemiska ämnen skapar vi en
             miljö där jorden flödar av liv.
           </p>
-          <!-- <p class="p_environment">
-            <span class="new_p">Kretsloppsanpassning</span> är kärnan i vårt arbete
-            -genom kompostering till återvinning minimerar vi vårt avfall och bidrar
-            till ett hållbart användande av våra resurser. Energiförbrukningen optimeras
-            genom investeringar i effektiva system och vi prioriterar vattenbevarande
-            metoder för att minska påverkan på miljön.
-          </p>
-          <p class="p_environment">
-            <span class="new_p">Lokala</span> samarbeten är centralt för oss för att
-            minska vårt koldioxidavtryck. Vi är inte bara odlare; vi är förkämpar för
-            medvetenhet och utbildning. Genom att dela med oss av vår kunskap om
-            ekologisk odling hoppas vi kunna inspirera andra till att välja en mer
-            hållbar livsstil. Vår gård är en plats där varje gröda är en handling av
-            kärlek till planeten och varje skörd är ett framsteg mot en grönare framtid.
-          </p> -->
         </div>
       </div>
     </section>
@@ -284,25 +270,6 @@ export default {
           </p>
         </div>
 
-        <!-- <div class="block_review show_hide_three">
-          <div>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-          </div>
-          <p class="main_review_text">
-            Gröna Gårdar har verkligen förändrat mitt sätt att se på ekologiskt odlade produkter. Deras grönsaker och
-            frukter är inte bara hälsosamma utan också otroligt goda. Varje produkt är fylld med sådan smakrikedom. Jag
-            är
-            hooked för livet!
-          </p>
-          <p class="review_signature">
-            Amir
-          </p>
-        </div> -->
-
       </div>
 
     </section>
@@ -316,10 +283,6 @@ article {
   position: relative;
 }
 
-/* h3 {
-  padding-left: 5%;
-} */
-
 .search_style {
   margin-top: 40px;
 }
@@ -329,7 +292,6 @@ article {
      ==========================================================   */
 
 .home_top {
-  /* background-image: url("../assets/media/GreenHouse.jpg"); */
   /* background-image: url("../assets/media/pexels-karolina-grabowska-4750274.jpg"); */
   /* background-image: url("../assets/media/pexels-gustavo-fring-4894638.jpg"); */
   background-image: url("../assets/media/pexels-karolina-grabowska-4750271.jpg");
@@ -338,7 +300,6 @@ article {
   background-size: cover;
   background-position: center;
   height: 100vh;
-  /* height: calc(100vh - 65.4px); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -423,10 +384,6 @@ article {
   justify-content: center;
 }
 
-/* .product_list li {
-margin: 0.5rem;
-} */
-
 .product_information {
   display: flex;
   flex-direction: column;
@@ -455,6 +412,10 @@ margin: 0.5rem;
   background-color: var(--light-beige);
 }
 
+/* .product-card .add-to-cart-button button{
+  border: 5px solid var(--dark-green);
+  font-size: 1rem;
+} */
 
 
 /*  ==========================================================
@@ -502,35 +463,67 @@ margin: 0.5rem;
 }
 
 .category_flex {
+  width: 100%;
   display: flex;
   flex-direction: row;
+  gap: 2rem;
+  align-items: stretch;
+  padding-bottom: 1rem;
+  justify-content: center;
+}
+
+.category_flex li{
+  background-color: var(--light-beige);
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 496px;
+  border-radius: 19px;
+  transition: 1s;
+}
+
+.category_flex li:hover{
+  box-shadow: 1px 0px 10px 0px rgba(0, 0, 0, 0.85);
+  transition: 0.35s;
+}
+
+.category_flex li:focus{
+  box-shadow: 1px 0px 15px 0px rgba(0, 0, 0, 0.85);
+  transition: 0.6s;
 }
 
 .block_category h3 {
   padding-bottom: 1rem;
 }
 
-.category_box {
-  background-color: var(--light-beige);
-  height: 22rem;
+.specific_product{
+  box-shadow: none;
 }
 
 .img-wrapper {
-  width: 10.4375rem;
-  height: 10.4375rem;
-}
+  height: 100%;
+  max-height: 14rem;
+  max-width: 100%;
+  text-align: center;
+  }
 
 .img-wrapper img {
   width: 100%;
   height: 100%;
   border-radius: 19px 19px 0 0;
+  display: inline-block;
+  vertical-align: center;
   object-fit: cover;
-  object-position: center;
+}
+
+.category_text h4{
+  padding: 1rem;
 }
 
 .p_category {
-  padding: 0 1rem 0.3rem 0.3rem;
+  padding: 0 1rem 2rem 1rem;
 }
+
 
 
 /*  ==========================================================
@@ -572,6 +565,7 @@ margin: 0.5rem;
   font-weight: bold;
 }
 
+
 /*  ==========================================================
      ========================REVIEW==========================
      ==========================================================   */
@@ -579,7 +573,6 @@ margin: 0.5rem;
 .main_review {
   background: var(--light-beige);
   padding: 4rem 6%;
-  /* padding: 6% 1rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -591,14 +584,12 @@ margin: 0.5rem;
   justify-content: center;
   gap: 3rem;
   padding: 0 6%;
-  /* max-width: 1000px; */
 }
 
 .block_review {
   background-color: var(--dark-beige);
   padding: 1rem 2rem;
   border-radius: 19px;
-  /* margin: auto; */
   margin-top: 1rem;
   margin-bottom: 3rem;
   display: flex;
@@ -633,12 +624,8 @@ margin: 0.5rem;
   margin-top: 2rem !important;
 }
 
+
 @media screen and (max-width: 385px) {
-
-  /* .home_top {
-    height: 45vh;
-  } */
-
   li {
     max-width: 9.5rem;
   }
@@ -649,45 +636,21 @@ margin: 0.5rem;
   }
 }
 
+
 @media screen and (min-width: 370px) {
   .product_list {
     justify-content: flex-start;
   }
-
 }
 
 
-/* .home_top {
-  height: 45vh;
-} */
-
-
-/* .home_top_block {
-  padding-top: 4rem;
-  padding: 1rem 1rem;
-} */
-
-/* .home_top_block h2 {
-  padding-bottom: 0.5rem;
-} */
-
 @media screen and (min-width: 560px) {
-  /* .specific_product_big {
-    flex-direction: row;
-    justify-content: center;
-  } */
-
-
   .category_flex {
     justify-content: center;
   }
 
   .specific_product_big .img-wrapper img {
     border-radius: 19px 19px 0 0;
-    width: 100%;
-  }
-
-  .img-wrapper_big {
     width: 100%;
   }
 
@@ -699,11 +662,10 @@ margin: 0.5rem;
   .home_top_block {
     padding-top: 3rem;
   }
-
 }
 
-@media screen and (min-width:650px) {
 
+@media screen and (min-width:650px) {
   .block_about {
     display: flex;
     flex-direction: row;
@@ -774,42 +736,39 @@ margin: 0.5rem;
   }
 }
 
-@media screen and (min-width: 970px) {
 
+@media screen and (min-width: 970px) {
   .show_hide_two {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 220px;
   }
-
 }
 
 
 @media screen and (min-width: 1074px) {
-
   .show_hide_three {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 220px;
   }
-
 }
 
-/* @media screen and (max-width: 700px) {
-  .home_top {
-    height: auto;
+
+@media screen and (min-width:1172px) {
+  .category_flex{
+    justify-content: space-between;
+    max-width: 1127px;
+    margin: auto
   }
 
-} */
-
-@media screen and (min-width: 701px) {
-  /* .home_top {
-    height: 100vh;
-  } */
-
+  .block_space{
+  padding: 2rem 6% 0 6%
+  }
 }
+
 
 @media screen and (max-width: 1224px) {
   .product_list li {
