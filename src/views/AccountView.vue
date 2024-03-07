@@ -24,8 +24,6 @@ article {
     display: flex;
     flex-direction: column;
     padding-left: 0rem;
-    /* justify-content: center;
-    align-items: center; */
 }
 
 #test {
@@ -56,7 +54,8 @@ article {
 }
 
 #profilePic {
-    width: 5rem;
+    min-width: 5rem;
+    width: 20vw;
     border-radius: 100%;
 }
 
@@ -72,7 +71,8 @@ article {
 
 #profileInfo h2 {
     padding-bottom: 0.7rem;
-    font-weight: lighter;
+    font-family: 'lucida handwriting';
+
 }
 
 ul {
@@ -144,9 +144,10 @@ i {
     }
 
     h2 {
-        font-weight: 100;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        padding-top: 0.5rem;
         /* padding: 1.5rem; */
+
     }
 
     ul {
@@ -227,12 +228,6 @@ i {
         width: 7rem;
     }
 
-    h2 {
-        font-weight: 100;
-        font-size: 1.2rem;
-        /* padding: 1.5rem; */
-    }
-
     ul {
         display: flex;
         flex-direction: column;
@@ -292,9 +287,9 @@ i {
                 <img id="profilePic" src="../assets/media/profile_pictures/profilePic1.jpg" alt="">
 
                 <i id="editPicSymbol" class="bi bi-pencil-square"></i>
+
             </div>
 
-            <!-- <h2>Namn</h2> -->
             <h2>{{ user }}</h2>
             <ul>
                 <router-link to="/account/orderhistory">

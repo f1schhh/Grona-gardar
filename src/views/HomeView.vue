@@ -1,14 +1,11 @@
 <script>
 import SearchBar from '../components/SearchBar.vue';
 import FavoriteButton from '../components/FavoriteButton.vue';
-import ProductCard from '../components/ProductCard.vue';
-
 
 export default {
   components: {
     SearchBar,
     FavoriteButton,
-    ProductCard,
   },
 
   data() {
@@ -64,22 +61,23 @@ export default {
       <SearchBar class="search_style"></SearchBar>
       <div class="home_top_block">
         <div class="home_top_space">
-          <h2>
-            Nyskördat efter säsong
-          </h2>
-          <p>
-            Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt.
-            Varje
-            produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
-          </p>
-          <router-link to="/products">
-            <div class="div_button_more_products button_space">
-              <button class="button_more_products" @click="goToProducts">
-                Våra produkter
-                <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </router-link>
+        <h2>
+          <!-- Färsk, närodlad och hållbart -->
+          <!-- Färsk Frukt - Närodlad och Hållbar -->
+          Nyskördat efter säsong
+        </h2>
+        <p >
+          Vi erbjuder ett brett sortiment av färska och närproducerade livsmedel, allt från grönsaker till frukt. Varje
+          produkt är noggrant utvald, odlad med kärlek och omsorg på våra egna marker.
+        </p>
+        <router-link to="/products">
+          <div class="div_button_more_products button_space">
+            <button class="button_more_products" @click="goToProducts">
+              Våra produkter
+              <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </router-link>
         </div>
       </div>
     </section>
@@ -90,12 +88,29 @@ export default {
      ==========================SEASON==========================
      ==========================================================  -->
     <section class="section_season">
-      <div style="margin: auto;">
+      <div>
         <h3>I säsong</h3>
         <div>
           <ul class="product_list">
             <li v-for="product in productData">
-              <ProductCard :productid="product.id" />
+                <div class="specific_product">
+                  <router-link :to="{ path: `/product/${product.id}` }">
+                  <div class="img-wrapper">
+                    <img :src="product.product_image" alt="">
+                  </div>
+                </router-link>
+
+                  <div class="product_information">
+                    <div class="product-text">
+                      <router-link :to="{ path: `/product/${product.id}` }">
+                      <span class="title-bold">{{ product.product_name }} </span>
+                      </router-link>
+                      <FavoriteButton :id="product.id"/>
+                      <span class="text_type">{{ product.product_type }}</span>
+                      <span>{{ product.price }}kr/kg</span>
+                    </div>
+                  </div>
+                </div>
             </li>
 
           </ul>
@@ -260,8 +275,7 @@ export default {
             <i class="bi bi-star-fill"></i>
           </div>
           <p class="main_review_text">
-            Gröna Gårdar har gjort mig till en trogen kund med sin otroliga kvalitet och smakupplevelse. Varje produkt
-            är
+            Gröna Gårdar har gjort mig till en trogen kund med sin otroliga kvalitet och smakupplevelse. Varje produkt är
             som en smakresa genom naturens underverk och jag kan inte få nog av deras fantastiska utbud som varierar med
             säsongerna!
           </p>
@@ -287,7 +301,7 @@ article {
   margin-top: 40px;
 }
 
-/*  ==========================================================
+ /*  ==========================================================
      ===========================TOP============================
      ==========================================================   */
 
@@ -310,31 +324,49 @@ article {
   max-width: 500px !important;
 }
 
+/* Container to slogan */
 .home_top_block {
   background-color: var(--light-beige-opacity);
-  border-radius: 19px;
+  border-radius: 16px;
   width: 80%;
   max-width: 500px !important;
+  /* max-width: 500px; */
   display: flex;
   flex-direction: column;
   margin-top: 6%;
   padding: 1rem 1rem;
+  padding-top:50px;
+
 }
 
-.home_top_space {
-  max-width: 776px;
-  margin: auto;
+/* Wrapper to slogan text + button */
+.home_top_space{
+  /* background-color: rgb(255, 220, 105); */
+  /* margin: 5%;
+   */
+   margin: 1%;
+  /* max-width: 776px; */
+  /* margin: auto; */
+
 }
 
 .home_top_block h2 {
-  padding-bottom: 2rem;
-  font-size: 2rem;
-  font-weight: bold;
+  padding-bottom: 0.5rem;
+  /* font-size: 2rem; */
+  font-size: 200%;
+  /* font-weight: bold; */
+  font-family: Anevir Next Cyr Medium
+
 }
 
 .home_top_block p {
   color: black;
+  padding: 0;
+  margin: 0;
+
 }
+  /* font-size: ;
+} */
 
 .div_button_more_products {
   display: flex;
@@ -359,15 +391,14 @@ article {
 
 
 
-/*  ==========================================================
+ /*  ==========================================================
      ========================SEASON============================
      ==========================================================   */
 
 .section_season {
   background-color: var(--dark-beige);
-  padding:4rem 6%;
+  padding: 2rem 6%;
   display: flex;
-  margin: auto;
 }
 
 .section_season h3 {
@@ -418,7 +449,7 @@ article {
 } */
 
 
-/*  ==========================================================
+ /*  ==========================================================
      ========================ABOUT=============================
      ==========================================================   */
 
@@ -443,7 +474,7 @@ article {
 
 .about_text {
   padding: 0 6%;
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 
 .about_img {
@@ -451,15 +482,12 @@ article {
   height: auto;
 }
 
-/*  ==========================================================
-     =======================CATEGORY==========================
-     ==========================================================   */
-
 
 .block_category {
-  margin: 4rem 6%;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
+  padding: 4rem 6%;
 }
 
 .category_flex {
@@ -525,11 +553,6 @@ article {
 }
 
 
-
-/*  ==========================================================
-     =====================ENVIRONMENT=========================
-     ==========================================================   */
-
 .section_environment {
   background-color: var(--dark-green);
   padding-top: 0;
@@ -552,9 +575,7 @@ article {
 }
 
 .text_environment {
-  padding: 0 6%;
-  margin: 3rem 0;
-  padding: 0 6%;
+  padding: 1rem 5%;
 }
 
 .p_environment {
@@ -565,10 +586,6 @@ article {
   font-weight: bold;
 }
 
-
-/*  ==========================================================
-     ========================REVIEW==========================
-     ==========================================================   */
 
 .main_review {
   background: var(--light-beige);
@@ -657,10 +674,7 @@ article {
   .category_text {
     display: flex;
     flex-direction: column;
-  }
-
-  .home_top_block {
-    padding-top: 3rem;
+    padding: 15px;
   }
 }
 
@@ -693,8 +707,8 @@ article {
   .about_text {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0rem;
-    padding-right: 6%;
+    margin: 1rem;
+    padding: 0;
     padding-left: 6% !important;
 
   }
@@ -726,8 +740,6 @@ article {
   .text_environment {
     display: flex;
     flex-direction: column;
-    margin: 0;
-    padding-right: 6% !important;
   }
 
   .show_hide_one {

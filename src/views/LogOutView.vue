@@ -71,7 +71,7 @@ export default {
 
 @media screen and (min-width: 600px) {
     article {
-        /* padding-left: 2rem; */
+        padding-left: 2rem;
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
@@ -111,6 +111,12 @@ export default {
     #hrDiv {
         display: none;
     }
+
+    #logOut_div {
+        padding: 0;
+        margin: 0;
+        width: 50vw;
+    }
 }
 </style>
 
@@ -121,13 +127,16 @@ export default {
             <div id="hrDiv">
                 <hr id="logOut_section_hr">
             </div>
-            <p>Är du säker på att du vill logga ut?</p>
-            <div id="buttons">
-                <button class="buttons_stay_logout">Stanna</button>
 
-                <router-link to="/"><button @click="onLogOutClick" class="buttons_stay_logout">Logga
-                        ut</button></router-link>
+            <div id="logOut_div">
+                <p>Är du säker på att du vill logga ut?</p>
+                <div id="buttons">
+                    <button class="buttons_stay_logout">Stanna</button>
 
+                    <router-link to="/"><button @click="onLogOutClick" class="buttons_stay_logout">Logga
+                            ut</button></router-link>
+
+                </div>
             </div>
         </section>
     </article>

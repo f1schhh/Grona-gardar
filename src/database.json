@@ -241,8 +241,8 @@
       "delivery_alternative": "PostNord Hem",
       "delivery_adress": "Axel Dahlströms Torg, Göteborg",
       "delivery_zipcode": "433 38",
-      "delivery_name": "Axel  Dahlstrom",
-      "email": "atko.dahlstrom@cat.com"
+      "delivery_name": "Axel Dahlstrom",
+      "email": "axel.dahlstrom@gmail.com"
     },
     {
       "id": 2091765224,
@@ -254,7 +254,7 @@
       "delivery_adress": "Axel Dahlströms Torg, Göteborg",
       "delivery_zipcode": "433 38",
       "delivery_name": "Axel Dahlstrom",
-      "email": "atko.dahlstrom@cat.com"
+      "email": "axel.dahlstrom@gmail.com"
     }
   ],
   "order_product_list": [
